@@ -8,7 +8,6 @@ public class TtobagiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TtobagiApplication.class, args);
-		//initial 재희수정 수정의 수정
+		//initial 재희수정
 	}
-
 }
