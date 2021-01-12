@@ -8,7 +8,7 @@ public class TtobagiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TtobagiApplication.class, args);
-		//initial
+		//initial 재희수정
 	}
 
 }
