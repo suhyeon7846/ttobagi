@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <link rel="stylesheet" href="/resources/static/css/reset.css">
+    <link rel="stylesheet" href="/resources/static/css/layout.css">
+    <link rel="stylesheet" href="/resources/static/css/reg.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="sub-header">
+            <a href=""><img class="logo" src="/resources/static/images/logo.png"></a>
+            <nav>
+                <ul>
+                    <li><a href="">커플노트</a></li>
+                    <li><a href="">커뮤니티</a></li>
+                    <li><a href="">로그인</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="main-sec">
+        <main class="main">
+            <div class="img-container">
+                <img src="/resources/static/images/logo.png" alt="">
+            </div>
+            <div class="form-container">
+                <form action="" method="post" class="form">
+                    <!--loginId, pwd1, pwd2, name, nickname, gender, birthday, phone-->
+                    <div class="data-container">
+                        <div class="icon-container"> 
+                            <i class="far fa-id-card icon"></i>
+                        </div>
+                        <div class="input-container">
+                            <input type="input" class="data login-id" placeholder="로그인 아이디" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="data-container">
+                        <div class="icon-container">
+                            <i class="fas fa-lock icon"></i>
+                        </div>
+                        <div class="input-container">
+                            <input type="password" class="data password1" placeholder="비밀번호" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="data-container">
+                        <div class="icon-container">
+                            <i class="fas fa-lock icon"></i>
+                        </div>
+                        <div class="input-container">
+                            <input type="password" class="data password2" placeholder="비밀번호확인" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="data-container">
+                        <div class="icon-container">
+                            <i class="fas fa-user icon"></i>
+                        </div>
+                        <div class="input-container">
+                            <input type="input" class="data name" placeholder="이름" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="data-container">
+                        <div class="icon-container">
+                            <i class="fas fa-user icon"></i>
+                        </div>
+                        <div class="input-container">
+                            <input type="input" class="data nickname" placeholder="닉네임" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="data-container">
+                        <div class="icon-container">
+                            <i class="fas fa-venus-mars icon"></i>
+                        </div>
+                        <div class="radio-container">
+                            <input type="radio" class="data radio-btn" name="gender" value="man" checked required><span>남성</span>
+                            <input type="radio" class="data radio-btn" name="gender" value="woman" required><span>여성</span>
+                        </div>
+                    </div>
+                    <div class="data-container">
+                        <div class="icon-container">
+                            <i class="fas fa-birthday-cake icon"></i>
+                        </div>
+                        <div class="input-container">
+                            <input type="input" class="data birthday" placeholder="1990-12-31" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="data-container">
+                        <div class="icon-container">
+                            <i class="fas fa-mobile-alt icon"></i>
+                        </div>
+                        <div class="input-container">
+                            <input type="tel" class="data phone" placeholder="010-0000-0000" autocomplete="off" pattern="^01[01678]-\d{3,4}-\d{4}$" required>
+                        </div>                        
+                    </div>
+                    <div>
+                        <input type="submit" class="submit-btn" value="회원가입">
+                    </div>
+                </form>
+            </div>
+        </main>
+    </section>
+
+    <footer id="footer" class="footer">
+        <div>
+            <ul>
+                <li>
+                    <a href="">회사소개</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">이용약관</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">개인정보처리방침</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">사업자정보확인</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">틈 마케팅센터</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">액티비티 호스트센터</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li><a href="">콘텐츠산업진흥법에의한 표시</a></li>
+            </ul>
+
+            <p><b>고객행복센터 1577-8282</b> 오전 09:00 ~ 오후18:00</p>
+
+            <address>
+                <span>(주)또바기</span>
+                주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층
+                <br />대표이사 : 김병준 | 사업자등록번호 777-11-45678 <br />통신판매번호 : 2020-서울강남-12345 | 관광사업자 등록번호 : 제
+                1324-55호 <br />전화번호 : 010-1111-2222 <br />전자우편주소 : ttobagi@ttobagi.co.kr <br />Copyright ttobagi COMPANY Corp. All rights
+                reserved.
+            </address>
+        </div>
+    </footer>
+</body>
+</html>

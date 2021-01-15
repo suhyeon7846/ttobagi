@@ -1,0 +1,74 @@
+/******************* header *******************/
+.header {
+    min-height: 80px;
+}
+
+    .sub-header {
+        display: flex;
+        width: 70%;
+        height: 80px;
+        margin: 0 auto;
+    }
+
+    .sub-header a .logo {
+        height: 50px;
+        margin-top: 15px;
+    }
+
+    .sub-header nav {
+        flex-grow: 1;
+    }
+
+        .sub-header nav ul {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+            .sub-header nav ul li {
+                flex-grow: 0;
+                flex-basis: 120px;
+                padding: 30px;
+                text-align: center;
+            }
+
+            .sub-header nav ul li:hover {
+                background: #fdde23;
+                color: white;
+                cursor: pointer;
+            }
+
+
+
+/******************* footer *******************/
+.footer {
+    height: 300px;
+    width: 1200px;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.38);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+    .footer ul {
+        padding: 0;
+        list-style: none;
+        display: flex;
+        --flex-wrap: wrap;
+    }
+
+    .footer ul li {
+        display: flex;
+        flex-shrink: 0;
+    }
+
+    .footer a {
+        color: lightslategray;
+    }
+
+    .footer div p {
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
