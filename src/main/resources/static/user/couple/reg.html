@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/resources/static/js/user/couple/reg.js"></script>
 </head>
 <body>
     <header id="header" class="header">
@@ -39,39 +40,44 @@
                 <li>일기장</li>
                 <li>커뮤니티</li>
             </ul>
-            <input type="button" class="register-btn" value="커플 등록하기">
-            <section class="modal-sec">
-                <div class="exit-container">
-                    <a href="#">
-                        <i class="fas fa-times exit-btn"></i>
-                    </a>
-                </div>
-                <h1 class="h1">휴대폰 번호로 상대방을 검색해 보세요!</h1>
-                <form action="" method="post" class="search-form">
-                    <input type="text" class="input-phone" placeholder="ex) 010-1111-2222">
-                    <input type="submit" class="find-btn" value="검색">
-                </form>
-                <form action="" method="post" class="request-form">
-                    <table class="result-table">
-                        <thead>
-                            <tr>
-                                <td class="col-s">이름</td>
-                                <td class="col-s">성별</td>
-                                <td class="col-m">가입일</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>조재희</td>
-                                <td>남성</td>
-                                <td>2020-12-31</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <input type="button" class="modal-open" value="상대방 찾기">
+        </main>
+    </section>
+
+    <section class="modal-sec">
+        <main class="modal-main">
+            <div class="exit-container">
+                <a href="#" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+            <h1 class="h1">휴대폰 번호로 상대방을 검색해 보세요!</h1>
+            <form action="" method="post" class="search-form">
+                <input type="text" class="input-phone" placeholder="ex) 010-1111-2222" required>
+                <input type="submit" class="find-btn" value="검색">
+            </form>
+            <form action="" method="post" class="request-form">
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <td class="col-s">이름</td>
+                            <td class="col-s">성별</td>
+                            <td class="col-m">가입일</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>조재희</td>
+                            <td>남성</td>
+                            <td>2020-12-31</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="request-btn-container">
                     <input type="submit" class="request-btn" value="커플 요청">
-                </form>
-                <div class="no-result">검색 결과가 없습니다.</div>
-            </section>
+                </div>
+            </form>
+            <div class="no-result">검색 결과가 없습니다.</div>
         </main>
     </section>
 
