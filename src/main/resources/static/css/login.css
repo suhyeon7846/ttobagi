@@ -38,7 +38,10 @@
         .input-container > input {
             width: 310px;
             height: 35px;
-            border: 1px solid gray;
+        }
+
+        .input-container > .info {
+            border: 1px solid #cccccc;
         }
 
             .login-id, .password {

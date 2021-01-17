@@ -29,21 +29,21 @@
             padding: 20px;
         }
 
-            .data-container {
+            .info-container {
                 display: flex;
                 margin-bottom: 20px;
             }
 
-                .data-container .icon-container {
+                .info-container .icon-container {
                     font-size: 24px;
                     flex-grow: 5;
                 }
 
-                .data-container .input-container {
+                .info-container .input-container {
                     flex-grow: 1;
                 }
 
-                    .input-container .data {
+                    .input-container .info-input {
                         color: #808080;
                         width: 300px;
                         height: 24px;
@@ -55,7 +55,18 @@
                         background: transparent;
                     }
 
-                .data-container .radio-container {
+                    .input-container .login-id, .input-container .nickname {
+                        width: 240px;
+                    }
+
+                    .input-container .dup-check-btn {
+                        width: 60px;
+                        height: 24px;
+                        border: 1px solid #bebebe;
+                        cursor: pointer;
+                    }
+
+                .info-container .radio-container {
                     flex-grow: 3;
                 }
 
