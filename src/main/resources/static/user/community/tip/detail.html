@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티</title>
+    <!-- css -->
+    <link rel="stylesheet" href="../../../css/community/reset.css">
+    <link rel="stylesheet" href="../../../css/community/header.css">
+    <link rel="stylesheet" href="../../../css/community/index.css">
+    <link rel="stylesheet" href="../../../css/community/sub.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <!-- icon - font-awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <!-- js -->
+    <script type="text/javascript" src="../../../js/community/common.js"></script>
+</head>
+
+<body>
+    <!-- header------------------------------------------------------------------------------------------->
+    <header id="header" class="header">
+        <div class="sub-header">
+            <a href="../../community/index.html"><img class="logo" src="../../../images/logo.png"></a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="">커플노트</a>
+                    </li>
+                    <li>
+                        <a href="">커뮤니티</a>
+                    </li>
+                    <li>
+                        <a href="">로그인</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- main------------------------------------------------------------------------------------------->
+    <main id="main" class="main">
+        <section class="intro">
+            <h1 class="d-none">연애꿀팁</h1>
+            <p class="text">
+                <span class="text-title">연애꿀팁</span><br>
+                <span class="text-content"></span>
+            </p>
+        </section>
+        <section class="content">
+            <div class="container">
+                <h1 class="d-none">연애 꿀팁 상세 게시판</h1>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>번호</th>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th>제목</th>
+                            <td>남자친구가 좋아할만한 행동</td>
+                        </tr>
+                        <tr>
+                            <th>닉네임</th>
+                            <td>으니</td>
+                        </tr>
+                        <tr>
+                            <th>조회수</th>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th>추천수</th>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th>내용</th>
+                            <td>
+                                <img src="../templete/images/img1.jpg">
+                                <br>
+                                남자친구는 좋아했다.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="recom">
+                    <span class="recom-button">
+                        <i class="far fa-thumbs-up fa-2x"></i>추천</span>
+                    <span class="report-button">
+                        <i class="fas fa-ban fa-2x"></i>신고</span>
+                </div>
+                <div class="button-area">
+                    <button type="button" value="list" class="go-list">목록</button>
+                    <button type="button" value="update" class="update-button">수정</button>
+                    <button type="button" value="delete" class="delete-button">삭제</button>
+                </div>
+
+                <!-- POPUP -->
+                <div id="report-popup" class="popup-container d-none">
+                    <h1>신고리스트</h1>
+                    <form method="get" action="detail.html">
+                        <div class="report-popup-container">
+                            <label for="report-type1"><input
+                                type="radio"
+                                id="report-type1"
+                                name="report-type"
+                                value="type1"
+                                checked="checked">불건전한 컨텐츠</label>
+                            <label for="report-type2"><input type="radio" id="report-type2" name="report-type" value="type2">욕설 컨텐츠</label>
+                            <label for="report-type3"><input type="radio" id="report-type3" name="report-type" value="type3">성적인 컨텐츠</label>
+                        </div>
+                        <button type="submit" class="report-submit-button" value="submit">확인</button>
+                        <button type="button" class="popup-cancel-button">취소</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer------------------------------------------------------------------------------------------->
+    <footer id="footer" class="footer">
+        <div>
+            <ul>
+                <li>
+                    <a href="">회사소개</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">이용약관</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">개인정보처리방침</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">사업자정보확인</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">틈 마케팅센터</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">액티비티 호스트센터</a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                </li>
+                <li>
+                    <a href="">콘텐츠산업진흥법에의한 표시</a>
+                </li>
+            </ul>
+
+            <p>
+                <b>고객행복센터 1577-8282</b>
+                오전 09:00 ~ 오후18:00</p>
+
+            <address>
+                <span>(주)또바기</span>
+                주소 : 서울특별시 종로구 인사동길 12 대일빌딩 15층
+                <br/>대표이사 : 김병준 | 사업자등록번호 777-11-45678
+                <br/>통신판매번호 : 2020-서울강남-12345 | 관광사업자 등록번호 : 제 1324-55호
+                <br/>전화번호 : 010-1111-2222
+                <br/>전자우편주소 : ttobagi@ttobagi.co.kr
+                <br/>Copyright ttobagi COMPANY Corp. All rights reserved.
+            </address>
+        </div>
+    </footer>
+</body>
+</html>

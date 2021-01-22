@@ -1,0 +1,65 @@
+/* intro************************************** */
+.main .intro {
+    background-position: center;
+    background-color: #fff;
+    background-image: url("../../images/community/main/intro/하트\(분홍\).png");
+}
+
+.main .test-intro {
+    background-image: url("../../images/community/main/intro/하트\(빈티지\).png");
+}
+
+.main .test-content .box{
+    background:#dadbe0;
+}
+
+.main .test-content .box:hover {
+    border: 3px solid #dadbe0;
+}
+
+.main .inner .menu-title {
+    font-size: 2rem;
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+/* detail************************************** */
+
+/* table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid #ebc6ce;
+    margin-bottom: 5%;
+}  
+
+.table th {
+    font-weight: bold;
+    text-align: center;
+}
+
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #ebc6ce;
+}
+
+.table th:first-child, .table td:first-child {
+    --border-left: 0;
+}
+
+.table th:last-child, .table td:last-child {
+    border-right: 0;
+}
+
+.table tr td:first-child{
+    text-align: center;
+}
+
+/* recom */
+.recom {
+    margin-bottom: 3%;
+}
+
+.recom span{
+    cursor: pointer;
+}
