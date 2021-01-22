@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../../css/index.css">
         <link rel="stylesheet" href="visual.css">
     
-        <link rel="stylesheet" href="list.css">
+        <link rel="stylesheet" href="reg.css">
     </head>
     <body>
         <!-----------------------------------------------header------------------------------------->
@@ -26,40 +26,46 @@
         </header>
         <!----------------------------------------------visual------------------------------------->
         <section id="visual">
-            Letter
+            Diary
         </section>
         <!----------------------------------------------main--------------------------------------->
     
     <section id="main">
-        <div class="list">
-            <div class="panel">
-                <div class="envelope-triangle">
+        <div class="panel">
+            <form name="reg" action="" method="POST" class="form">
+                <div>
+                    <label for="input-title" style="margin-left: 10px;">제목 : </label>
+                    <input type="text" name="title" id="input-title">
                 </div>
-                <div class="envelope-square">
-
+                <div class="mood">
+                    
+                    <input type="radio" name="mood" value="smile1" id="smile1">
+                    <label for="smile1"><img src="../../images/diary/smile1.png" width="50px" height="50px"></label>
+                    <input type="radio" name="mood" value="smile2" id="smile2">
+                    <label for="smile2"><img src="../../images/diary/smile2.png" width="50px" height="50px"></label>
+                    <input type="radio" name="mood" value="smile3" id="smile3">
+                    <label for="smile3"><img src="../../images/diary/smile3.png" width="50px" height="50px"></label>
+                    <input type="radio" name="mood" value="normal" id="normal">
+                    <label for="normal"><img src="../../images/diary/normal.png" width="50px" height="50px"></label>
+                    <input type="radio" name="mood" value="love" id="love">
+                    <label for="love"><img src="../../images/diary/love.png" width="50px" height="50px"></label>
+                    <input type="radio" name="mood" value="sad" id="sad">
+                    <label for="sad"><img src="../../images/diary/sad.png" width="50px" height="50px"></label>
+                    <input type="radio" name="mood" value="upset" id="upset">
+                    <label for="upset"><img src="../../images/diary/upset.png" width="50px" height="50px"></label>
+                    <input type="radio" name="mood" value="angry" id="angry">
+                    <label for="angry"><img src="../../images/diary/angry.png" width="50px" height="50px"></label>
+                    <input type="radio" name="mood" value="sunglasses" id="sunglasses">
+                    <label for="sunglasses"><img src="../../images/diary/sunglasses.png" width="50px" height="50px"></label>
                 </div>
-                <div class="letter-page">
-
+                <label for="input-content" style="margin-left: 10px;">내용  </label>
+                <div class="content">
+                    
+                    <input type="text" name="content" id="input-content">
                 </div>
-            </div>
-            <div class="panel">
-                <div class="envelope-triangle">
-                </div>
-                <div class="envelope-square">
-
-                </div>
-                <div class="letter-page">
-
-                </div>
-            </div>
+            </form>
         </div>
     </section>
-    <section id="test">
-        <div class="tri">
-
-        </div>
-    </section>
-    
     <!---------------------------------------footer----------------------------------------------->
     <footer id="footer" class="footer">
         <div>

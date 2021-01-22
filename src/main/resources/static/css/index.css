@@ -15,6 +15,12 @@
         margin-top: 15px;
     }
 
+.sub-header nav ul li {
+    flex-grow: 0;
+    flex-basis: 120px; /*120px->130px*/
+    padding: 29px;
+    text-align: center;
+}
     .sub-header nav {
         flex-grow: 1;
     }

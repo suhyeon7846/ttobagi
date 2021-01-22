@@ -1,0 +1,161 @@
+
+/* html,body{
+    width: 100%;
+    height: 100%;
+} */
+#main{
+    /* width: 100%;
+    height: 100%; */
+    width: 100%;
+    height: 600px;
+    /* min-height: 600px; */
+}
+
+#main .list{
+    display: flex;
+    flex-wrap: wrap;
+}
+#main .list .panel {
+    display: flex;
+    width: 450px;
+    height: 314px;
+    /* background: rgb(195, 195, 219); */
+    margin: 10px;
+    padding-left: 16px;
+    padding-right: 16px; 
+    padding-top:0px;
+    padding-bottom: 0px;
+    flex-flow: column;   
+}
+
+
+#main .list .panel .diary{
+    border: 1px solid #ccc;
+}
+
+    #main .list .panel .diary .head{
+    display: flex;
+    width: 100%;
+    height: 64px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    border: 1px 1px solid #ccc;
+}
+
+    #main .list .panel .diary .head .deco{
+    
+    width: 64px;
+    height: 64px;
+    /* background: khaki; */  
+}
+
+    #main .list .panel .diary .head .deco .reborn{
+    display: inline-block;
+    width: 99px;
+    height: 24px;
+    background: lightcoral;
+    transform: rotate(-42deg) translateX(-24px) translateY(-5px);
+    text-align: center;
+    color: white;
+    line-height: 24px;
+    /* overflow: hidden; */
+}
+
+
+    #main .list .panel .diary .head .title{
+    display: inline-block;
+    color: #4a4a4a;
+    text-align: center;
+    line-height: 64px;
+    font-size: 20px;
+    width: 100%;
+    margin-right: 64px;    
+}
+
+    #main .list .panel .diary .body{
+    /* background: red; */
+    width: 100%;
+    height: 250px;
+    
+}
+
+    #main .list .diary .body .content{
+    display: inline-block;
+    padding:15px;
+    
+}
+
+.book {
+    width: 100%;
+    height: 100%;
+    margin:50px ;
+    position:relative;
+    width: 80%;height: 80%;
+    perspective: 1500px;
+    background: red;
+}
+.book .page1, .book .page2{
+    position:absolute;
+    width: 100%; height: 100%;
+    text-align: center;
+    box-shadow: 5px 5px 15px #333;
+    background: blue;
+}
+
+.book .page1{
+    background: pink;
+    transform-origin: left center;
+    transition: 2s;
+    z-index:1;
+
+}
+.book .page1 .page1-panel{
+    margin: 10px 10px 10px 0px;
+    width: 100%;
+    height: 100%;
+    border-top: 1px dashed #4a4a4a;
+    border-right: 1px dashed #4a4a4a;
+    box-sizing: border-box;
+}
+.book .page2{
+    background: #cba;
+    trnasform-origin: left center;
+    transition: 2s;   
+    /* z-index:2; */
+}
+.book .page1:hover{
+    transform: rotateY(-180deg);
+    background: #666;
+  }
+
+/* #book {
+    margin:50px ;
+    position:relative;
+    width: 100%;height: 100%;
+    perspective: 1500px;
+  }
+  #book  div{
+    position:absolute;
+    width: 100%; height: 100%;
+    text-align: center;
+    box-shadow: 5px 5px 15px #333;
+  }
+  #book .page:nth-child(1){
+    background: #abc;
+    transform-origin: left center;
+    transition: 2s;
+    z-index:1;
+  }
+  #book .page:nth-child(2){
+    background: #cba;
+    trnasform-origin: left center;
+    transition: 2s;   
+    /* z-index:2; */
+  /*}
+  #book div:nth-child(1):hover{
+    transform: rotateY(-180deg);
+    background: #666;
+  } */
