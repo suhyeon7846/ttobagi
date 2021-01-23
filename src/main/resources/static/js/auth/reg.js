@@ -19,6 +19,11 @@ window.addEventListener('load', () => {
     dupLoginIdBtn.addEventListener('click', (e) => {
         let isDuplication = false;
 
+        if (loginId.value == '') {
+            alert('로그인 아이디를 입력해 주세요.');
+            return;
+        }
+
         fetch(`/auth/loginIdCheck/${loginId.value}`)
             .then(response => response.json())
             .then(response => {
@@ -42,6 +47,11 @@ window.addEventListener('load', () => {
 
     dupNicknameBtn.addEventListener('click', (e) => {
         let isDuplication = false;
+    
+        if (nickname.value == '') {
+            alert('닉네임을 입력해 주세요.');
+            return;
+        }
 
         fetch(`/auth/nicknameCheck/${nickname.value}`)
             .then(response => response.json())
@@ -66,10 +76,18 @@ window.addEventListener('load', () => {
 
     submitBtn.addEventListener('click', (e) => {
         // 1. 로그인 아이디 및 닉네임 중복체크 확인
-        if (isLoginIdCheck == true && isNicknameCheck == true) {
-            console.log('pass');
+        if (isLoginIdCheck === false || isNicknameCheck === false) {
+            alert('로그인 아이디 또는 닉네임 중복체크가 필요합니다.');
+            e.preventDefault();
+            return false;
         }
 
         // 2. 패스워드, 패스워드 확인 비교
+        if (password.value !== passwordConfirm.value) {
+            alert('동일한 비밀번호를 입력해 주세요.');
+            return false;
+        }
+
+        //alert('회원가입이 정상적으로 완료되었습니다.');
     });
 });
