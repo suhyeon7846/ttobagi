@@ -61,11 +61,11 @@ class ModalBox{
                 <div style="flex-grow: 0; display:flex;justify-content: center;align-items: center;height:250px;font-size:20px; flex-direction: column;">
                     <h1 style="font-size:20px;height:50px;line-height:50px">원하는 사진을 선택해 주세요</h1>
                     <ul style="width:900px;display:flex;justify-content:space-around ">
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="../../images/thumbs/01.jpg" alt="" /><input type="radio" name="pic"></li>
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="../../images/thumbs/04.jpg" alt="" /><input type="radio" name="pic"></li>
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="../../images/thumbs/05.jpg" alt="" /><input type="radio" name="pic"></li>
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="../../images/thumbs/06.jpg" alt="" /><input type="radio" name="pic"></li>
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="../../images/thumbs/07.jpg" alt="" /><input type="radio" name="pic"></li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/01.jpg" alt="" /><input type="radio" name="pic"></li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/04.jpg" alt="" /><input type="radio" name="pic"></li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/05.jpg" alt="" /><input type="radio" name="pic"></li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/06.jpg" alt="" /><input type="radio" name="pic"></li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/07.jpg" alt="" /><input type="radio" name="pic"></li>
                     </ul>
                 </div>
                 <div style="flex-grow: 0; display:flex; flex-direction: column;justify-content: space-around;align-items: center;height:140px;">
