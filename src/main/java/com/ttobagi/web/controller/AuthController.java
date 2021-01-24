@@ -1,6 +1,7 @@
 package com.ttobagi.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ttobagi.web.controller.service.AuthService;
 import com.ttobagi.web.entity.Member;
+import com.ttobagi.web.service.AuthService;
 
 @Controller
 @RequestMapping("/auth/")
@@ -25,6 +26,13 @@ public class AuthController {
 	
 	@PostMapping("reg")
 	public String reg(Member member) {
+		//MemberRole role = new MemberRole();
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		member.setPassword(passwordEncoder.encode(member.getPassword()));
+		//member.setRole("SOLO");
+		//member.setRoles(Arrays.asList(role));
+		//memberRepository.save(member);
+		
 		service.insert(member);
 		
 		return "redirect:login";

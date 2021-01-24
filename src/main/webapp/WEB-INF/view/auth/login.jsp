@@ -15,7 +15,7 @@
                 <input type="text" class="login-id info" name="username" placeholder="아이디" required>
             </div>
             <div class="input-container">
-                <input type="text" class="password info" name="password" placeholder="비밀번호" required>
+                <input type="password" class="password info" name="password" placeholder="비밀번호" required>
             </div>
             <div class="input-container login-container">
                 <input type="submit" class="login-btn" value="로그인">

@@ -70,7 +70,9 @@
                         <i class="fas fa-birthday-cake icon"></i>
                     </div>
                     <div class="input-container">
-                        <input type="text" class="info-input birthday" name="birthday" placeholder="ex) 1990-12-31" autocomplete="off" pattern="^\d{4}-\d{2}-\d{2}$" required>
+                        <input type="text" class="info-input birthday" name="birthday" placeholder="ex) 1990-12-31" 
+                            autocomplete="off" pattern="^\d{4}-\d{2}-\d{2}$" 
+                            title="생년월일을 예시처럼 입력해 주세요." required>
                     </div>
                 </div>
                 <div class="info-container">
@@ -78,7 +80,9 @@
                         <i class="fas fa-mobile-alt icon"></i>
                     </div>
                     <div class="input-container">
-                        <input type="tel" class="info-input phone" name="phone" placeholder="ex) 010-0000-0000" autocomplete="off" pattern="^01[01678]-\d{3,4}-\d{4}$" required>
+                        <input type="tel" class="info-input phone" name="phone" placeholder="ex) 010-0000-0000" 
+                        autocomplete="off" pattern="^01[01678]-\d{3,4}-\d{4}$" 
+                        title="휴대폰 번호를 예시처럼 입력해 주세요." required>
                     </div>                        
                 </div>
                 <div>

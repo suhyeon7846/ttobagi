@@ -1,4 +1,4 @@
-package com.ttobagi.web.controller.service;
+package com.ttobagi.web.service;
 
 import com.ttobagi.web.entity.Member;
 
