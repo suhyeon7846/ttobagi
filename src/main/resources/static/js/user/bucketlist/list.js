@@ -27,4 +27,14 @@ window.addEventListener("load",(event)=>{
          dropbtn.classList.remove("show")
         }
     }
+	
+	let thumbnails = document.querySelector(".thumbnails");
+	
+	thumbnails.onclick=(e)=>{
+		e.preventDefault();
+		e.stopPropagation();
+		if(e.target.className=="btn-wrap")
+			console.log(e.target.nextElementSibling.value);
+	}
+
 })  
