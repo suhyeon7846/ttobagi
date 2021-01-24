@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ttobagi.web.dao.AuthDao">
+
+	<insert id="insert" parameterType="com.ttobagi.web.entity.Member">
+		insert into member(name, nickname, loginId, password, gender, birthday, phone)  
+		values (#{name}, #{nickname}, #{loginId}, #{password}, #{gender}, #{birthday}, #{phone});
+	</insert>
+	
+	<select id="checkLoginId" resultType="int">
+		select count(*) from member where loginId=#{loginId};
+	</select>
+	
+	<select id="checkNickname" resultType="int">
+		select count(*) from member where nickname=#{nickname};
+	</select>
+	
+	<!-- <select id="getViewList" resultType="com.newlecture.web.entity.NoticeView">
+        select * from NoticeView
+        <if test="param3 != null">
+        where BINARY ${param3} like '%${param4}%' binary는 대소문자 구분하기 위함
+        </if>
+		order by regdate desc
+		limit #{param2} offset #{param1}
+   	</select>
+   
+   	<select id="getList" resultType="com.newlecture.web.entity.Notice">
+    	select * from Notice
+        <if test="param3 != null">
+        where BINARY ${param3} like '%${param4}%'
+        </if>
+		order by regdate desc
+		limit #{param2} offset #{param1}
+    </select>
+   
+    <select id="getCount" resultType="int">
+        SELECT count(id) FROM Notice
+        <if test="param1 != null">
+        where BINARY ${param1} like '%${param2}%'
+        </if>
+    </select>
+    
+    <select id="get" resultType="com.newlecture.web.entity.Notice">
+        SELECT * FROM Notice
+        where id=${id} 하나의 값만 전달되면 param1을 안해도 된다
+    </select>
+    
+    <select id="getPrev" resultType="com.newlecture.web.entity.Notice">
+        select * from Notice
+		where regdate &lt; (select regdate from Notice where id=${id})
+		order by regdate desc
+		limit 1
+    </select>
+    
+    <select id="getNext" resultType="com.newlecture.web.entity.Notice">
+        select * from Notice
+		where regdate &gt; (select regdate from Notice where id=${id})
+		order by regdate asc
+		limit 1
+    </select>
+    
+    <insert id="insert" parameterType="com.newlecture.web.entity.Notice">
+    	insert into Notice(title, content, writerId)
+    	values(#{title}, #{content}, #{writerId})
+    </insert>
+    
+    <update id="update" parameterType="com.newlecture.web.entity.Notice">
+    	update Notice 
+    	set
+    		title=#{title},
+    		writerId=#{writerId},
+    		content=#{content},
+    		hit=#{hit},
+    		files=#{files},
+    		pub=#{pub}
+    	where id=#{id}
+    </update>
+    
+    <delete id="delete" parameterType="com.newlecture.web.entity.Notice">
+    	delete from Notice
+    	where id=${id}
+    </delete>
+    
+    <delete id="deleteAll" parameterType="com.newlecture.web.entity.Notice">
+    	delete from Notice
+    	where id in
+    	<foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+    		#{id}
+    	</foreach>
+    </delete> -->
+</mapper>
