@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" href="/css/user/letter/list.css">
+<link rel="stylesheet" href="/css/user/letter/visual.css">
+
         <!----------------------------------------------main--------------------------------------->
     
     <section id="main">

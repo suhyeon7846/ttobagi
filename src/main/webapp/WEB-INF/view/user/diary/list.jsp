@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <link rel="stylesheet" href="/css/user/diary/list.css">
+    <link rel="stylesheet" href="/css/user/diary/visual.css">
+    
     <!----------------------------------------------main--------------------------------------->
     <section id="main">
         <div class="book">
