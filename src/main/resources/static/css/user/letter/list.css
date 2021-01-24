@@ -1,0 +1,91 @@
+#main{
+    width: 100%;
+    min-height: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:auto; 
+    /*안에 내용에 margin을 주면 #main이 같이 내려가는걸 방지*/
+    border: 1px solid black;
+    background-image: url("../../../images/letter/letter-background4.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#main .panel{
+    width: 1080px;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    /* border :1px solid springgreen; */
+}
+
+#main .panel .letter-box{
+    display: flex;
+    flex-flow: column;
+    width: 700px;
+    height:600px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    border: 2px solid red;
+    border-radius: 10px;
+    background: white;
+}
+
+#main .panel .letter-box .header{
+    width: 100%;
+    height: 80px;
+    background: rgb(223, 26, 26);
+    text-align: center;
+    line-height: 80px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#main .panel .letter-box .body{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+    border: 1px solid blue;
+    font-size: 25px;
+    font-weight: bold;
+    background: pink;
+    overflow: auto;
+    /* overflow-y: hidden; */
+}
+#main .panel .letter-box .body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+#main .panel .letter-box .body .letter{
+    display: flex;
+    width: 100%;
+    height: 75px;
+    border-bottom: 1px solid white;
+    
+}
+
+#main .panel .letter-box .body .letter:hover{
+    background: red;
+    color: white;
+}
+
+
+#main .panel .letter-box .body .letter .img{
+    width: 100px;
+    height: 100px;
+}
+
+#main .panel .letter-box .body .letter .title{
+    width: 796px;
+    height: 80px;
+    text-align: left;
+    line-height: 80px;
+    margin-left: 20px;
+}
+
+
+
+
