@@ -9,4 +9,20 @@
     <put-attribute name="main" value="/WEB-INF/view/{1}.jsp" />
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
+  
+  <definition name="user.diary.*" template="/WEB-INF/view/user/diary/inc/layout.jsp">
+    <put-attribute name="title" value="또바기 일기장" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="visual" value="/WEB-INF/view/user/diary/inc/visual.jsp" />
+    <put-attribute name="main" value="/WEB-INF/view/user/diary/{1}.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+  
+  <definition name="user.letter.*" template="/WEB-INF/view/user/letter/inc/layout.jsp">
+    <put-attribute name="title" value="또바기 편지" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="visual" value="/WEB-INF/view/user/letter/inc/visual.jsp" />
+    <put-attribute name="main" value="/WEB-INF/view/user/letter/{1}.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
 </tiles-definitions>
