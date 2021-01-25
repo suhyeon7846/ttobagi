@@ -19,9 +19,27 @@ public class BucketlistServiceImp implements BucketlistService {
 	}
 	
 	@Override
-	public List<Bucketlist> getList() {
+	public List<Bucketlist> getList(int status) {
 		
-		return bucketlistDao.getList();
+		return bucketlistDao.getList(status);
+	}
+
+	@Override
+	public int update(int cardId) {
+		int result = bucketlistDao.update(cardId);
+		return result;
+	}
+
+	@Override
+	public int delete(int cardId) {
+		int result = bucketlistDao.delete(cardId);
+		return result;
+	}
+
+	@Override
+	public int insert(String cardTitle, String picFile) {
+		int result = bucketlistDao.insert(cardTitle,picFile);
+		return result;
 	}
 
 }
