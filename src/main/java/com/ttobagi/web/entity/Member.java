@@ -12,13 +12,14 @@ public class Member {
 	private String birthday;
 	private String phone;
 	private Date regDate;
+	private String role;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public Member(String name, String nickname, String loginId, String password, String gender, String birthday,
-			String phone, Date regDate) {
+			String phone, Date regDate, String role) {
 		super();
 		this.name = name;
 		this.nickname = nickname;
@@ -28,6 +29,7 @@ public class Member {
 		this.birthday = birthday;
 		this.phone = phone;
 		this.regDate = regDate;
+		this.role = role;
 	}
 
 	public String getName() {
@@ -93,6 +95,15 @@ public class Member {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	
 	
 }
