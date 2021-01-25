@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ttobagi.web.entity.Member;
+import com.ttobagi.web.entity.MemberRole;
 import com.ttobagi.web.service.AuthService;
 
 @Controller
@@ -18,7 +19,7 @@ public class AuthController {
 	
 	@Autowired
 	AuthService service;
-
+	
 	@GetMapping("reg")
 	public String reg() {
 		return "auth.reg";
@@ -26,14 +27,14 @@ public class AuthController {
 	
 	@PostMapping("reg")
 	public String reg(Member member) {
-		//MemberRole role = new MemberRole();
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
-		//member.setRole("SOLO");
-		//member.setRoles(Arrays.asList(role));
-		//memberRepository.save(member);
 		
-		service.insert(member);
+		service.insert(member); // 회원가입 정보 insert
+		
+		int memberId = service.getLastId();
+		int roleId = 3; // 'SOLO'
+		service.insertMemberRole(memberId, roleId); 
 		
 		return "redirect:login";
 	}

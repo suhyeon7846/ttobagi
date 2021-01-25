@@ -22,6 +22,11 @@ public class AuthDaoImp implements AuthDao {
 	public int insert(Member member) {
 		return mapper.insert(member);
 	}
+	
+	@Override
+	public int insertMemberRole(int memberId, int roleId) {
+		return mapper.insertMemberRole(memberId, roleId);
+	}
 
 	@Override
 	public int checkLoginId(String loginId) {
@@ -32,5 +37,10 @@ public class AuthDaoImp implements AuthDao {
 	public int checkNickname(String nickname) {
 		return mapper.checkNickname(nickname);
 	}
-	
+
+	@Override
+	public int getLastId() {
+		return mapper.getLastId();
+	}
+
 }

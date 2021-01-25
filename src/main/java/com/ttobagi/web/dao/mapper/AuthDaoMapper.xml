@@ -10,12 +10,23 @@
 		values (#{name}, #{nickname}, #{loginId}, #{password}, #{gender}, #{birthday}, #{phone});
 	</insert>
 	
+	<insert id="insertMemberRole" parameterType="com.ttobagi.web.entity.MemberRole">
+		insert into memberRole(memberId, roleId) 
+		values(#{memberId}, #{roleId});
+	</insert>
+	
 	<select id="checkLoginId" resultType="int">
 		select count(*) from member where loginId=#{loginId};
 	</select>
 	
 	<select id="checkNickname" resultType="int">
 		select count(*) from member where nickname=#{nickname};
+	</select>
+	
+	<select id="getLastId" resultType="int">
+		select id from member 
+		order by id desc 
+		limit 1;
 	</select>
 	
 	<!-- <select id="getViewList" resultType="com.newlecture.web.entity.NoticeView">
