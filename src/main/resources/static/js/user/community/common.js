@@ -1,11 +1,11 @@
 window.addEventListener("load", (e)=>{
-    const section = document.querySelector(".main");
+    const section = document.querySelector("#main");
     let buttons = section.querySelector(".button-area");
     let recomButton = section.querySelector(".recom-button");
     let reportButton = section.querySelector(".report-button");
     let popupContainer = section.querySelector(".popup-container");
     let popupCancelButton = section.querySelector(".popup-cancel-button");
-    
+
     buttons.onclick = function(e){
         let buttonVal = e.target.value;
         switch(buttonVal){
@@ -39,7 +39,4 @@ window.addEventListener("load", (e)=>{
 	popupCancelButton.onclick = function() {
 		popupContainer.classList.add("d-none");
     }
-    
-    let boxColor = section.querySelector(".box");
-    let 
 });

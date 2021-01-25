@@ -1,0 +1,115 @@
+/* common************************************** */
+* {
+    text-align: center;
+}
+
+.d-none {
+    display: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* 팝업 */
+.popup-container {
+	border:1px solid gray;
+	position: absolute;
+	top:50%;
+    left:50%;
+    margin-top: -250px;
+    margin-left: -130px;
+	width: 500px;
+	height: 360px;
+	background: white;
+}
+
+.popup-container > h1 {
+	font-size:2em;
+	padding:5% 0;
+}
+
+/* 신고 팝업 */
+.report-popup-container {
+	display: flex;
+	flex-flow: column wrap;
+    padding-bottom:5%;
+}
+
+.report-popup-container label {
+	padding:2% 0;
+    font-weight: bold;
+    color: #090909;
+}
+
+/* main************************************** */
+/* visual */
+.visual {
+    width: 100%;
+    min-height: 200px;
+    background-image: url("/images/user/community/visual/하트(민트).png");
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 5%;
+    padding-right: 10%;
+}
+
+.visual .img{
+    width: 20%;
+}
+
+.visual .img img{
+    width: 100%;
+    height: 100%;
+}
+
+.visual .visual-text .title {
+    font-size: 8em;
+}
+
+.visual .visual-text .content {
+    font-size: 3em;
+}
+
+/* content */
+.main .container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.main .content {
+    margin-top: 5%;
+}
+
+.main .container .content .menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items:stretch;
+}
+
+.main .container .content .menu-item {
+    flex-basis: 30%;
+    margin-bottom: 5%;
+}
+
+.main .container .content .menu-item a img:hover {
+    transform: scale(1.4);
+    border: 3px solid #8dd8c9;
+}
+
+/* button */
+.button-area button {
+    background-color: #ebc6ce;
+}
+
+.button-area button:hover {
+    font-weight: bold;
+    color: hotpink !important;
+}
+
+.write-button {
+    margin-bottom: 3%;
+}
