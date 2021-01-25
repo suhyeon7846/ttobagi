@@ -5,6 +5,19 @@
 
 <mapper namespace="com.ttobagi.web.dao.BucketlistDao">
 <select id="getList" resultType="com.ttobagi.web.entity.Bucketlist">
- 		SELECT * FROM Bucketlist where status =0
+ 		SELECT * FROM Bucketlist where status = #{status}
 </select>
+<insert id="insert" parameterType="com.ttobagi.web.entity.Bucketlist">
+	insert into Bucketlist(title, fileName, fileRoute,memberId)
+ 		values(#{cardTitle},#{picFile},"파일루트입니다","1")
+</insert>
+<update id="update">
+	update Bucketlist
+ 		set
+ 			status = 1
+ 		where id =#{cardId}
+</update>
+<delete id="delete">
+	delete from Bucketlist where id = #{cardId}
+</delete>
 </mapper>

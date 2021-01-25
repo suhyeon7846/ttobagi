@@ -61,17 +61,33 @@ class ModalBox{
                 <div style="flex-grow: 0; display:flex;justify-content: center;align-items: center;height:250px;font-size:20px; flex-direction: column;">
                     <h1 style="font-size:20px;height:50px;line-height:50px">원하는 사진을 선택해 주세요</h1>
                     <ul style="width:900px;display:flex;justify-content:space-around ">
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/01.jpg" alt="" /><input type="radio" name="pic"></li>
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/04.jpg" alt="" /><input type="radio" name="pic"></li>
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/05.jpg" alt="" /><input type="radio" name="pic"></li>
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/06.jpg" alt="" /><input type="radio" name="pic"></li>
-                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> <img style="width:120px;" src="/images/user/bucketlist/07.jpg" alt="" /><input type="radio" name="pic"></li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> 
+							<img style="width:120px;" src="/images/user/bucketlist/01.jpg" alt="" />
+							<input type="radio" name="pic" value="01">
+						</li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> 
+							<img style="width:120px;" src="/images/user/bucketlist/04.jpg" alt="" />
+							<input type="radio" name="pic" value="04">
+						</li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> 
+							<img style="width:120px;" src="/images/user/bucketlist/05.jpg" alt="" />
+							<input type="radio" name="pic" value="05">
+						</li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> 
+							<img style="width:120px;" src="/images/user/bucketlist/06.jpg" alt="" />
+							<input type="radio" name="pic" value="06">
+						</li>
+                        <li style=" height:200px; display:flex;flex-direction: column;justify-content: space-between;align-items: center; "> 
+							<img style="width:120px;" src="/images/user/bucketlist/07.jpg" alt="" />
+							<input type="radio" name="pic" value="07">
+						</li>
                     </ul>
                 </div>
                 <div style="flex-grow: 0; display:flex; flex-direction: column;justify-content: space-around;align-items: center;height:140px;">
                    <h1 style="font-size:23px">제목</h1>
                    <p style="color:#979797;">EX) 버킷리스트는 최고야!</p>
-                   <input type="text" maxlength="30" style="width:200px;">
+ 					<p style="color:#979797;"><20글자 내외로 기입해주세요></p>
+                   <input type="text" maxlength="20" style="width:200px; name="title" required>
                 </div>
                 <div style="display:flex;justify-content: space-around; align-items: center;border-top: 1px solid #e9e9e9;height:60px;">
                     <input type="button" value="등록" style="width:200px; height:50px; background-color: #ff73c5;border: none;cursor: pointer;font-size:18px">
@@ -83,7 +99,60 @@ class ModalBox{
 
             const okButton = frame.querySelector("input[value=등록]");
             const cancelButton = frame.querySelector("input[value=취소]");
+			let thumbnails = document.querySelector(".thumbnails");
+			let inputTitle = document.querySelector("input[type=text]");
             okButton.onclick = ()=>{
+			 var checkCount = document.getElementsByName("pic").length;
+			let pickFile =''; 
+			for (var i=0; i<checkCount; i++) {
+	            if (document.getElementsByName("pic")[i].checked == true) {
+	                pickFile = document.getElementsByName("pic")[i].value;
+	            }
+	        }
+				
+				let cardTitle = inputTitle.value
+				fetch(`/api/bucketlist/reg?t=${cardTitle}&p=${pickFile}`)
+				.then(response=>response.json())
+				.then(json=>{
+				thumbnails.innerHTML="";
+				for(let b of json){
+					let tr =`
+					  <div class="box">
+                        <div class="img-wrap">
+                            <img src="/images/user/bucketlist/${b.fileName}.jpg" alt="${b.fileName}" />
+                        </div>
+                        <figcaption>
+                            <h2>${b.title}</h2>
+                            <p>
+                                <a href="#">
+                               		<input type="button" class="btn">
+                               		<span class="icon-container">
+                                   	<i class="fas fa-check icon"></i>
+                                   	</span>
+                               		<span class="btn-wrap update"> 
+                                	</span>
+                                	<input type="hidden" value="${b.id}">
+                                </a>
+                               
+                              
+                                <a href="#">
+                               		<input type="button" class="btn">
+                               		 <span class="icon-container">
+                                   	<i class="fas fa-times icon"></i>
+                                   	</span>
+                                   	<span class="btn-wrap delete"> 
+                                	</span>
+                                	<input type="hidden" value="${b.id}">
+									<input type="hidden" value="${b.status}">
+                                </a>
+                               	
+                            </p>
+                        </figcaption>	
+                    </div>
+					`;
+					thumbnails.insertAdjacentHTML("beforeend",tr);
+				}
+			});
                 resolve("OK");
                 screen.remove();
                 frame.remove();

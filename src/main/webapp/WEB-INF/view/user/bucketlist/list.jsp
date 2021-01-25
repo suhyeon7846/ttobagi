@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/css/user/bucketlist/list.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/> -->
 <script type="module" src="/js/user/bucketlist/list.js"></script>
 <section class="section-1">
         <section id="main">
@@ -12,12 +12,28 @@
                 <div class="dropdown">
                     <button onclick="myFunction()" class="dropbtn">추천</button>
                     <div id="myDropdown" class="dropdown-content">
-                      <ul>
-                          <li><a href="#">link1</a></li>
-                          <li><a href="#">link1</a></li>
-                          <li><a href="#">link1</a></li>
-                          <li><a href="#">link1</a></li>
-                      </ul>
+                      <div class="recommend-box-wrap">
+	                      <div class="recommend-box">
+	                      	<div class="img-wrap">
+	                            <img src="/images/user/bucketlist/01.jpg" alt="01" />
+	                        </div>
+	                      </div>
+	                       <div class="recommend-box">
+	                      	<div class="img-wrap">
+	                            <img src="/images/user/bucketlist/02.jpg" alt="01" />
+	                        </div>
+	                      </div>
+	                      <div class="recommend-box">
+	                      	<div class="img-wrap">
+	                            <img src="/images/user/bucketlist/03.jpg" alt="01" />
+	                        </div>
+	                      </div>
+	                      <div class="recommend-box">
+	                      	<div class="img-wrap">
+	                            <img src="/images/user/bucketlist/04.jpg" alt="01" />
+	                        </div>
+	                      </div>
+                      </div>
                     </div>
                   </div>
             </section>
@@ -31,11 +47,12 @@
                         <figcaption>
                             <h2>${b.title}</h2>
                             <p>
-                               	
                                 <a href="#">
                                		<input type="button" class="btn">
-                                   	<i class="fas fa-check"></i>
-                               		<span class="btn-wrap"> 
+                               		<span class="icon-container">
+                                   	<i class="fas fa-check icon"></i>
+                                   	</span>
+                               		<span class="btn-wrap update "> 
                                 	</span>
                                 	<input type="hidden" value="${b.id}">
                                 </a>
@@ -43,10 +60,13 @@
                               
                                 <a href="#">
                                		<input type="button" class="btn">
-                                   	<i class="fas fa-times"></i>
-                                   	<span class="btn-wrap"> 
+                               		 <span class="icon-container">
+                                   	<i class="fas fa-times icon"></i>
+                                   	</span>
+                                   	<span class="btn-wrap delete"> 
                                 	</span>
                                 	<input type="hidden" value="${b.id}">
+                                	<input type="hidden" value="${b.status}">
                                 </a>
                                	
                             </p>
@@ -58,13 +78,13 @@
     </section>
     <div class="content-plus-wrap">
         <div class="content-plus">
-        <span>
+        <span class="icon-container">
             <i class="fas fa-pencil-alt"></i>
         </span>
         </div>
     </div>
     <div class="switch-wrap">
-        <input type="checkbox" id="switch1" name="switch1" class="input__on-off">
+        <input type="checkbox" id="switch1" name="switch1" class="input__on-off check">
         <label for="switch1" class="label__on-off">
         <span class="marble"></span>
         <span class="on">on</span>
