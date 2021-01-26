@@ -260,12 +260,12 @@ temporary rendered events).
   font-size: 0.85em;
   line-height: 1.4;
   border-radius: 3px;
-  border: 1px solid #3788d8;
+  border: 1px solid #fab2c0;
 }
 
 .fc-event,
 .fc-event-dot {
-  background-color: #3788d8;
+  background-color: #fab2c0;
   /* default BACKGROUND color */
 }
 
@@ -825,7 +825,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 .fc-toolbar.fc-header-toolbar {
   margin-bottom: 1.5em;
   height: 200px;
-  background-image: url(../../minimal-love-hearts-background-with-text-space_1017-23417.jpg);
+  background-image: url(/images/user/calendar/minimal-love-hearts-background-with-text-space_1017-23417.jpg);
   background-size: cover;
   background-position: 0% 60%;
 }
