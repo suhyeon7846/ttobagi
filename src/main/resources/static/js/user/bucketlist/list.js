@@ -6,7 +6,7 @@ window.addEventListener("load",(event)=>{
     let contentPlusWrap = document.querySelector(".content-plus-wrap");
     //let modal = new ModalBox();
     contentPlusWrap.addEventListener("click",(evnet)=>{
-	        ModalBox.alert("hello")
+	        ModalBox.alert()
 	        .then((result)=>{
 	            console.log(result+"가 눌렸다")
 	    });
@@ -19,11 +19,11 @@ window.addEventListener("load",(event)=>{
     dropbtn.onclick=()=>{
         if(!dropbtn.classList.contains("show")){
         dropbtn.classList.add("show")
-        dropbtn.style.top = '500px';
+        dropbtn.style.top = '700px';
         dropdownContent.style.top = '0px';
         }else{
         dropbtn.style.top = '0px';
-        dropdownContent.style.top = '-500px';   
+        dropdownContent.style.top = '-700px';   
          dropbtn.classList.remove("show")
         }
     }
