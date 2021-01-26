@@ -8,7 +8,37 @@
 		select * from communityCategory
 	</select>
 	
-	<select id="getList" resultType="com.ttobagi.web.entity.Community">
-		select * from community where id = ${id}
+	<select id="getViewList" resultType="com.ttobagi.web.entity.CommunityView">
+		select * from communityView where id = #{id};
 	</select>
+	
+	<select id="getList" resultType="com.ttobagi.web.entity.Community">
+		select * from community
+		order by regdate desc
+		limit #{param2} offset #{param1};
+	</select>
+	
+	<select id="getBestList" resultType="com.ttobagi.web.entity.Community">
+		select * from community
+		order by hit desc
+		limit #{param2} offset #{param1};
+	</select>
+	
+	<insert id="insert" parameterType="com.ttobagi.web.entity.Community">
+      insert into community(title, content, files)
+      values(#{title}, #{content}, #{files});
+   	</insert>
+	
+	<update id="update" parameterType="com.ttobagi.web.entity.Community">
+		UPDATE ttobagi.community
+		SET
+			title = #{title},
+			content = #{content},
+			files = #{files},
+		WHERE id = #{id};
+   	</update>
+   	
+	<delete id="delete">
+   		delete from community where id=#{id};
+   	</delete>
 </mapper>
