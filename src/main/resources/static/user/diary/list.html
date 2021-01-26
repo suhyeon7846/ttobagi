@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/user/diary/visual.css">
     <link rel="stylesheet" href="../../css/user/diary/list.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <script src="../../js/user/diary/list.js"></script>
 </head>
 <body>
     <!-----------------------------------------------header------------------------------------->
@@ -30,41 +34,52 @@
     <!----------------------------------------------main--------------------------------------->
     <section id="main">
         <div class="book">
+            <div class="note-button" >
+                <span class="next">다음</span>
+                <span class="prev">이전</span>
+                <div class="note-button-circle1"></div>
+                <div class="note-button-circle2">
+                    <span class="open-close">열기</span>
+                </div>
+                
+            </div>
             <div class="page1">
                 <div class="page1-panel">
-                    <span>일기장</span>
+                    <span>이름과 이름의 커플일기장</span>
                 </div>
+                
+                
             </div>
+            
             <div class="page2">
-                <div class="list">
-                    <div class="panel">
-                        <div class="diary">
-                            <div class="head">
-                                <div class="deco">
-                                    <span class="reborn">01-17</span>
-                                </div>
-                                
-                                <span class="title">제목을 입력하세요~</span>
+                <div class="diary-list">
+                    <div class="diary-panel">
+                        <div class="head">
+                            <div class="deco">
+                                <span class="reborn">01-17</span>
                             </div>
+                            
+                            <span class="title">제목을 입력하세요~</span>
+                        </div>
 
-                            <div class="body">
-                                <span class="content">
-                                    일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠb<br/>
-                                    일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
-                                    일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
-                                    일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
-                                    일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
-                                    일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
-                                </span>
-                            </div>
+                        <div class="body">
+                            <textarea class="content">
+일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠb<br/>
+일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
+일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
+일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
+일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
+일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/>
+위에 칸이 13줄 아래칸이 15줄
+위에 칸 한줄 늘리구 아래칸 한줄 줄이기
+                            </textarea>
                         </div>
                     </div>
                 </div>
             </div>
-            
-
         </div>
-        <button class="button" >열기</button>
+
+        
     </section>
     <!-- <section id="book">
         <div class="page">
@@ -76,6 +91,7 @@
             
         </div>  
     </section> -->
+    
     <!---------------------------------------footer----------------------------------------------->
     <footer id="footer" class="footer">
         <div>

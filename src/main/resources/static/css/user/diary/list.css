@@ -1,53 +1,121 @@
-
-
 #main{
     width: 1080px;
-    height: 600px;
+    height: 900px;
     /* min-height: 600px; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#main .book .page2 .list{
+#main .book {
+    width: 850px;
+    height: 790px;
+    margin:50px ;
+    position:relative;
+    width: 80%;height: 90%;
+    perspective: 1500px; /*원근법*/
+    
+}
+
+#main .book .page1, .book .page2{
+    position:absolute;
+    width: 100%; height: 100%;
+    text-align: center;
+    box-shadow: 5px 5px 15px #333;
+    /* background: blue; */
+}
+
+#main .book .page1{
+    background: rgb(239, 153, 166);
+    transform-origin: left center;
+    transition: 2s;
+    z-index:1;
+    /* transform: rotateY(-180deg); */
+
+}
+#main .book .page1 .page1-panel{
+    width: 844px;
+    height: 790px;
+    
+    margin-top: 10px;
+    margin-left: 10px;
+    
+    border-top: 2px dashed #4a4a4a;
+    border-right: 2px dashed #4a4a4a;
+    border-bottom: 2px dashed #4a4a4a;
+    box-sizing: border-box;
+}
+
+#main .book .page1 .page1-panel span{
+    position: relative;
+    right: 100px;
+    display: inline-block;
+    width: 500px;
+    height: 200px;
+    margin-top: 50px;
+    border: 1px solid rgb(195, 195, 195);
+    background: rgb(253, 253, 253);
+    transform-origin: left center;
+    transition : 0.73s;
+    font-size: 80px;
+    font-weight: bold;
+    color:  #444444;
+    box-shadow: 1px 1px 15px rgb(195, 195, 195);
+}
+
+#main .book .page2{
+    /* background: #cba; */
+    background-image: url(../../../images/diary/paper2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    trnasform-origin: left center;
+    transition: 2s;   
+    /* z-index:2; */
+}
+
+#main .book .page2 .diary-list{
+    position: relative;
     display: flex;
     flex-wrap: wrap;
+    width: 765px;
+    height: 695px;
+    border: 1px solid black;
+    left: 50px;
+    top: 79px;
 }
-#main .book .page2 .list .panel {
+#main .book .page2 .diary-list .diary-panel {
     display: flex;
-    width: 450px;
-    height: 314px;
+    width: 381px;
+    height: 325px;
+    border: 1px solid red;
     /* background: rgb(195, 195, 219); */
-    margin: 10px;
-    padding-left: 16px;
+    /* margin: 10px; */
+    /* padding-left: 16px; */
     padding-right: 16px; 
     padding-top:0px;
     padding-bottom: 0px;
     flex-flow: column;   
 }
 
-
-#main .book .page2 .list .panel .diary{
-    border: 1px solid #ccc;
-}
-
-#main .book .page2 .list .panel .diary .head{
+#main .book .page2 .diary-list .diary-panel .head{
     display: flex;
     width: 100%;
     height: 64px;
     overflow: hidden;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
     font-size: 15px;
     font-weight: 700;
     text-align: center;
     border: 1px 1px solid #ccc;
 }
 
-#main .book .page2 .list .panel .diary .head .deco{
+#main .book .page2 .diary-list .diary-panel .head .deco{
     
     width: 64px;
     height: 64px;
     /* background: khaki; */  
 }
 
-#main .book .page2 .list .panel .diary .head .deco .reborn{
+#main .book .page2 .diary-list .diary-panel .head .deco .reborn{
     display: inline-block;
     width: 99px;
     height: 24px;
@@ -60,7 +128,7 @@
 }
 
 
-#main .book .page2 .list .panel .diary .head .title{
+#main .book .page2 .diary-list .diary-panel .head .title{
     display: inline-block;
     color: #4a4a4a;
     text-align: center;
@@ -70,90 +138,127 @@
     margin-right: 64px;    
 }
 
-#main .book .page2 .list .panel .diary .body{
+#main .book .page2 .diary-list .diary-panel .body{
     /* background: red; */
     width: 100%;
     height: 250px;
     
 }
 
-#main .book .page2 .list .diary .body .content{
-    display: inline-block;
+#main .book .page2 .diary-list .body .content{
+    width: 381px;
+    height: 325px;
+    resize: none;
+    background: none;
     padding:15px;
     
 }
+/* ---------하트----------- */
+  .heart {
+    width: 50px;
+    height: 50px;
+    background: #ea2027;
+    position: relative;
+    transform: rotate(45deg);
+    /* left: 800px; */
+    border: none;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    background: #ea2027;
+  }
+  .heart::before {
+    top: 0%;
+    left: -50%;
+  }
+  .heart::after {
+    top: -50%;
+    left: -0%;
+  }
 
-.book {
-    width: 100%;
-    height: 100%;
-    margin:50px ;
-    position:relative;
-    width: 80%;height: 80%;
-    perspective: 1500px;
-    background: red;
-}
-.book .page1, .book .page2{
-    position:absolute;
-    width: 100%; height: 100%;
+  /* ---------------------오픈/다음 버튼-------------------- */
+  .note-button{
+    width: 90px;
+    height: 70px;
+    background: #ea2027;
+    border: none;
+    position: relative;
+    left: 774px;
+    top:440px;
+    outline: none;
+    z-index: 2;
+    transform-origin: right center;
+    transition: 2s;  
+    /* perspective: 10px;   */
+  }
+
+  
+  .note-button-circle1{
+    content: "";
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    border-radius: 50%;
+    background: #ea2027;
+    top:0%;
+    left: -35%;
+  }
+  
+  .note-button-circle2{
+    content: "";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    top:14%;
+    left: -25%;
+    
+    /* box-shadow: 5px 0px 15px; */
+  }
+  .open-close{
+    display: inline-block;
     text-align: center;
-    box-shadow: 5px 5px 15px #333;
-    /* background: blue; */
+    line-height: 50px;
+    margin-left: 8px;
+    color: black;
+    font-size:20px;
+    font-weight: bold;
+    transition: 0.7s;
 }
+  .next{
+    display:none;
+    
+    margin-top: 5px;
+    font-size:20px;
+    font-weight: bold;
+    margin-left:40px;
+    color: white;
+    transition: 1s;
 
-.book .page1{
-    background: pink;
-    transform-origin: left center;
-    transition: 2s;
-    z-index:1;
-
-}
-.book .page1 .page1-panel{
-    margin: 10px 10px 10px 0px;
-    width: 100%;
-    height: 100%;
-    border-top: 1px dashed #4a4a4a;
-    border-right: 1px dashed #4a4a4a;
-    box-sizing: border-box;
-}
-.book .page2{
-    /* background: #cba; */
-    background-image: url(../../../images/diary/paper2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    trnasform-origin: left center;
-    transition: 2s;   
-    /* z-index:2; */
-}
-.book .page1:hover{
-    transform: rotateY(-180deg);
-    background: #666;
+    opacity: 0;
   }
 
-/* #book {
-    margin:50px ;
-    position:relative;
-    width: 100%;height: 100%;
-    perspective: 1500px;
+  .prev{
+    display: none;
+    
+    margin-top: 10px;
+    font-size:20px;
+    font-weight: bold;
+    margin-left:40px;
+    color: white;
+    transition: 1s;
+
+    opacity: 0;
+    
   }
-  #book  div{
-    position:absolute;
-    width: 100%; height: 100%;
-    text-align: center;
-    box-shadow: 5px 5px 15px #333;
-  }
-  #book .page:nth-child(1){
-    background: #abc;
-    transform-origin: left center;
-    transition: 2s;
-    z-index:1;
-  }
-  #book .page:nth-child(2){
-    background: #cba;
-    trnasform-origin: left center;
-    transition: 2s;   
-    /* z-index:2; */
-  /*}
-  #book div:nth-child(1):hover{
-    transform: rotateY(-180deg);
-    background: #666;
-  } */
+
+
+  .next:hover, .prev:hover,.open-close:hover{
+    cursor: pointer;
+}

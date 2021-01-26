@@ -1,8 +1,8 @@
 #visual{
     width: 100%;
-    height: 200px;
+    height: 50px;
     background: pink;
     text-align: right;
-    line-height: 200px;
+    line-height: 50px;
     font-size: 30px;
 }
