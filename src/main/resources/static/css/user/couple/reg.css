@@ -85,6 +85,10 @@
         padding: 10px 25px 25px 25px;
     }
 
+        .modal-main .d-none {
+            display: none;
+        }
+
         .modal-main .exit-container {
             display: flex;
             justify-content: flex-end;
@@ -95,19 +99,19 @@
             margin-top: 10px;
         }
 
-        .modal-main .search-form {
+        .modal-main .search-container {
             width: 240px;
             margin: 20px auto 0 auto;
         }
         
-            .search-form .input-phone {
+            .search-container .input-phone {
                 width: 200px;
                 height: 30px;
                 padding-left: 10px;
                 border: 1px solid #d4d4d4;
             }
 
-            .search-form .find-btn {
+            .search-container .find-btn {
                 text-indent: -999px;
                 overflow: hidden;
                 border: none;

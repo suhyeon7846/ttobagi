@@ -29,11 +29,11 @@
             </a>
         </div>
         <h1 class="h1">휴대폰 번호로 상대방을 검색해 보세요!</h1>
-        <form action="" method="post" class="search-form">
+        <div action="" method="post" class="search-container">
             <input type="text" class="input-phone" placeholder="ex) 010-1111-2222" required>
-            <input type="submit" class="find-btn" value="검색">
-        </form>
-        <form action="" method="post" class="request-form">
+            <input type="button" class="find-btn" value="검색">
+        </div>
+        <form action="" method="post" class="request-form d-none">
             <table class="result-table">
                 <thead>
                     <tr>
@@ -54,6 +54,6 @@
                 <input type="submit" class="request-btn" value="커플 요청">
             </div>
         </form>
-        <div class="no-result">검색 결과가 없습니다.</div>
+        <div class="no-result d-none">검색 결과가 없습니다.</div>
     </main>
 </section>
