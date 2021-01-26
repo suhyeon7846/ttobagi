@@ -12,28 +12,65 @@
                 <div class="dropdown">
                     <button onclick="myFunction()" class="dropbtn">추천</button>
                     <div id="myDropdown" class="dropdown-content">
-                      <div class="recommend-box-wrap">
-	                      <div class="recommend-box">
+                      <ul class="recommend-box-wrap">
+	                      <li class="recommend-box">
 	                      	<div class="img-wrap">
 	                            <img src="/images/user/bucketlist/01.jpg" alt="01" />
+	                            <p>2층 버스타고 런던 시내 관광하기</p>
+	                            <input type="radio" name="recommend-pic">
 	                        </div>
-	                      </div>
-	                       <div class="recommend-box">
+	                      </li>
+	                       <li class="recommend-box">
 	                      	<div class="img-wrap">
 	                            <img src="/images/user/bucketlist/02.jpg" alt="01" />
+	                            <p>해변에서 하루종일 놀아보기</p>
+	                            <input type="radio" name="recommend-pic">
 	                        </div>
-	                      </div>
-	                      <div class="recommend-box">
+	                      </li>
+	                      <li class="recommend-box">
 	                      	<div class="img-wrap">
 	                            <img src="/images/user/bucketlist/03.jpg" alt="01" />
+	                            <p>여름 프로방스의 만개한 라벤더 밭에서 걷기</p>
+	                            <input type="radio" name="recommend-pic">
 	                        </div>
-	                      </div>
-	                      <div class="recommend-box">
+	                      </li>
+	                      <li class="recommend-box">
 	                      	<div class="img-wrap">
 	                            <img src="/images/user/bucketlist/04.jpg" alt="01" />
+	                            <p>락 스타로 데뷔하기</p>
+	                            <input type="radio" name="recommend-pic">
 	                        </div>
-	                      </div>
-                      </div>
+	                      </li>
+	                      <li class="recommend-box">
+	                      	<div class="img-wrap">
+	                            <img src="/images/user/bucketlist/05.jpg" alt="01" />
+	                            <p>글램핑 즐기기</p>
+	                            <input type="radio" name="recommend-pic">
+	                        </div>
+	                      </li>
+	                       <li class="recommend-box">
+	                      	<div class="img-wrap">
+	                            <img src="/images/user/bucketlist/06.jpg" alt="01" />
+	                            <p>쇄빙선 타고 남극기지 가보기</p>
+	                            <input type="radio" name="recommend-pic">
+	                        </div>
+	                      </li>
+	                      <li class="recommend-box">
+	                      	<div class="img-wrap">
+	                            <img src="/images/user/bucketlist/07.jpg" alt="01" />
+	                            <p>귀농하기</p>
+	                            <input type="radio" name="recommend-pic">
+	                        </div>
+	                      </li>
+	                      <li class="recommend-box">
+	                      	<div class="img-wrap">
+	                            <img src="/images/user/bucketlist/08.jpg" alt="01" />
+	                            <p>해리포터의 아치교를 지나는 증기기관차 타보기</p>
+	                            <input type="radio" name="recommend-pic">
+	                        </div>
+	                      </li>
+                      </ul>
+                      <input type="button" value="추가하기">
                     </div>
                   </div>
             </section>
