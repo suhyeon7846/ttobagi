@@ -10,13 +10,13 @@
 <main id="main" class="main">
 	<section class="content">
 		<div class="write-button button-area">
-			<button value="write" class="button">직접 꿀팁 작성하기</button>
+			<a class="button" href="../${type}">직접 꿀팁 작성하기</a>
 		</div>
 		<div class="inner">
 			<!-- Boxes -->
 			<div class="thumbnails">
 				<div class="menu-title">BEST 연애 꿀팁 5</div>
-				<c:forEach var="i" begin="1" end="5">
+				<c:forEach var="i" items="${bestList}" begin="1" end="5">
 					<div class="box">
 						<a href="${type}/1" class="image fit">
 							<img src="/images/user/community/sub/${i}.jpg" alt="" />

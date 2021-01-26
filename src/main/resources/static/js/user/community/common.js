@@ -8,21 +8,25 @@ window.addEventListener("load", (e)=>{
 
     buttons.onclick = function(e){
         let buttonVal = e.target.value;
+		let request = new XMLHttpRequest();
+		request.onload = function(){
+			let id = JSON.parse(request.responseText);
+		}
         switch(buttonVal){
             case "list":
                 console.log("리스트");
-                location.href="list.html";
+                location.href="list";
                 break;
             case "update":
                 console.log("수정");
-                location.href="edit.html";
+                location.href="edit/"+id;
                 break;
             case "delete":
                 console.log("삭제");
                 break;
             case "write":
                 console.log("글쓰기");
-                location.href="reg.html";
+                location.href="reg";
         }
     };
 
