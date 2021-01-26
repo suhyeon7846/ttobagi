@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Member {
 
+	private int id;
 	private String name;
 	private String nickname;
 	private String loginId;
@@ -12,15 +13,15 @@ public class Member {
 	private String birthday;
 	private String phone;
 	private Date regDate;
-	private String role;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Member(String name, String nickname, String loginId, String password, String gender, String birthday,
-			String phone, Date regDate, String role) {
+	public Member(int id, String name, String nickname, String loginId, String password, String gender, String birthday,
+			String phone, Date regDate) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.nickname = nickname;
 		this.loginId = loginId;
@@ -29,7 +30,14 @@ public class Member {
 		this.birthday = birthday;
 		this.phone = phone;
 		this.regDate = regDate;
-		this.role = role;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -95,15 +103,9 @@ public class Member {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	
+	
+	
+
 	
 }

@@ -26,6 +26,16 @@ public class AuthServiceImp implements AuthService {
 	public int checkNickname(String nickname) {
 		return authDao.checkNickname(nickname);
 	}
+
+	@Override
+	public int getLastId() {
+		return authDao.getLastId();
+	}
+
+	@Override
+	public int insertMemberRole(int memberId, int roleId) {
+		return authDao.insertMemberRole(memberId, roleId);
+	}
 	
 	
 }
