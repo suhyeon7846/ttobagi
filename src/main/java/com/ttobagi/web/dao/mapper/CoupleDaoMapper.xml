@@ -5,4 +5,7 @@
 
 <mapper namespace="com.ttobagi.web.dao.CoupleDao">
 
+	<insert id="requestCouple" parameterType="com.ttobagi.web.entity.Couple">
+		insert into couple(senderId, receiverId) values(#{senderId}, #{receiverId})
+	</insert>
 </mapper>
