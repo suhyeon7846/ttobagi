@@ -20,7 +20,7 @@ public class LetterController {
 	
 	@RequestMapping("list")
 	public String list(Model model) {
-		List<Letter> list = service.getList();
+		//List<Letter> list = service.getList();
 		return "user.letter.list";
 	}
 	
