@@ -19,11 +19,16 @@ public class BucketlistServiceImp implements BucketlistService {
 	}
 	
 	@Override
-	public List<Bucketlist> getList(int status) {
+	public List<Bucketlist> getList(int id,int status) {
 		
-		return bucketlistDao.getList(status);
+		return bucketlistDao.getList(id,status);
 	}
-
+	
+	@Override
+	public List<Bucketlist> getRandomList(int id) {
+		return bucketlistDao.getRandomList(id);
+	}
+	
 	@Override
 	public int update(int cardId) {
 		int result = bucketlistDao.update(cardId);
@@ -41,5 +46,7 @@ public class BucketlistServiceImp implements BucketlistService {
 		int result = bucketlistDao.insert(cardTitle,picFile);
 		return result;
 	}
+
+
 
 }

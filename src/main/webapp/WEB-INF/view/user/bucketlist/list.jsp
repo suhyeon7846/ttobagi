@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib  prefix="spring" uri="http://www.springframework.org/tags" %> 
 <link rel="stylesheet" href="/css/user/bucketlist/list.css">
 <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
@@ -8,78 +9,59 @@
 <script type="module" src="/js/user/bucketlist/list.js"></script>
 <section class="section-1">
         <section id="main">
+        <div class="screen">
+        </div>
+	        <div class="frame">
+		        <div class="frame-top">
+		          <h1>버킷리스트 등록</h1>     
+				</div>
+				<form id="form" name="form" action="regs" method="post" enctype="multipart/form-data">
+		               <div class="frame-file-wrap">
+		                   <h1>원하는 사진을 선택해 주세요</h1>
+		                  <input type="file" name="file" accept=".jpg, .png">
+		               </div>
+		               <div class="frame-text-wrap">
+		                  <h1>제목</h1>
+		                  <p>EX) 버킷리스트는 최고야!</p>
+						  <p><40글자 내외로 기입해주세요></p>
+		                  <input type="text" maxlength="40" name="titlename" required>
+		               </div>
+		               <div class="frame-btn-wrap">
+		                   <input type="submit" value="등록" >
+		                   <input type="button" value="취소" >
+		               </div>
+				</form>
+			</div>
             <section class="top-content">
                 <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">추천</button>
+                    <button class="dropbtn">추천</button>
                     <div id="myDropdown" class="dropdown-content">
                       <ul class="recommend-box-wrap">
+                      <c:forEach var="r" items="${recommendList}">
 	                      <li class="recommend-box">
 	                      	<div class="img-wrap">
-	                            <img src="/images/user/bucketlist/01.jpg" alt="01" />
-	                            <p>2층 버스타고 런던 시내 관광하기</p>
-	                            <input type="radio" name="recommend-pic">
+	                            <img src="<spring:url value='/resources/static/images/user/bucketlist/upload/${r.fileName}'/>" alt="${r.fileName}" />
+	                            <p class="recommend-title">${r.title}</p>
+	                            <input type="radio"  name="recommend-pic" value="${r.fileName}" >
+	                            
 	                        </div>
 	                      </li>
-	                       <li class="recommend-box">
-	                      	<div class="img-wrap">
-	                            <img src="/images/user/bucketlist/02.jpg" alt="01" />
-	                            <p>해변에서 하루종일 놀아보기</p>
-	                            <input type="radio" name="recommend-pic">
-	                        </div>
-	                      </li>
-	                      <li class="recommend-box">
-	                      	<div class="img-wrap">
-	                            <img src="/images/user/bucketlist/03.jpg" alt="01" />
-	                            <p>여름 프로방스의 만개한 라벤더 밭에서 걷기</p>
-	                            <input type="radio" name="recommend-pic">
-	                        </div>
-	                      </li>
-	                      <li class="recommend-box">
-	                      	<div class="img-wrap">
-	                            <img src="/images/user/bucketlist/04.jpg" alt="01" />
-	                            <p>락 스타로 데뷔하기</p>
-	                            <input type="radio" name="recommend-pic">
-	                        </div>
-	                      </li>
-	                      <li class="recommend-box">
-	                      	<div class="img-wrap">
-	                            <img src="/images/user/bucketlist/05.jpg" alt="01" />
-	                            <p>글램핑 즐기기</p>
-	                            <input type="radio" name="recommend-pic">
-	                        </div>
-	                      </li>
-	                       <li class="recommend-box">
-	                      	<div class="img-wrap">
-	                            <img src="/images/user/bucketlist/06.jpg" alt="01" />
-	                            <p>쇄빙선 타고 남극기지 가보기</p>
-	                            <input type="radio" name="recommend-pic">
-	                        </div>
-	                      </li>
-	                      <li class="recommend-box">
-	                      	<div class="img-wrap">
-	                            <img src="/images/user/bucketlist/07.jpg" alt="01" />
-	                            <p>귀농하기</p>
-	                            <input type="radio" name="recommend-pic">
-	                        </div>
-	                      </li>
-	                      <li class="recommend-box">
-	                      	<div class="img-wrap">
-	                            <img src="/images/user/bucketlist/08.jpg" alt="01" />
-	                            <p>해리포터의 아치교를 지나는 증기기관차 타보기</p>
-	                            <input type="radio" name="recommend-pic">
-	                        </div>
-	                      </li>
+	                  </c:forEach>
                       </ul>
-                      <input type="button" value="추가하기">
+                     	<div>
+	                      	<input type="button" value="추가하기" class="addCard">
+	                      	<input type="button" value="새로받기" class="newCard">
+                    	</div>
                     </div>
                   </div>
             </section>
             <!-- Thumbnails -->
+            <div class="bucketlogo"></div>
             <section class="thumbnails">
             	<c:forEach var="b" items="${list}">
                     <div class="box">
                         <div class="img-wrap">
-                            <img src="/images/user/bucketlist/${b.fileName}.jpg" alt="${b.fileName}" />
+                            <img src="<spring:url value='/resources/static/images/user/bucketlist/upload/${b.fileName}'/>" alt="${b.fileName}" />
                         </div>
                         <figcaption>
                             <h2>${b.title}</h2>
@@ -124,7 +106,7 @@
         <input type="checkbox" id="switch1" name="switch1" class="input__on-off check">
         <label for="switch1" class="label__on-off">
         <span class="marble"></span>
-        <span class="on">on</span>
-        <span class="off">off</span>
+        <span class="on" >Ing</span>
+        <span class="off">Done</span>
         </label>
     </div>

@@ -5,7 +5,10 @@
 
 <mapper namespace="com.ttobagi.web.dao.BucketlistDao">
 <select id="getList" resultType="com.ttobagi.web.entity.Bucketlist">
- 		SELECT * FROM Bucketlist where status = #{status}
+ 		SELECT * FROM Bucketlist where memberId =#{id} and status = #{status} 
+</select>
+<select id="getRandomList" resultType="com.ttobagi.web.entity.Bucketlist">
+ 		select * from Bucketlist where memberId =#{id} and status = 0 order by rand() limit 8;
 </select>
 <insert id="insert" parameterType="com.ttobagi.web.entity.Bucketlist">
 	insert into Bucketlist(title, fileName, fileRoute,memberId)
