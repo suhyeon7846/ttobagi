@@ -3,6 +3,7 @@ package com.ttobagi.web.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,19 +16,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
 	
+	@Autowired
+	private TtobagiAuthenticationSuccessHandler successHandler;
+	
+	@Bean
+	public TtobagiAuthenticationSuccessHandler successHandler() {
+		return new TtobagiAuthenticationSuccessHandler();
+	}
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		System.out.println("1");
 		http
 			.authorizeRequests()
 				.antMatchers("/**").permitAll() // 편의를 위해 모든 페이지 접근 허용
-				.antMatchers("/user/**").authenticated()
+				//.antMatchers("/user/**").authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/auth/login")
 				.loginProcessingUrl("/auth/login") // post하는 경로
 				.defaultSuccessUrl("/index") // 의도적으로 로그인을 하여 성공한 경우
 					//.failureUrl("/auth/reg")
+				.successHandler(successHandler)
 				.and()
 			.logout()
 				.logoutUrl("/auth/logout")
@@ -36,12 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.csrf()
 				.disable();
-		System.out.println("2");
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		System.out.println("3");
 		auth
 			.jdbcAuthentication()
 			.dataSource(dataSource)
@@ -58,6 +65,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //					+ " join member m on mr.memberId = m.id")
 			.authoritiesByUsernameQuery("select loginId id, 'ROLE_SOLO' roleId from member where loginId=?")
 			.passwordEncoder(new BCryptPasswordEncoder());
-		System.out.println("4");
 	}
 }

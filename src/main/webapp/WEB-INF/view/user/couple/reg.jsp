@@ -42,12 +42,12 @@
                         <td class="col-m">가입일</td>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody class="tbody">
+                    <!-- <tr>
                         <td>조재희</td>
                         <td>남성</td>
                         <td>2020-12-31</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
             <div class="request-btn-container">
