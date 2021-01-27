@@ -6,12 +6,14 @@ import com.ttobagi.web.entity.Bucketlist;
 
 public interface BucketlistService {
 	
-	List<Bucketlist> getList(int status);
+	List<Bucketlist> getList(int id ,int status);
 
 	int update(int cardId);
 
 	int delete(int cardId);
 
 	int insert(String cardTitle, String picFile);
+
+	List<Bucketlist> getRandomList(int id);
 	
 }
