@@ -30,15 +30,26 @@ public class CommunityDaoImp implements CommunityDao {
 	}
 
 	@Override
-	public List<CommunityView> getList(int id) {
+	public Community get(int id) {
 		// TODO Auto-generated method stub
-		return mapper.getList(id);
+		return mapper.get(id);
 	}
 
 	@Override
-	public List<Community> getList(int offset, int size, String field, String query) {
+	public CommunityView getView(int id) {
 		// TODO Auto-generated method stub
-		return mapper.getList(offset, size, field, query);
+		return mapper.getView(id);
+	}
+
+	@Override
+	public List<Community> getList(int offset, int size, String type, String orderSet) {
+		// TODO Auto-generated method stub
+		return mapper.getList(offset, size, type, orderSet);
+	}
+	
+	@Override
+	public List<CommunityView> getViewList(int offset, int size, String type, String orderSet) {
+		return mapper.getViewList(offset, size, type, orderSet);
 	}
 
 	@Override
@@ -59,4 +70,5 @@ public class CommunityDaoImp implements CommunityDao {
 		return mapper.delete(id);
 	}
 
+	
 }

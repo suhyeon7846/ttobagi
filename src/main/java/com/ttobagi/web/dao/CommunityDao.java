@@ -9,8 +9,10 @@ import com.ttobagi.web.entity.CommunityView;
 public interface CommunityDao {
 
 	List<CommunityCategory> getCateList();
-	List<CommunityView> getList(int id);
-	List<Community> getList(int offset, int size, String field, String query);
+	List<Community> getList(int offset, int size, String type, String orderSet);
+	List<CommunityView> getViewList(int offset, int size, String type, String orderSet);
+	Community get(int id);
+	CommunityView getView(int id);
 	int insert(Community community);
 	int update(Community community);	
 	int delete(int id);

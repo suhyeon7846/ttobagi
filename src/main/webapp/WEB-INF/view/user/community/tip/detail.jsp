@@ -13,9 +13,8 @@
 			<h1 class="d-none">연애 꿀팁 상세 게시판</h1>
 			<table class="table">
 				<tbody>
-				<c:forEach var="d" items="${list}">
 					<tr>
-						<th>번호</th>
+						<th>글 번호</th>
 						<td>${d.id}</td>
 					</tr>
 					<tr>
@@ -40,10 +39,9 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><img src="/images/user/community/sub/1.jpg"><br>
+						<td><img src="/images/user/community/sub/${d.id}.jpg"><br>
 							${d.content}</td>
 					</tr>
-				</c:forEach>
 				</tbody>
 			</table>
 			
@@ -55,8 +53,8 @@
 
 			<div class="button-area">
 				<a class="button" href="../${type}">목록</a>
-				<a class="button update-button" href="edit">수정</a>
-				<a class="button delete-button" href="delete">삭제</a>
+				<a class="button update-button" href="${id}/edit">수정</a>
+				<a class="button delete-button" href="${id}/delete">삭제</a>
 			</div>
 
 			<!-- POPUP -->
