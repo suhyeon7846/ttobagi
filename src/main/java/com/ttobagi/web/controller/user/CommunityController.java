@@ -2,6 +2,8 @@ package com.ttobagi.web.controller.user;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,9 +50,9 @@ public class CommunityController {
 	public String list(Model model, @PathVariable("type") String type) {
 		System.out.println(type);
 
-		int size = 5;
-		List<Community> bestList = service.getList(1, size, "best", "");
-		List<Community> list = service.getList(1, size, "", "");
+		
+		List<CommunityView> bestList = service.getViewList(0, 5, type, "hit");
+		List<CommunityView> list = service.getViewList(0, 10, type, "regDate");
 		
 		model.addAttribute("bestList", bestList);
 		model.addAttribute("list", list);
@@ -62,26 +64,39 @@ public class CommunityController {
 	@GetMapping("{type}/{id}")
 	public String detail(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
 		
-		List<CommunityView> list = service.getList(id);
+		CommunityView communityView = service.getView(id);
 		
-		model.addAttribute("list", list);
+		model.addAttribute("d", communityView);
 		
 		return "user.community."+type+".detail";
 	}
 	
 	@GetMapping("{type}/{id}/edit")
 	public String edit(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
+		CommunityView list = service.getView(id);
 		
-		List<CommunityView> list = service.getList(id);
-		
-		model.addAttribute("list", list);
+		model.addAttribute("e", list);
 		
 		return "user.community."+type+".edit";
 	}
 	
+	@PostMapping("{type}/{id}/edit")
+	public String edit(Community community, @PathVariable("id") int id) {
+		String title = community.getTitle();
+		String content = community.getContent();
+		
+		Community origin = service.get(id);
+		System.out.println(origin);
+		origin.setTitle(title);
+		origin.setContent(content);
+		
+		service.update(origin);
+		
+		return "redirect:../"+id;
+	}
+	
 	@PostMapping("{type}/reg")
 	public String reg(@PathVariable("type") String type) {
-		
 		//service.insert();
 		return "redirect:../"+type+".list";
 	}

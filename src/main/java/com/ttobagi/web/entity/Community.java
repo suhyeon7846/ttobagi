@@ -11,6 +11,7 @@ public class Community {
 	private Date regDate;
 	private int hit;
 	private int recomCnt;
+	
 	public Community(int id, String title, String content, int memberId, int categoryId, Date regDate, int hit,
 			int recomCnt) {
 		super();
