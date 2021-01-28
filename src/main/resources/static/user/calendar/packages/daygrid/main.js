@@ -227,6 +227,8 @@ Docs & License: https://fullcalendar.io/
             var timeHtml = '';
             var timeText;
             var titleHtml;
+			var idHtml;
+			
             classes.unshift('fc-day-grid-event', 'fc-h-event');
             // Only display a timed events time if it is the starting segment
             if (seg.isStart) {
@@ -239,6 +241,10 @@ Docs & License: https://fullcalendar.io/
                 '<span class="fc-title">' +
                     (core.htmlEscape(eventDef.title || '') || '&nbsp;') + // we always want one line of height
                     '</span>';
+			idHtml =
+                '<input type="hidden" value="' + 
+					(core.htmlEscape(eventDef.publicId || '') || '&nbsp;') + 
+					'"/>';
             return '<a class="' + classes.join(' ') + '"' +
                 (eventDef.url ?
                     ' href="' + core.htmlEscape(eventDef.url) + '"' :
@@ -249,8 +255,8 @@ Docs & License: https://fullcalendar.io/
                 '>' +
                 '<div class="fc-content">' +
                 (context.options.dir === 'rtl' ?
-                    titleHtml + ' ' + timeHtml : // put a natural space in between
-                    timeHtml + ' ' + titleHtml //
+                    titleHtml + ' ' + timeHtml + ' ' + idHtml : // put a natural space in between
+                    timeHtml + ' ' + titleHtml + ' ' + idHtml//
                 ) +
                 '</div>' +
                 (isResizableFromStart ?
