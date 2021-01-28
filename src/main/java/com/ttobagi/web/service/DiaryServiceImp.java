@@ -1,5 +1,5 @@
-package com.ttobagi.web.service;
-
-public class DiaryServiceImp {
-	
-}
+//package com.ttobagi.web.service;
+//
+//public class DiaryServiceImp {
+//	
+//}

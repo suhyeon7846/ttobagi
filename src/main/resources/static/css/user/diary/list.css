@@ -16,7 +16,7 @@
     
 }
 
-#main .book .page1, .book .page2{
+#main .book .cover, .book .page1{
     position:absolute;
     width: 100%; height: 100%;
     text-align: center;
@@ -24,16 +24,16 @@
     /* background: blue; */
 }
 
-#main .book .page1{
+#main .book .cover{
     background: rgb(239, 153, 166);
-    background-image: url(../../../images/diary/light-beige-leather-texture-background-with-pattern-closeup_113767-875\ \(1\).jpg);
+    background-image: url(../../../images/user/diary/light-beige-leather-texture-background-with-pattern-closeup_113767-875\ \(1\).jpg);
     transform-origin: left center;
     transition: 2s;
     z-index:1;
     /* transform: rotateY(-180deg); */
 
 }
-#main .book .page1 .page1-panel{
+#main .book .cover .cover-panel{
     width: 844px;
     height: 790px;
     
@@ -46,7 +46,7 @@
     box-sizing: border-box;
 }
 
-#main .book .page1 .page1-panel span{
+#main .book .cover .cover-panel span{
     position: relative;
     right: 100px;
     display: inline-block;
@@ -63,9 +63,9 @@
     box-shadow: 1px 1px 15px rgb(195, 195, 195);
 }
 
-#main .book .page2{
+#main .book .page1{
     /* background: #cba; */
-    background-image: url(../../../images/diary/paper3.jpg);
+    background-image: url(../../../images/user/diary/paper3.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     trnasform-origin: left center;
@@ -73,7 +73,7 @@
     /* z-index:2; */
 }
 
-#main .book .page2 .diary-list{
+#main .book .page1 .diary-list{
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -83,7 +83,7 @@
     left: 50px;
     top: 79px;
 }
-#main .book .page2 .diary-list .diary-panel-top {
+#main .book .page1 .diary-list .diary-panel-top {
     display: flex;
     width: 380px;
     height: 350px;
@@ -98,7 +98,7 @@
     margin-right: 3px;
 }
 
-#main .book .page2 .diary-list .diary-panel-top .head{
+#main .book .page1 .diary-list .diary-panel-top .head{
     display: flex;
     width: 100%;
     height: 66px;
@@ -110,7 +110,7 @@
     /* border: 1px solid black; */
 }
 
-#main .book .page2 .diary-list .diary-panel-top .head .deco{
+#main .book .page1 .diary-list .diary-panel-top .head .deco{
     
     width: 64px;
     height: 64px;
@@ -119,7 +119,7 @@
 
 
 
-#main .book .page2 .diary-list .diary-panel-top .head .deco .reborn{
+#main .book .page1 .diary-list .diary-panel-top .head .deco .reborn{
     display: inline-block;
     width: 99px;
     height: 24px;
@@ -133,7 +133,7 @@
 
 
 
-#main .book .page2 .diary-list .diary-panel-top .head .title{
+#main .book .page1 .diary-list .diary-panel-top .head .title{
     display: inline-block;
     color: #4a4a4a;
     text-align: center;
@@ -143,17 +143,17 @@
     margin-right: 64px;    
 }
 
-#main .book .page2 .diary-list .diary-panel-top .head .mood{
+#main .book .page1 .diary-list .diary-panel-top .head .mood{
   /* margin-left: 50px; */
 }
 
-#main .book .page2 .diary-list .diary-panel-top .body{
+#main .book .page1 .diary-list .diary-panel-top .body{
     /* background: red; */
     width: 100%;
     height: 100%;
     /* border: 1px solid black; */
 }
-#main .book .page2 .diary-list .diary-panel-top .body .content{
+#main .book .page1 .diary-list .diary-panel-top .body .content{
   width: 381px;
   height: 100%;
   resize: none;
@@ -167,7 +167,7 @@
 
 
 
-#main .book .page2 .diary-list .diary-panel-bottom {
+#main .book .page1 .diary-list .diary-panel-bottom {
   display: flex;
   width: 381px;
   height: 347px;
@@ -182,7 +182,7 @@
   margin-right: 3px;
 }
 
-#main .book .page2 .diary-list .diary-panel-bottom .head{
+#main .book .page1 .diary-list .diary-panel-bottom .head{
   display: flex;
   width: 100%;
   height: 57px;
@@ -194,14 +194,14 @@
   /* border: 1px 1px solid #ccc; */
 }
 
-#main .book .page2 .diary-list .diary-panel-bottom .head .deco{
+#main .book .page1 .diary-list .diary-panel-bottom .head .deco{
   
   width: 64px;
   height: 64px;
   /* background: khaki; */  
 }
 
-#main .book .page2 .diary-list .diary-panel-bottom .head .deco .reborn{
+#main .book .page1 .diary-list .diary-panel-bottom .head .deco .reborn{
   display: inline-block;
   width: 99px;
   height: 24px;
@@ -214,7 +214,7 @@
 }
 
 
-#main .book .page2 .diary-list .diary-panel-bottom .head .title{
+#main .book .page1 .diary-list .diary-panel-bottom .head .title{
   display: inline-block;
   color: #4a4a4a;
   text-align: center;
@@ -224,14 +224,14 @@
   margin-right: 64px;    
 }
 
-#main .book .page2 .diary-list .diary-panel-bottom .body{
+#main .book .page1 .diary-list .diary-panel-bottom .body{
   /* background: red; */
   width: 100%;
   height: 100%;
   /* border: 1px solid black; */
 }
 
-#main .book .page2 .diary-list .diary-panel-bottom .body .content{
+#main .book .page1 .diary-list .diary-panel-bottom .body .content{
     width: 381px;
     height: 100%;
     resize: none;

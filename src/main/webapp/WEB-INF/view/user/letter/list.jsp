@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/css/user/letter/list.css">
 <link rel="stylesheet" href="/css/user/letter/visual.css">
@@ -14,87 +15,16 @@
                 </div>
                 
                 <div class="body">
+                    <c:forEach var="l" items="${list}">
                     <div class="letter">
                         <div class="title">
-                            <span>편지 제목 입니다~</span>
+                            <span>${l.title }</span>
                         </div>
                         <div class="img" style="margin-right: 9px;">
                             <img src="../../images/letter/letter1.png"width="90px" height="70px">
                         </div>
                     </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    
+                    </c:forEach>                    
                 </div>
             </div>
             <div class="letter-leg">

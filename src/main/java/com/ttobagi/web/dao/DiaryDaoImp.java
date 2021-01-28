@@ -1,5 +1,5 @@
-package com.ttobagi.web.dao;
-
-public class DiaryDaoImp {
-
-}
+//package com.ttobagi.web.dao;
+//
+//public class DiaryDaoImp {
+//
+//}

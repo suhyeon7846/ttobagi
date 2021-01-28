@@ -1,12 +1,13 @@
 window.addEventListener("load",()=>{
     let section = document.querySelector("#main");
     let btn = section.querySelector(".note-button");
-    let cover = section.querySelector(".page1");
+    let cover = section.querySelector(".cover");
+
+    let page = section.querySelector(".page1");
 
     let openBtn= section.querySelector(".open-close");
     let nextBtn= section.querySelector(".next");
     let prevBtn=section.querySelector(".prev");
-    
 
     openBtn.onclick = function(){
         if(btn.style.transform !='rotateY(180deg)'){//y축이 반대가 아니면 '열기'상태
@@ -60,5 +61,10 @@ window.addEventListener("load",()=>{
                 openBtn.innerHTML="열기";
             },2500);
         }
+    }
+
+
+    nextBtn.onclick=function(){
+        
     }
 })
