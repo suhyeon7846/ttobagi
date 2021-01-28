@@ -21,22 +21,33 @@ public class CommunityServiceImp implements CommunityService {
 		// TODO Auto-generated method stub
 		return communityDao.getCateList();
 	}
-
+	
 	@Override
-	public List<CommunityView> getList(int id) {
+	public List<Community> getList(int offset, int size, String type, String orderSet) {
 		// TODO Auto-generated method stub
-		return communityDao.getList(id);
+		return communityDao.getList(offset, size, type, orderSet);
 	}
 
 	@Override
-	public List<Community> getList(int offset, int size, String field, String query) {
+	public List<CommunityView> getViewList(int offset, int size, String type, String orderSet) {
+		return communityDao.getViewList(offset, size, type, orderSet);
+	}
+	
+	@Override
+	public Community get(int id) {
 		// TODO Auto-generated method stub
-		return communityDao.getList(offset, size, field, query);
+		return communityDao.get(id);
+	}
+	
+	@Override
+	public CommunityView getView(int id) {
+		// TODO Auto-generated method stub
+		return communityDao.getView(id);
 	}
 	
 	@Override
 	public int update(Community community) {
-		// TODO Auto-generated method stub
+		System.out.println(community);
 		return communityDao.update(community);
 	}
 	
@@ -51,4 +62,6 @@ public class CommunityServiceImp implements CommunityService {
 		// TODO Auto-generated method stub
 		return communityDao.delete(id);
 	}
+
+
 }

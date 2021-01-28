@@ -1,13 +1,13 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/user/memory/list.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <script type="module" src="/js/user/memory/list.js"></script>    
  <section class="section-1">
         <section id="main">
             <!-- Thumbnails -->
+            <div class="memorylogo"></div>
             <section class="thumbnails">
                 <div class="flip-box"> 
                     <div class="flip">
@@ -68,7 +68,7 @@
     </section>
     <div class="content-plus-wrap">
         <div class="content-plus">
-        <span>
+         <span class="icon-container">
             <i class="fas fa-pencil-alt"></i>
         </span>
         </div>

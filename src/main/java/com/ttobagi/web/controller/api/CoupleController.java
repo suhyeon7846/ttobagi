@@ -1,5 +1,8 @@
 package com.ttobagi.web.controller.api;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,20 +10,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ttobagi.web.entity.Member;
-import com.ttobagi.web.service.CoupleService;
+import com.ttobagi.web.service.MemberService;
 
 @RestController("apiCoupleController")
 @RequestMapping("/api/couple/")
 public class CoupleController {
 	
 	@Autowired
-	CoupleService coupleService;
+	MemberService service;
 	
 	@GetMapping("search")
-	public String search(@RequestParam(name="phone", defaultValue="010-0000-0000") String phone ) {
+	public Member search(HttpServletRequest request, 
+			@RequestParam(name="rp") String receiverPhone) {
 		
-		//Member member = coupleService.getMember(phone);
+		Member receiver = service.getMemberByPhone(receiverPhone);
+		HttpSession session = request.getSession();
 		
-		return "";
+		if (session != null) {
+			String senderPhone = (String)session.getAttribute("phone");
+			if (senderPhone.equals(receiver.getPhone()))
+				return null; // fetch문의 catch절로 빠짐
+		}
+		
+		return receiver;
 	}
 }

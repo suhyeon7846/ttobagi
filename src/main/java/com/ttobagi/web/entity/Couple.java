@@ -8,17 +8,18 @@ public class Couple {
 	private int receiver;
 	private Date sendDate;
 	private Date approvalDate;
+	private Date loveStartDate;
 	
 	public Couple() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Couple(int sender, int receiver, Date sendDate, Date approvalDate) {
-		super();
+	public Couple(int sender, int receiver, Date sendDate, Date approvalDate, Date loveStartDate) {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.sendDate = sendDate;
 		this.approvalDate = approvalDate;
+		this.loveStartDate = loveStartDate;
 	}
 
 	public int getSender() {
@@ -52,6 +53,17 @@ public class Couple {
 	public void setApprovalDate(Date approvalDate) {
 		this.approvalDate = approvalDate;
 	}
+
+	public Date getLoveStartDate() {
+		return loveStartDate;
+	}
+
+	public void setLoveStartDate(Date loveStartDate) {
+		this.loveStartDate = loveStartDate;
+	}
+	
+	
+
 	
 	
 }

@@ -17,7 +17,7 @@
             <li>일기장</li>
             <li>커뮤니티</li>
         </ul>
-        <input type="button" class="modal-open" value="상대방 찾기">
+        <input type="button" class="modal-open" value="커플 등록하기">
     </main>
 </section>
 
@@ -42,12 +42,12 @@
                         <td class="col-m">가입일</td>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody class="tbody">
+                    <!-- <tr>
                         <td>조재희</td>
                         <td>남성</td>
                         <td>2020-12-31</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
             <div class="request-btn-container">

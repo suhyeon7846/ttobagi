@@ -4,6 +4,10 @@ public class CommunityCategory {
 	private int id;
 	private String type;
 	
+	public CommunityCategory() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public CommunityCategory(int id, String type) {
 		super();
 		this.id = id;

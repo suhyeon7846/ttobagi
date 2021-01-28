@@ -1,3 +1,7 @@
+.d-none {
+    display: none;
+}
+
 /******************* header *******************/
 .header {
     min-height: 80px;
@@ -8,12 +12,24 @@
         width: 70%;
         height: 80px;
         margin: 0 auto;
+        position: relative;
     }
 
     .sub-header a .logo {
         height: 50px;
         margin-top: 15px;
     }
+
+    .sub-header .pic-login {
+        --background: url('/images/login.png') no-repeat;
+        width: 40px;
+        height: 40px;
+        --background-size: contain;
+    }
+
+        /* .sub-header .pic-login:hover {
+            background-color: none;
+        } */
 
     .sub-header nav {
         flex-grow: 1;
@@ -31,12 +47,162 @@
                 text-align: center;
             }
 
+            .sub-header nav ul li:nth-child(3) {
+                padding-top: 20px;
+            }
+
+            .sub-header nav ul li:last-child {
+                padding: 27px 0 21px 0;
+                font-size: 25px;
+                color: #fddc23c9;
+            }
+
             .sub-header nav ul li:hover {
                 background: #fdde23;
                 color: white;
                 cursor: pointer;
             }
 
+            .sub-header nav ul li:nth-child(3):hover {
+                background: none;
+                /*메가메뉴 나오게 하기*/
+            }
+
+            .sub-header nav ul li:last-child:hover {
+                background: none;
+                color: #fddc23c9;
+            }
+
+            .sub-header .tooltip {
+                position: relative;
+                position: absolute;
+                left: 1277px;
+                top: 25px;
+            }
+
+            .tooltip .bell-num {
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                font-size: 12px;
+                color: white;
+                text-align: center;
+
+                border-radius: 75px;
+                background: red;
+            }
+
+            .tooltip .bell-content {
+                position: absolute;
+                top: 40px;
+                left: -100px;
+
+                width: 200px;
+                background: #f0f0f0;
+                padding: 15px;
+                border-radius: 5px;
+                text-align: center;
+                --z-index: 1;
+            }
+
+                .tooltip .bell-content .detail-btn {
+                    margin-top: 10px;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                .tooltip .bell-content .detail-btn:hover {
+                    text-decoration: underline;
+                }
+            
+/************** 모달 *****************/
+.header-modal-sec {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.7);
+    --transition: 3s;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+    .header-modal-main {
+        background: white;
+        border-radius: 5px;
+        color: black;
+        width: 400px;
+        padding: 10px 25px 25px 25px;
+    }
+
+        .header-modal-main .d-none {
+            display: none;
+        }
+
+        .header-modal-main .header-exit-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .header-modal-main .header-h1 {
+            font-size: 21px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .header-modal-main .header-response-form {
+            margin: 30px auto 0 auto;
+            width: 350px;
+        }
+
+        .header-response-form .header-sender-info-table {
+            border-top: 2px solid #F65875;
+        }
+
+            .header-sender-info-table thead {
+                background: #f5f5f5;
+            }
+
+                .header-sender-info-table tr {
+                    height: 35px;
+                    line-height: 35px; /*없어도 동작 잘함*/
+                }
+
+                    .header-sender-info-table tr td {
+                        border-bottom: 1px solid #e9e9e9;
+                        text-align: center;
+                    }
+
+                    .header-sender-info-table tr td.header-col-s {
+                        width: 80px;
+                    }
+
+                    .header-sender-info-table tr td.header-col-m {
+                        width: 100px;
+                    }
+
+    .header-modal-main .header-response-btn-container {
+        width: 250px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+    }
+
+        .header-response-btn-container .header-response-btn {
+            margin-top: 20px;
+            padding: 7px 20px;
+            border: none;
+            background: #F65875;
+        }
+
+        .header-response-btn-container .header-response-btn:hover {
+            transition: 0.3s;
+            background: #ff3157;
+            color: white;
+            cursor: pointer;
+        }
 
 
 /******************* footer *******************/

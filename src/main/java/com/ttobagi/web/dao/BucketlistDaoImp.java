@@ -15,9 +15,9 @@ public class BucketlistDaoImp implements BucketlistDao {
 	private SqlSession session;
 	
 	@Override
-	public List<Bucketlist> getList(int status) {
+	public List<Bucketlist> getList(int id, int status) {
 		BucketlistDao mapper = session.getMapper(BucketlistDao.class);
-		return mapper.getList(status);
+		return mapper.getList(id,status);
 	}
 
 	@Override
@@ -36,6 +36,12 @@ public class BucketlistDaoImp implements BucketlistDao {
 	public int insert(String cardTitle, String picFile) {
 		BucketlistDao mapper = session.getMapper(BucketlistDao.class);
 		return mapper.insert(cardTitle, picFile);
+	}
+
+	@Override
+	public List<Bucketlist> getRandomList(int id) {
+		BucketlistDao mapper = session.getMapper(BucketlistDao.class);
+		return mapper.getRandomList(id);
 	}
 
 }

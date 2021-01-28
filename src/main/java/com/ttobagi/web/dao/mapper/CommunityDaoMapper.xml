@@ -8,19 +8,27 @@
 		select * from communityCategory
 	</select>
 	
+	<select id="get" resultType="com.ttobagi.web.entity.Community">
+		select * from community where id = ${id};
+	</select>
+	
+	<select id="getView" resultType="com.ttobagi.web.entity.CommunityView">
+		select * from communityView where id = ${id};
+	</select>
+	
 	<select id="getViewList" resultType="com.ttobagi.web.entity.CommunityView">
-		select * from communityView where id = #{id};
+		select * from communityView where communityType = #{param3}
+		<if test="param4 != null">
+			order by #{param4} desc
+		</if>
+		limit #{param2} offset #{param1};
 	</select>
 	
 	<select id="getList" resultType="com.ttobagi.web.entity.Community">
 		select * from community
-		order by regdate desc
-		limit #{param2} offset #{param1};
-	</select>
-	
-	<select id="getBestList" resultType="com.ttobagi.web.entity.Community">
-		select * from community
-		order by hit desc
+		<if test="param4 != null">
+			order by #{param4} desc
+		</if>
 		limit #{param2} offset #{param1};
 	</select>
 	
@@ -34,7 +42,7 @@
 		SET
 			title = #{title},
 			content = #{content},
-			files = #{files},
+			files = #{files}
 		WHERE id = #{id};
    	</update>
    	

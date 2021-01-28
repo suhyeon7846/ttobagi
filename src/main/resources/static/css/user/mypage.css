@@ -1,0 +1,65 @@
+.mypage-sec {
+    width: 1000px;
+    min-height: 590px;
+    margin: 50px auto 0 auto;
+    --border: 1px solid red;
+}
+
+    .mypage-sec > h1 {
+        font-size: 32px;
+        font-weight: bold;
+        padding-left: 50px;
+    }
+
+    .both-sec-container {
+        display: flex;
+        
+    }
+
+        .both-sec {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #c7c7c7;
+            margin: 20px auto 0 auto;
+            padding: 25px 50px;
+        }
+
+            .both-sec h1 {
+                font-size: 22px;
+                font-weight: bold;
+            }
+
+            .both-sec .form .member-info-sub-container,
+            .both-sec .form .couple-info-sub-container {
+                display: flex;
+                --border: 1px solid gray;
+                margin-top: 10px;
+            }
+
+                .member-info-sub-container .member-info-title,
+                .couple-info-sub-container .couple-info-title {
+                    --flex-grow: 1;
+                    --border: 1px solid red;
+                    padding: 5px 0;
+                    flex-basis: 100px;
+                }
+
+                .member-info-sub-container .member-info,
+                .couple-info-sub-container .couple-info {
+                    --flex-grow: 1;
+                    border: 1px solid #c5c5c5;
+                    border-radius: 3px;
+                    padding: 5px 0;
+                    flex-basis: 150px;
+                }
+
+        .left-sec {
+
+        }
+
+            .left-sec .member-info-form {
+
+            }
+
+        .right-sec {
+        }

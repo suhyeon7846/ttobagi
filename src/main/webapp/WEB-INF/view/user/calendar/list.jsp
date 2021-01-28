@@ -9,35 +9,7 @@
 <script src='/user/calendar/packages/core/main.js'></script>
 <script src='/user/calendar/packages/interaction/main.js'></script>
 <script src='/user/calendar/packages/daygrid/main.js'></script>
-<script>
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var srcCalendarEl = document.getElementById('source-calendar');
-
-    var srcCalendar = new FullCalendar.Calendar(srcCalendarEl, {
-      plugins: [ 'interaction', 'dayGrid' ],
-      editable: true,
-      defaultDate: new Date(),
-      events: [
-        {
-          title: 'event1',
-          start: '2021-01-11',
-          end: '2021-01-12T16:00:00'
-        },
-        {
-          title: 'event2',
-          start: '2021-01-25T10:00:00',
-          end: '2021-02-20T16:00:00'
-        }
-      ],
-      eventLeave: function(info) { 
-        console.log('event left!', info.event);
-      }
-    });
-
-    srcCalendar.render();
-  });
-</script>
+<script src="/js/user/calendar/list.js"></script>
 <style>
 
   body {

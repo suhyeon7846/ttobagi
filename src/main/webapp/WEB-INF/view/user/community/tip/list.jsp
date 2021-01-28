@@ -16,22 +16,23 @@
 			<!-- Boxes -->
 			<div class="thumbnails">
 				<div class="menu-title">BEST 연애 꿀팁 5</div>
-				<c:forEach var="i" items="${bestList}" begin="1" end="5">
+				<c:forEach var="bl" items="${bestList}">
 					<div class="box">
-						<a href="${type}/1" class="image fit">
-							<img src="/images/user/community/sub/${i}.jpg" alt="" />
+						<a href="${type}/${bl.id}" class="image fit">
+							<img src="/images/user/community/sub/${bl.id}.jpg" alt="" />
 						</a>
-						<div class="inner">남자친구가 좋아할만한 행동</div>
+						<div class="inner">${bl.title}</div>
+						
 					</div>
 				</c:forEach>
 				
 				<div class="menu-title">연애 꿀팁</div>
-				<c:forEach var="i" begin="1" end="5">
+				<c:forEach var="list" items="${list}">
 					<div class="box">
-						<a href="${id}" class="image fit">
-							<img src="/images/user/community/sub/${i}.jpg" alt="" />
+						<a href="${type}/${list.id}" class="image fit">
+							<img src="/images/user/community/sub/${list.id}.jpg" alt="" />
 						</a>
-						<div class="inner">남자친구가 좋아할만한 행동</div>
+						<div class="inner">${list.title}</div>
 					</div>
 				</c:forEach>
 			</div>
