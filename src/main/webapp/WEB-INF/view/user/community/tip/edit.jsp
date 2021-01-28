@@ -11,7 +11,7 @@
 	<section class="content">
 		<div class="container">
 			<h1 class="d-none">연애 꿀팁 상세 게시판 수정</h1>
-			<form method="post" enctype="multipart/form-data">
+			<form action="edit" method="post" enctype="multipart/form-data">
 				<table class="table">
 					<tbody>
 						<tr>

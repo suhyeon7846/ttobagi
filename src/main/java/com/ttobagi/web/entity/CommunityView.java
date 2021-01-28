@@ -8,9 +8,13 @@ public class CommunityView extends Community {
 	private String memNicName;
 	private String memLoginId;
 
+	public CommunityView() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public CommunityView(int id, String title, String content, int memberId, int categoryId, Date regDate, int hit,
-			int recomCnt, String communityType, String memName, String memNicName, String memLoginId) {
-		super(id, title, content, memberId, categoryId, regDate, hit, recomCnt);
+			int recomCnt, String files, String communityType, String memName, String memNicName, String memLoginId) {
+		super(id, title, content, memberId, categoryId, regDate, hit, recomCnt, files);
 		this.communityType = communityType;
 		this.memName = memName;
 		this.memNicName = memNicName;
