@@ -17,7 +17,7 @@
             <li>일기장</li>
             <li>커뮤니티</li>
         </ul>
-        <input type="button" class="modal-open" value="상대방 찾기">
+        <input type="button" class="modal-open" value="커플 등록하기">
     </main>
 </section>
 
