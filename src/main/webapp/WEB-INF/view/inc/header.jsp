@@ -6,29 +6,40 @@
 
 <header id="header" class="header">
     <div class="sub-header">
-        <a href=""><img class="logo" src="/images/logo.png"></a>
+        <a href="/index"><img class="logo" src="/images/logo.png"></a>
         <nav>
             <ul>
                 <li><a href="">커플노트</a></li>
                 <li><a href="">커뮤니티</a></li>
                 <s:authorize access="isAnonymous()">
                 	<li><a href="/auth/login">로그인</a></li>
+                	<li></li>
                 </s:authorize>
                 <s:authorize access="isAuthenticated()">
-                	<li><a href="/auth/logout">로그아웃</a></li>
+                    <!-- <li><a href="/auth/logout">로그아웃</a></li> -->
+                    <li class="sub-menu">
+                        <img class="pic-login" src="/images/login.png" alt="">
+                        <div class="mega-menu">
+                            <ul>
+                                <li><a href="/user/mypage">마이페이지</a></li>
+                                <li><a href="/auth/logout">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                	<li><i class="fas fa-bell bell"></i></li>
                 </s:authorize>
-                <li><i class="fas fa-bell bell"></i></li>
                 
             </ul>
         </nav>
-        <div class="tooltip">
-            <div class="bell-num">1</div>
-            <div class="bell-content d-none">
-                <span>커플 요청이 도착했습니다.</span>
-                <input type="button" class="detail-btn header-modal-open" value="자세히 보기">
-            </div>
-        </div>
-        
+        <s:authorize access="isAuthenticated()">
+	        <div class="tooltip">
+	            <div class="bell-num">1</div>
+	            <div class="bell-content d-none">
+	                <span>커플 요청이 도착했습니다.</span>
+	                <input type="button" class="detail-btn header-modal-open" value="자세히 보기">
+	            </div>
+	        </div>
+        </s:authorize>
     </div>
 
     <section class="header-modal-sec">

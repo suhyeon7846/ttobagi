@@ -3,8 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ttobagi.web.dao.NoticeDao"> 
-	<select id="getList" resultType="com.ttobagi.web.LetterDao" parameterType="int">
+<mapper namespace="com.ttobagi.web.dao.LetterDao"> 
+	<!-- <select id="getList" resultType="com.ttobagi.web.LetterDao">
 		select * from letter
 		where receiver=#{param1} and sender=#{param2}
 	</select>
@@ -12,5 +12,5 @@
 	<insert id="insert" parameterType="com.ttobagi.web.LetterDao">
 		insert into letter(receiver,sender,title,content)
 		values()
-	</insert>
+	</insert> -->
 </mapper>
