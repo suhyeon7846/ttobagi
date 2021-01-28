@@ -13,9 +13,13 @@ public class LetterServiceImp implements LetterService{
 	@Autowired
 	private LetterDao letterDao;
 	
+	public LetterServiceImp() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	@Override
-	public List<Letter> getList(int senderId, int receiverId) {
-		return letterDao.getList(senderId,receiverId);
+	public List<Letter> getList(int receiverId) {
+		return letterDao.getList(receiverId);
 	}
 
 	@Override

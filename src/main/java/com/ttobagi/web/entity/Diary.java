@@ -10,6 +10,10 @@ public class Diary {
 	private int memberId;
 	private int moodId;
 	
+	public Diary() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Diary(int id, String title, String content, Date regDate, int memberId, int moodId) {
 		super();
 		this.id = id;

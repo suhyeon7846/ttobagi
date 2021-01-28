@@ -7,6 +7,10 @@ public class Letter {
 	private String title;
 	private String content;
 	
+	public Letter() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Letter(int id, int receiver, int sender, String title, String content) {
 		super();
 		this.id = id;
