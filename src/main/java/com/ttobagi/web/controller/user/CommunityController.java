@@ -1,6 +1,10 @@
 package com.ttobagi.web.controller.user;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
@@ -8,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,15 +40,6 @@ public class CommunityController {
 		model.addAttribute("categorytype", categoryType);
 		
 		return "user.community.index";
-	}
-	
-	@PostMapping("upload")
-	@ResponseBody
-	public String upload(MultipartFile file) {
-
-		System.out.println("file uploaded");
-		System.out.println(file.getOriginalFilename());
-		return "ok";
 	}
 	
 	//list
@@ -81,18 +78,37 @@ public class CommunityController {
 	}
 	
 	@PostMapping("{type}/{id}/edit")
-	public String edit(Community community, @PathVariable("id") int id) {
+	public String edit(Community community, 
+					   @PathVariable("id") int id,
+					   HttpServletRequest request,
+					   @RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		
 		String title = community.getTitle();
 		String content = community.getContent();
+		String files = community.getFiles();
+		
+		String realPath = request.getSession().getServletContext().getRealPath("/resources/static/images/user/community/upload");
+		String OriginFileName= file.getOriginalFilename();
+		file.transferTo(new File(realPath+File.separator+OriginFileName));
 		
 		Community origin = service.get(id);
-		System.out.println(origin);
+		
 		origin.setTitle(title);
 		origin.setContent(content);
+		origin.setFiles(OriginFileName);
 		
 		service.update(origin);
 		
 		return "redirect:../"+id;
+	}
+	
+	@PostMapping("upload")
+	@ResponseBody
+	public String upload(MultipartFile file) {
+
+		System.out.println("file uploaded");
+		System.out.println(file.getOriginalFilename());
+		return "ok";
 	}
 	
 	@PostMapping("{type}/reg")

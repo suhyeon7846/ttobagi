@@ -42,10 +42,7 @@
 		SET
 			title = #{title},
 			content = #{content},
-			memberId = #{memberId},
-			categoryId = #{categoryId},
-			hit = #{hit},
-			recomCnt = #{recomCnt}
+			files = #{files}
 		WHERE id = #{id};
    	</update>
    	

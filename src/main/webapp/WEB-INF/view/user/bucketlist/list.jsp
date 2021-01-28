@@ -75,8 +75,6 @@
                                 	</span>
                                 	<input type="hidden" value="${b.id}">
                                 </a>
-                               
-                              
                                 <a href="#">
                                		<input type="button" class="btn">
                                		 <span class="icon-container">
@@ -106,7 +104,7 @@
         <input type="checkbox" id="switch1" name="switch1" class="input__on-off check">
         <label for="switch1" class="label__on-off">
         <span class="marble"></span>
-        <span class="on" >Ing</span>
-        <span class="off">Done</span>
+        <span class="on" >Done</span>
+        <span class="off">Ing</span>
         </label>
     </div>

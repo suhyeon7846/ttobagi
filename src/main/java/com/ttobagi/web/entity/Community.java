@@ -11,9 +11,14 @@ public class Community {
 	private Date regDate;
 	private int hit;
 	private int recomCnt;
+	private String files;
+	
+	public Community() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Community(int id, String title, String content, int memberId, int categoryId, Date regDate, int hit,
-			int recomCnt) {
+			int recomCnt, String files) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -23,7 +28,9 @@ public class Community {
 		this.regDate = regDate;
 		this.hit = hit;
 		this.recomCnt = recomCnt;
+		this.files = files;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -73,11 +80,20 @@ public class Community {
 		this.recomCnt = recomCnt;
 	}
 	
+	
+	public String getFiles() {
+		return files;
+	}
+
+	public void setFiles(String files) {
+		this.files = files;
+	}
+
 	@Override
 	public String toString() {
 		return "Community [id=" + id + ", title=" + title + ", content=" + content + ", memberId=" + memberId
 				+ ", categoryId=" + categoryId + ", regDate=" + regDate + ", hit=" + hit + ", recomCnt=" + recomCnt
-				+ "]";
+				+ ", files=" + files + "]";
 	}
-	
+
 }
