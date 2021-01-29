@@ -68,7 +68,7 @@
     background-image: url(../../../images/user/diary/paper3.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    trnasform-origin: left center;
+    transform-origin: left center;
     transition: 2s;   
     /* z-index:2; */
 }
