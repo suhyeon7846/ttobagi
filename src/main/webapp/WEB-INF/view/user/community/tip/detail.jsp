@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
 <link rel="stylesheet" href="/css/user/community/common.css">
 <link rel="stylesheet" href="/css/user/community/api.css">
 <link rel="stylesheet" href="/css/user/community/sub.css">
@@ -39,8 +40,9 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><img src="/images/user/community/sub/${d.id}.jpg"><br>
-							${d.content}</td>
+						<td><img src="<spring:url value='/resources/static/images/user/community/${type}/${f.communityId}/${f.name}'/>"><br>
+							${d.content}
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -54,7 +56,7 @@
 			<div class="button-area">
 				<a class="button" href="../${type}">목록</a>
 				<a class="button update-button" href="${id}/edit">수정</a>
-				<a class="button delete-button" href="${id}/delete">삭제</a>
+				<a class="button delete-button" href="${id}/del">삭제</a>
 			</div>
 
 			<!-- POPUP -->

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ttobagi.web.dao.CommunityDao;
 import com.ttobagi.web.entity.Community;
 import com.ttobagi.web.entity.CommunityCategory;
+import com.ttobagi.web.entity.CommunityFiles;
 import com.ttobagi.web.entity.CommunityView;
 
 @Service
@@ -47,7 +48,6 @@ public class CommunityServiceImp implements CommunityService {
 	
 	@Override
 	public int update(Community community) {
-		System.out.println(community);
 		return communityDao.update(community);
 	}
 	
@@ -62,6 +62,32 @@ public class CommunityServiceImp implements CommunityService {
 		// TODO Auto-generated method stub
 		return communityDao.delete(id);
 	}
+
+	@Override
+	public CommunityFiles getFiles(int id) {
+		// TODO Auto-generated method stub
+		return communityDao.getFiles(id);
+	}
+
+	@Override
+	public int insertFiles(CommunityFiles communityFiles) {
+		// TODO Auto-generated method stub
+		return communityDao.insertFiles(communityFiles);
+	}
+
+	@Override
+	public int updateFiles(CommunityFiles communityFiles) {
+		// TODO Auto-generated method stub
+		return communityDao.updateFiles(communityFiles);
+	}
+
+	@Override
+	public int deleteFiles(int id) {
+		// TODO Auto-generated method stub
+		return communityDao.deleteFiles(id);
+	}
+
+	
 
 
 }
