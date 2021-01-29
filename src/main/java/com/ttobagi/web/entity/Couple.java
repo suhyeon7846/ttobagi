@@ -62,8 +62,4 @@ public class Couple {
 		this.loveStartDate = loveStartDate;
 	}
 	
-	
-
-	
-	
 }
