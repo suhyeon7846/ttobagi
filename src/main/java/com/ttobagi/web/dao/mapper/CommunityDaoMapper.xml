@@ -16,10 +16,14 @@
 		select * from communityView where id = ${id};
 	</select>
 	
+	<select id="getFiles" resultType="com.ttobagi.web.entity.CommunityFiles">
+		select * from communityFiles where communityId = ${communityId};
+	</select>
+	
 	<select id="getViewList" resultType="com.ttobagi.web.entity.CommunityView">
 		select * from communityView where communityType = #{param3}
 		<if test="param4 != null">
-			order by #{param4} desc
+			order by ${param4} desc
 		</if>
 		limit #{param2} offset #{param1};
 	</select>
@@ -27,7 +31,7 @@
 	<select id="getList" resultType="com.ttobagi.web.entity.Community">
 		select * from community
 		<if test="param4 != null">
-			order by #{param4} desc
+			order by ${param4} desc
 		</if>
 		limit #{param2} offset #{param1};
 	</select>
@@ -41,12 +45,27 @@
 		UPDATE ttobagi.community
 		SET
 			title = #{title},
-			content = #{content},
-			files = #{files}
+			content = #{content}
+		WHERE id = #{id};
+   	</update>
+   	
+   	<insert id="insertFiles" parameterType="com.ttobagi.web.entity.CommunityFiles">
+      insert into communityFiles(name, communityId)
+      values(#{name}, #{communityId});
+   	</insert>
+	
+	<update id="updateFiles" parameterType="com.ttobagi.web.entity.CommunityFiles">
+		UPDATE ttobagi.communityFiles
+		SET
+			name = #{name}
 		WHERE id = #{id};
    	</update>
    	
 	<delete id="delete">
    		delete from community where id=#{id};
+   	</delete>
+   	
+   	<delete id="deleteFiles">
+   		delete from communityFiles where id=#{id};
    	</delete>
 </mapper>

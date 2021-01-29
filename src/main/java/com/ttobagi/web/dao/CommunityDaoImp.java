@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ttobagi.web.entity.Community;
 import com.ttobagi.web.entity.CommunityCategory;
+import com.ttobagi.web.entity.CommunityFiles;
 import com.ttobagi.web.entity.CommunityView;
 
 @Repository
@@ -68,6 +69,31 @@ public class CommunityDaoImp implements CommunityDao {
 	public int delete(int id) {
 		// TODO Auto-generated method stub
 		return mapper.delete(id);
+	}
+
+	@Override
+	public CommunityFiles getFiles(int id) {
+		// TODO Auto-generated method stub
+		return mapper.getFiles(id);
+	}
+
+	@Override
+	public int insertFiles(CommunityFiles communityFiles) {
+		// TODO Auto-generated method stub
+		System.out.println(communityFiles);
+		return mapper.insertFiles(communityFiles);
+	}
+
+	@Override
+	public int updateFiles(CommunityFiles communityFiles) {
+		// TODO Auto-generated method stub
+		return mapper.updateFiles(communityFiles);
+	}
+
+	@Override
+	public int deleteFiles(int id) {
+		// TODO Auto-generated method stub
+		return mapper.deleteFiles(id);
 	}
 
 	

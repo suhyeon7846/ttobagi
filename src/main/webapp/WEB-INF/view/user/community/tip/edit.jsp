@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/css/user/community/api.css">
 <link rel="stylesheet" href="/css/user/community/sub.css">
 <script src="/js/user/community/common.js"></script>
+<script type="module" src="fileUpload.js"></script>
 
 <!-- main -->
 <main id="main" class="main">
@@ -24,7 +25,7 @@
 						</tr>
 						<tr>
 							<th>파일 등록</th>
-							<td><input type="file" name="file" class="file" /></td>
+							<td><input type="file" name="file" class="file" value="${f.name}"/></td>
 						</tr>
 						<tr>
 							<th>내용</th>

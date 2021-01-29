@@ -1,10 +1,14 @@
 package com.ttobagi.web.controller.user;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
@@ -17,11 +21,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ttobagi.web.entity.Community;
 import com.ttobagi.web.entity.CommunityCategory;
+import com.ttobagi.web.entity.CommunityFiles;
 import com.ttobagi.web.entity.CommunityView;
 import com.ttobagi.web.service.CommunityService;
 
@@ -50,7 +56,7 @@ public class CommunityController {
 		
 		List<CommunityView> bestList = service.getViewList(0, 5, type, "hit");
 		List<CommunityView> list = service.getViewList(0, 10, type, "regDate");
-		
+
 		model.addAttribute("bestList", bestList);
 		model.addAttribute("list", list);
 		
@@ -62,8 +68,10 @@ public class CommunityController {
 	public String detail(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
 		
 		CommunityView communityView = service.getView(id);
+		CommunityFiles communityFiles = service.getFiles(id);
 		
 		model.addAttribute("d", communityView);
+		model.addAttribute("f", communityFiles);
 		
 		return "user.community."+type+".detail";
 	}
@@ -71,56 +79,68 @@ public class CommunityController {
 	@GetMapping("{type}/{id}/edit")
 	public String edit(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
 		CommunityView list = service.getView(id);
+		CommunityFiles files = service.getFiles(id);
 		
 		model.addAttribute("e", list);
+		model.addAttribute("f", files);
 		
 		return "user.community."+type+".edit";
 	}
 	
 	@PostMapping("{type}/{id}/edit")
-	public String edit(Community community, 
-					   @PathVariable("id") int id,
+	public String edit(Community community,
+					   //파일
 					   HttpServletRequest request,
+					   CommunityFiles communityFiles,
+					   @PathVariable("id") int id,
+					   @PathVariable("type") String type,
 					   @RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		
 		String title = community.getTitle();
 		String content = community.getContent();
-		String files = community.getFiles();
 		
-		String realPath = request.getSession().getServletContext().getRealPath("/resources/static/images/user/community/upload");
-		String OriginFileName= file.getOriginalFilename();
-		file.transferTo(new File(realPath+File.separator+OriginFileName));
+		// 파일 업로드
+		String url = "resources/static/images/user/community/"+type+"/"+id;
+		String realPath = request.getServletContext().getRealPath(url);
+		String fileName = file.getOriginalFilename();
+
+		File realPathFile = new File(realPath);
+		if( !realPathFile.exists())
+			realPathFile.mkdirs();
 		
+		String uploadedFilePath = realPath + File.separator + fileName;
+		File uploadedFile = new File(uploadedFilePath);
+
+		file.transferTo(uploadedFile);
+
 		Community origin = service.get(id);
-		
 		origin.setTitle(title);
 		origin.setContent(content);
-		origin.setFiles(OriginFileName);
 		
+		communityFiles.setName(fileName);
+		communityFiles.setCommunityId(id);
+		
+		
+		service.insertFiles(communityFiles);
 		service.update(origin);
-		
-		return "redirect:../"+id;
-	}
-	
-	@PostMapping("upload")
-	@ResponseBody
-	public String upload(MultipartFile file) {
 
-		System.out.println("file uploaded");
-		System.out.println(file.getOriginalFilename());
-		return "ok";
+		return "redirect:../"+id;
 	}
 	
 	@PostMapping("{type}/reg")
 	public String reg(@PathVariable("type") String type) {
 		//service.insert();
-		return "redirect:../"+type+".list";
+		return "redirect:../"+type+"/list";
 	}
 	
 	@GetMapping("{type}/{id}/del")
-	public String delete(@PathVariable("type") String type, @PathVariable("id") int id) {
-		service.delete(id);
+	public String delete(
+			@PathVariable("type") String type, 
+			@PathVariable("id") int id) {
 		
-		return "redirect:../"+type+".list";
+		service.delete(id);
+		service.deleteFiles(id);
+		
+		return "redirect:../../"+type;
 	}
 }
