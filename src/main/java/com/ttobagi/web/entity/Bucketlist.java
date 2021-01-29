@@ -10,16 +10,16 @@ public class Bucketlist {
 	private String fileRoute;
 	private int status;
 	private Date regDate;
-	private int memberId;
+	private int coupleId;
 	
-	public Bucketlist(int id, String title, String fileName, String fileRoute, int status, Date regDate, int memberId) {
+	public Bucketlist(int id, String title, String fileName, String fileRoute, int status, Date regDate, int coupleId) {
 		this.id = id;
 		this.title = title;
 		this.fileName = fileName;
 		this.fileRoute = fileRoute;
 		this.status = status;
 		this.regDate = regDate;
-		this.memberId = memberId;
+		this.coupleId = coupleId;
 	}
 
 	public int getId() {
@@ -70,18 +70,18 @@ public class Bucketlist {
 		this.regDate = regDate;
 	}
 
-	public int getMemberId() {
-		return memberId;
+	public int getcoupleId() {
+		return coupleId;
 	}
 
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
+	public void setcoupleId(int coupleId) {
+		this.coupleId = coupleId;
 	}
 
 	@Override
 	public String toString() {
 		return "Bucketlist [id=" + id + ", title=" + title + ", fileName=" + fileName + ", fileRoute=" + fileRoute
-				+ ", status=" + status + ", regDate=" + regDate + ", memberId=" + memberId + "]";
+				+ ", status=" + status + ", regDate=" + regDate + ", coupleId=" + coupleId + "]";
 	}
 	
 	

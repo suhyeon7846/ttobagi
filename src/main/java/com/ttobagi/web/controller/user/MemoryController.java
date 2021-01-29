@@ -1,5 +1,7 @@
 package com.ttobagi.web.controller.user;
 
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemoryController {
 	
 	@RequestMapping("list")
-	public String list(){
+	public String list(Principal principal){
 		
 		return "user.memory.list";
 	}
