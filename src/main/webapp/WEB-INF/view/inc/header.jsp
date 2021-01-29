@@ -16,7 +16,6 @@
                 	<li></li>
                 </s:authorize>
                 <s:authorize access="isAuthenticated()">
-                    <!-- <li><a href="/auth/logout">로그아웃</a></li> -->
                     <li class="sub-menu">
                         <img class="pic-login" src="/images/login.png" alt="">
                         <div class="mega-menu">

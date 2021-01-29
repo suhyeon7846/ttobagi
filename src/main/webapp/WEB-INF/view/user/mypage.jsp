@@ -40,9 +40,9 @@
                     <div class="member-info-title">연락처</div>
                     <input type="tel" class="member-info phone" readonly required>
                 </div>
+                <input type="button" name="member-info-edit" 
+                    class="member-info-edit-btn" value="수정하기"> 
             </form>
-            <input type="button" name="member-info-edit" 
-                class="member-info-edit-btn" value="수정하기"> 
         </section>
     
         <section class="both-sec right-sec">
