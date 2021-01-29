@@ -234,6 +234,24 @@ class DetailBox{
 }
 
   document.addEventListener('DOMContentLoaded', function() {
+	
+	let eventList;
+	let id = document.querySelector(".id").value;
+	
+	fetch("/user/calendar/"+id)
+		.then(response=>{
+			return response.json();
+		})
+		.then(list=>{
+			eventList = list;
+			console.log(eventList);
+			for(var e of eventList){
+				
+				srcCalendar.addEvent(e);
+			}
+		});
+	
+	
     var srcCalendarEl = document.getElementById('source-calendar');
 
     var srcCalendar = new FullCalendar.Calendar(srcCalendarEl, {
@@ -241,18 +259,6 @@ class DetailBox{
       editable: true,
       defaultDate: new Date(),
       events: [
-        {
-          title: 'event1',
-          start: '2021-01-11',
-          end: '2021-01-12T16:00:00',
-		  location:"seoul",
-		  id:1
-        },
-        {
-          title: 'event2',
-          start: '2021-01-25T10:00',
-          end: '2021-02-20T16:00'
-        }
       ],
       eventLeave: function(info) { 
         console.log('event left!', info.event);
@@ -267,7 +273,7 @@ class DetailBox{
 	
 
 	dayGrid.addEventListener("click",(e)=>{
-		//console.log(e.target.getAttribute("class")=="fc-content");
+		console.log(e.target.classList);
 		if(!e.target.classList.contains("fc-content") && 
 		!e.target.classList.contains("fc-time") &&
 		!e.target.classList.contains("fc-title") ){
@@ -282,6 +288,7 @@ class DetailBox{
 			});
 		}
 		else if(e.target.classList.contains("fc-content")){
+			console.log(111);
 			for(var event of srcCalendar.getEvents()){
 				if(event.id == e.target.querySelector("input[type=hidden]").value){
 					DetailBox.detail(event);

@@ -30,6 +30,7 @@
 	<div >
 	
 		<div id='source-calendar'></div>
+		<input type="hidden" class="id" value="${id }"/>
 	</div>
 
 </body>
