@@ -5,22 +5,22 @@
 
 <mapper namespace="com.ttobagi.web.dao.BucketlistDao">
 <select id="getList" resultType="com.ttobagi.web.entity.Bucketlist">
- 		SELECT * FROM Bucketlist where memberId =#{id} and status = #{status} 
+ 		SELECT * FROM Bucketlist where coupleId =#{id} and status = #{status} 
 </select>
 <select id="getRandomList" resultType="com.ttobagi.web.entity.Bucketlist">
- 		select * from Bucketlist where memberId =#{id} and status = 0 order by rand() limit 8;
+ 		select * from Bucketlist where coupleId =#{id} and status = 0 order by rand() limit 8;
 </select>
 <insert id="insert" parameterType="com.ttobagi.web.entity.Bucketlist">
-	insert into Bucketlist(title, fileName, fileRoute,memberId)
+	insert into Bucketlist(title, fileName, fileRoute,coupleId)
  		values(#{cardTitle},#{picFile},"파일루트입니다","1")
 </insert>
 <update id="update">
 	update Bucketlist
  		set
  			status = 1
- 		where id =#{cardId}
+ 		where coupleId =#{cardId}
 </update>
 <delete id="delete">
-	delete from Bucketlist where id = #{cardId}
+	delete from Bucketlist where coupleId = #{cardId}
 </delete>
 </mapper>

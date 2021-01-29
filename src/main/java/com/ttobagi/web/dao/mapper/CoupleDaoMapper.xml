@@ -8,4 +8,9 @@
 	<insert id="requestCouple" parameterType="com.ttobagi.web.entity.Couple">
 		insert into couple(senderId, receiverId) values(#{senderId}, #{receiverId})
 	</insert>
+	
+	<select id="getList" parameterType="com.ttobagi.web.entity.Couple">
+		select * from couple where senderId = {id} or receiverId = {id};
+	</select>
+	
 </mapper>
