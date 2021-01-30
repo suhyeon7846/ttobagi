@@ -10,11 +10,22 @@ window.addEventListener('load', (e) => {
     let phoneInput = document.querySelector('.input-phone');
     let requestForm = document.querySelector('.request-form');
     let noResult = document.querySelector('.no-result');
+
+    let receiverId = 0;
     
     modalOpenBtn.addEventListener('click', () => {
-        modalSecion.style.display = 'flex';
-        //modalSecion.style.transition = '0.5s';
-    });
+        fetch(`/api/couple/list`)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                modalSecion.style.display = 'flex';
+                //modalSecion.style.transition = '0.5s';
+            })
+            .catch(err => {
+                alert(`다음과 같은 회원은 커플 등록을 하실 수 없습니다.\n1. 이미 커플을 등록한 회원\n2. 상대방에게 커플을 요청하여 수락 대기중인 회원\n3. 상대방에게 커플 요청이 와서 응답을 해야하는 회원`);
+            })
+
+        });
 
     modalCloseBtn.addEventListener('click', () => {
         modalSecion.style.display = 'none';
@@ -50,9 +61,11 @@ window.addEventListener('load', (e) => {
                     return false;
                 }
 
+                receiverId = receiver.id;
+
                 let tr = `
                     <tr>
-                        <input type="hidden" name="id" value="${receiver.id}">
+                        <input type="hidden" name="id" value="${receiverId}">
                         <td>${receiver.name}</td>
                         <td>${receiver.gender}</td>
                         <td>${receiver.regDate}</td></td>
@@ -67,10 +80,25 @@ window.addEventListener('load', (e) => {
             });
     });
 
-    requestBtn.addEventListener('click', () => {
-        alert('정상적으로 요청되었습니다.');
+    requestBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log(receiverId + "에게 커플요청 전송");
+
+        if (!confirm('커플요청은 취소가 불가능합니다. 커플요청을 하시겠습니까?'))
+            return false;
+
+        fetch(`/api/couple/list?receiverId=${receiverId}`)
+            .then(response => response.json()) 
+            .then(response => {
+
+                alert('정상적으로 요청되었습니다. \n상대방의 수락여부는 마이페이지에서 확인이 가능합니다.');
+                location.href = '/user/mypage';
+            })
+            .catch(err => {
+                alert(`상대방은 커플요청을 받을 수 없는 상태입니다.\n아래와 같은 경우에는 커플요청을 받을 수 없습니다.\n1. 상대방이 이미 커플을 등록한 회원인 경우\n2. 상대방이 제 3자에게 커플을 요청하여 수락 대기중인 회원인 경우\n3. 상대방이 제 3자로부터 커플 요청이 와서 응답 대기중인 경우`);
+            });
+
+        
+
     });
 });
-
-
-// <fmt:formatDate value="${receiver.regDate }" pattern="yyyy-MM-dd"/>
