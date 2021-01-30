@@ -10,7 +10,7 @@ public interface BucketlistDao {
 
 	int delete(int cardId);
 
-	int insert(String cardTitle, String picFile);
+	int insert(String cardTitle, String picFile, int cId);
 
 	List<Bucketlist> getList(int id, int status);
 	List<Bucketlist> getRandomList(int id);

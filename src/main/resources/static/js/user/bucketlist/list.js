@@ -6,7 +6,7 @@ window.addEventListener("load",(event)=>{
 	let screen = section.querySelector(".screen");
     let frame = section.querySelector(".frame");
  	const cancelButton = frame.querySelector("input[value=취소]");
-    let contentPlusWrap = document.querySelector(".content-plus-wrap");
+    let contentPlusWrap = document.querySelector(".content-plus-wrap");	
 /* 등록 페이지 modal */
     contentPlusWrap.addEventListener("click",(evnet)=>{
 	       /* ModalBox.alert()
@@ -67,17 +67,20 @@ window.addEventListener("load",(event)=>{
 	let recommendTitle = document.querySelector(".recommend-title");
 	addCard.onclick=()=>{
 		var checkCount = document.getElementsByName("recommend-pic").length;
+		let coupleId='';
 		let pickFile ='';
 		let cardTitle=''; 
 			for (var i=0; i<checkCount; i++) {
 	            if (document.getElementsByName("recommend-pic")[i].checked == true) {
 	                pickFile = document.getElementsByName("recommend-pic")[i].value;
 	            	cardTitle=document.getElementsByName("recommend-pic")[i].previousElementSibling.innerText;
+					coupleId = addCard.previousElementSibling.value;
+					console.log(coupleId)
 				}
 	        };
 
 		
-		fetch(`/api/bucketlist/reg?t=${cardTitle}&p=${pickFile}`)
+		fetch(`/api/bucketlist/reg?t=${cardTitle}&p=${pickFile}&c=${coupleId}`)
 				.then(response=>response.json())
 				.then(json=>{
 				thumbnails.innerHTML="";

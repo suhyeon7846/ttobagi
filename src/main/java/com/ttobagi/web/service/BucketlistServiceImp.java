@@ -42,8 +42,8 @@ public class BucketlistServiceImp implements BucketlistService {
 	}
 
 	@Override
-	public int insert(String cardTitle, String picFile) {
-		int result = bucketlistDao.insert(cardTitle,picFile);
+	public int insert(String cardTitle, String picFile,int cId) {
+		int result = bucketlistDao.insert(cardTitle,picFile,cId);
 		return result;
 	}
 

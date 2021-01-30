@@ -12,7 +12,7 @@ public interface BucketlistService {
 
 	int delete(int cardId);
 
-	int insert(String cardTitle, String picFile);
+	int insert(String cardTitle, String picFile, int cId);
 
 	List<Bucketlist> getRandomList(int id);
 	

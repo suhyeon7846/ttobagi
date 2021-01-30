@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="getList" resultType="com.ttobagi.web.entity.Couple">
-		select * from couple where senderId = ${id} or receiverId = ${id};
+		select * from couple where senderId = #{id} or receiverId = #{id};
 	</select>
 	
 	<select id="get" resultType="com.ttobagi.web.entity.Couple">

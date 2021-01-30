@@ -12,15 +12,15 @@
 </select>
 <insert id="insert" parameterType="com.ttobagi.web.entity.Bucketlist">
 	insert into Bucketlist(title, fileName, fileRoute,coupleId)
- 		values(#{cardTitle},#{picFile},"파일루트입니다","1")
+ 		values(#{cardTitle},#{picFile},"파일루트입니다",#{cId})
 </insert>
 <update id="update">
 	update Bucketlist
  		set
  			status = 1
- 		where coupleId =#{cardId}
+ 		where Id =#{cardId}
 </update>
 <delete id="delete">
-	delete from Bucketlist where coupleId = #{cardId}
+	delete from Bucketlist where Id = #{cardId}
 </delete>
 </mapper>

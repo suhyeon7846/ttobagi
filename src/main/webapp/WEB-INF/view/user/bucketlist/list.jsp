@@ -27,6 +27,7 @@
 		                  <input type="text" maxlength="40" name="titlename" required>
 		               </div>
 		               <div class="frame-btn-wrap">
+		               		<input type="hidden" value=${coupleId} name="coupleId">
 		                   <input type="submit" value="등록" >
 		                   <input type="button" value="취소" >
 		               </div>
@@ -49,6 +50,7 @@
 	                  </c:forEach>
                       </ul>
                      	<div>
+                     		<input type="hidden" value=${coupleId} name="coupleId">
 	                      	<input type="button" value="추가하기" class="addCard">
 	                      	<input type="button" value="새로받기" class="newCard">
                     	</div>
