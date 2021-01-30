@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ttobagi.web.entity.Couple;
+import com.ttobagi.web.entity.CoupleView;
 import com.ttobagi.web.entity.Member;
 
 @Repository
@@ -28,8 +29,28 @@ public class CoupleDaoImp implements CoupleDao {
 
 	@Override
 	public List<Couple> getList(int id) {
-		
 		return mapper.getList(id);
 	}
+
+	@Override
+	public Couple get(int id) {
+		return mapper.get(id);
+	}
+
+	@Override
+	public CoupleView isApproval(int senderId, int receiverId) {
+		return mapper.isApproval(senderId, receiverId);
+	}
+
+	@Override
+	public int responseOk(int receiverId) {
+		return mapper.responseOk(receiverId);
+	}
+
+	@Override
+	public int responseNo(int receiverId) {
+		return mapper.responseNo(receiverId);
+	}
+
 	
 }

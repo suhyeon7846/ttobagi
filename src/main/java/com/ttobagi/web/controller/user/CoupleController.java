@@ -1,6 +1,5 @@
 package com.ttobagi.web.controller.user;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ttobagi.web.entity.Couple;
 import com.ttobagi.web.service.CoupleService;
 
 @Controller
@@ -17,7 +17,7 @@ import com.ttobagi.web.service.CoupleService;
 public class CoupleController {
 	
 	@Autowired
-	CoupleService service;
+	CoupleService coupleService;
 
 	@GetMapping("reg")
 	public String reg() {
@@ -25,21 +25,37 @@ public class CoupleController {
 	}
 	
 	@PostMapping("reg")
-	public String reg(HttpServletRequest request, 
-			@RequestParam(name="id") int receiverId) {
-		HttpSession session = request.getSession();
-		
+	public String reg(HttpSession session, @RequestParam(name="id") int receiverId) {
 		if (session != null) {
 			int senderId = (int)session.getAttribute("id");
 			
-			service.requestCouple(senderId, receiverId);
+			coupleService.requestCouple(senderId, receiverId);
 		}
 		
-		return "redirect:reg";
+		return "redirect:../mypage";
 	}
 	
 	@GetMapping("list")
 	public String list() {
 		return "user.couple.list";
+	}
+	
+	@PostMapping("response")
+	public String response(HttpSession session, String response) {
+		
+		if (session != null) {
+			int id = (int)session.getAttribute("id");
+			
+			switch(response) {
+				case "요청 수락":
+					coupleService.responseOk(id); 
+				case "요청 거절":
+					coupleService.responseNo(id);
+			}
+		}
+		
+		
+		
+		return "true";
 	}
 }

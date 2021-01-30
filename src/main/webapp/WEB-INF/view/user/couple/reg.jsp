@@ -33,7 +33,7 @@
             <input type="text" class="input-phone" placeholder="ex) 010-1111-2222" required>
             <input type="button" class="find-btn" value="검색">
         </div>
-        <form action="" method="post" class="request-form d-none">
+        <form action="reg" method="post" class="request-form d-none">
             <table class="result-table">
                 <thead>
                     <tr>
@@ -51,6 +51,7 @@
                 </tbody>
             </table>
             <div class="request-btn-container">
+                <!-- <input type="hidden" name="id" value="${session.id}"> -->
                 <input type="submit" class="request-btn" value="커플 요청">
             </div>
         </form>

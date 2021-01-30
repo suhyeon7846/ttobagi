@@ -14,7 +14,7 @@
             <form action="" method="post"class="form member-info-form">
                 <div class="member-info-sub-container">
                     <div class="member-info-title">로그인 아이디</div>
-                    <input type="text" class="member-info login-id" readonly>
+                    <input type="text" class="member-info login-id" disabled>
                 </div>
                 <div class="member-info-sub-container">
                     <div class="member-info-title">비밀번호</div>
@@ -26,19 +26,19 @@
                 </div>
                 <div class="member-info-sub-container">
                     <div class="member-info-title">이름</div>
-                    <input type="text" class="member-info name" readonly>
+                    <input type="text" class="member-info name" disabled>
                 </div>
                 <div class="member-info-sub-container">
                     <div class="member-info-title">닉네임</div>
-                    <input type="text" class="member-info nickname" readonly>
+                    <input type="text" class="member-info nickname" disabled>
                 </div>
                 <div class="member-info-sub-container">
                     <div class="member-info-title">성별</div>
-                    <input type="text" class="member-info gender" readonly>
+                    <input type="text" class="member-info gender" disabled>
                 </div>
                 <div class="member-info-sub-container">
                     <div class="member-info-title">연락처</div>
-                    <input type="tel" class="member-info phone" readonly required>
+                    <input type="tel" class="member-info phone" disabled>
                 </div>
                 <input type="button" name="member-info-edit" 
                     class="member-info-edit-btn" value="수정하기"> 
@@ -47,26 +47,32 @@
     
         <section class="both-sec right-sec">
             <h1>커플정보</h1>
-            <form action="" method="post" class="form couple-info-form">
-                <div class="couple-info-sub-container">
-                    <div class="couple-info-title">이름</div>
-                    <input type="text" class="couple-info name">
-                </div>
-                <div class="couple-info-sub-container">
-                    <div class="couple-info-title">닉네임</div>
-                    <input type="text" class="couple-info nickname">
-                </div>
-                <div class="couple-info-sub-container">
-                    <div class="couple-info-title">연애시작일</div>
-                    <input type="date" class="couple-info loveStartDate">
-                </div>
-                <div class="couple-info-sub-container">
-                    <div class="couple-info-title">커플등록일</div>
-                    <input type="text" class="couple-info regDate">
-                </div>
-                <input type="button" name="couple-info-delete" 
-                    class="couple-info-delete-btn" value="커플 끊기"> 
-            </form>
+            <c:if test="${not empty coupleView}">
+            	<div class="wait-ment">상대방의 수락 여부를 기다리고 있습니다.</div>
+            </c:if>
+            <c:if test="${empty coupleView}">
+	            <form action="" method="post" class="form couple-info-form">
+	                <div class="couple-info-sub-container">
+	                    <div class="couple-info-title">이름</div>
+	                    <input type="text" class="couple-info name" disabled>
+	                </div>
+	                <div class="couple-info-sub-container">
+	                    <div class="couple-info-title">닉네임</div>
+	                    <input type="text" class="couple-info nickname" disabled>
+	                </div>
+	                <div class="couple-info-sub-container">
+	                    <div class="couple-info-title">연애시작일</div>
+	                    <input type="date" class="couple-info loveStartDate">
+	                </div>
+	                <div class="couple-info-sub-container">
+	                    <div class="couple-info-title">커플등록일</div>
+	                    <input type="text" class="couple-info regDate" disabled>
+	                </div>
+	                <input type="button" name="couple-info-delete" 
+	                    class="couple-info-delete-btn" value="커플 끊기"> 
+	            </form>
+            </c:if>
+            
         </section>
     </div>
 </section>

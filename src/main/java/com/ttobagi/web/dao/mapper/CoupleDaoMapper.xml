@@ -9,8 +9,34 @@
 		insert into couple(senderId, receiverId) values(#{senderId}, #{receiverId})
 	</insert>
 	
-	<select id="getList" parameterType="com.ttobagi.web.entity.Couple">
-		select * from couple where senderId = {id} or receiverId = {id};
+	<select id="getList" resultType="com.ttobagi.web.entity.Couple">
+		select * from couple where senderId = ${id} or receiverId = ${id};
 	</select>
+	
+	<select id="get" resultType="com.ttobagi.web.entity.Couple">
+		select * from couple where senderId = ${id} or receiverId = ${id};
+	</select>
+	
+	<select id="isApproval" resultType="com.ttobagi.web.entity.CoupleView">
+		<if test="senderId == 0">
+			select * from member m
+			join couple c on m.id = c.senderId
+			where receiverId = ${receiverId} and isNull(approvalDate);
+			<!-- select * from couple where receiverId = ${receiverId} and isNull(approvalDate); -->
+		</if>
+		<if test="receiverId == 0">
+			select * from member m
+			join couple c on m.id = c.senderId
+			where senderId = ${senderId} and isNull(approvalDate);
+		</if>
+	</select>
+	
+	<update id="responseOk" parameterType="com.ttobagi.web.entity.Couple">
+		<!-- insert into couple(approvalDate) values(now()) where receiverId = ${receiverId}; -->
+	</update>
+	
+	<delete id="responseNo" parameterType="com.ttobagi.web.entity.Couple">
+		delete from couple where receiverId = ${receiverId};
+	</delete>
 	
 </mapper>

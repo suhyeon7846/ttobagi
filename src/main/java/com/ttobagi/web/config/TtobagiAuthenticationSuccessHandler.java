@@ -1,6 +1,7 @@
 package com.ttobagi.web.config;
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -48,13 +50,20 @@ public class TtobagiAuthenticationSuccessHandler implements AuthenticationSucces
 			session.setAttribute("id", member.getId());
 			session.setAttribute("phone", member.getPhone());
 			
+			Set<String> authorities = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+			
 			SavedRequest savedRequest = (SavedRequest) session.getAttribute("SPRING_SECURITY_SAVED_REQUEST");
 			
 			if (savedRequest != null) { // 고의로 url로 접근하여 걸렸을 때(로그인을 하면 해당 url로 리다이렉트 되어야 한다)
 				String returnURL = savedRequest.getRedirectUrl();
 				redirectStrategy.sendRedirect(request, response, returnURL);
-			} else {
+			} else if (authorities.contains("ROLE_ADMIN")) {
 				// 로그인 페이지에 의도하여 접근하고 로그인을 성공했을 때
+				redirectStrategy.sendRedirect(request, response, "/admin/index");
+			} else if (authorities.contains("ROLE_COUPLE") || authorities.contains("ROLE_SOLO")) {
+				redirectStrategy.sendRedirect(request, response, "/index");
+			} else {
+				throw new IllegalStateException();
 			}
 
 		}
