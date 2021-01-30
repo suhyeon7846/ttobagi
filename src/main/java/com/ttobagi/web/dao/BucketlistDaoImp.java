@@ -33,9 +33,9 @@ public class BucketlistDaoImp implements BucketlistDao {
 	}
 
 	@Override
-	public int insert(String cardTitle, String picFile) {
+	public int insert(String cardTitle, String picFile,int cId) {
 		BucketlistDao mapper = session.getMapper(BucketlistDao.class);
-		return mapper.insert(cardTitle, picFile);
+		return mapper.insert(cardTitle, picFile,cId);
 	}
 
 	@Override

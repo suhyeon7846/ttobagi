@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ttobagi.web.entity.Bucketlist;
+import com.ttobagi.web.entity.Couple;
 import com.ttobagi.web.service.BucketlistService;
+import com.ttobagi.web.service.CoupleService;
 
 @RestController("apiBucketlistController")
 @RequestMapping("/api/bucketlist/")
@@ -28,6 +30,8 @@ public class BucketlistController {
 	@Autowired
 	private BucketlistService service;
 	
+	@Autowired
+	private CoupleService coupleService;
 	public static String getUuid() {
 		return UUID.randomUUID().toString().replaceAll("-", ""); 
 	}
@@ -35,8 +39,10 @@ public class BucketlistController {
 	@RequestMapping("list")
 	public List<Bucketlist> list(@RequestParam(name = "s",defaultValue = "1") int status,HttpSession session){
 		int id= (int)session.getAttribute("id");
+		List<Couple> coupleList = coupleService.getList(id);
+		int coupleId = coupleList.get(0).getId();
 		
-		List<Bucketlist> list =service.getList(id,status);
+		List<Bucketlist> list =service.getList(coupleId,status);
 		
 		
 		return list;
@@ -54,9 +60,11 @@ public class BucketlistController {
 			@RequestParam(name = "c",defaultValue = "1") int cardId,HttpSession session){
 		
 		int id= (int)session.getAttribute("id");
+		List<Couple> coupleList = coupleService.getList(id);
+		int coupleId = coupleList.get(0).getId();
 		service.update(cardId);
 		
-		List<Bucketlist> list =service.getList(id,0);
+		List<Bucketlist> list =service.getList(coupleId,0);
 		
 		
 		return list;
@@ -68,9 +76,11 @@ public class BucketlistController {
 			@RequestParam(name = "s",defaultValue = "0") int status,
 			HttpSession session){
 		int id= (int)session.getAttribute("id");
+		List<Couple> coupleList = coupleService.getList(id);
+		int coupleId = coupleList.get(0).getId();
 		service.delete(cardId);
 		
-		List<Bucketlist> list =service.getList(id,status);
+		List<Bucketlist> list =service.getList(coupleId,status);
 		
 		
 		return list;
@@ -80,11 +90,11 @@ public class BucketlistController {
 	public List<Bucketlist> reg(
 			@RequestParam(name = "t",defaultValue = "제목없음") String cardTitle,
 			@RequestParam(name = "p",defaultValue = "01") String picFile,
-			HttpSession session) {
-		int id= (int)session.getAttribute("id");
-		 service.insert(cardTitle,picFile); 
-		
-		List<Bucketlist> list =service.getList(id,0);
+			@RequestParam(name = "c") int coupleId,
+			HttpSession session) { 
+		 service.insert(cardTitle,picFile,coupleId); 
+		System.out.println(coupleId);
+		List<Bucketlist> list =service.getList(coupleId,0);
 		
 		return list;
 	}

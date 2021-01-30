@@ -45,10 +45,11 @@ public class BucketlistController {
 		List<Couple> coupleList = coupleService.getList(id);
 			
 		int coupleId = coupleList.get(0).getId();
-		
+//		System.out.println(coupleId);
 		List<Bucketlist> recommendList =service.getRandomList(1);
 		List<Bucketlist> list =service.getList(coupleId,0);
 		
+		model.addAttribute("coupleId",coupleId);
 		model.addAttribute("recommendList", recommendList);
 		model.addAttribute("list", list);
 		
@@ -58,7 +59,10 @@ public class BucketlistController {
 	
 	@PostMapping("regs")
 //	@ResponseStatus(value=HttpStatus.OK)
-	public String regs(HttpServletRequest request, @RequestParam("file") MultipartFile mfile, @RequestParam("titlename") String cardTitle) throws IllegalStateException, IOException{
+	public String regs(HttpServletRequest request, 
+			@RequestParam("file") MultipartFile mfile, 
+			@RequestParam("titlename") String cardTitle,
+			@RequestParam("coupleId") int cId) throws IllegalStateException, IOException{
 		//웹서비스 디렉토리의 물리적 경로 구하기
 		String realPath = request.getSession().getServletContext().getRealPath("/resources/static/images/user/bucketlist/upload");
 		//받아온 파일의 이름
@@ -68,7 +72,7 @@ public class BucketlistController {
 		//물리적 경로에 파일 저장하기
 		mfile.transferTo(new File(realPath+File.separator+saveFileName));
 		
-		service.insert(cardTitle,saveFileName); 
+		service.insert(cardTitle,saveFileName,cId); 
 	
 		return "redirect:list";
 	}

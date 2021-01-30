@@ -8,6 +8,17 @@
         <section id="main">
             <!-- Thumbnails -->
             <div class="memorylogo"></div>
+            <div class ="search-wrap">
+            	<select>
+            		<option value="">옵션</option>
+            		<option value="키워드">키워드</option>
+            		<option value="날짜">날짜</option>
+            	</select>
+            	<div class="text-wrap">
+            		<input type="text" name="content" class="text-box">
+            		<input type="button" value="검색" class="search-button">
+            	</div>
+            </div>
             <section class="thumbnails">
                 <div class="flip-box"> 
                     <div class="flip">
