@@ -29,7 +29,7 @@
     background-image: url(../../../images/user/diary/light-beige-leather-texture-background-with-pattern-closeup_113767-875\ \(1\).jpg);
     transform-origin: left center;
     transition: 2s;
-    z-index:1;
+    z-index:2;
     /* transform: rotateY(-180deg); */
 
 }
@@ -69,8 +69,11 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     transform-origin: left center;
-    transition: 2s;   
-    /* z-index:2; */
+    /* transition: 2s;    */
+    /* transition: background-color 2s 'rgb(239,153,166)' 2s; */
+    /* transition-property: background-color;
+    transition-duration: 10s; */
+    transition: transform 2s;
 }
 
 #main .book .page1 .diary-list{
@@ -81,7 +84,7 @@
     height: 695px;
     /* border: 1px solid black; */
     left: 50px;
-    top: 79px;
+    top: 79px; /*79px*/
 }
 #main .book .page1 .diary-list .diary-panel-top {
     display: flex;
@@ -100,7 +103,7 @@
 
 #main .book .page1 .diary-list .diary-panel-top .head{
     display: flex;
-    width: 100%;
+    width: 380px;
     height: 66px;
     overflow: hidden;
     /* background-color: #f5f5f5; */
@@ -134,17 +137,27 @@
 
 
 #main .book .page1 .diary-list .diary-panel-top .head .title{
-    display: inline-block;
+    width: 250px;
     color: #4a4a4a;
     text-align: center;
     line-height: 63px;
-    font-size: 20px;
-    width: 100%;
-    margin-right: 64px;    
+    font-size: 15px;
+    font-weight: bold;
+    /* margin-right: 64px;     */
 }
 
 #main .book .page1 .diary-list .diary-panel-top .head .mood{
-  /* margin-left: 50px; */
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+}
+
+#main .book .page1 .diary-list .diary-panel-top .head form{
+  margin-top: 35px;
+}
+
+#main .book .page1 .diary-list .diary-panel-top .head form .submit-button{
+  display: none;
 }
 
 #main .book .page1 .diary-list .diary-panel-top .body{
@@ -279,7 +292,7 @@
     left: 774px;
     top:440px;
     outline: none;
-    z-index: 2;
+    z-index: 4;
     transform-origin: right center;
     transition: 2s;  
     /* perspective: 10px;   */
@@ -350,3 +363,37 @@
   .next:hover, .prev:hover,.open-close:hover{
     cursor: pointer;
 }
+
+/* 삭제 버튼 */
+.del-button{
+  display: none;
+  position: relative;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  margin-left: auto;
+  margin-right: 70px;
+  top: 20px;
+  color: rgb(239, 153, 166);
+  background: white;
+  transition: 1s;
+  border-radius: 10px;
+}
+
+.del-button:hover{
+  cursor: pointer;
+}
+
+/* 넘어가는 효과를 주는 클래스 */
+.active{
+  transform:rotateY(-180deg);
+  
+  z-index: 4;
+  
+}
+
+.reactive{
+  transform:rotateY(0deg);
+  z-index: 4;
+}
+

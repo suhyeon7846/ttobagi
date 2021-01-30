@@ -1,20 +1,76 @@
 window.addEventListener("load",()=>{
     const section = document.querySelector("#main");
-    let book =section.querySelector(".book");
+    let book =section.querySelector(".page");
     const btn = section.querySelector(".note-button");
     let cover = section.querySelector(".cover");
     let coverSpan = section.querySelector(".cover-panel span")
 
     let currentPage = section.querySelector(".page1");
+    // let currentPage_div = currentPage.querySelector("div");
 
     let openBtn= section.querySelector(".open-close");
     let nextBtn= section.querySelector(".next");
     let prevBtn=section.querySelector(".prev");
 
-    let zindex_reverse =2;
-    let zindex=1;
+    let count = 1;
 
-    openBtn.onclick = function(){
+    let checkBox = section.querySelector("input[type=checkbox]");
+    let delBtn = section.querySelector(".del-button");
+    let submitBtn = section.querySelector(".submit-button");
+    
+
+    let item = '<div class="page1" > \
+                        <div class="diary-list"> \
+                            <div class="diary-panel-top"> \
+                                <div class="head"> \
+                                    <div class="deco"> \
+                        <span class="reborn">01-17</span> \
+                    </div> \
+                    <span class="title">제목을 입력하세요~</span> \
+                    <div class="mood"> \
+                        <img src="../../images/user/diary/love.png " style="width: 50px; height: 50px;"> \
+                    </div> \
+                </div> \
+                <div class="body"> \
+                    <textarea class="content"> \
+                    '+count+' \
+                    </textarea> \
+                </div> \
+            </div> '; 
+            
+    checkBox.onclick = ()=>{
+        if(checkBox.checked==true){
+            delBtn.style.display='block';
+            currentPage.querySelector(".diary-list").style.top='49px';
+        }
+        else{
+            delBtn.style.display='none';
+            
+            currentPage.querySelector(".diary-list").style.top='79px';
+        }
+    }
+
+    //삭제버튼 트리거
+    delBtn.onclick = (e)=>{
+        let event = new MouseEvent('click',{
+            bubbles:true,
+            cancelable:true,
+            view:window
+        });
+        submitBtn.dispatchEvent(event);
+    }
+
+    submitBtn.onclick=()=>{
+        alert("삭제 제출");
+    }
+
+    
+        
+    
+
+
+
+    openBtn.onclick = ()=>{
         if(btn.style.transform !='rotateY(180deg)'){//y축이 반대가 아니면 '열기'상태
             btn.style.transform='rotateY(180deg)';
             openBtn.style.opacity='0';
@@ -79,45 +135,43 @@ window.addEventListener("load",()=>{
     }
 
 
-    nextBtn.onclick=function(){
-        //페이지 넘기고 zindex를 기존보다 높게 줘서 위에 쌓이게 
-        currentPage.style.transform='rotateY(-180deg)';
-        console.log(zindex_reverse);
-        currentPage.style.zIndex=zindex_reverse++;
-        console.log(zindex_reverse);
-        //페이지의 클래스를 바꿔서 백그라운드만 있는걸로 
-        // currentPage.style.background= 'rgb(239, 153, 166)';
-        currentPage.className="page0"
+    nextBtn.onclick=()=>{
         
-
-        let item = '<div class="page1"> \
-                        <div class="diary-list"> \
-                            <div class="diary-panel-top"> \
-                                <div class="head"> \
-                                    <div class="deco"> \
-                        <span class="reborn">01-17</span> \
-                    </div> \
-                    <span class="title">제목을 입력하세요~</span> \
-                    <div class="mood"> \
-                        <img src="../../images/user/diary/love.png " style="width: 50px; height: 50px;"> \
-                    </div> \
-                </div> \
-                <div class="body"> \
-                    <textarea class="content"> \
-일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠb<br/> \
-일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/> \
-일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/> \
-일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/> \
-일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/> \
-일기내용을 여기다가 적어봐요 꽉 채워야되요ㅠㅠㅠ<br/> \
-                    </textarea> \
-                </div> \
-            </div> ';
-        book.insertAdjacentHTML('beforeend',item);
-        console.log("다음")
+        //더이상 불러올 데이터가 없으면 null
+        // if(currentPage.nextElementSibling != null){
+            
+            currentPage.classList.add('active');
+            book.insertAdjacentHTML('beforeend',item);
+            setTimeout(function(){
+                // currentPage.style["background-color"]='rgb(239,153,166)';
+                currentPage.querySelector(".diary-list").style.display='none';    
+            },500);
+            
+            
+            
+            
+            count++;
+            
+            setTimeout(function(){
+                currentPage=currentPage.nextElementSibling;
+            },2000)
+        // }
     }
 
-    prevBtn.onclick=function(){
-
+    prevBtn.onclick=()=>{
+        if(currentPage.previousElementSibling != null){
+            currentPage=currentPage.previousElementSibling;
+            if(currentPage.classList.contains('active')){
+                currentPage.classList.remove('active');
+            }          
+            setTimeout(function(){
+                currentPage.querySelector(".diary-list").style.display='flex';    
+            },700)
+            currentPage.classList.add('reactive');
+            setTimeout(function(){
+                currentPage.classList.remove('reactive');
+                currentPage.nextElementSibling.remove();
+            },2000)
+        }  
     }
 })
