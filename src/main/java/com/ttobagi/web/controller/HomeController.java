@@ -7,12 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ttobagi.web.entity.Couple;
 import com.ttobagi.web.entity.CoupleView;
+import com.ttobagi.web.entity.Member;
 import com.ttobagi.web.service.CoupleService;
+import com.ttobagi.web.service.MemberService;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
+
+	@Autowired
+	MemberService memberService;
 	
 	@Autowired
 	CoupleService coupleService;
@@ -26,13 +32,34 @@ public class HomeController {
 				return "home.index";
 			else {
 				int id = (int)session.getAttribute("id");
-				CoupleView coupleView = coupleService.isApproval(0, id);
+				Member member = memberService.get(id);
+				Couple couple = coupleService.get(id);
+				CoupleView coupleView = null;
 				
-				model.addAttribute("coupleView", coupleView);
+				if (couple == null) {
+					model.addAttribute("notification", false);
+					model.addAttribute("member", member);
+					return "home.index";
+				} 
+				
+				if (id == couple.getSenderId()) // 사용자가 sender인 경우
+					model.addAttribute("notification", false);
+				
+				if (id == couple.getReceiverId()) { // 사용자가 receiver인 경우
+					coupleView = coupleService.isApproval(0, id, false); 
+					
+					if (coupleView != null) {  // 응답을 하지 않았으므로 새로운 알림 존재
+						model.addAttribute("notification", true);
+						
+						//CoupleView coupleView2 = coupleService.isNotApproval(0, id);
+						model.addAttribute("coupleView", coupleView);
+					} else  // 이미 커플이므로 새로운 알림 없음
+						model.addAttribute("notification", false);
+					
+				}
 				
 			}
 		}
-		
 		return "home.index";
 	}
 	

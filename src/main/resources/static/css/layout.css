@@ -21,10 +21,8 @@
     }
 
     .sub-header .pic-login {
-        --background: url('/images/login.png') no-repeat;
         width: 40px;
         height: 40px;
-        --background-size: contain;
     }
 
         .sub-header .sub-menu .mega-menu {
@@ -61,7 +59,6 @@
                         height: 40px;
                         overflow: visible;
                         padding: 10px;
-                        --border: 1px solid red;
                         color: black;
                     }
 
@@ -94,7 +91,7 @@
                 text-align: center;
             }
 
-            .sub-header nav > ul > li:nth-child(3) {
+            .sub-header nav > ul > .sub-menu {
                 padding-top: 20px;
             }
 
@@ -110,9 +107,8 @@
                 cursor: pointer;
             }
 
-            .sub-header nav > ul > li:nth-child(3):hover {
+            .sub-header nav > ul > .sub-menu:hover {
                 background: none;
-                /*메가메뉴 나오게 하기*/
             }
 
             .sub-header nav > ul > li:last-child:hover {

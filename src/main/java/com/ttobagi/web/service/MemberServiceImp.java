@@ -22,4 +22,14 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.getMemberByLoginId(loginId);
 	}
 
+	@Override
+	public Member get(int id) {
+		return memberDao.get(id);
+	}
+
+	@Override
+	public int update(Member member) {
+		return memberDao.update(member);
+	}
+
 }

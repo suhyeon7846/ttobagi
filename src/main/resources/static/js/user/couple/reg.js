@@ -23,7 +23,7 @@ window.addEventListener('load', (e) => {
             })
             .catch(err => {
                 alert(`다음과 같은 회원은 커플 등록을 하실 수 없습니다.\n1. 이미 커플을 등록한 회원\n2. 상대방에게 커플을 요청하여 수락 대기중인 회원\n3. 상대방에게 커플 요청이 와서 응답을 해야하는 회원`);
-            })
+            });
 
         });
 
@@ -90,7 +90,6 @@ window.addEventListener('load', (e) => {
         fetch(`/api/couple/list?receiverId=${receiverId}`)
             .then(response => response.json()) 
             .then(response => {
-
                 alert('정상적으로 요청되었습니다. \n상대방의 수락여부는 마이페이지에서 확인이 가능합니다.');
                 location.href = '/user/mypage';
             })

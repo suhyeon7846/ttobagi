@@ -31,7 +31,6 @@ public class CoupleController {
 			
 			coupleService.requestCouple(senderId, receiverId);
 		}
-		
 		return "redirect:../mypage";
 	}
 	
@@ -49,13 +48,14 @@ public class CoupleController {
 			switch(response) {
 				case "요청 수락":
 					coupleService.responseOk(id); 
+					// memberRole에 ROLE_COUPLE 추가하기, 그리고 로그인시 ROLE_COUPLE로 로그인되게 하기?
+					break;
+					
 				case "요청 거절":
 					coupleService.responseNo(id);
+					break;
 			}
 		}
-		
-		
-		
-		return "true";
+		return "redirect:/index";
 	}
 }

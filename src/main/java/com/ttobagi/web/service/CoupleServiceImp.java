@@ -31,10 +31,10 @@ public class CoupleServiceImp implements CoupleService {
 		return coupleDao.get(id);
 	}
 
-	@Override
-	public CoupleView isApproval(int senderId, int receiverId) {
-		return coupleDao.isApproval(senderId, receiverId);
-	}
+//	@Override
+//	public CoupleView isApproval(int senderId, int receiverId) {
+//		return coupleDao.isApproval(senderId, receiverId);
+//	}
 
 	@Override
 	public int responseOk(int receiverId) {
@@ -44,6 +44,21 @@ public class CoupleServiceImp implements CoupleService {
 	@Override
 	public int responseNo(int receiverId) {
 		return coupleDao.responseNo(receiverId);
+	}
+
+	@Override
+	public int update(Couple origin) {
+		return coupleDao.update(origin);
+	}
+
+	@Override
+	public int delete(int id) {
+		return coupleDao.delete(id);
+	}
+
+	@Override
+	public CoupleView isApproval(int senderId, int receiverId, boolean isApproval) {
+		return coupleDao.isApproval(senderId, receiverId, isApproval);
 	}
 
 	

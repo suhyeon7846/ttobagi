@@ -18,16 +18,24 @@ public class MemberDaoImp implements MemberDao {
 		mapper = session.getMapper(MemberDao.class);
 	}
 	
-	
 	@Override
 	public Member getMemberByPhone(String phone) {
 		return mapper.getMemberByPhone(phone);
 	}
 
-
 	@Override
 	public Member getMemberByLoginId(String loginId) {
 		return mapper.getMemberByLoginId(loginId);
+	}
+
+	@Override
+	public Member get(int id) {
+		return mapper.get(id);
+	}
+
+	@Override
+	public int update(Member member) {
+		return mapper.update(member);
 	}
 	
 	
