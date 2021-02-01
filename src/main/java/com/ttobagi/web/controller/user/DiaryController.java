@@ -16,9 +16,5 @@ public class DiaryController {
 	public String reg() {
 		return "user.diary.reg";
 	}
-	
-	@RequestMapping("detail")
-	public String detail() {
-		return "user.diary.detail";
-	}
+
 }

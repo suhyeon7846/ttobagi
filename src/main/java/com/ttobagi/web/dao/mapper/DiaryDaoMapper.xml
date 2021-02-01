@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ttobagi.web.dao.DiaryDao">
+<select id="getViewList" resultType="com.ttobagi.web.entity.Diary">
+ 		select * from diaryView
+		where memberId=#{param1} or memberId=#{param2};
+</select>
+
+<!-- <insert id="insert" >
+	insert into Diary(title,content,memberId,moodId)
+	values ("오늘 있었던 일","오전수업만 하는줄 알았는데 오후수업도 했다. ㅠㅠ",'23','1');
+</insert> -->
+</mapper>
