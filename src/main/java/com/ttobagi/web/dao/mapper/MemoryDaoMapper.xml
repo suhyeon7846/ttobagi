@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ttobagi.web.dao.MemoryDao">
+<select id="getList" resultType="com.ttobagi.web.entity.Memory">
+ 		SELECT * FROM Memory where coupleId =#{id}
+</select>
+<insert id="insert" parameterType="com.ttobagi.web.entity.Memory">
+	insert into Memory(content,fileName,coupleId)
+ 		values(#{content},#{saveFileName},#{cId})
+</insert>
+
+<delete id="delete">
+	delete from Memory where Id = #{cardId}
+</delete>
+
+</mapper>

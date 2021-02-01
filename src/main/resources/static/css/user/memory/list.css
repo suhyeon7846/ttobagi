@@ -16,7 +16,90 @@
     width: 100%;
     padding-top:4em;
 }
-
+/* reg-modal */
+.screen{
+	position:fixed;
+   	left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    background:rgb(0,0,0,0.4);
+    transition:0.7s;
+    z-index:1;
+    display:none;
+}
+.frame{
+	position:fixed;
+    top: -900px;
+    left:50%;
+    background:#fff;
+    width:900px;
+    min-height: 500px;
+    margin-left : -450px;
+    margin-top : -250px;
+    display: flex;
+    flex-direction: column;
+    opacity:0;
+    transition:top 1.2s;
+    z-index:1;
+}
+	.frame .frame-top{
+		flex-grow: 0;
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		background-color:#ee79bd;
+		height:50px;
+		font-size:25px;
+	}
+	
+	.frame .frame-file-wrap{
+		flex-grow: 0; 
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		height:250px;
+		font-size:20px; 
+		flex-direction: column;
+	}
+		.frame .frame-file-wrap h1{
+			font-size:20px;
+			height:50px;
+			line-height:50px
+		}
+	.frame .frame-text-wrap{
+		flex-grow: 0; 
+		display:flex; 
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		height:140px;	
+	}
+		.frame .frame-text-wrap h1{
+			font-size:23px
+		}
+		.frame .frame-text-wrap p{
+			color:#979797;
+		}
+		.frame .frame-text-wrap input[type='text']{
+			width:200px;
+		}
+	.frame .frame-btn-wrap{
+		display:flex;
+		justify-content: space-around; 
+		align-items: center;
+		border-top: 1px solid #e9e9e9;
+		height:60px;
+	}
+		.frame .frame-btn-wrap input{
+			width:200px; 
+			height:50px; 
+			background-color: #ff73c5;
+			border: none;
+			cursor: pointer;
+			font-size:18px
+		}
+/* reg-modal */
 .memorylogo{
 	width:328px;
 	height:50px;
@@ -80,7 +163,7 @@ select {
   margin: 0;
   
   border: 1px solid #ff8080;
-  border-radius: .5em;
+  border-radius: .3em;
   box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
  
 }
@@ -149,6 +232,7 @@ select:disabled {
         transform: rotateY(180deg);
         display: flex;
         align-items: center;
+        position:relative;
     }
 
     .flip-box:hover .flip {
@@ -160,6 +244,8 @@ select:disabled {
             width: 90%;
             height: 320px;
             margin: 10px auto;
+            padding-top:10px;
+            padding-bottom:15px;
             overflow: hidden;
         }
         .thumbnails .flip .img-wrap img {
@@ -180,7 +266,22 @@ select:disabled {
         .thumbnails .flip .text-wrap p{
             margin-top: 20px;        
         }
-
+		
+		.cardDelBtn{
+			position:absolute;
+			bottom: 0;
+			right: 0;
+			
+			width:50%;
+			height: 40px;
+			border:none;
+			background: #ff8080;
+			color:white;
+			
+		}
+		.cardDelBtn:hover {
+			background-color: #ff5151;
+		}
 /* content-plus */
 .content-plus-wrap{
     position: fixed;
