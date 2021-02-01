@@ -11,7 +11,7 @@
 <main id="main" class="main">
 	<section class="content">
 		<div class="container">
-			<h1 class="d-none">연애 꿀팁 상세 게시판</h1>
+			<h1 class="d-none">${type} 상세 글</h1>
 			<table class="table">
 				<tbody>
 					<tr>
@@ -40,7 +40,10 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><img src="<spring:url value='/resources/static/images/user/community/${type}/${f.communityId}/${f.name}'/>"><br>
+						<td>
+							<c:if test="${not empty d.fileId}">
+							<img class="uploadImg" src="<spring:url value='/resources/static/images/user/community/${type}/${d.id}/${d.fileName}'/>"><br>
+							</c:if>
 							${d.content}
 						</td>
 					</tr>

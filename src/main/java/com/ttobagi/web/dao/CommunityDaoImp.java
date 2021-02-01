@@ -79,8 +79,6 @@ public class CommunityDaoImp implements CommunityDao {
 
 	@Override
 	public int insertFiles(CommunityFiles communityFiles) {
-		// TODO Auto-generated method stub
-		System.out.println(communityFiles);
 		return mapper.insertFiles(communityFiles);
 	}
 
@@ -94,6 +92,18 @@ public class CommunityDaoImp implements CommunityDao {
 	public int deleteFiles(int id) {
 		// TODO Auto-generated method stub
 		return mapper.deleteFiles(id);
+	}
+
+	@Override
+	public int getLastNum() {
+		// TODO Auto-generated method stub
+		return mapper.getLastNum();
+	}
+
+	@Override
+	public int getCategory(String type) {
+		// TODO Auto-generated method stub
+		return mapper.getCategory(type);
 	}
 
 	

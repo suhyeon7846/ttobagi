@@ -7,18 +7,23 @@ public class CommunityView extends Community {
 	private String memName;
 	private String memNicName;
 	private String memLoginId;
-
+	private int fileId;
+	private String fileName;
+	
 	public CommunityView() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public CommunityView(int id, String title, String content, int memberId, int categoryId, Date regDate, int hit,
-			int recomCnt, String files, String communityType, String memName, String memNicName, String memLoginId) {
-		super(id, title, content, memberId, categoryId, regDate, hit, recomCnt, files);
+			int recomCnt, String communityType, String memName, String memNicName, String memLoginId, int fileId,
+			String fileName) {
+		super(id, title, content, memberId, categoryId, regDate, hit, recomCnt);
 		this.communityType = communityType;
 		this.memName = memName;
 		this.memNicName = memNicName;
 		this.memLoginId = memLoginId;
+		this.fileId = fileId;
+		this.fileName = fileName;
 	}
 
 	public String getCommunityType() {
@@ -53,10 +58,25 @@ public class CommunityView extends Community {
 		this.memLoginId = memLoginId;
 	}
 
+	public int getFileId() {
+		return fileId;
+	}
+
+	public void setFileId(int fileId) {
+		this.fileId = fileId;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	@Override
 	public String toString() {
 		return "CommunityView [communityType=" + communityType + ", memName=" + memName + ", memNicName=" + memNicName
-				+ ", memLoginId=" + memLoginId + "]";
+				+ ", memLoginId=" + memLoginId + ", fileId=" + fileId + ", fileName=" + fileName + "]";
 	}
-	
 }

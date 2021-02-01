@@ -87,6 +87,17 @@ public class CommunityServiceImp implements CommunityService {
 		return communityDao.deleteFiles(id);
 	}
 
+	@Override
+	public int getLastNum() {
+		return communityDao.getLastNum();
+	}
+
+	@Override
+	public int getCategory(String type) {
+		// TODO Auto-generated method stub
+		return communityDao.getCategory(type);
+	}
+
 	
 
 

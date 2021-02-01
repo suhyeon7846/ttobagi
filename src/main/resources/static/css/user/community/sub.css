@@ -55,6 +55,11 @@
     text-align: center;
 }
 
+.table .uploadImg {
+	max-width: 300px;
+	max-height: 300px;
+}
+
 /* recom */
 .recom {
     margin-bottom: 3%;
