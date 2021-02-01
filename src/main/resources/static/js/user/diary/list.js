@@ -16,6 +16,7 @@ window.addEventListener("load",()=>{
 
     let checkBox = section.querySelector("input[type=checkbox]");
     let delBtn = section.querySelector(".del-button");
+    let regBtn = section.querySelector(".reg-button");
     let submitBtn = section.querySelector(".submit-button");
     
 
@@ -41,12 +42,13 @@ window.addEventListener("load",()=>{
     checkBox.onclick = ()=>{
         if(checkBox.checked==true){
             delBtn.style.display='block';
-            currentPage.querySelector(".diary-list").style.top='49px';
+            regBtn.style.display='none';
+            // currentPage.querySelector(".diary-list").style.top='49px';
         }
         else{
             delBtn.style.display='none';
-            
-            currentPage.querySelector(".diary-list").style.top='79px';
+            regBtn.style.display='block';
+            // currentPage.querySelector(".diary-list").style.top='79px';
         }
     }
 

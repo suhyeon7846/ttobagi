@@ -54,8 +54,10 @@
     font-size: 25px;
     font-weight: bold;
     background: pink;
-    overflow: hidden;
-    /* overflow-y: hidden; */
+    /* overflow: hidden; */
+    overflow-y: scroll;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px ;
 }
 #main .panel .letter-box .body::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
@@ -98,41 +100,5 @@
     line-height: 80px;
     margin-left: 20px;
 }
-
-
-
-
-.heart {
-    width: 50px;
-    height: 50px;
-    background: white;
-    position: relative;
-    transform: rotate(45deg);
-    /* left: 800px; */
-    border: none;
-    margin: auto;
-    top: 200px;
-  }
-  .heart::before,
-  .heart::after {
-    content: "";
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    border-radius: 50%;
-    background: white;
-  }
-  .heart::before {
-    top: 0%;
-    left: -50%;
-  }
-  .heart::after {
-    top: -50%;
-    left: -0%;
-  }
-
-  .heart:hover{
-      cursor: pointer;
-  }
 
   

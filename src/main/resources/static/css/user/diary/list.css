@@ -84,7 +84,7 @@
     height: 695px;
     /* border: 1px solid black; */
     left: 50px;
-    top: 79px; /*79px*/
+    top: 49px; /*79px*/
 }
 #main .book .page1 .diary-list .diary-panel-top {
     display: flex;
@@ -381,6 +381,26 @@
 }
 
 .del-button:hover{
+  cursor: pointer;
+}
+
+/* 등록 버튼 */
+.reg-button{
+  
+  position: relative;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  margin-left: auto;
+  margin-right: 70px;
+  top: 20px;
+  color: rgb(239, 153, 166);
+  background: white;
+  transition: 1s;
+  border-radius: 10px;
+}
+
+.reg-button:hover{
   cursor: pointer;
 }
 
