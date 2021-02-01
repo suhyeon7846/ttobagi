@@ -21,4 +21,6 @@ public interface CommunityService {
 	int insertFiles(CommunityFiles communityFiles);
 	int updateFiles(CommunityFiles communityFiles);
 	int deleteFiles(int id);
+	int getLastNum();
+	int getCategory(String type);
 }

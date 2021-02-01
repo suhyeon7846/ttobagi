@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
@@ -25,10 +27,12 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mysql.cj.Session;
 import com.ttobagi.web.entity.Community;
 import com.ttobagi.web.entity.CommunityCategory;
 import com.ttobagi.web.entity.CommunityFiles;
 import com.ttobagi.web.entity.CommunityView;
+import com.ttobagi.web.entity.Member;
 import com.ttobagi.web.service.CommunityService;
 
 @Controller
@@ -56,7 +60,6 @@ public class CommunityController {
 		
 		List<CommunityView> bestList = service.getViewList(0, 5, type, "hit");
 		List<CommunityView> list = service.getViewList(0, 10, type, "regDate");
-
 		model.addAttribute("bestList", bestList);
 		model.addAttribute("list", list);
 		
@@ -68,10 +71,8 @@ public class CommunityController {
 	public String detail(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
 		
 		CommunityView communityView = service.getView(id);
-		CommunityFiles communityFiles = service.getFiles(id);
 		
 		model.addAttribute("d", communityView);
-		model.addAttribute("f", communityFiles);
 		
 		return "user.community."+type+".detail";
 	}
@@ -82,7 +83,6 @@ public class CommunityController {
 		CommunityFiles files = service.getFiles(id);
 		
 		model.addAttribute("e", list);
-		model.addAttribute("f", files);
 		
 		return "user.community."+type+".edit";
 	}
@@ -99,38 +99,96 @@ public class CommunityController {
 		String title = community.getTitle();
 		String content = community.getContent();
 		
-		// 파일 업로드
-		String url = "resources/static/images/user/community/"+type+"/"+id;
-		String realPath = request.getServletContext().getRealPath(url);
 		String fileName = file.getOriginalFilename();
-
-		File realPathFile = new File(realPath);
-		if( !realPathFile.exists())
-			realPathFile.mkdirs();
+		//파일을 등록했을 때만 실행
+		if( fileName != null && !fileName.equals("")) {
+			String url = "resources/static/images/user/community/"+type+"/"+id;
+			String realPath = request.getServletContext().getRealPath(url);
+			
+			File realPathFile = new File(realPath);
+			if( !realPathFile.exists())
+				realPathFile.mkdirs();
+			
+			String uploadedFilePath = realPath + File.separator + fileName;		
+			File uploadedFile = new File(uploadedFilePath);
+			
+			file.transferTo(uploadedFile);
+			
+			//객체에 파일이름이랑 id set
+			communityFiles.setName(fileName);
+			communityFiles.setCommunityId(id);
+			
+			//그냥 등록이라면 insert
+			if(service.getFiles(id) == null) {
+				service.insertFiles(communityFiles);
+			}
+			//파일이 있다면 update
+			else { 
+				service.updateFiles(communityFiles);			
+			}
+		}			
 		
-		String uploadedFilePath = realPath + File.separator + fileName;
-		File uploadedFile = new File(uploadedFilePath);
-
-		file.transferTo(uploadedFile);
-
+		//파일 외 텍스트나 제목 업데이트
 		Community origin = service.get(id);
 		origin.setTitle(title);
 		origin.setContent(content);
 		
-		communityFiles.setName(fileName);
-		communityFiles.setCommunityId(id);
-		
-		
-		service.insertFiles(communityFiles);
 		service.update(origin);
 
 		return "redirect:../"+id;
 	}
 	
+	@GetMapping("{type}/reg")
+	public String reg(Model model, @PathVariable("type") String type) {
+		
+		model.addAttribute("type", type);
+		
+		return "user.community."+type+".reg";
+	}
+	
 	@PostMapping("{type}/reg")
-	public String reg(@PathVariable("type") String type) {
-		//service.insert();
-		return "redirect:../"+type+"/list";
+	public String reg(@PathVariable("type") String type,
+				      Community community,
+				      CommunityFiles communityFiles,
+				      Member member,
+				      @RequestParam("file") MultipartFile file,
+				      HttpServletRequest request,
+				      HttpSession session
+				      ) throws IllegalStateException, IOException{
+		
+		int id = (int) session.getAttribute("id");
+		String fileName = file.getOriginalFilename();
+
+		int categoryId = service.getCategory(type);
+
+		community.setMemberId(id);
+		community.setCategoryId(categoryId);
+		
+		service.insert(community);
+		
+		int lastNum = service.getLastNum();
+		//파일을 등록했을 때만 실행
+		if( fileName != null && !fileName.equals("")) {
+			String url = "resources/static/images/user/community/"+type+"/"+lastNum;
+			String realPath = request.getServletContext().getRealPath(url);
+			
+			File realPathFile = new File(realPath);
+			if( !realPathFile.exists())
+				realPathFile.mkdirs();
+			
+			String uploadedFilePath = realPath + File.separator + fileName;		
+			File uploadedFile = new File(uploadedFilePath);
+			
+			file.transferTo(uploadedFile);
+			
+			//객체에 파일이름이랑 id set
+			communityFiles.setName(fileName);
+			communityFiles.setCommunityId(lastNum);
+			
+			service.insertFiles(communityFiles);			
+		}
+		
+		return "redirect:../"+type;
 	}
 	
 	@GetMapping("{type}/{id}/del")
