@@ -37,10 +37,10 @@ public class CoupleDaoImp implements CoupleDao {
 		return mapper.get(id);
 	}
 
-	@Override
-	public CoupleView isApproval(int senderId, int receiverId) {
-		return mapper.isApproval(senderId, receiverId);
-	}
+//	@Override
+//	public CoupleView isApproval(int senderId, int receiverId) {
+//		return mapper.isApproval(senderId, receiverId);
+//	}
 
 	@Override
 	public int responseOk(int receiverId) {
@@ -50,6 +50,21 @@ public class CoupleDaoImp implements CoupleDao {
 	@Override
 	public int responseNo(int receiverId) {
 		return mapper.responseNo(receiverId);
+	}
+
+	@Override
+	public int update(Couple origin) {
+		return mapper.update(origin);
+	}
+
+	@Override
+	public int delete(int id) {
+		return mapper.delete(id);
+	}
+
+	@Override
+	public CoupleView isApproval(int senderId, int receiverId, boolean isApproval) {
+		return mapper.isApproval(senderId, receiverId, isApproval);
 	}
 
 	

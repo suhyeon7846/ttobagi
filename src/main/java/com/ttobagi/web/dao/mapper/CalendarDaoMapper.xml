@@ -5,7 +5,8 @@
 
 <mapper namespace="com.ttobagi.web.dao.CalendarDao">
 	<select id="getList" resultType="com.ttobagi.web.entity.Calendar">
- 		SELECT * FROM Calendar 
+ 		SELECT id, date_format(start,'%Y-%m-%d %h:%i:%s') start, 
+ 		date_format(end,'%Y-%m-%d %h:%i:%s') end, location,title,content,regdate,coupleId FROM Calendar 
  		where coupleId = (select id from couple where senderId=#{id} or receiverId=#{id})
 	</select>
 </mapper>
