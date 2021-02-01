@@ -1,16 +1,40 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
 <link rel="stylesheet" href="/css/user/memory/list.css">
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <script type="module" src="/js/user/memory/list.js"></script>    
  <section class="section-1">
         <section id="main">
+	        <div class="screen"></div>
+	        <div class="frame">
+		        <div class="frame-top">
+		          <h1>버킷리스트 등록</h1>     
+				</div>
+				<form id="memoryForm" name="memoryForm" action="reg" method="post" enctype="multipart/form-data">
+		               <div class="frame-file-wrap">
+		                   <h1>원하는 사진을 선택해 주세요</h1>
+		                  <input type="file" name="file" accept=".jpg, .png">
+		               </div>
+		               <div class="frame-text-wrap">
+		                  <h1>제목</h1>
+		                  <p>EX) 버킷리스트는 최고야!</p>
+		                 <textarea rows="50" cols="100" name="content"></textarea>
+		               </div>
+		               <div class="frame-btn-wrap">
+		               		<input type="hidden" value=${coupleId} name="coupleId">
+		                   <input type="submit" value="등록" class="sbtn" >
+		                   <input type="button" value="취소" >
+		               </div>
+				</form>
+			</div>
             <!-- Thumbnails -->
             <div class="memorylogo"></div>
             <div class ="search-wrap">
-            	<select>
-            		<option value="">옵션</option>
+            	<select id="search-option">
+            		<option value="" disabled>옵션</option>
             		<option value="키워드">키워드</option>
             		<option value="날짜">날짜</option>
             	</select>
@@ -20,60 +44,27 @@
             	</div>
             </div>
             <section class="thumbnails">
+            <c:forEach var="m" items="${list}">
                 <div class="flip-box"> 
                     <div class="flip">
                         <div class="front">
                             <div class="img-wrap">
-                                <img src="../../images/user/bucketlist/01.jpg" alt="" />
+                               <img src="<spring:url value='/resources/static/images/user/memory/upload/${m.fileName}'/>" alt="${m.fileName}" />
                             </div>
                         </div>
                         <div class="back">
                             <div class="text-wrap">
-                                <h1>2021년 1월 1일</h1>
-                                <p>비밀 하나를 알려줄게.<br /> 아주 간단한 건데, 마음으로 봐야 잘 보인다는 거야.<br /><br /> 정말 중요한 것은 
-                                    눈에 보이지 않거든.<br /><br />그럼 안녕, 잘 가.
+                                <h1>${m.regDate}</h1>
+                                <p>
+                                ${m.content}
                                 </p>
                             </div>
+                           	<input type="button" value="삭제" class="cardDelBtn">
+                           	<input type="hidden" value="${m.id}">
                         </div>
                     </div>
                 </div>
-                <div class="flip-box"> 
-                    <div class="flip">
-                        <div class="front">
-                            <div class="img-wrap">
-                                <img src="../../images/user/bucketlist/04.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="text-wrap">
-                                <h1>2021년 1월 3일</h1>
-                                <p>수많은 발소리 중에 네 발소리를 구별하게 될 거야.
-                                    <br /><br /> 다른 소리는 나를 땅속 깊이 숨게 하지만, 네 발소리는 마치 음악 소리처럼
-                                    나를 밖으로 불러낼 거야
-
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-box"> 
-                    <div class="flip">
-                        <div class="front">
-                            <div class="img-wrap">
-                                <img src="../../images/user/bucketlist/05.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="text-wrap">
-                                <h1>2021년 1월 10일</h1>
-                                <p>사실 그랬다.<br /> 나는 언제나 사막을 사랑했다.<br /><br /> 모래 언덕위에
-                                    앉으면 아무것도 보이지 않고, 아무 소리도 들리지 않는다.<br /><br/>
-                                    그러나 침묵 속에서도 반짝이는 무언가가 숨어 있다.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </section>
         </section>
     </section>
