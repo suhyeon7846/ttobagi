@@ -13,10 +13,16 @@ public interface CoupleDao {
 
 	Couple get(int id);
 
-	CoupleView isApproval(int senderId, int receiverId);
+	//CoupleView isApproval(int senderId, int receiverId);
 
 	int responseOk(int receiverId);
 
 	int responseNo(int receiverId);
+
+	int update(Couple origin);
+
+	int delete(int id);
+
+	CoupleView isApproval(int senderId, int receiverId, boolean isApproval);
 
 }

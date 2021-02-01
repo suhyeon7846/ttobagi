@@ -8,4 +8,8 @@ public interface MemberService {
 
 	Member getMemberByLoginId(String loginId);
 
+	Member get(int id);
+
+	int update(Member member);
+
 }

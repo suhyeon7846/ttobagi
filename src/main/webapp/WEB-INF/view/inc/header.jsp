@@ -14,34 +14,33 @@
                 <li><a href="">커플노트</a></li>
                 <li><a href="/user/community/index">커뮤니티</a></li>
                 <s:authorize access="isAnonymous()">
-                	<li><a href="/auth/login">로그인</a></li>
-                	<li></li>
+                <li><a href="/auth/login">로그인</a></li>
+                <li></li>
                 </s:authorize>
                 <s:authorize access="isAuthenticated()">
-                    <li class="sub-menu">
-                        <img class="pic-login" src="/images/login.png" alt="">
-                        <div class="mega-menu">
-                            <ul>
-                                <li><a href="/user/mypage">마이페이지</a></li>
-                                <li><a href="/auth/logout">로그아웃</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                	<li><i class="fas fa-bell bell"></i></li>
+                <li class="sub-menu">
+                    <img class="pic-login" src="/images/login.png" alt="">
+                    <div class="mega-menu">
+                        <ul>
+                            <li><a href="/user/mypage">마이페이지</a></li>
+                            <li><a href="/auth/logout">로그아웃</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><i class="fas fa-bell bell"></i></li>
                 </s:authorize>
                 
             </ul>
         </nav>
         <s:authorize access="isAuthenticated()">
 	        <div class="tooltip">
-	        	
-	            <div class="bell-num ${empty coupleView ? 'd-none' : ''}">1</div>
+	            <div class="bell-num ${notification == true ? '' : 'd-none'}">1</div>
 	            <div class="bell-content d-none">
-	            	<c:if test="${not empty coupleView}">
+	            	<c:if test="${notification == true}">
 	            		<span>커플 요청이 도착했습니다.</span>
 	                	<input type="button" class="detail-btn header-modal-open" value="자세히 보기">
 	            	</c:if>
-	            	<c:if test="${empty coupleView}">
+	            	<c:if test="${notification == false}">
 						<span>새로운 알림이 없습니다.</span>
 					</c:if>
 	            </div>
@@ -52,7 +51,7 @@
     <section class="header-modal-sec">
         <main class="header-modal-main">
             <div class="header-exit-container">
-                <a href="#" class="header-modal-close">
+                <a href="" class="header-modal-close">
                     <i class="fas fa-times"></i>
                 </a>
             </div>
