@@ -1,6 +1,9 @@
 package com.ttobagi.web.controller.user;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,6 +36,17 @@ public class CalendarController {
 	public List<Calendar> getList(HttpSession session, Model model){
 		int id = (int) session.getAttribute("id");
 		List<Calendar> list = service.getList(id);
+		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss", Locale.KOREA );
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		for(Calendar c : list) {
+			try {
+				c.setStart(transFormat.parse(formatter.format(c.getStart())));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		model.addAttribute("id",id);
 		model.addAttribute("list",list);

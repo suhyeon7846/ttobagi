@@ -17,6 +17,17 @@ function getFormatDate(date){
     return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
 
+function getFormatTime(date){
+    var hour = date.getHours();              //yyyy
+    var minute = date.getMinutes();         //M
+   	hour = hour >= 10 ? hour : '0' + hour;  //month 두자리로 저장
+    minute = minute >= 10 ? minute : '0' + minute;          //day 두자리로 저장
+	var second = date.getSeconds();
+	second = second >= 10 ? second : '0' + second;
+	
+    return  hour + ':' + minute + ':' + second;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+}
+
 class ModalBox{
   
     static alert(message=""){
@@ -183,24 +194,26 @@ class DetailBox{
             </div>
             <div style="flex-grow: 1; display:flex;justify-content: center;align-items: center;">
             <div class="schedule">
-				시작 : <input name="startDate" type="date" value="${getFormatDate(event.start)}"/> <input name="startTime" type="time"/><br>
-				종료 : <input name="endDate" type="date" value="${getFormatDate(event.end)}"/> <input name="endTime" type="time"/><br>
-				장소 : <input style="width:230px;" name="location" type="text" placeholder="장소" /><br>
-				제목 : <input style="width:230px;" name="title" type="text" placeholder="일정내용" /><br>
-				상세내용<br><textarea style="width:263px; height:300px;" name="content"></textarea>
+				시작 : <input name="startDate" type="date" value="${getFormatDate(event.start)}"/> <input name="startTime" type="time" value="${getFormatTime(event.start)}"/><br>
+				종료 : <input name="endDate" type="date" value="${getFormatDate(event.end)}"/> <input name="endTime" type="time" value="${getFormatTime(event.end)}"/><br>
+				장소 : <input style="width:230px;" name="location" type="text" placeholder="${event.location}" /><br>
+				제목 : <input style="width:230px;" name="title" type="text" placeholder="${event.title}" /><br>
+				상세내용<br><textarea style="width:263px; height:300px;" name="content">${event.content}</textarea>
 				
 			</div>
             </div>
             <div style="display:flex;justify-content: center; border-top: 1px solid #e9e9e9;">
-            <input type="button" value="OK">
-            <input type="button" value="CANCEL">
+            <input type="button" value="저장">
+			<input type="button" value="삭제">
+            <input type="button" value="취소">
             </div>
             `;
 
             document.body.append(frame);
 
-            const okButton = frame.querySelector("input[value=OK]");
-            const cancelButton = frame.querySelector("input[value=CANCEL]");
+            const okButton = frame.querySelector("input[value=저장]");
+            const cancelButton = frame.querySelector("input[value=취소]");
+			const delButton = frame.querySelector("input[value=삭제]");
 			const startDate = frame.querySelector("input[name=startDate]");
 			const startTime = frame.querySelector("input[name=startTime]");
 			const endDate = frame.querySelector("input[name=endDate]");
@@ -244,7 +257,7 @@ class DetailBox{
 		})
 		.then(list=>{
 			eventList = list;
-			console.log(eventList);
+			console.log(eventList[0].start);
 			for(var e of eventList){
 				
 				srcCalendar.addEvent(e);
