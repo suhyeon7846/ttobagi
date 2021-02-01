@@ -2,6 +2,8 @@ window.addEventListener('load', (e) => {
     const memberInfoEditBtn = document.querySelector('.member-info-edit-btn');
     const coupleInfoDeleteBtn = document.querySelector('.couple-info-delete-btn');
     const loveStartDateEditBtn = document.querySelector('.love-start-date-edit-btn');
+    
+    calcDDay();
 
     memberInfoEditBtn.addEventListener('click', (e) => {
         const password = document.querySelector('.password').value;
@@ -52,4 +54,24 @@ window.addEventListener('load', (e) => {
 
         alert('연애 시작일이 정상적으로 설정되었습니다.');
     });
+
+    function calcDDay() {
+        const dayMentOk = document.querySelector('.day-ment-ok');
+        const dayMentNo = document.querySelector('.day-ment-no');
+        const loveStartDate = document.querySelector('.love-start-date').value;
+        const dDayStart = document.querySelector('.d-day-start');
+        const today = new Date();
+
+        if (loveStartDate == '') {
+            dayMentOk.classList.add('d-none');
+            dayMentNo.classList.remove('d-none');
+            return;
+        }
+
+        const loveStartDay = new Date(loveStartDate);
+        let dateDiff = Math.ceil((today.getTime() - loveStartDay.getTime()) / (1000 * 3600 * 24));
+
+        dDayStart.innerText = dateDiff;
+    }
+    
 });

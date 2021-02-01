@@ -67,6 +67,10 @@
 	                <div class="couple-info-sub-container">
 	                    <div class="couple-info-title">닉네임</div>
 	                    <input type="text" class="couple-info nickname" value="${oppositeMember.nickname}" disabled>
+                    </div>
+                    <div class="couple-info-sub-container">
+	                    <div class="couple-info-title">태어난 날</div>
+                        <input type="text" class="couple-info birthday" value="${coupleView.birthday}" disabled>
 	                </div>
 	                <div class="couple-info-sub-container">
 	                    <div class="couple-info-title">연애시작일</div>
@@ -78,7 +82,9 @@
 	                    <input type="text" class="couple-info regDate" value="${coupleView.approvalDate}" disabled>
 	                </div>
 	                <input type="submit" name="action" class="couple-info-delete-btn" value="커플 해제"> 
-	            </form>
+                </form>
+                <div class="day-ment day-ment-ok">오늘은 우리가 만난지 <span class="d-day-start"></span>일 되는 날♥</div>
+                <div class="day-ment day-ment-no d-none">연애 시작일을 설정해 주세요!</div>
             </c:if>
             
         </section>

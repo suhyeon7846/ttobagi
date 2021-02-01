@@ -28,10 +28,10 @@
 			join couple c on m.id = c.senderId
 			where senderId = ${senderId} and not isNull(approvalDate);
 		</if>
-		<if test="senderId == 0 and isApproval == false">
+		<if test="receiverId == 0 and isApproval == false">
 			select * from member m
-			join couple c on m.id = c.receiverId
-			where receiverId = ${receiverId} and isNull(approvalDate);
+			join couple c on m.id = c.senderId
+			where senderId = ${senderId} and isNull(approvalDate);
 		</if>
 	</select>
 	

@@ -29,13 +29,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				//.antMatchers("/**").permitAll() // 편의를 위해 모든 페이지 접근 허용
+				.antMatchers("/auth/**").permitAll()
 				.antMatchers("/user/**").authenticated()
+				//.antMatchers("/admin/**").hasRole("ROLE_ADMIN") <- 왜 에러?
 				.and()
 			.formLogin()
 				.loginPage("/auth/login")
 				.loginProcessingUrl("/auth/login") // post하는 경로
 				.defaultSuccessUrl("/index") // 의도적으로 로그인을 하여 성공한 경우
-					//.failureUrl("/auth/reg")
+					//.failureUrl("/auth/reg") failureHandler를 써야할까?
 				.successHandler(successHandler)
 				.and()
 			.logout()

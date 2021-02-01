@@ -46,7 +46,8 @@ public class HomeController {
 					model.addAttribute("notification", false);
 				
 				if (id == couple.getReceiverId()) { // 사용자가 receiver인 경우
-					coupleView = coupleService.isApproval(0, id, false); 
+					int senderId = couple.getSenderId();
+					coupleView = coupleService.isApproval(senderId, 0, false); 
 					
 					if (coupleView != null) {  // 응답을 하지 않았으므로 새로운 알림 존재
 						model.addAttribute("notification", true);

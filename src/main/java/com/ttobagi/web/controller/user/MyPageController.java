@@ -16,6 +16,7 @@ import com.ttobagi.web.entity.Couple;
 import com.ttobagi.web.entity.CoupleView;
 import com.ttobagi.web.entity.Member;
 import com.ttobagi.web.service.CoupleService;
+import com.ttobagi.web.service.MemberRoleService;
 import com.ttobagi.web.service.MemberService;
 
 @Controller
@@ -24,6 +25,9 @@ public class MyPageController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	MemberRoleService memberRoleService;
 	
 	@Autowired
 	CoupleService coupleService;
@@ -108,6 +112,15 @@ public class MyPageController {
 				case "커플 해제":
 					Couple origin2 = coupleService.get(id);
 					coupleService.delete(origin2.getId());
+					
+					if (origin2.getSenderId() == id) { 
+						memberRoleService.delete(id, 2); // 'ROLE_COUPLE' 삭제
+						memberRoleService.delete(origin2.getReceiverId(), 2);
+					} else {
+						memberRoleService.delete(id, 2);
+						memberRoleService.delete(origin2.getSenderId(), 2);
+					}
+					
 					break;
 			}
 		}

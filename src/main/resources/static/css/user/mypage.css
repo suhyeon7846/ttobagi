@@ -64,6 +64,7 @@
                     padding: 5px 15px;
                     border: 1px solid #e9e9e9;
                     cursor: pointer;
+                    font-weight: bold;
                 }
 
                 .love-start-date-edit-btn {
@@ -78,6 +79,32 @@
                     opacity: 0.7;
                 }
         
-        .right-sec .wait-ment {
-            margin-top: 15px;
+        .right-sec {
+            border: 1px solid #fc0453a2;
+            background: #ffecf2;
         }
+
+            .right-sec .couple-info {
+                border: 1px solid #fc04535b;
+            }
+
+            .right-sec .love-start-date-edit-btn,
+            .right-sec .couple-info-delete-btn {
+                border: 1px solid #fc0453a2;
+                background: #fc0453;
+                color: white;
+            }
+
+            .right-sec .wait-ment {
+                margin-top: 15px;
+            }
+
+            .right-sec .day-ment {
+                font-size: 20px;
+                margin-top: 30px;
+            }
+
+            .right-sec .d-day-start {
+                font-size: 32px;
+                color: #fc0453;
+            }

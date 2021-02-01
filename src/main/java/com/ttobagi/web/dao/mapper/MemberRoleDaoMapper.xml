@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ttobagi.web.dao.MemberRoleDao">
+	<insert id="insert" parameterType="com.ttobagi.web.entity.MemberRole">
+		insert into memberRole(memberId, roleId) values(#{id}, #{type});
+	</insert>
+
+	<delete id="delete" parameterType="com.ttobagi.web.entity.MemberRole">
+		delete from memberRole where memberId = #{id} and roleId = #{type};
+	</delete>
+</mapper>

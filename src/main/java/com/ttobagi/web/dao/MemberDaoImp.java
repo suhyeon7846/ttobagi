@@ -38,5 +38,4 @@ public class MemberDaoImp implements MemberDao {
 		return mapper.update(member);
 	}
 	
-	
 }
