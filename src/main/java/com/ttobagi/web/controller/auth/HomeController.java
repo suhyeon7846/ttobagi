@@ -1,5 +1,7 @@
 package com.ttobagi.web.controller.auth;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -10,15 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ttobagi.web.entity.Member;
-import com.ttobagi.web.entity.MemberRole;
 import com.ttobagi.web.service.AuthService;
+import com.ttobagi.web.service.MemberService;
 
 @Controller("authHomeController")
 @RequestMapping("/auth/")
 public class HomeController {
 	
 	@Autowired
-	AuthService service;
+	AuthService authService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@GetMapping("reg")
 	public String reg() {
@@ -30,11 +35,11 @@ public class HomeController {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		member.setPassword(passwordEncoder.encode(member.getPassword()));
 		
-		service.insert(member); // 회원가입 정보 insert
+		authService.insert(member); // 회원가입 정보 insert
 		
-		int memberId = service.getLastId();
+		int memberId = authService.getLastId();
 		int roleId = 3; // 'SOLO'
-		service.insertMemberRole(memberId, roleId); 
+		authService.insertMemberRole(memberId, roleId); 
 		
 		return "redirect:login";
 	}
@@ -43,7 +48,7 @@ public class HomeController {
 	@ResponseBody
 	public String loginIdCheck(@PathVariable(name="loginId") String loginId) {
 		String isDuplication = "false";
-		int result = service.checkLoginId(loginId);
+		int result = authService.checkLoginId(loginId);
 		
 		if (result == 1) // 중복이 된 경우
 			isDuplication = "true";
@@ -56,7 +61,7 @@ public class HomeController {
 	public String nicknameIdCheck(@PathVariable(name="nickname") String nickname) {
 		String isDuplication = "false";
 		
-		int result = service.checkNickname(nickname);
+		int result = authService.checkNickname(nickname);
 		
 		if (result == 1) // 중복이 된 경우
 			isDuplication = "true";
@@ -67,6 +72,30 @@ public class HomeController {
 	@GetMapping("login")
 	public String login() {
 		return "auth.login";
+	}
+	
+	@PostMapping("login")
+	@ResponseBody
+	public String loginValidate(HttpSession session, String loginId, String password) {
+		String isValidate = "false";
+		
+		System.out.println("loginId: " + loginId);
+		System.out.println("password: " + password);
+		
+		if (session != null) {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			int id = (int)session.getAttribute("id");
+			
+			Member member = memberService.get(id);
+			
+			if (loginId.equals(member.getLoginId()))
+				isValidate = "true";
+			
+			if (passwordEncoder.encode(password).equals(member.getPassword()))
+				isValidate = "true";
+		}
+		
+		return isValidate;
 	}
 	
 }

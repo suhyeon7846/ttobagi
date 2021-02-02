@@ -65,6 +65,6 @@ public class CoupleController {
 					break;
 			}
 		}
-		return "redirect:/index";
+		return "redirect:/user/mypage";
 	}
 }
