@@ -1,22 +1,23 @@
 package com.ttobagi.web.entity;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Calendar {
 	private int id;
-	private Date start;
-	private Date end;
+	private Timestamp start;
+	private Timestamp end;
 	private String location;
 	private String title;
 	private String content;
-	private Date regdate;
+	private Timestamp regdate;
 	private int coupleId;
 	
 	public Calendar() {
 		
 	}
 
-	public Calendar(int id, Date start, Date end, String location, String title, String content, Date regdate,
+	public Calendar(int id, Timestamp start, Timestamp end, String location, String title, String content, Timestamp regdate,
 			int coupleId) {
 		super();
 		this.id = id;
@@ -37,19 +38,19 @@ public class Calendar {
 		this.id = id;
 	}
 
-	public Date getStart() {
+	public Timestamp getStart() {
 		return start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(Timestamp start) {
 		this.start = start;
 	}
 
-	public Date getEnd() {
+	public Timestamp getEnd() {
 		return end;
 	}
 
-	public void setEnd(Date end) {
+	public void setEnd(Timestamp end) {
 		this.end = end;
 	}
 
@@ -77,11 +78,11 @@ public class Calendar {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
+	public Timestamp getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
 

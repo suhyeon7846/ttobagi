@@ -36,18 +36,20 @@ public class CalendarController {
 	public List<Calendar> getList(HttpSession session, Model model){
 		int id = (int) session.getAttribute("id");
 		List<Calendar> list = service.getList(id);
-		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss", Locale.KOREA );
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss", Locale.KOREA );
+//		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-		for(Calendar c : list) {
-			try {
-				c.setStart(transFormat.parse(formatter.format(c.getStart())));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
+//		for(Calendar c : list) {
+//			try {
+//				System.out.println(c.getStart());
+//				c.setStart(transFormat.parse(formatter.format(c.getStart())));
+//				System.out.println(c.getStart());
+//			} catch (ParseException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+		System.out.println(list.get(0).getRegdate());
 		model.addAttribute("id",id);
 		model.addAttribute("list",list);
 		

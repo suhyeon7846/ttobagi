@@ -8,23 +8,33 @@ class CSS{
     }
 }
 
-function getFormatDate(date){
-    var year = date.getFullYear();              //yyyy
-    var month = (1 + date.getMonth());          //M
+function parse(str) {
+    var y = str.substr(0, 4);
+    var m = str.substr(5, 2);
+    var d = str.substr(8, 2);
+	var h = str.substr(11,2);
+	var min = str.substr(14,2);
+	var s = str.substr(17,2);
+    return new Date(y,m-1,d,h,min,s);
+}
+function getFormatDate(korDate){
+	//var korDate = parse(date);
+    var year = korDate.getFullYear();              //yyyy
+    var month = (1 + korDate.getMonth());          //M
     month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
-    var day = date.getDate();                   //d
+    var day = korDate.getDate();                   //d
     day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
     return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
 
-function getFormatTime(date){
-    var hour = date.getHours();              //yyyy
-    var minute = date.getMinutes();         //M
-   	hour = hour >= 10 ? hour : '0' + hour;  //month 두자리로 저장
-    minute = minute >= 10 ? minute : '0' + minute;          //day 두자리로 저장
-	var second = date.getSeconds();
-	second = second >= 10 ? second : '0' + second;
-	
+function getFormatTime(korDate){
+	//var korDate = parse(date);
+    var hour = korDate.getHours();              //yyyy
+	hour = hour >= 10 ? hour : '0' + hour;
+    var minute = korDate.getMinutes();          //M
+    minute = minute >= 10 ? minute : '0' + minute;  //month 두자리로 저장
+    var second = korDate.getSeconds();                   //d
+    second = second >= 10 ? second : '0' + second;          //day 두자리로 저장
     return  hour + ':' + minute + ':' + second;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
 
@@ -194,8 +204,8 @@ class DetailBox{
             </div>
             <div style="flex-grow: 1; display:flex;justify-content: center;align-items: center;">
             <div class="schedule">
-				시작 : <input name="startDate" type="date" value="${getFormatDate(event.start)}"/> <input name="startTime" type="time" value="${getFormatTime(event.start)}"/><br>
-				종료 : <input name="endDate" type="date" value="${getFormatDate(event.end)}"/> <input name="endTime" type="time" value="${getFormatTime(event.end)}"/><br>
+				시작 : <input name="startDate" type="date" value="${event.start}"/> <input name="startTime" type="time" value="${event.start}"/><br>
+				종료 : <input name="endDate" type="date" value="${event.end}"/> <input name="endTime" type="time" value="${event.end}"/><br>
 				장소 : <input style="width:230px;" name="location" type="text" placeholder="${event.location}" /><br>
 				제목 : <input style="width:230px;" name="title" type="text" placeholder="${event.title}" /><br>
 				상세내용<br><textarea style="width:263px; height:300px;" name="content">${event.content}</textarea>
@@ -259,7 +269,6 @@ class DetailBox{
 			eventList = list;
 			console.log(eventList[0].start);
 			for(var e of eventList){
-				
 				srcCalendar.addEvent(e);
 			}
 		});
