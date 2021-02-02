@@ -83,7 +83,7 @@
 	                </div>
 	                <input type="submit" name="action" class="couple-info-delete-btn" value="커플 해제"> 
                 </form>
-                <div class="day-ment day-ment-ok">오늘은 우리가 만난지 <span class="d-day-start"></span>일 되는 날♥</div>
+                <div class="day-ment day-ment-ok">오늘은 ${oppositeMember.name}님과 만난지<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="d-day-start"></span>일 되는 날이에요!</div>
                 <div class="day-ment day-ment-no d-none">연애 시작일을 설정해 주세요!</div>
             </c:if>
             
