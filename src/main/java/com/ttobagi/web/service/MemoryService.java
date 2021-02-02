@@ -11,5 +11,9 @@ public interface MemoryService {
 	int insert(String content, String saveFileName, int cId);
 
 	int delete(int cardId);
+
+	List<Memory> keywordList(int coupleId, String text);
+
+	List<Memory> dateList(int coupleId, String text);
 	
 }

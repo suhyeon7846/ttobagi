@@ -11,5 +11,9 @@ public interface MemoryDao {
 	List<Memory> getList(int id);
 
 	int delete(int cardId);
+
+	List<Memory> keywordList(int coupleId, String text);
+
+	List<Memory> dateList(int coupleId, String text);
 	
 }
