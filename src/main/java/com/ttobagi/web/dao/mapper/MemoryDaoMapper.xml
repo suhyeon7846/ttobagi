@@ -7,6 +7,16 @@
 <select id="getList" resultType="com.ttobagi.web.entity.Memory">
  		SELECT * FROM Memory where coupleId =#{id}
 </select>
+<select id="keywordList" resultType="com.ttobagi.web.entity.Memory">
+ 		select * from Memory where coupleId =#{coupleId} 
+ 		and content like '%${text}%'
+</select>
+<select id="dateList" resultType="com.ttobagi.web.entity.Memory">
+ 		select * from Memory where coupleId = #{coupleId}
+ 		 <if test="!text.equals('')">
+ 		 and regDate >= date(#{text});
+ 		 </if>
+</select>
 <insert id="insert" parameterType="com.ttobagi.web.entity.Memory">
 	insert into Memory(content,fileName,coupleId)
  		values(#{content},#{saveFileName},#{cId})

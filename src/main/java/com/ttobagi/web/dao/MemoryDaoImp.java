@@ -38,4 +38,16 @@ public class MemoryDaoImp implements MemoryDao {
 		return mapper.delete(cardId);
 	}
 
+	@Override
+	public List<Memory> keywordList(int coupleId, String text) {
+		// TODO Auto-generated method stub
+		return mapper.keywordList(coupleId, text);
+	}
+
+	@Override
+	public List<Memory> dateList(int coupleId, String text) {
+		// TODO Auto-generated method stub
+		return mapper.dateList(coupleId, text);
+	}
+
 }
