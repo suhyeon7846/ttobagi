@@ -3,14 +3,14 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-  <definition name="home.*" template="/WEB-INF/view/inc/layout.jsp">
+  <definition name="home.*" template="/WEB-INF/view/inc/layout.jsp" preparer="com.ttobagi.web.config.HeaderPreparer">
     <put-attribute name="title" value="또바기" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
     <put-attribute name="main" value="/WEB-INF/view/{1}.jsp" />
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
   
-  <definition name="user.*.*.*" template="/WEB-INF/view/user/inc/layout.jsp">
+  <definition name="user.*.*.*" template="/WEB-INF/view/user/inc/layout.jsp" preparer="com.ttobagi.web.config.HeaderPreparer">
     <put-attribute name="title" value="또바기 {1} {2} {3}" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
     <put-attribute name="visual" value="/WEB-INF/view/user/{1}/inc/visual.jsp" />
@@ -18,7 +18,7 @@
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
   
-  <definition name="user.*.*" template="/WEB-INF/view/user/inc/layout.jsp">
+  <definition name="user.*.*" template="/WEB-INF/view/user/inc/layout.jsp" preparer="com.ttobagi.web.config.HeaderPreparer">
     <put-attribute name="title" value="또바기 {1} {2}" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
     <put-attribute name="visual" value="/WEB-INF/view/user/{1}/inc/visual.jsp" />
@@ -26,7 +26,7 @@
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
   
-  <definition name="user.*" template="/WEB-INF/view/user/inc/layout.jsp">
+  <definition name="user.*" template="/WEB-INF/view/user/inc/layout.jsp" preparer="com.ttobagi.web.config.HeaderPreparer">
     <put-attribute name="title" value="또바기 {1}" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
     <put-attribute name="visual" value="/WEB-INF/view/user/inc/visual.jsp" />

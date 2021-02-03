@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.ttobagi.web.entity.Member;
 import com.ttobagi.web.service.AuthService;
 import com.ttobagi.web.service.MemberService;
@@ -74,28 +77,28 @@ public class HomeController {
 		return "auth.login";
 	}
 	
-	@PostMapping("login")
+	@PostMapping("login/validate")
 	@ResponseBody
-	public String loginValidate(HttpSession session, String loginId, String password) {
-		String isValidate = "false";
+	public String loginValidate(@RequestBody String data) {
 		
-		System.out.println("loginId: " + loginId);
-		System.out.println("password: " + password);
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(data);
+		String loginId = element.getAsJsonObject().get("loginId").getAsString();
+		String password = element.getAsJsonObject().get("password").getAsString();
 		
-		if (session != null) {
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			int id = (int)session.getAttribute("id");
-			
-			Member member = memberService.get(id);
-			
-			if (loginId.equals(member.getLoginId()))
-				isValidate = "true";
-			
-			if (passwordEncoder.encode(password).equals(member.getPassword()))
-				isValidate = "true";
-		}
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		Member member = memberService.getMemberByLoginId(loginId);
+		//System.out.println(member.getPassword());
+		//System.out.println(passwordEncoder.encode(password));
 		
-		return isValidate;
+		if (member == null)
+			return null;
+		
+		if (!passwordEncoder.matches(password,member.getPassword()))
+			return null;
+		else
+			return "true";
+			
 	}
 	
 }
