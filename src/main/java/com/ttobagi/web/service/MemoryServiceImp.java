@@ -31,4 +31,16 @@ public class MemoryServiceImp implements MemoryService {
 		return memoryDao.delete(cardId);
 	}
 
+	@Override
+	public List<Memory> keywordList(int coupleId, String text) {
+		// TODO Auto-generated method stub
+		return memoryDao.keywordList(coupleId, text);
+	}
+
+	@Override
+	public List<Memory> dateList(int coupleId, String text) {
+		// TODO Auto-generated method stub
+		return memoryDao.dateList(coupleId,text);
+	}
+
 }

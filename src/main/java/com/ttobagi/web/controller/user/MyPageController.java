@@ -102,9 +102,10 @@ public class MyPageController {
 			switch (action) {
 				case "수정하기":
 					Couple origin = coupleService.get(id);
+					
+					// String으로 넘어오는데 어떻게 Date 자료형에 들어갈 수 있지?
 					Date loveStartDate = couple.getLoveStartDate();
 					
-					// String으로 넘어오는데 어떻게 Date로 바뀌지?
 					origin.setLoveStartDate(loveStartDate);
 					coupleService.update(origin);
 					break;

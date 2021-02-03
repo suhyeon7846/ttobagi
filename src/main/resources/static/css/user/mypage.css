@@ -101,7 +101,13 @@
 
             .right-sec .day-ment {
                 font-size: 20px;
-                margin-top: 30px;
+                margin-top: 20px;
+            }
+
+            .right-sec .day-ment-ok {
+                width: 250px;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .right-sec .d-day-start {

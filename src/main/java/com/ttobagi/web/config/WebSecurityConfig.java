@@ -28,10 +28,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
+<<<<<<< HEAD
 				.antMatchers("/**").permitAll() // 편의를 위해 모든 페이지 접근 허용
 				.antMatchers("/auth/**").permitAll()
+=======
+				//.antMatchers("/**").permitAll() // 편의를 위해 모든 페이지 접근 허용
+				// url 아직 뭐뭐있는지 몰라서 일단 아래것만 허가해놓을게요. 주석처리하고 사용하셔도 됩니다 -2/1. 재희-
+				.antMatchers("/auth/**", "/user/community/index").permitAll()
+				.antMatchers("/user/community/**").hasAnyRole("ADMIN", "COUPLE")
+>>>>>>> ceaa7ff27907df2725f54746574a1087dd735b35
 				.antMatchers("/user/**").authenticated()
-				//.antMatchers("/admin/**").hasRole("ROLE_ADMIN") <- 왜 에러?
+				.antMatchers("/admin/**").hasRole("ADMIN")
 				.and()
 			.formLogin()
 				.loginPage("/auth/login")
@@ -62,10 +69,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			
 			// 로그인에 성공한 사용자의 권한을 확인한다. 권한역할의 속성명은 반드시 'ROLE_역할' 형식으로 지정되어야 한다.
 			// id, roleId를 뽑아야 스프링이 인식한다.
-//			.authoritiesByUsernameQuery("select m.loginId id, r.type roleId from memberRole mr "
-//					+ " join role r on mr.roleId = r.id "
-//					+ " join member m on mr.memberId = m.id")
-			.authoritiesByUsernameQuery("select loginId id, 'ROLE_SOLO' roleId from member where loginId=?")
+			.authoritiesByUsernameQuery("select m.loginId id, r.type roleId from memberRole mr"
+					+ " join role r on mr.roleId = r.id"
+					+ " join member m on mr.memberId = m.id where loginId=?")
+			//.authoritiesByUsernameQuery("select loginId id, 'ROLE_SOLO' roleId from member where loginId=?")
 			.passwordEncoder(new BCryptPasswordEncoder());
 	}
 }
