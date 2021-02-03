@@ -38,7 +38,10 @@ public class MemoryController {
 		List<Couple> coupleList = coupleService.getList(id);
 		int coupleId = coupleList.get(0).getId();
 		
-		List<Memory> list = service.getList(coupleId);
+		session.setAttribute("coupleId", coupleId);
+		
+		
+		List<Memory> list = service.getList(coupleId,0);
 		
 		model.addAttribute("coupleId",coupleId);
 		model.addAttribute("list", list);

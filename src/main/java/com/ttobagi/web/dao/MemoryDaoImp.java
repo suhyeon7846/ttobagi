@@ -27,9 +27,9 @@ public class MemoryDaoImp implements MemoryDao {
 	}
 
 	@Override
-	public List<Memory> getList(int id) {
+	public List<Memory> getList(int id,int cardId) {
 		// TODO Auto-generated method stub
-		return mapper.getList(id);
+		return mapper.getList(id,cardId);
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class MemoryDaoImp implements MemoryDao {
 	public List<Memory> dateList(int coupleId, String text) {
 		// TODO Auto-generated method stub
 		return mapper.dateList(coupleId, text);
+	}
+
+	@Override
+	public int update(int cardId, String content, String saveFileName) {
+		
+		return mapper.update(cardId, content, saveFileName);
 	}
 
 }

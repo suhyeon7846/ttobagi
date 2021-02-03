@@ -6,6 +6,9 @@
 <mapper namespace="com.ttobagi.web.dao.MemoryDao">
 <select id="getList" resultType="com.ttobagi.web.entity.Memory">
  		SELECT * FROM Memory where coupleId =#{id}
+ 		<if test="!cardId.equals(0)">
+ 		and Id = #{cardId}
+ 		</if>
 </select>
 <select id="keywordList" resultType="com.ttobagi.web.entity.Memory">
  		select * from Memory where coupleId =#{coupleId} 
@@ -21,7 +24,15 @@
 	insert into Memory(content,fileName,coupleId)
  		values(#{content},#{saveFileName},#{cId})
 </insert>
-
+<update id="update">
+	update Memory
+ 		set
+ 			content = #{content}
+ 		<if test="!saveFileName.equals('')">
+ 		 , fileName = #{saveFileName}
+ 		 </if>
+ 		where Id =#{cardId}
+</update>
 <delete id="delete">
 	delete from Memory where Id = #{cardId}
 </delete>

@@ -6,7 +6,7 @@ import com.ttobagi.web.entity.Memory;
 
 public interface MemoryService {
 
-	List<Memory> getList(int id);
+	List<Memory> getList(int id, int cardId);
 	
 	int insert(String content, String saveFileName, int cId);
 
@@ -15,5 +15,7 @@ public interface MemoryService {
 	List<Memory> keywordList(int coupleId, String text);
 
 	List<Memory> dateList(int coupleId, String text);
+
+	int update(int cardId, String content, String saveFileName);
 	
 }

@@ -1,12 +1,11 @@
-import CSS from "../../js/modules/CSS.js";
-
+import CSS from "../../modules/CSS.js";
 class ModalBox{
 
-    static alert(fileName,content){
+    static alert(fileName,content,cardId){
         return new Promise(resolve=>{
             let screen = document.createElement("div");
             let frame = document.createElement("div");
-          
+         	let thumbnails = document.querySelector(".thumbnails");
             CSS.set(screen, {
                 position:"fixed",
                 left:"0px",
@@ -31,13 +30,6 @@ class ModalBox{
                 });
             });
 
-            // screen.addEventListener("transitionend", ()=>{
-            //     CSS.set(frame, {
-            //         opacity:"1",
-            //         top:"50%"
-            //     });
-            // });
-            
             CSS.set(frame, {
                 position:"fixed",
                 top: "30%",
@@ -58,29 +50,60 @@ class ModalBox{
                  <div style="flex-grow: 0; display:flex;justify-content: center;align-items: center;background-color:#ee79bd;height:50px;font-size:25px">
                	추억 수정
 				</div>
-				/*<form id="form" name="form" action="edit" method="post" enctype="multipart/form-data">*/
+				
 	                <div style="flex-grow: 0; display:flex;justify-content: center;align-items: center;height:250px;font-size:20px; flex-direction: column;">
 	                    <h1 style="font-size:20px;height:50px;line-height:50px">원하는 사진을 선택해 주세요</h1>
-	                   <img style="width: 100px;" id="preview-image" src="/resources/static/images/user/memory/upload/${fileName}">
-						<input type="file" name="file">
+	                   <img style="width: 100px;" id="edit-preview-image" src="/resources/static/images/user/memory/upload/${fileName}">
+						<input type="file" name="file" id="file-input">
 	                </div>
 	                <div style="flex-grow: 0; display:flex; flex-direction: column;justify-content: space-around;align-items: center;height:140px;">
 	                  <h1>내용</h1>
-		                 <textarea rows="50" cols="50" name="content">${content}</textarea>
+		                 <textarea rows="50" cols="50" name="content" id="text-input">${content}</textarea>
 	                </div>
 	                <div style="display:flex;justify-content: space-around; align-items: center;border-top: 1px solid #e9e9e9;height:60px;">
 	                    <input type="submit" value="등록" style="width:200px; height:50px; background-color: #ff73c5;border: none;cursor: pointer;font-size:18px">
 	                    <input type="button" value="취소" style="width:200px; height:50px; background-color: #ff73c5;border: none;cursor: pointer;font-size:18px">
 	                </div>
-				/*</form>*/
+				
             `;
-
             document.body.append(frame);
-
+			//썸네일 미리보기 
+				const fileInput = document.querySelector("#file-input");
+				fileInput.addEventListener("change", e => {
+					console.log("dd")
+				    readImage(e.target)
+				})
+				function readImage(input) {
+			    // 인풋 태그에 파일이 있는 경우
+			    if(input.files && input.files[0]) {
+			        // 이미지 파일인지 검사 (생략)
+			        // FileReader 인스턴스 생성
+			        const reader = new FileReader()
+			        // 이미지가 로드가 된 경우
+			        reader.onload = e => {
+			            const previewImage = document.getElementById("edit-preview-image")
+			            previewImage.src = e.target.result
+			        }
+			        // reader가 이미지 읽도록 하기
+			        reader.readAsDataURL(input.files[0])
+			    }
+			}
+			//================================
             const okButton = frame.querySelector("input[value=등록]");
             const cancelButton = frame.querySelector("input[value=취소]");
 			okButton.onclick = ()=>{
-				fetch(`/api/bucketlist/regs`)
+				
+				let textInput = document.querySelector("#text-input").value;
+				const formData = new FormData();
+				console.log(textInput);
+				formData.append('file', fileInput.files[0]);
+				formData.append('content', textInput);
+				formData.append('id',cardId);
+				
+				fetch(`/api/memory/edit`,{
+					method: 'POST',
+					body : formData
+				})
 				.then(response=>response.json())
 				.then(json=>{
 				thumbnails.innerHTML="";
@@ -96,10 +119,10 @@ class ModalBox{
                         <div class="back">
                             <div class="text-wrap">
                                 <h1>${m.regDate}</h1>
-                                <p>
-                                ${m.content}
-                                </p>
+                                <p style="white-space:pre;">${m.content}</p>
                             </div>
+							<input type="button" value="수정" class="cardEditBtn">
+                            <input type="hidden" value="${m.fileName}">
                            	<input type="button" value="삭제" class="cardDelBtn">
 							<input type="hidden" value="${m.id}">
                         </div>
@@ -110,8 +133,8 @@ class ModalBox{
 				}
 			});
                 resolve("OK");
-                /*screen.remove();
-                frame.remove();*/
+                screen.remove();
+                frame.remove();
             };
             cancelButton.onclick = ()=>{
                 resolve("CANCEL");
