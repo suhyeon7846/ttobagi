@@ -101,7 +101,7 @@ public class CommunityDaoImp implements CommunityDao {
 	}
 
 	@Override
-	public int getCategory(String type) {
+	public CommunityCategory getCategory(String type) {
 		// TODO Auto-generated method stub
 		return mapper.getCategory(type);
 	}

@@ -8,8 +8,8 @@
 		select * from communityCategory
 	</select>
 	
-	<select id="getCategory" resultType="int">
-		select id from communityCategory where type = #{type};
+	<select id="getCategory" resultType="com.ttobagi.web.entity.CommunityCategory">
+		select * from communityCategory where typeEnglishName = #{type};
 	</select>
 	
 	<select id="get" resultType="com.ttobagi.web.entity.Community">
@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="getViewList" resultType="com.ttobagi.web.entity.CommunityView">
-		select * from communityView where communityType = #{param3}
+		select * from communityView where communityEngType = #{param3}
 		<if test="param4 != null">
 			order by ${param4} desc
 		</if>
@@ -49,7 +49,8 @@
 		UPDATE ttobagi.community
 		SET
 			title = #{title},
-			content = #{content}
+			content = #{content},
+			hit = #{hit}
 		WHERE id = #{id};
    	</update>
    	

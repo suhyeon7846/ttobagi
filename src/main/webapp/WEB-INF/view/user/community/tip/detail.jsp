@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
-<link rel="stylesheet" href="/css/user/community/common.css">
-<link rel="stylesheet" href="/css/user/community/api.css">
-<link rel="stylesheet" href="/css/user/community/sub.css">
 <script src="/js/user/community/common.js"></script>
 
 <!-- main -->
@@ -41,8 +38,8 @@
 					<tr>
 						<th>내용</th>
 						<td>
-							<c:if test="${not empty d.fileId}">
-							<img class="uploadImg" src="<spring:url value='/resources/static/images/user/community/${type}/${d.id}/${d.fileName}'/>"><br>
+							<c:if test="${not empty d.fileId} || ${d.fileId == 0}">
+								<img class="uploadImg" src="<spring:url value='/resources/static/images/user/community/${type}/${d.id}/${d.fileName}'/>"><br>
 							</c:if>
 							${d.content}
 						</td>
@@ -58,12 +55,12 @@
 
 			<div class="button-area">
 				<a class="button" href="../${type}">목록</a>
-				<a class="button update-button" href="${id}/edit">수정</a>
-				<a class="button delete-button" href="${id}/del">삭제</a>
+				<a class="button" href="${id}/edit">수정</a>
+				<a class="button" href="${id}/del">삭제</a>
 			</div>
 
 			<!-- POPUP -->
-			<!-- <div id="report-popup" class="popup-container d-none">
+			<div id="report-popup" class="popup-container d-none">
 				<h1>신고리스트</h1>
 				<form method="get" action="detail">
 					<div class="report-popup-container">
@@ -77,7 +74,7 @@
 					<button type="submit" class="report-submit-button" value="submit">확인</button>
 					<button type="button" class="popup-cancel-button">취소</button>
 				</form>
-			</div> -->
+			</div>
 		</div>
 	</section>
 </main>

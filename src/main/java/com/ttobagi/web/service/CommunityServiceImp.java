@@ -93,7 +93,7 @@ public class CommunityServiceImp implements CommunityService {
 	}
 
 	@Override
-	public int getCategory(String type) {
+	public CommunityCategory getCategory(String type) {
 		// TODO Auto-generated method stub
 		return communityDao.getCategory(type);
 	}

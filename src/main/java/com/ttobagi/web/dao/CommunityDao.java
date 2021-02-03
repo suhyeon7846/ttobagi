@@ -22,6 +22,6 @@ public interface CommunityDao {
 	int updateFiles(CommunityFiles communityFiles);
 	int deleteFiles(int id);
 	int getLastNum();
-	int getCategory(String type);
+	CommunityCategory getCategory(String type);
 	
 }
