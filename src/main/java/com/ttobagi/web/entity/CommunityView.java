@@ -3,7 +3,8 @@ package com.ttobagi.web.entity;
 import java.sql.Date;
 
 public class CommunityView extends Community {
-	private String communityType;
+	private String communityEngType;
+	private String communityKorType;
 	private String memName;
 	private String memNicName;
 	private String memLoginId;
@@ -11,27 +12,38 @@ public class CommunityView extends Community {
 	private String fileName;
 	
 	public CommunityView() {
-		// TODO Auto-generated constructor stub
+		super();
+		
 	}
-	
+
 	public CommunityView(int id, String title, String content, int memberId, int categoryId, Date regDate, int hit,
-			int recomCnt, String communityType, String memName, String memNicName, String memLoginId, int fileId,
-			String fileName) {
+			int recomCnt, String communityEngType, String communityKorType, String memName, String memNicName,
+			String memLoginId, int fileId, String fileName) {
 		super(id, title, content, memberId, categoryId, regDate, hit, recomCnt);
-		this.communityType = communityType;
+		this.communityEngType = communityEngType;
+		this.communityKorType = communityKorType;
 		this.memName = memName;
 		this.memNicName = memNicName;
 		this.memLoginId = memLoginId;
 		this.fileId = fileId;
 		this.fileName = fileName;
+		// TODO Auto-generated constructor stub
 	}
 
-	public String getCommunityType() {
-		return communityType;
+	public String getCommunityEngType() {
+		return communityEngType;
 	}
 
-	public void setCommunityType(String communityType) {
-		this.communityType = communityType;
+	public void setCommunityEngType(String communityEngType) {
+		this.communityEngType = communityEngType;
+	}
+
+	public String getCommunityKorType() {
+		return communityKorType;
+	}
+
+	public void setCommunityKorType(String communityKorType) {
+		this.communityKorType = communityKorType;
 	}
 
 	public String getMemName() {
@@ -76,7 +88,9 @@ public class CommunityView extends Community {
 
 	@Override
 	public String toString() {
-		return "CommunityView [communityType=" + communityType + ", memName=" + memName + ", memNicName=" + memNicName
-				+ ", memLoginId=" + memLoginId + ", fileId=" + fileId + ", fileName=" + fileName + "]";
+		return "CommunityView [communityEngType=" + communityEngType + ", communityKorType=" + communityKorType
+				+ ", memName=" + memName + ", memNicName=" + memNicName + ", memLoginId=" + memLoginId + ", fileId="
+				+ fileId + ", fileName=" + fileName + "]";
 	}
+	
 }

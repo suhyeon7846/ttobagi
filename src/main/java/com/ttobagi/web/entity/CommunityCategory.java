@@ -2,16 +2,18 @@ package com.ttobagi.web.entity;
 
 public class CommunityCategory {
 	private int id;
-	private String type;
+	private String typeEnglishName;
+	private String typeKoreanName;
 	
 	public CommunityCategory() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public CommunityCategory(int id, String type) {
+
+	public CommunityCategory(int id, String typeEnglishName, String typeKoreanName) {
 		super();
 		this.id = id;
-		this.type = type;
+		this.typeEnglishName = typeEnglishName;
+		this.typeKoreanName = typeKoreanName;
 	}
 
 	public int getId() {
@@ -22,16 +24,27 @@ public class CommunityCategory {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public String getTypeEnglishName() {
+		return typeEnglishName;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setTypeEnglishName(String typeEnglishName) {
+		this.typeEnglishName = typeEnglishName;
+	}
+
+	public String getTypeKoreanName() {
+		return typeKoreanName;
+	}
+
+	public void setTypeKoreanName(String typeKoreanName) {
+		this.typeKoreanName = typeKoreanName;
 	}
 
 	@Override
 	public String toString() {
-		return "CommunityCategory [id=" + id + ", type=" + type + "]";
+		return "CommunityCategory [id=" + id + ", typeEnglishName=" + typeEnglishName + ", typeKoreanName="
+				+ typeKoreanName + "]";
 	}
+	
+	
 }
