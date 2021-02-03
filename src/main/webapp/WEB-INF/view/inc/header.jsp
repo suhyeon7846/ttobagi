@@ -19,7 +19,7 @@
                 </s:authorize>
                 <s:authorize access="isAuthenticated()">
                 <li class="sub-menu">
-                    <img class="pic-login" src="/images/login.png" alt="">
+                    <img class="pic-login" src="/images/login.png">
                     <div class="mega-menu">
                         <ul>
                             <li><a href="/user/mypage">마이페이지</a></li>
