@@ -55,13 +55,14 @@ public class CommunityController {
 	//list
 	@GetMapping("{type}")
 	public String list(Model model, @PathVariable("type") String type) {
-		System.out.println(type);
-
-		
 		List<CommunityView> bestList = service.getViewList(0, 5, type, "hit");
-		List<CommunityView> list = service.getViewList(0, 10, type, "regDate");
+		List<CommunityView> list = service.getViewList(0, 20, type, "regDate");
+		
+		CommunityCategory category = service.getCategory(type);
+		
 		model.addAttribute("bestList", bestList);
 		model.addAttribute("list", list);
+		model.addAttribute("cate", category);
 		
 		return "user.community."+type+".list";
 	}
@@ -70,10 +71,17 @@ public class CommunityController {
 	@GetMapping("{type}/{id}")
 	public String detail(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
 		
+		//조회수 업데이트
+		Community community = service.get(id);
+		community.setHit(community.getHit()+1);		
+		service.update(community);
+		
+		CommunityCategory category = service.getCategory(type);
 		CommunityView communityView = service.getView(id);
 		
+		model.addAttribute("cate", category);
 		model.addAttribute("d", communityView);
-		
+
 		return "user.community."+type+".detail";
 	}
 	
@@ -81,7 +89,9 @@ public class CommunityController {
 	public String edit(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
 		CommunityView list = service.getView(id);
 		CommunityFiles files = service.getFiles(id);
+		CommunityCategory category = service.getCategory(type);
 		
+		model.addAttribute("cate", category);
 		model.addAttribute("e", list);
 		
 		return "user.community."+type+".edit";
@@ -140,7 +150,9 @@ public class CommunityController {
 	
 	@GetMapping("{type}/reg")
 	public String reg(Model model, @PathVariable("type") String type) {
+		CommunityCategory category = service.getCategory(type);
 		
+		model.addAttribute("cate", category);
 		model.addAttribute("type", type);
 		
 		return "user.community."+type+".reg";
@@ -156,10 +168,12 @@ public class CommunityController {
 				      HttpSession session
 				      ) throws IllegalStateException, IOException{
 		
+		System.out.println(session.getAttribute("id"));
 		int id = (int) session.getAttribute("id");
 		String fileName = file.getOriginalFilename();
 
-		int categoryId = service.getCategory(type);
+		CommunityCategory category = service.getCategory(type);
+		int categoryId = category.getId();
 
 		community.setMemberId(id);
 		community.setCategoryId(categoryId);

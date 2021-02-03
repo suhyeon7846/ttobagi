@@ -47,12 +47,13 @@ button:focus {
 .visual {
     width: 100%;
     min-height: 200px;
-    background-image: url("/images/user/community/visual/하트(민트).png");
+    background-image: url("/images/user/community/visual/community.png");
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin-bottom: 5%;
+    margin-top: 16px;
     padding-right: 10%;
 }
 
