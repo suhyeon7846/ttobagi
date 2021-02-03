@@ -15,9 +15,9 @@ public class MemoryServiceImp implements MemoryService {
 	private MemoryDao memoryDao;
 	
 	@Override
-	public List<Memory> getList(int id) {
+	public List<Memory> getList(int id, int cardId) {
 		
-		return memoryDao.getList(id);
+		return memoryDao.getList(id,cardId);
 	}
 
 	@Override
@@ -41,6 +41,12 @@ public class MemoryServiceImp implements MemoryService {
 	public List<Memory> dateList(int coupleId, String text) {
 		// TODO Auto-generated method stub
 		return memoryDao.dateList(coupleId,text);
+	}
+
+	@Override
+	public int update(int cardId, String content, String saveFileName) {
+		
+		return memoryDao.update(cardId,content,saveFileName);
 	}
 
 }

@@ -56,9 +56,7 @@
                         <div class="back">
                             <div class="text-wrap">
                                 <h1>${m.regDate}</h1>
-                                <p>
-                                ${m.content}
-                                </p>
+                                <p style="white-space:pre;">${m.content}</p>
                             </div>
                             <input type="button" value="수정" class="cardEditBtn">
                             <input type="hidden" value="${m.fileName}">

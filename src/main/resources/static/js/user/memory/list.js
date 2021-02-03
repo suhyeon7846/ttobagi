@@ -1,4 +1,4 @@
-import ModalBox from "../../../js/modules/ModalBox.js";
+import ModalBox from "../memory/editModalBox.js";
 
 window.addEventListener("load",function(){
 	let section = document.querySelector(".section-1");
@@ -52,6 +52,8 @@ window.addEventListener("load",function(){
                                 ${m.content}
                                 </p>
                             </div>
+							<input type="button" value="수정" class="cardEditBtn">
+                            <input type="hidden" value="${m.fileName}">
                            	<input type="button" value="삭제" class="cardDelBtn">
 							<input type="hidden" value="${m.id}">
                         </div>
@@ -73,7 +75,8 @@ window.addEventListener("load",function(){
 			if(deleteConfirm){
 				let eTarget = event.target.nextElementSibling;
 				let cardId = eTarget.value;
-			fetch(`/api/memory/delete?c=${cardId}`)
+				let fileName = event.target.previousElementSibling.value;
+			fetch(`/api/memory/delete?c=${cardId}&f=${fileName}`)
 			.then(response=>response.json())
 			.then(json=>{
 				thumbnails.innerHTML="";
@@ -93,6 +96,8 @@ window.addEventListener("load",function(){
                                 ${m.content}
                                 </p>
                             </div>
+							<input type="button" value="수정" class="cardEditBtn">
+                            <input type="hidden" value="${m.fileName}">
                            	<input type="button" value="삭제" class="cardDelBtn">
 							<input type="hidden" value="${m.id}">
                         </div>
@@ -109,7 +114,8 @@ window.addEventListener("load",function(){
 			let fileName = event.target.nextElementSibling.value;
 			console.log(event.target.previousElementSibling.lastElementChild.innerText)
 			let content = event.target.previousElementSibling.lastElementChild.innerText;
-			ModalBox.alert(fileName,content)
+			let cardId = event.target.nextElementSibling.nextElementSibling.nextElementSibling.value;
+			ModalBox.alert(fileName,content,cardId)
 			.then((result)=>{
 				console.log("hi")
 			})
