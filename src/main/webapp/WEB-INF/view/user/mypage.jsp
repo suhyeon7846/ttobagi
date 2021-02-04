@@ -75,7 +75,7 @@
 	                <div class="couple-info-sub-container">
 	                    <div class="couple-info-title">연애시작일</div>
                         <input type="date" name="loveStartDate" class="couple-info love-start-date" value="${coupleView.loveStartDate}">
-                        <input type="submit" name="action" class="love-start-date-edit-btn" value="수정하기">
+                        <input type="submit" name="action" class="love-start-date-edit-btn" value="설정하기">
 	                </div>
 	                <div class="couple-info-sub-container">
 	                    <div class="couple-info-title">커플등록일</div>

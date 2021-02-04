@@ -21,7 +21,7 @@
                 <input type="submit" class="login-btn" value="로그인">
             </div>
             <div class="find-password-container">
-                <span class="find-password"><a href="#">비밀번호 찾기</a></span>
+                <span class="find-password"><a href="" class="find-pwd-btn">비밀번호 찾기</a></span>
             </div>
             <div class="etc-container">
                 <span class="ment">회원이 아니신가요?</span>

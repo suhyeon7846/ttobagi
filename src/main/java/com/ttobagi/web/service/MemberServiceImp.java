@@ -1,10 +1,14 @@
 package com.ttobagi.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ttobagi.web.dao.MemberDao;
+import com.ttobagi.web.entity.CoupleView;
 import com.ttobagi.web.entity.Member;
+import com.ttobagi.web.entity.MemberView;
 
 @Service
 public class MemberServiceImp implements MemberService {
@@ -30,6 +34,11 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public int update(Member member) {
 		return memberDao.update(member);
+	}
+
+	@Override
+	public List<MemberView> getList(int offset, int size, String search) {
+		return memberDao.getList(offset, size, search);
 	}
 
 }

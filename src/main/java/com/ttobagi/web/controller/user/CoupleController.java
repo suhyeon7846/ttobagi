@@ -45,6 +45,7 @@ public class CoupleController {
 	
 	@PostMapping("response")
 	public String response(HttpSession session, String response) {
+		boolean isOk = false;
 		
 		if (session != null) {
 			int id = (int)session.getAttribute("id");
@@ -58,6 +59,7 @@ public class CoupleController {
 					// memberRole에 ROLE_COUPLE 추가하기, 그리고 로그인시 ROLE_COUPLE로 로그인되게 하기?
 					memberRoleService.insert(id, 2); // 2 : 'ROLE_COUPLE'
 					memberRoleService.insert(couple.getSenderId(), 2);
+					isOk = true;
 					break;
 					
 				case "요청 거절":
@@ -65,6 +67,9 @@ public class CoupleController {
 					break;
 			}
 		}
+		
+		if (isOk)
+			return "redirect:/auth/logout";
 		return "redirect:/user/mypage";
 	}
 }

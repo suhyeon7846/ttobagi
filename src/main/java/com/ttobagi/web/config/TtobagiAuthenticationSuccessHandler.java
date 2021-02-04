@@ -59,7 +59,7 @@ public class TtobagiAuthenticationSuccessHandler implements AuthenticationSucces
 				redirectStrategy.sendRedirect(request, response, returnURL);
 			} else if (authorities.contains("ROLE_ADMIN")) {
 				// 로그인 페이지에 의도하여 접근하고 로그인을 성공했을 때
-				redirectStrategy.sendRedirect(request, response, "/admin/index");
+				redirectStrategy.sendRedirect(request, response, "/admin/member/list"); // 관리자는 홈이 없음
 			} else if (authorities.contains("ROLE_COUPLE") || authorities.contains("ROLE_SOLO")) {
 				redirectStrategy.sendRedirect(request, response, "/index");
 			} else {
