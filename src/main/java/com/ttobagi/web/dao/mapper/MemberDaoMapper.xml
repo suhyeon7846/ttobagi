@@ -24,5 +24,19 @@
 		set password = #{password} 
 		where id=#{id}
 	</update>
+	
+	<!-- <select id="getViewList" resultType="com.ttobagi.web.entity.CoupleView">
+		select * from member
+		where id like CONCAT('%', #{param3}, '%') or loginId like CONCAT('%', #{param3}, '%')
+		order by regDate desc
+		limit #{param2} offset #{param1};
+	</select> -->
+	
+	<select id="getList" resultType="com.ttobagi.web.entity.MemberView">
+		select * from member
+		where id like CONCAT('%', #{param3}, '%') or loginId like CONCAT('%', #{param3}, '%')
+		order by regDate desc
+		limit #{param2} offset #{param1};
+	</select>
 
 </mapper>

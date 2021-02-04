@@ -19,7 +19,7 @@ import com.ttobagi.web.service.MemberService;
 public class HomeController {
 	
 	@GetMapping("index")
-	public String index(HttpSession session, Model model) {
+	public String index() {
 		return "home.index";
 	}
 	

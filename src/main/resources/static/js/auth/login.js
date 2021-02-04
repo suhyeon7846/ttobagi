@@ -1,6 +1,7 @@
 window.addEventListener('load', (e) => {
     const loginBtn = document.querySelector('.login-btn');
     const form = document.querySelector('.form');
+    const findPwdBtn = document.querySelector('.find-pwd-btn');
 
     loginBtn.addEventListener('click', (e) => {
         e.preventDefault(); // 기본 폼 동작 막기
@@ -31,6 +32,10 @@ window.addEventListener('load', (e) => {
 
     });
     
+    findPwdBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // a태그 기본 동작 막기
+        window.open('/auth/find', '비밀번호 찾기', 'width=500px,height=500px');
+    });
 });
 
 

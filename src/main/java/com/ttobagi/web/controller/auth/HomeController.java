@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,7 +81,6 @@ public class HomeController {
 	@PostMapping("login/validate")
 	@ResponseBody
 	public String loginValidate(@RequestBody String data) {
-		
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(data);
 		String loginId = element.getAsJsonObject().get("loginId").getAsString();
@@ -88,8 +88,6 @@ public class HomeController {
 		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		Member member = memberService.getMemberByLoginId(loginId);
-		//System.out.println(member.getPassword());
-		//System.out.println(passwordEncoder.encode(password));
 		
 		if (member == null)
 			return null;
@@ -98,7 +96,45 @@ public class HomeController {
 			return null;
 		else
 			return "true";
+	}
+	
+	@GetMapping("find")
+	public String find() {
+		return "auth.find";
+	}
+	
+	@GetMapping("pwd/find") 
+	@ResponseBody
+	public String findPwd(String loginId, String phone) {
+		Member member = memberService.getMemberByLoginId(loginId);
+		
+		if (member == null)
+			return null;
+		
+		if (phone.equals(member.getPhone()))
+			return "true";
+		
+		return null;
+	}
+	
+	@GetMapping("pwd/change")
+	public String pwdChange(String loginId, Model model) {
+		model.addAttribute("loginId", loginId);
+		return "auth.change";
+	}
+	
+	@PostMapping("pwd/change")
+	public String findChange(HttpSession session, Member member) {
+		if (session != null) {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			
+			Member origin = memberService.getMemberByLoginId(member.getLoginId());
+			origin.setPassword(passwordEncoder.encode(member.getPassword()));
+			
+			memberService.update(origin);
+		}
+		
+		return "redirect:/auth/login";
 	}
 	
 }
