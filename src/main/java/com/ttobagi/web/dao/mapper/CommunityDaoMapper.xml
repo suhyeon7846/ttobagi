@@ -50,7 +50,9 @@
 		SET
 			title = #{title},
 			content = #{content},
-			hit = #{hit}
+			hit = #{hit},
+			recomCnt = #{recomCnt},
+			negativeCnt = #{negativeCnt}
 		WHERE id = #{id};
    	</update>
    	

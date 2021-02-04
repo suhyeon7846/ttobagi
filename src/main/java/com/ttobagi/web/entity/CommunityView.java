@@ -15,11 +15,11 @@ public class CommunityView extends Community {
 		super();
 		
 	}
-
+	
 	public CommunityView(int id, String title, String content, int memberId, int categoryId, Date regDate, int hit,
-			int recomCnt, String communityEngType, String communityKorType, String memName, String memNicName,
+			int recomCnt, int negativeCnt, String communityEngType, String communityKorType, String memName, String memNicName,
 			String memLoginId, int fileId, String fileName) {
-		super(id, title, content, memberId, categoryId, regDate, hit, recomCnt);
+		super(id, title, content, memberId, categoryId, regDate, hit, recomCnt, negativeCnt);
 		this.communityEngType = communityEngType;
 		this.communityKorType = communityKorType;
 		this.memName = memName;
@@ -27,7 +27,6 @@ public class CommunityView extends Community {
 		this.memLoginId = memLoginId;
 		this.fileId = fileId;
 		this.fileName = fileName;
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getCommunityEngType() {

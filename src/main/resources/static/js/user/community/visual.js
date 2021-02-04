@@ -1,15 +1,13 @@
 window.addEventListener("load", () => {
 	const visual = document.querySelector(".visual");
 	const type = visual.querySelector(".type");
-	let typeName = type.value;
 
-	//버튼과 박스, 테이블도 visual 색상과 맞춘다.
-	let buttonArea = document.querySelector(".button-area");
-	let buttons = buttonArea.querySelectorAll(".button");
-	let boxes = document.querySelectorAll(".box");
-
-
+	//타입에 따라 버튼, div 색상 변경
 	function ColorChange(color) {
+		let buttonArea = document.querySelector(".button-area");
+		let buttons = buttonArea.querySelectorAll(".button");
+		let boxes = document.querySelectorAll(".box");
+		
 		for (let i = 0; i < buttons.length; i++)
 			buttons[i].style.backgroundColor = color;
 
@@ -20,8 +18,8 @@ window.addEventListener("load", () => {
 			});
 		}
 	}
-
-	switch (typeName) {
+	
+	switch (type.value) {
 		case "tip":
 			ColorChange("#e7c2ca");
 			break;
@@ -50,7 +48,4 @@ window.addEventListener("load", () => {
 			ColorChange("#c5c7ea");
 			break;
 	}
-
-	visual.style.backgroundImage = "url('/images/user/community/visual/'" + typeName + "'.png')";
-
 });
