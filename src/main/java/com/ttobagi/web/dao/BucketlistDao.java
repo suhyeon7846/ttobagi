@@ -12,6 +12,6 @@ public interface BucketlistDao {
 
 	int insert(String cardTitle, String picFile, int cId);
 
-	List<Bucketlist> getList(int id, int status);
+	List<Bucketlist> getList(int id, int status, int cardId);
 	List<Bucketlist> getRandomList(int id);
 }

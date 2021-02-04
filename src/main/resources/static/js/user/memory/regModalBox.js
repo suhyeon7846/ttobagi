@@ -1,7 +1,7 @@
 import CSS from "../../modules/CSS.js";
 class ModalBox{
 
-    static alert(fileName,content,cardId){
+    static alert(){
         return new Promise(resolve=>{
             let screen = document.createElement("div");
             let frame = document.createElement("div");
@@ -48,21 +48,21 @@ class ModalBox{
 
             frame.innerHTML = `
                  <div class="frame-top">
-               	추억 수정
+               		추억 등록
 				</div>
-	                <div class="frame-file-wrap">
-	                    <h1>원하는 사진을 선택해 주세요</h1>
-	                   <img style="width: 100px;" id="edit-preview-image" src="/resources/static/images/user/memory/upload/${fileName}">
-						<input type="file" name="file" id="file-input" accept=".jpg, .png">
-	                </div>
-	                <div class="frame-text-wrap">
-	                  <h1>내용</h1>
-		                 <textarea rows="50" cols="50" name="content" id="text-input">${content}</textarea>
-	                </div>
-	                <div class="frame-btn-wrap">
-	                    <input type="button" value="등록">
-	                    <input type="button" value="취소">
-	                </div>
+                <div class="frame-file-wrap">
+                    <h1>원하는 사진을 선택해 주세요</h1>
+                   <img style="width: 100px;" id="edit-preview-image" src="">
+					<input type="file" name="file" id="file-input" accept=".jpg, .png">
+                </div>
+                <div class="frame-text-wrap">
+                  <h1>내용</h1>
+	                 <textarea rows="50" cols="50" name="content" id="text-input"></textarea>
+                </div>
+                <div class="frame-btn-wrap">
+                    <input type="button" value="등록">
+                    <input type="button" value="취소">
+                </div>
             `;
             document.body.append(frame);
 			//썸네일 미리보기 
@@ -88,16 +88,14 @@ class ModalBox{
 			//================================
             const okButton = frame.querySelector("input[value=등록]");
             const cancelButton = frame.querySelector("input[value=취소]");
-			
 			okButton.onclick = ()=>{
 				let textInput = document.querySelector("#text-input").value;
 				const formData = new FormData();
 				
 				formData.append('file', fileInput.files[0]);
 				formData.append('content', textInput);
-				formData.append('id',cardId);
 				
-				fetch(`/api/memory/edit`,{
+				fetch(`/api/memory/reg`,{
 					method: 'POST',
 					body : formData
 				})
@@ -140,9 +138,6 @@ class ModalBox{
             };
         });
     }
-    static confirm(){
-
-    }    
 }
 
 export default ModalBox;

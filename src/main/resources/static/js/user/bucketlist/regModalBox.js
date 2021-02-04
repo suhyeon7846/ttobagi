@@ -1,7 +1,7 @@
 import CSS from "../../modules/CSS.js";
 class ModalBox{
 
-    static alert(fileName,content,cardId){
+    static alert(){
         return new Promise(resolve=>{
             let screen = document.createElement("div");
             let frame = document.createElement("div");
@@ -48,21 +48,23 @@ class ModalBox{
 
             frame.innerHTML = `
                  <div class="frame-top">
-               	추억 수정
+		          <h1>버킷리스트 등록</h1>     
 				</div>
-	                <div class="frame-file-wrap">
-	                    <h1>원하는 사진을 선택해 주세요</h1>
-	                   <img style="width: 100px;" id="edit-preview-image" src="/resources/static/images/user/memory/upload/${fileName}">
-						<input type="file" name="file" id="file-input" accept=".jpg, .png">
-	                </div>
-	                <div class="frame-text-wrap">
-	                  <h1>내용</h1>
-		                 <textarea rows="50" cols="50" name="content" id="text-input">${content}</textarea>
-	                </div>
-	                <div class="frame-btn-wrap">
-	                    <input type="button" value="등록">
-	                    <input type="button" value="취소">
-	                </div>
+                <div class="frame-file-wrap">
+                    <h1>원하는 사진을 선택해 주세요</h1>
+                   <img style="width: 100px;" id="edit-preview-image" src="">
+					<input type="file" name="file" id="file-input" accept=".jpg, .png">
+                </div>
+                <div class="frame-text-wrap">
+                  <h1>제목</h1>
+                  <p>EX) 버킷리스트는 최고야!</p>
+				  <p><40글자 내외로 기입해주세요></p>
+                  <input type="text" maxlength="40" name="titlename" id="text-input" required>
+               </div>
+                <div class="frame-btn-wrap">
+                    <input type="button" value="등록">
+                    <input type="button" value="취소">
+                </div>
             `;
             document.body.append(frame);
 			//썸네일 미리보기 
@@ -88,43 +90,52 @@ class ModalBox{
 			//================================
             const okButton = frame.querySelector("input[value=등록]");
             const cancelButton = frame.querySelector("input[value=취소]");
-			
 			okButton.onclick = ()=>{
 				let textInput = document.querySelector("#text-input").value;
 				const formData = new FormData();
 				
 				formData.append('file', fileInput.files[0]);
-				formData.append('content', textInput);
-				formData.append('id',cardId);
+				formData.append('titleName', textInput);
 				
-				fetch(`/api/memory/edit`,{
+				fetch(`/api/bucketlist/reg`,{
 					method: 'POST',
 					body : formData
 				})
 				.then(response=>response.json())
 				.then(json=>{
 				thumbnails.innerHTML="";
-				for(let m of json){
+				for(let b of json){
 					let tr =`
-					  <div class="flip-box"> 
-                    <div class="flip">
-                        <div class="front">
-                            <div class="img-wrap">
-                               <img src="/resources/static/images/user/memory/upload/${m.fileName}" alt="${m.fileName}" />
-                            </div>
+					  <div class="box">
+                        <div class="img-wrap">
+                            <img src="/resources/static/images/user/bucketlist/upload/${b.fileName}" alt="${b.fileName}" />
                         </div>
-                        <div class="back">
-                            <div class="text-wrap">
-                                <h1>${m.regDate}</h1>
-                                <p style="white-space:pre;">${m.content}</p>
-                            </div>
-							<input type="button" value="수정" class="cardEditBtn">
-                            <input type="hidden" value="${m.fileName}">
-                           	<input type="button" value="삭제" class="cardDelBtn">
-							<input type="hidden" value="${m.id}">
-                        </div>
+                        <figcaption>
+                            <h2>${b.title}</h2>
+                            <p>
+                                <a href="#">
+                               		<input type="button" class="btn">
+                               		<span class="icon-container">
+                                   	<i class="fas fa-check icon"></i>
+                                   	</span>
+                               		<span class="btn-wrap update"> 
+                                	</span>
+                                	<input type="hidden" value="${b.id}">
+                                </a>
+                                <a href="#">
+                               		<input type="button" class="btn">
+                               		 <span class="icon-container">
+                                   	<i class="fas fa-times icon"></i>
+                                   	</span>
+                                   	<span class="btn-wrap delete"> 
+                                	</span>
+                                	<input type="hidden" value="${b.id}">
+									<input type="hidden" value="${b.status}">
+                                </a>
+                               	
+                            </p>
+                        </figcaption>	
                     </div>
-                </div>
 					`;
 					thumbnails.insertAdjacentHTML("beforeend",tr);
 				}
@@ -140,9 +151,6 @@ class ModalBox{
             };
         });
     }
-    static confirm(){
-
-    }    
 }
 
 export default ModalBox;

@@ -19,9 +19,9 @@ public class BucketlistServiceImp implements BucketlistService {
 	}
 	
 	@Override
-	public List<Bucketlist> getList(int id,int status) {
+	public List<Bucketlist> getList(int id,int status,int cardId) {
 		
-		return bucketlistDao.getList(id,status);
+		return bucketlistDao.getList(id,status,cardId);
 	}
 	
 	@Override
