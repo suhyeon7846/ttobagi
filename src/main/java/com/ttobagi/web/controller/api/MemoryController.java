@@ -86,6 +86,7 @@ public class MemoryController {
 			HttpSession session) throws IllegalStateException, IOException{
 		//session에 저장된 커플 아이디 가져오기
 		int coupleId = (int)session.getAttribute("coupleId");
+		
 		List<Memory> editcard = service.getList(coupleId,cardId);
 		String preFIleName = editcard.get(0).getFileName();
 		String saveFileName="";
@@ -120,4 +121,29 @@ public class MemoryController {
 		return list;
 	}
 	
+	@PostMapping("reg")
+	public List<Memory> regs(HttpServletRequest request, 
+			@RequestParam("file") MultipartFile mfile, 
+			@RequestParam("content") String content,
+			HttpSession session) throws IllegalStateException, IOException{
+		
+		//session에 저장된 커플 아이디 가져오기
+		int coupleId = (int)session.getAttribute("coupleId");
+		
+		//웹서비스 디렉토리의 물리적 경로 구하기
+		String realPath = request.getSession().getServletContext().getRealPath("/resources/static/images/user/memory/upload");
+		//받아온 파일의 이름
+		String OriginFileName= mfile.getOriginalFilename();
+		//파일이름 암호화하기
+		String saveFileName = getUuid() + OriginFileName;
+		//물리적 경로에 파일 저장하기
+		mfile.transferTo(new File(realPath+File.separator+saveFileName));
+		
+		content = content.replace("\r\n", "<br >");
+		
+		service.insert(content,saveFileName,coupleId); 
+		List<Memory> list = service.getList(coupleId,0);
+	
+		return list;
+	}
 }

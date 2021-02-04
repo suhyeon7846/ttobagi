@@ -1,0 +1,34 @@
+.mypage-sec {
+    width: 100%;
+    height: 590px;
+    padding: 50px auto 0 auto;
+    border: 1px solid red;
+}
+
+    .mypage-sec > h1 {
+       display:none;
+    }
+
+    .both-sec-container {
+        display: flex;
+         height: 590px;
+    }
+    
+    .both-sec-container li {
+    width:20%;
+    height:100%;
+     border: 1px solid red;
+    }
+    .both-sec-container li a{
+    display: inline-block;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    }
+    
+    .both-sec-container li a img{
+     width:150%;
+    object-fit: fill;
+    
+    
+    }

@@ -6,7 +6,7 @@ import com.ttobagi.web.entity.Bucketlist;
 
 public interface BucketlistService {
 	
-	List<Bucketlist> getList(int id ,int status);
+	List<Bucketlist> getList(int id ,int status, int cardId);
 
 	int update(int cardId);
 

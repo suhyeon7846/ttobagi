@@ -8,29 +8,7 @@
 <script type="module" src="/js/user/memory/list.js"></script>    
  <section class="section-1">
         <section id="main">
-	        <div class="screen"></div>
-	        <div class="frame">
-		        <div class="frame-top">
-		          <h1>추억 등록</h1>     
-				</div>
-				<form id="memoryForm" name="memoryForm" action="reg" method="post" enctype="multipart/form-data">
-		               <div class="frame-file-wrap">
-		                   <h1>원하는 사진을 선택해 주세요</h1>
-		                   <img style="width: 100px;" id="preview-image" src="">
-		                  <input type="file" name="file" accept=".jpg, .png" id="input-image">
-		               </div>
-		               <div class="frame-text-wrap">
-		                  <h1>내용</h1>
-		                  <!-- <p>EX) 버킷리스트는 최고야!</p> -->
-		                 <textarea rows="50" cols="50" name="content"></textarea>
-		               </div>
-		               <div class="frame-btn-wrap">
-		               		<input type="hidden" value=${coupleId} name="coupleId">
-		                   <input type="submit" value="등록" class="sbtn" >
-		                   <input type="button" value="취소" >
-		               </div>
-				</form>
-			</div>
+	        
             <!-- Thumbnails -->
             <div class="memorylogo"></div>
             <div class ="search-wrap">

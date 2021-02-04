@@ -9,30 +9,6 @@
 <script type="module" src="/js/user/bucketlist/list.js"></script>
 <section class="section-1">
         <section id="main">
-        <div class="screen">
-        </div>
-	        <div class="frame">
-		        <div class="frame-top">
-		          <h1>버킷리스트 등록</h1>     
-				</div>
-				<form id="form" name="form" action="regs" method="post" enctype="multipart/form-data">
-		               <div class="frame-file-wrap">
-		                   <h1>원하는 사진을 선택해 주세요</h1>
-		                  <input type="file" name="file" accept=".jpg, .png">
-		               </div>
-		               <div class="frame-text-wrap">
-		                  <h1>제목</h1>
-		                  <p>EX) 버킷리스트는 최고야!</p>
-						  <p><40글자 내외로 기입해주세요></p>
-		                  <input type="text" maxlength="40" name="titlename" required>
-		               </div>
-		               <div class="frame-btn-wrap">
-		               		<input type="hidden" value=${coupleId} name="coupleId">
-		                   <input type="submit" value="등록" >
-		                   <input type="button" value="취소" >
-		               </div>
-				</form>
-			</div>
             <section class="top-content">
                 <div class="dropdown">
                     <button class="dropbtn">추천</button>
@@ -50,7 +26,6 @@
 	                  </c:forEach>
                       </ul>
                      	<div>
-                     		<input type="hidden" value=${coupleId} name="coupleId">
 	                      	<input type="button" value="추가하기" class="addCard">
 	                      	<input type="button" value="새로받기" class="newCard">
                     	</div>

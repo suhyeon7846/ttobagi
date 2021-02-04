@@ -15,9 +15,9 @@ public class BucketlistDaoImp implements BucketlistDao {
 	private SqlSession session;
 	
 	@Override
-	public List<Bucketlist> getList(int id, int status) {
+	public List<Bucketlist> getList(int id, int status,int cardId) {
 		BucketlistDao mapper = session.getMapper(BucketlistDao.class);
-		return mapper.getList(id,status);
+		return mapper.getList(id,status,cardId);
 	}
 
 	@Override

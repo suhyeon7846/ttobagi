@@ -1,36 +1,24 @@
-import ModalBox from "../memory/editModalBox.js";
+import editModalBox from "../memory/editModalBox.js";
+import regModalBox from "../memory/regModalBox.js";
 
 window.addEventListener("load",function(){
 	let section = document.querySelector(".section-1");
-	let screen = section.querySelector(".screen");
-    let frame = section.querySelector(".frame");
- 	const cancelButton = frame.querySelector("input[value=취소]");
 	let contentPlusWrap = document.querySelector(".content-plus-wrap");	
 	
 	
-	const searchOption = document.querySelector("#search-option")	
-	const searchBtn = document.querySelector(".search-button");
-	let textBox = document.querySelector(".text-box")
+	const searchOption = section.querySelector("#search-option")	
+	const searchBtn = section.querySelector(".search-button");
+	let textBox = section.querySelector(".text-box")
 	
 	/* 등록 페이지 modal */
-	contentPlusWrap.addEventListener("click",(evnet)=>{
-		screen.style.display = 'block';
-		screen.style.zIndex = '3';
-    	frame.style.opacity='1';
-    	frame.style.top='50%';
-		frame.style.zIndex = '3';
+	contentPlusWrap.addEventListener("click",()=>{
+		
+		regModalBox.alert()
     });
-    cancelButton.onclick = ()=>{
-               screen.style.display = 'none';
-		screen.style.zIndex = '1';
-    	frame.style.opacity='0';
-    	frame.style.top='-900px';
-		frame.style.zIndex = '1';
-            };
-	/* ===================================================================*/
+  
+	/* 검색===================================================================*/
 	searchBtn.onclick=()=>{
 		let currentOption = searchOption.options[searchOption.selectedIndex].value;
-		console.log(textBox.value+":"+currentOption)
 		let text=textBox.value;
 		fetch(`/api/memory/list?o=${currentOption}&t=${text}`)
 		.then(response=>response.json())
@@ -65,7 +53,7 @@ window.addEventListener("load",function(){
 		})
 		
 	}
-	/* 추억 삭제시 ajex */	
+	/* 추억 삭제 또는 수정 ajex */	
 	let thumbnails = document.querySelector(".thumbnails");
 	
 	thumbnails.onclick=(event)=>{
@@ -110,36 +98,14 @@ window.addEventListener("load",function(){
 				
 			}
 		}else if(event.target.classList.contains("cardEditBtn")){
-			console.log(event.target.nextElementSibling.value)
 			let fileName = event.target.nextElementSibling.value;
-			console.log(event.target.previousElementSibling.lastElementChild.innerText)
 			let content = event.target.previousElementSibling.lastElementChild.innerText;
 			let cardId = event.target.nextElementSibling.nextElementSibling.nextElementSibling.value;
-			ModalBox.alert(fileName,content,cardId)
-			.then((result)=>{
-				console.log("hi")
-			})
+			
+			editModalBox.alert(fileName,content,cardId)
 		}
 	}
 /* ===================================================================*/
-	const inputImage = document.getElementById("input-image")
-	inputImage.addEventListener("change", e => {
-	    readImage(e.target)
-	})
-	function readImage(input) {
-    // 인풋 태그에 파일이 있는 경우
-    if(input.files && input.files[0]) {
-        // 이미지 파일인지 검사 (생략)
-        // FileReader 인스턴스 생성
-        const reader = new FileReader()
-        // 이미지가 로드가 된 경우
-        reader.onload = e => {
-            const previewImage = document.getElementById("preview-image")
-            previewImage.src = e.target.result
-        }
-        // reader가 이미지 읽도록 하기
-        reader.readAsDataURL(input.files[0])
-    }
-}
+
 	
 });
