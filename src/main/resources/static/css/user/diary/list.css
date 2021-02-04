@@ -156,7 +156,7 @@
   margin-top: 35px;
 }
 
-#main .book .page1 .diary-list .diary-panel-top .head form .submit-button{
+.head form .submit-button{
   display: none;
 }
 
@@ -292,7 +292,7 @@
     left: 774px;
     top:440px;
     outline: none;
-    z-index: 4;
+    z-index: 5;
     transform-origin: right center;
     transition: 2s;  
     /* perspective: 10px;   */

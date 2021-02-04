@@ -2,8 +2,10 @@ package com.ttobagi.web.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ttobagi.web.dao.DiaryDao;
 import com.ttobagi.web.entity.Diary;
 import com.ttobagi.web.entity.DiaryView;
 
@@ -11,6 +13,10 @@ import com.ttobagi.web.entity.DiaryView;
 @Service
 public class DiaryServiceImp implements DiaryService{
 
+	@Autowired
+	private DiaryDao diaryDao;
+	
+	
 	@Override
 	public List<Diary> getList() {
 		// TODO Auto-generated method stub
@@ -18,9 +24,9 @@ public class DiaryServiceImp implements DiaryService{
 	}
 	
 	@Override
-	public List<DiaryView> getViewList() {
+	public List<DiaryView> getViewList(int id, int opponentId,int startIndex, int size) {
 		// TODO Auto-generated method stub
-		return null;
+		return diaryDao.getViewList(id, opponentId,startIndex, size);
 	}
 
 	@Override

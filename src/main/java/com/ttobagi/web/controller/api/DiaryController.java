@@ -1,36 +1,33 @@
-package com.ttobagi.web.controller.user;
+package com.ttobagi.web.controller.api;
 
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ttobagi.web.entity.Couple;
 import com.ttobagi.web.entity.DiaryView;
 import com.ttobagi.web.service.CoupleService;
 import com.ttobagi.web.service.DiaryService;
-import com.ttobagi.web.service.MemberService;
 
-@Controller
-@RequestMapping("/user/diary")
+@RestController("apiDiaryController")
+@RequestMapping("/api/diary/")
 public class DiaryController {
 	
 	@Autowired
 	private DiaryService service;
 	
-	
 	@Autowired
 	private CoupleService coupleService;
 	
 	@RequestMapping("list")
-	public String list(Model model, HttpSession session,
+	public List<DiaryView> list(HttpSession session,
 			@RequestParam(name = "p", defaultValue = "1") int page ) {
-		
+				
 		int id = (int)session.getAttribute("id");
 		
 		//-----상대방 아이디 구하기
@@ -48,14 +45,7 @@ public class DiaryController {
 		
 		
 		List<DiaryView> list = service.getViewList(id,opponentId,startIndex,size);
-		model.addAttribute("list",list);
-		System.out.println(list);
-		return "user.diary.list";
+		return list;
+		
 	}
-	
-	@RequestMapping("reg")
-	public String reg() {
-		return "user.diary.reg";
-	}
-
 }

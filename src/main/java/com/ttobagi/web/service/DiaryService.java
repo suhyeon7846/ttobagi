@@ -9,7 +9,7 @@ public interface DiaryService {
 
 	//-----------------------------------리스트 불러오기
 	List<Diary> getList();
-	List<DiaryView> getViewList();
+	List<DiaryView> getViewList(int id, int opponentId,int startIndex, int size);
 	
 	//-----------------------------------데이터 조작
 	int insert(Diary diary);

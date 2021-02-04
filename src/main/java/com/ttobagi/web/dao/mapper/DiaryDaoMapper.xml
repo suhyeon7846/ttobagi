@@ -4,9 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ttobagi.web.dao.DiaryDao">
-<select id="getViewList" resultType="com.ttobagi.web.entity.Diary">
+<select id="getViewList" resultType="com.ttobagi.web.entity.DiaryView">
  		select * from diaryView
-		where memberId=#{param1} or memberId=#{param2};
+		where memberId=#{param1} or memberId=#{param2}
+		order by regdate desc
+		limit #{param4} offset ${param3};
+		<!--Id,opponentId,startIndex,size=4 -->
 </select>
 
 <!-- <insert id="insert" >
