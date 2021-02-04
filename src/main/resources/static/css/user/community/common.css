@@ -47,7 +47,6 @@ button:focus {
 .visual {
     width: 100%;
     min-height: 200px;
-    background-image: url("/images/user/community/visual/community.png");
     background-position: center;
     display: flex;
     align-items: center;
@@ -99,6 +98,12 @@ button:focus {
 .main .container .content .menu-item a img:hover {
     transform: scale(1.4);
     border: 3px solid #8dd8c9;
+}
+
+.main .inner .menu-title {
+    font-size: 2rem;
+    width: 100%;
+    margin-bottom: 3%;
 }
 
 /* button */

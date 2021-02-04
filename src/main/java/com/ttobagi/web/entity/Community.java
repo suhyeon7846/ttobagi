@@ -11,13 +11,14 @@ public class Community {
 	private Date regDate;
 	private int hit;
 	private int recomCnt;
+	private int negativeCnt;
 
 	public Community() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Community(int id, String title, String content, int memberId, int categoryId, Date regDate, int hit,
-			int recomCnt) {
+			int recomCnt, int negativeCnt) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -27,6 +28,7 @@ public class Community {
 		this.regDate = regDate;
 		this.hit = hit;
 		this.recomCnt = recomCnt;
+		this.negativeCnt = negativeCnt;
 	}
 	
 	public int getId() {
@@ -78,10 +80,19 @@ public class Community {
 		this.recomCnt = recomCnt;
 	}
 
+	public int getNegativeCnt() {
+		return negativeCnt;
+	}
+
+	public void setNegativeCnt(int negativeCnt) {
+		this.negativeCnt = negativeCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "Community [id=" + id + ", title=" + title + ", content=" + content + ", memberId=" + memberId
 				+ ", categoryId=" + categoryId + ", regDate=" + regDate + ", hit=" + hit + ", recomCnt=" + recomCnt
-				+ "]";
+				+ ", negativeCnt=" + negativeCnt + "]";
 	}
+
 }

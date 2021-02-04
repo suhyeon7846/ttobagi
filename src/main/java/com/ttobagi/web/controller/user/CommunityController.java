@@ -54,7 +54,9 @@ public class CommunityController {
 	
 	//list
 	@GetMapping("{type}")
-	public String list(Model model, @PathVariable("type") String type) {
+	public String list(
+			Model model, 
+			@PathVariable("type") String type) {
 		List<CommunityView> bestList = service.getViewList(0, 5, type, "hit");
 		List<CommunityView> list = service.getViewList(0, 20, type, "regDate");
 		
@@ -69,7 +71,10 @@ public class CommunityController {
 	
 	//detail
 	@GetMapping("{type}/{id}")
-	public String detail(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
+	public String detail(
+			Model model, 
+			@PathVariable("type") String type, 
+			@PathVariable("id") int id) {
 		
 		//조회수 업데이트
 		Community community = service.get(id);
@@ -85,8 +90,30 @@ public class CommunityController {
 		return "user.community."+type+".detail";
 	}
 	
+	@PostMapping("{type}/{id}")
+	public String detail(
+			@PathVariable("id") int id,
+			@RequestParam("recom") int recom,
+			@RequestParam("negative") int negative,
+			@RequestParam("userId") int userId) {
+		
+		Community origin = service.get(id);
+		System.out.println("recom:"+recom);
+		System.out.println("negative:"+negative);
+		if(negative == 2)
+			origin.setNegativeCnt(origin.getNegativeCnt()+1);
+		else if(recom == 2)
+			origin.setRecomCnt(origin.getRecomCnt()+1);
+		service.update(origin);
+		
+		return "redirect:"+id;
+	}
+	
 	@GetMapping("{type}/{id}/edit")
-	public String edit(Model model, @PathVariable("type") String type, @PathVariable("id") int id) {
+	public String edit(
+			Model model, 
+			@PathVariable("type") String type, 
+			@PathVariable("id") int id) {
 		CommunityView list = service.getView(id);
 		CommunityFiles files = service.getFiles(id);
 		CommunityCategory category = service.getCategory(type);
@@ -98,13 +125,14 @@ public class CommunityController {
 	}
 	
 	@PostMapping("{type}/{id}/edit")
-	public String edit(Community community,
-					   //파일
-					   HttpServletRequest request,
-					   CommunityFiles communityFiles,
-					   @PathVariable("id") int id,
-					   @PathVariable("type") String type,
-					   @RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+	public String edit(
+			Community community,
+			//파일
+			HttpServletRequest request,
+			CommunityFiles communityFiles,
+			@PathVariable("id") int id,
+			@PathVariable("type") String type,
+			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		
 		String title = community.getTitle();
 		String content = community.getContent();
@@ -159,14 +187,14 @@ public class CommunityController {
 	}
 	
 	@PostMapping("{type}/reg")
-	public String reg(@PathVariable("type") String type,
-				      Community community,
-				      CommunityFiles communityFiles,
-				      Member member,
-				      @RequestParam("file") MultipartFile file,
-				      HttpServletRequest request,
-				      HttpSession session
-				      ) throws IllegalStateException, IOException{
+	public String reg(
+			@PathVariable("type") String type,
+			Community community,
+			CommunityFiles communityFiles,
+			Member member,
+			@RequestParam("file") MultipartFile file,
+			HttpServletRequest request,
+			HttpSession session) throws IllegalStateException, IOException{
 		
 		System.out.println(session.getAttribute("id"));
 		int id = (int) session.getAttribute("id");
