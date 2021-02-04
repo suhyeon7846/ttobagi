@@ -8,7 +8,7 @@ import com.ttobagi.web.entity.DiaryView;
 public interface DiaryDao {
 	//-----------------------------------리스트 불러오기
 		List<Diary> getList();
-		List<DiaryView> getViewList();
+		List<DiaryView> getViewList(int id, int opponentId,int startIndex, int size);
 
 		
 		//-----------------------------------데이터 조작

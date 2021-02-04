@@ -2,6 +2,8 @@ package com.ttobagi.web.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ttobagi.web.entity.Diary;
@@ -10,6 +12,9 @@ import com.ttobagi.web.entity.DiaryView;
 
 @Repository
 public class DiaryDaoImp implements DiaryDao{
+	
+	@Autowired
+	private SqlSession session;
 
 	@Override
 	public List<Diary> getList() {
@@ -18,9 +23,9 @@ public class DiaryDaoImp implements DiaryDao{
 	}
 	
 	@Override
-	public List<DiaryView> getViewList() {
+	public List<DiaryView> getViewList(int id, int opponentId,int startIndex, int size) {
 		// TODO Auto-generated method stub
-		return null;
+		return session.getMapper(DiaryDao.class).getViewList(id, opponentId,startIndex,size);
 	}
 
 	@Override
