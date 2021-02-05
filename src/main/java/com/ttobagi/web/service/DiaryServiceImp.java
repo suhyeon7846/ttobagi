@@ -41,17 +41,6 @@ public class DiaryServiceImp implements DiaryService{
 		return 0;
 	}
 
-	@Override
-	public Diary getPrev(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Diary getNext(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 	

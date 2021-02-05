@@ -18,8 +18,8 @@
     <section id="main">
         <div class="book">
             <div class="note-button" >
-                <span class="next"><a href="?p=${page+1}"=>다음</a></span>
-                <span class="prev"><a href="?p=${page-1}"=>이전</a></span>
+                <span class="next"><a href="?p=${page}"=>다음</a></span>
+                <span class="prev"><a href="?p=${page}"=>이전</a></span>
                 <div class="note-button-circle1"></div>
                 <div class="note-button-circle2">
                     <span class="open-close">열기</span>
@@ -33,11 +33,11 @@
             </div>
             <div class="page">
                 <div class="page1" >
-                    <div class="del-button">
-                        삭제
-                    </div>
                     <div class="reg-button">
                         글쓰기
+                    </div>
+                    <div class="del-button">
+                        삭제
                     </div>
                     <div class="diary-list">
                     <!-- 여기서부터 일기장 패널 1,2면 탑, 3,4면 바텀 -->
@@ -79,7 +79,8 @@ ${d.content }
                             <div class="head">
                                 <div class="deco">
                                     <span class="reborn">
-										<fmt:formatDate value="${d.regDate}" pattern="MM-dd"/>
+										<%-- <fmt:formatDate value="${d.regDate}" pattern="MM-dd"/> --%>
+										${d.regDate}
 									</span>
                                 </div>
                                 

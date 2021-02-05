@@ -1,12 +1,13 @@
 package com.ttobagi.web.entity;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class DiaryView {
 	
 	private String title;
 	private String content;
-	private Date regDate;
+	private Timestamp regDate;
 	private int memberId;
 	private int moodId;
 	private int type;
@@ -16,7 +17,7 @@ public class DiaryView {
 		
 	}
 	
-	public DiaryView(String title, String content, Date regDate, int memberId, int moodId, int type, String file) {
+	public DiaryView(String title, String content, Timestamp regDate, int memberId, int moodId, int type, String file) {
 		super();
 		this.title = title;
 		this.content = content;
@@ -40,10 +41,10 @@ public class DiaryView {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getRegDate() {
+	public Timestamp getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
 	public int getMemberId() {

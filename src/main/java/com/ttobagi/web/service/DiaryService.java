@@ -14,12 +14,4 @@ public interface DiaryService {
 	//-----------------------------------데이터 조작
 	int insert(Diary diary);
 	int delete(int id);
-	
-	
-	
-	
-	
-	//-----------------------------------페이지 전환
-	Diary getPrev(int id);
-	Diary getNext(int id);
 }
