@@ -37,29 +37,48 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><c:if test="${not empty d.fileId} || ${d.fileId == 0}">
-								<img class="uploadImg"
-									src="<spring:url value='/resources/static/images/user/community/${type}/${d.id}/${d.fileName}'/>">
-								<br>
-							</c:if> ${d.content}</td>
+						<td>
+						<c:if test="${d.fileId ne null && d.fileId ne 0}">
+							<img class="uploadImg" src="<spring:url value='/resources/static/images/user/community/${type}/${d.id}/${d.fileName}'/>">
+							<br>
+						</c:if> 
+						${d.content}
+						</td>
 					</tr>
 				</tbody>
 			</table>
 			
 			<form method="post">
 				<div class="recom-area">
-					<input type="hidden" name="userId" value="<%=session.getAttribute("id")%>">
-					<input type="hidden" name="recom" value="1">
-					<input type="hidden" name="negative" value="1">
+					<input type="hidden" name="recom">
+					<input type="hidden" name="negative">
 					<button class="recom-button" type="submit" value="recom"><i class="far fa-thumbs-up fa-2x"></i>좋아요</button> 
 					<button class="negative-button" type="submit" value="negative"><i class="far fa-angry fa-2x"></i>싫어요</button>
+				</div>
+				
+				<div>
+					<table>
+						<tr>
+							<th>아이디</th>
+							<c:set var="nickName" value="${nickName}" scope="session"></c:set>	
+							<td>${nicName}</td>
+							<th>내용</th>
+							<td>
+								<input type="text">
+								<button class="" type="submit">댓글 달기</button>								
+							</td>
+						</tr>
+					</table>
 				</div>
 			</form>
 
 			<div class="button-area">
-				<a class="button" href="../${type}">목록</a> 
-				<a class="button" href="${id}/edit">수정</a> 
-				<a class="button" href="${id}/del">삭제</a>
+				<a class="button" href="../${type}">목록</a>
+				<c:set var="memId" value="${id}" scope="session"></c:set>
+				<c:if test="${memId eq d.memberId}">
+					<a class="button" href="${communityId}/edit">수정</a> 
+					<a class="button del-button" href="${communityId}/del">삭제</a>
+				</c:if>
 			</div>
 
 			<!-- POPUP -->

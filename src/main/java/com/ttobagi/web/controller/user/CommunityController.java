@@ -70,19 +70,19 @@ public class CommunityController {
 	}
 	
 	//detail
-	@GetMapping("{type}/{id}")
+	@GetMapping("{type}/{communityId}")
 	public String detail(
 			Model model, 
 			@PathVariable("type") String type, 
-			@PathVariable("id") int id) {
+			@PathVariable("communityId") int communityId) {
 		
 		//조회수 업데이트
-		Community community = service.get(id);
+		Community community = service.get(communityId);
 		community.setHit(community.getHit()+1);		
 		service.update(community);
 		
 		CommunityCategory category = service.getCategory(type);
-		CommunityView communityView = service.getView(id);
+		CommunityView communityView = service.getView(communityId);
 		
 		model.addAttribute("cate", category);
 		model.addAttribute("d", communityView);
@@ -90,32 +90,31 @@ public class CommunityController {
 		return "user.community."+type+".detail";
 	}
 	
-	@PostMapping("{type}/{id}")
+	@PostMapping("{type}/{communityId}")
 	public String detail(
-			@PathVariable("id") int id,
-			@RequestParam("recom") int recom,
-			@RequestParam("negative") int negative,
-			@RequestParam("userId") int userId) {
+			@PathVariable("communityId") int communityId,
+			@RequestParam("recom") String recom,
+			@RequestParam("negative") String negative) {
 		
-		Community origin = service.get(id);
-		System.out.println("recom:"+recom);
-		System.out.println("negative:"+negative);
-		if(negative == 2)
-			origin.setNegativeCnt(origin.getNegativeCnt()+1);
-		else if(recom == 2)
-			origin.setRecomCnt(origin.getRecomCnt()+1);
+		//추천, 비추천 
+		Community origin = service.get(communityId);
+		if( recom != null && !recom.equals("") )
+			origin.setRecomCnt(origin.getRecomCnt()+1);			
+		else if( negative != null && !negative.equals("") )
+			origin.setNegativeCnt(origin.getNegativeCnt()+1);			
+	
 		service.update(origin);
 		
-		return "redirect:"+id;
+		return "redirect:"+communityId;
 	}
 	
-	@GetMapping("{type}/{id}/edit")
+	@GetMapping("{type}/{communityId}/edit")
 	public String edit(
 			Model model, 
 			@PathVariable("type") String type, 
-			@PathVariable("id") int id) {
-		CommunityView list = service.getView(id);
-		CommunityFiles files = service.getFiles(id);
+			@PathVariable("communityId") int communityId) {
+		CommunityView list = service.getView(communityId);
+		CommunityFiles files = service.getFiles(communityId);
 		CommunityCategory category = service.getCategory(type);
 		
 		model.addAttribute("cate", category);
@@ -124,13 +123,13 @@ public class CommunityController {
 		return "user.community."+type+".edit";
 	}
 	
-	@PostMapping("{type}/{id}/edit")
+	@PostMapping("{type}/{communityId}/edit")
 	public String edit(
 			Community community,
 			//파일
 			HttpServletRequest request,
 			CommunityFiles communityFiles,
-			@PathVariable("id") int id,
+			@PathVariable("communityId") int communityId,
 			@PathVariable("type") String type,
 			@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		
@@ -140,7 +139,7 @@ public class CommunityController {
 		String fileName = file.getOriginalFilename();
 		//파일을 등록했을 때만 실행
 		if( fileName != null && !fileName.equals("")) {
-			String url = "resources/static/images/user/community/"+type+"/"+id;
+			String url = "resources/static/images/user/community/"+type+"/"+communityId;
 			String realPath = request.getServletContext().getRealPath(url);
 			
 			File realPathFile = new File(realPath);
@@ -154,10 +153,10 @@ public class CommunityController {
 			
 			//객체에 파일이름이랑 id set
 			communityFiles.setName(fileName);
-			communityFiles.setCommunityId(id);
+			communityFiles.setCommunityId(communityId);
 			
 			//그냥 등록이라면 insert
-			if(service.getFiles(id) == null) {
+			if(service.getFiles(communityId) == null) {
 				service.insertFiles(communityFiles);
 			}
 			//파일이 있다면 update
@@ -167,13 +166,13 @@ public class CommunityController {
 		}			
 		
 		//파일 외 텍스트나 제목 업데이트
-		Community origin = service.get(id);
+		Community origin = service.get(communityId);
 		origin.setTitle(title);
 		origin.setContent(content);
 		
 		service.update(origin);
 
-		return "redirect:../"+id;
+		return "redirect:../"+communityId;
 	}
 	
 	@GetMapping("{type}/reg")
@@ -182,7 +181,7 @@ public class CommunityController {
 		
 		model.addAttribute("cate", category);
 		model.addAttribute("type", type);
-		
+
 		return "user.community."+type+".reg";
 	}
 	
@@ -233,13 +232,12 @@ public class CommunityController {
 		return "redirect:../"+type;
 	}
 	
-	@GetMapping("{type}/{id}/del")
+	@GetMapping("{type}/{communityId}/del")
 	public String delete(
 			@PathVariable("type") String type, 
-			@PathVariable("id") int id) {
-		
-		service.delete(id);
-		service.deleteFiles(id);
+			@PathVariable("communityId") int communityId) {
+		service.delete(communityId);
+		service.deleteFiles(communityId);
 		
 		return "redirect:../../"+type;
 	}
