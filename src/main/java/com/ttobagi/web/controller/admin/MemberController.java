@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.w3c.dom.Document;
 
 import com.ttobagi.web.entity.Couple;
 import com.ttobagi.web.entity.MemberView;
@@ -24,35 +26,30 @@ public class MemberController {
 	CoupleService coupleService;
 	
 	@GetMapping("list")
-	public String list(Model model, String search) {
-		List<MemberView> list = null;
-		System.out.println("search: " + search);
-		if (search == null) {
-			System.out.println(1);
-			list = memberService.getList(1, 10, "");
-			System.out.println(2);
-		}
-		list = memberService.getList(1, 10, search);
+	public String list(Model model, 
+			@RequestParam(name="search", defaultValue="") String search,
+			@RequestParam(name="p", defaultValue="1") int page) {
+		int rowNum = 10 * page - 10;
 		
-		System.out.println(list.get(0).getId());
+		List<MemberView> list = memberService.getViewList(page, 10, search, rowNum);
+		int count = memberService.getCount(search);
 		
-		for (MemberView m : list) {
-			Couple couple = coupleService.get(m.getId());
-			System.out.println(couple.getId());
+		for (MemberView mv : list) {
+			Couple couple = coupleService.get(mv.getId());
 
 			if (couple != null)  // 커플을 요청했거나 응답대기중이라면
 				if (couple.getApprovalDate() != null) // 커플이면
-					m.setCouple(true);
+					mv.setIsCouple(true);
 		}
-		
 		model.addAttribute("list", list);
+		model.addAttribute("count", count);
 		
 		return "admin.member.list";
 	}
 	
-//	@GetMapping("detail/{id}")
-//	public String detail(@PathVariable("id") int id) {
-//		
-//		return "admin.member.";
-//	}
+	/*@GetMapping("detail/{id}")
+	public String detail(@PathVariable("id") int id) {
+		
+		return "admin.member.";
+	}*/
 }

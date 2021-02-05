@@ -43,13 +43,18 @@ public class MemberDaoImp implements MemberDao {
 	}
 
 	@Override
-	public List<CoupleView> getViewList(int offset, int size, String search) {
-		return mapper.getViewList(offset, size, search);
+	public List<MemberView> getViewList(int offset, int size, String search, int rowNum) {
+		return mapper.getViewList(offset, size, search, rowNum);
 	}
 
 	@Override
-	public List<MemberView> getList(int offset, int size, String search) {
+	public List<Member> getList(int offset, int size, String search) {
 		return mapper.getList(offset, size, search);
+	}
+
+	@Override
+	public int getCount(String search) {
+		return mapper.getCount(search);
 	}
 	
 }

@@ -16,8 +16,10 @@ public interface MemberDao {
 
 	int update(Member member);
 
-	List<CoupleView> getViewList(int offset, int size, String search);
+	List<MemberView> getViewList(int offset, int size, String search, int rowNum);
 
-	List<MemberView> getList(int offset, int size, String search);
+	List<Member> getList(int offset, int size, String search);
+
+	int getCount(String search);
 
 }

@@ -16,6 +16,10 @@ public interface MemberService {
 
 	int update(Member member);
 
-	List<MemberView> getList(int offset, int size, String search);
+	List<Member> getList(int offset, int size, String search);
+
+	List<MemberView> getViewList(int page, int size, String search, int rowNum);
+
+	int getCount(String search);
 
 }
