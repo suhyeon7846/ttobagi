@@ -37,8 +37,19 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public List<MemberView> getList(int offset, int size, String search) {
+	public List<Member> getList(int offset, int size, String search) {
 		return memberDao.getList(offset, size, search);
+	}
+
+	@Override
+	public List<MemberView> getViewList(int page, int size, String search, int rowNum) {
+		int offset = (page - 1) * 10;
+		return memberDao.getViewList(offset, size, search, rowNum);
+	}
+
+	@Override
+	public int getCount(String search) {
+		return memberDao.getCount(search);
 	}
 
 }
