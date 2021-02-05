@@ -49,6 +49,7 @@ public class TtobagiAuthenticationSuccessHandler implements AuthenticationSucces
 			session.setAttribute("loginId", loginId);
 			session.setAttribute("id", member.getId());
 			session.setAttribute("phone", member.getPhone());
+			session.setAttribute("nickName", member.getNickname());
 			
 			Set<String> authorities = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 			

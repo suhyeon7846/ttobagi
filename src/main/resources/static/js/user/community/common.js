@@ -5,43 +5,41 @@ window.addEventListener("load", ()=>{
 	let negativeButton = recomArea.querySelector(".negative-button");
 	let recom = recomArea.querySelector("input[name=recom]");
 	let negative = recomArea.querySelector("input[name=negative]");
+	let delButton = section.querySelector(".del-button");
 	
-	console.log("기본:"+recom.value);
-	function recomCheck(item) {
-		console.log(item);
+	function ButtonCheck(item,e) {
 		let itemKorName = ""; 
 		switch(item){
 			case "recom":
 				itemKorName = "추천";
+				recom.value = "recom";
 			break;
 			
 			case "negative":
 				itemKorName = "신고";
+				negative.value = "negative";
 			break;
+			case "del":
+				itemKorName = "삭제";
+				text = " 삭제 시 복구가 불가능합니다.";
 		}
 		
-		let recomCheck = confirm("이 글을 "+ itemKorName + "하시겠습니까?");
-		if( recomCheck == true){
-			console.log("여기까진 오냐?"+ item);
-			if( item = negative){
-				console.log("여기로 들어오냐 안들어오냐?");
-				recom.value = 1;
-				negative.value = 2;				
-			}
-			else if( item = recom){
-				negative.value = 1;
-				recom.value = 2;
-			}
+		let check = confirm("이 글을 "+ itemKorName + "하시겠습니까?" + text);
+		if( check != true){
+			e.preventDefault();						
 		}
 	};
 	
-	recomButton.addEventListener("click", ()=>{
-		recomCheck("recom");
+	recomButton.addEventListener("click", (e)=>{
+		ButtonCheck("recom",e);
 	});
-		
 	
-	negativeButton.addEventListener("click", ()=>{
-		recomCheck("negative");		
+	negativeButton.addEventListener("click", (e)=>{
+		ButtonCheck("negative",e);		
+	});
+	
+	delButton.addEventListener("click", (e)=>{
+		ButtonCheck("del",e);
 	});
 	
 });
