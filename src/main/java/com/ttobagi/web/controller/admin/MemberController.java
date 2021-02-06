@@ -33,6 +33,10 @@ public class MemberController {
 		
 		List<MemberView> list = memberService.getViewList(page, 10, search, rowNum);
 		int count = memberService.getCount(search);
+		int coupleCount = memberService.getCoupleCount();
+		//int singleCount = memberService.getSingleCount();
+		int singleCount = count - (coupleCount * 2);
+		int waitCount = memberService.getWaitCount();
 		
 		for (MemberView mv : list) {
 			Couple couple = coupleService.get(mv.getId());
@@ -43,6 +47,10 @@ public class MemberController {
 		}
 		model.addAttribute("list", list);
 		model.addAttribute("count", count);
+		model.addAttribute("coupleCount", coupleCount);
+		model.addAttribute("singleCount", singleCount);
+		model.addAttribute("waitCount", waitCount);
+		
 		
 		return "admin.member.list";
 	}

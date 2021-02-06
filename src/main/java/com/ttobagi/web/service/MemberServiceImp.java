@@ -52,4 +52,19 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.getCount(search);
 	}
 
+	@Override
+	public int getCoupleCount() {
+		return memberDao.getCoupleCount();
+	}
+
+	@Override
+	public int getSingleCount() {
+		return memberDao.getSingleCount();
+	}
+
+	@Override
+	public int getWaitCount() {
+		return memberDao.getWaitCount();
+	}
+
 }

@@ -23,6 +23,9 @@
                     <div class="mega-menu">
                         <ul>
                             <li><a href="/user/mypage">마이페이지</a></li>
+                            <c:if test="${isAdmin == true}">
+	                            <li><a href="/admin/member/list">관리자페이지</a></li>
+                            </c:if>
                             <li><a href="/auth/logout">로그아웃</a></li>
                         </ul>
                     </div>

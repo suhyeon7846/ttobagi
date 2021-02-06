@@ -67,7 +67,11 @@
                         color: white;
                     }
 
-                    .sub-header .sub-menu:hover .mega-menu ul li:last-child {
+                    .sub-header .sub-menu:hover .mega-menu ul li:nth-child(2) {
+                        border-top: 1px solid #e9e9e9;
+                    }
+
+                    .sub-header .sub-menu:hover .mega-menu ul li:nth-child(3) {
                         border-top: 1px solid #e9e9e9;
                     }
 

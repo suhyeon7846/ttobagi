@@ -44,5 +44,18 @@
         where name like CONCAT('%', #{param1}, '%') or loginId like CONCAT('%', #{param1}, '%');
     </select>
 	
+	<select id="getCoupleCount" resultType="int">
+		select count(*) from couple
+		where not isNull(approvalDate);
+    </select>
+    
+    <select id="getSingleCount" resultType="int">
+    	
+    </select>
+    
+    <select id="getWaitCount" resultType="int">
+    	select count(*) from couple
+		where isNull(approvalDate);
+    </select>
 
 </mapper>

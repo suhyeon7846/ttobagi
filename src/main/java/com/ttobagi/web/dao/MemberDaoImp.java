@@ -56,5 +56,20 @@ public class MemberDaoImp implements MemberDao {
 	public int getCount(String search) {
 		return mapper.getCount(search);
 	}
+
+	@Override
+	public int getCoupleCount() {
+		return mapper.getCoupleCount();
+	}
+
+	@Override
+	public int getSingleCount() {
+		return mapper.getSingleCount();
+	}
+
+	@Override
+	public int getWaitCount() {
+		return mapper.getWaitCount();
+	}
 	
 }
