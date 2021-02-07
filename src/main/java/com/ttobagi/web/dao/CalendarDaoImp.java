@@ -26,4 +26,16 @@ public class CalendarDaoImp implements CalendarDao {
 		return mapper.getList(id);
 	}
 
+	@Override
+	public int insert(Calendar c) {
+		// TODO Auto-generated method stub
+		return mapper.insert(c);
+	}
+
+	@Override
+	public int delete(int id) {
+		// TODO Auto-generated method stub
+		return mapper.delete(id);
+	}
+
 }

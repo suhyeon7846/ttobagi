@@ -134,7 +134,6 @@ class ModalBox{
                 frame.remove();
             };
             cancelButton.onclick = ()=>{
-                resolve("CANCEL");
                 screen.remove();
                 frame.remove();
             };
@@ -150,8 +149,7 @@ class DetailBox{
   
     static detail(event){
         
-        
-        return new Promise(resolve=>{
+        return new Promise((resolve,reject)=>{
             
             let screen = document.createElement("div");
             let frame = document.createElement("div");
@@ -204,11 +202,11 @@ class DetailBox{
             </div>
             <div style="flex-grow: 1; display:flex;justify-content: center;align-items: center;">
             <div class="schedule">
-				시작 : <input name="startDate" type="date" value="${event.start}"/> <input name="startTime" type="time" value="${event.start}"/><br>
-				종료 : <input name="endDate" type="date" value="${event.end}"/> <input name="endTime" type="time" value="${event.end}"/><br>
-				장소 : <input style="width:230px;" name="location" type="text" placeholder="${event.location}" /><br>
+				시작 : <input name="startDate" type="date" value="${getFormatDate(event.start)}"/> <input name="startTime" type="time" value="${getFormatTime(event.start)}"/><br>
+				종료 : <input name="endDate" type="date" value="${getFormatDate(event.end)}"/> <input name="endTime" type="time" value="${getFormatTime(event.end)}"/><br>
+				장소 : <input style="width:230px;" name="location" type="text" placeholder="${event.extendedProps.location}" /><br>
 				제목 : <input style="width:230px;" name="title" type="text" placeholder="${event.title}" /><br>
-				상세내용<br><textarea style="width:263px; height:300px;" name="content">${event.content}</textarea>
+				상세내용<br><textarea style="width:263px; height:300px;" name="content">${event.extendedProps.content}</textarea>
 				
 			</div>
             </div>
@@ -244,10 +242,15 @@ class DetailBox{
                 frame.remove();
             };
             cancelButton.onclick = ()=>{
-                resolve("CANCEL");
                 screen.remove();
                 frame.remove();
             };
+			delButton.onclick = ()=>{
+				let eventId = event.id;
+				reject(eventId);
+				screen.remove();
+                frame.remove();
+			}
 
         });
     }
@@ -267,8 +270,9 @@ class DetailBox{
 		})
 		.then(list=>{
 			eventList = list;
-			console.log(eventList[0].start);
+			console.log(eventList[0]);
 			for(var e of eventList){
+				console.log(e);
 				srcCalendar.addEvent(e);
 			}
 		});
@@ -301,26 +305,62 @@ class DetailBox{
 		!e.target.classList.contains("fc-title") ){
 			
 			ModalBox.alert().then(schedule=>{
+				//등록하자 마자 클릭하면 id값이 없어서 이벤트 실행 안됨.
+				//이거 마지막 아이디 가져와서 +1 시켜서 속성으로 id 값 넣어줘야겟음
 				srcCalendar.addEvent({
 		          title: schedule.title,
 		          start: schedule.start,
 		          end: schedule.end,
 				  location:schedule.location
-		        })
+		        });
+				const init = {
+				  method: "POST",
+					body: JSON.stringify(schedule),
+					headers: {
+				    "Content-Type": "application/json"
+				  },
+					credentials : "same-origin"
+				}
+
+				fetch("/user/calendar/"+id+"/reg",init)
+				.then(result=>result.json())
+				.then(result=>{
+					console.log(result);
+				})
 			});
 		}
 		else if(e.target.classList.contains("fc-content")){
 			console.log(111);
 			for(var event of srcCalendar.getEvents()){
 				if(event.id == e.target.querySelector("input[type=hidden]").value){
-					DetailBox.detail(event);
+					DetailBox.detail(event)
+					.then(()=>{
+						
+					})
+					.catch(id=>{
+						fetch("/user/calendar/"+id+"/delete")
+						.then(()=>{});
+						//삭제하면 현재 목록에서도 사라져야함... 디비만 사라지는게 아님
+					});
+        			console.log(event.id);
+					
 				}
 			}
 		}
 		else if(!e.target.classList.contains("fc-content")){
 			for(var event of srcCalendar.getEvents()){
 				if(event.id == e.target.parentNode.querySelector("input[type=hidden]").value){
-					DetailBox.detail(event);
+					DetailBox.detail(event)
+					.then(()=>{
+						
+					})
+					.catch(id=>{
+						fetch("/user/calendar/"+id+"/delete")
+						.then(()=>{});
+						//삭제하면 현재 목록에서도 사라져야함... 디비만 사라지는게 아님
+					});
+					
+        			console.log(event.id);
 				}
 			}
 		}

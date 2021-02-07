@@ -6,4 +6,8 @@ import com.ttobagi.web.entity.Calendar;
 
 public interface CalendarService {
 	List<Calendar> getList(int id);
+
+	int reg(Calendar c);
+
+	int delete(int id);
 }

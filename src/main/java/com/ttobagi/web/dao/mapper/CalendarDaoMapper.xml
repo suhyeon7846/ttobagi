@@ -5,8 +5,17 @@
 
 <mapper namespace="com.ttobagi.web.dao.CalendarDao">
 	<select id="getList" resultType="com.ttobagi.web.entity.Calendar">
- 		SELECT id, date_format(start,'%Y-%m-%d %h:%i:%s') start, 
- 		date_format(end,'%Y-%m-%d %h:%i:%s') end, location,title,content,regdate,coupleId FROM Calendar 
+ 		SELECT * FROM Calendar 
  		where coupleId = (select id from couple where senderId=#{id} or receiverId=#{id})
 	</select>
+	
+	<insert id="insert" parameterType="com.ttobagi.web.entity.Calendar">
+		insert into Calendar(coupleId, title,content,location,start,end)
+		select (select id from couple where senderId=#{coupleId} or receiverId=#{coupleId}),
+		#{title}, #{content}, #{location}, #{start}, #{end} from DUAL
+	</insert>
+	
+	<delete id="delete">
+		delete from Calendar where id=#{id} 
+	</delete>
 </mapper>

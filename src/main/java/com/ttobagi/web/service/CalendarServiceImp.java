@@ -20,4 +20,16 @@ public class CalendarServiceImp implements CalendarService {
 		return calendarDao.getList(id);
 	}
 
+	@Override
+	public int reg(Calendar c) {
+		// TODO Auto-generated method stub
+		return calendarDao.insert(c);
+	}
+
+	@Override
+	public int delete(int id) {
+		// TODO Auto-generated method stub
+		return calendarDao.delete(id);
+	}
+
 }

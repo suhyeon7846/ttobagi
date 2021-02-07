@@ -2,8 +2,8 @@ package com.ttobagi.web.controller.user;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,9 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.ttobagi.web.entity.Calendar;
 import com.ttobagi.web.service.CalendarService;
 
@@ -33,7 +38,7 @@ public class CalendarController {
 	
 	@GetMapping("{id}")
 	@ResponseBody
-	public List<Calendar> getList(HttpSession session, Model model){
+	public List<Calendar> getList(HttpSession session, Model model) throws ParseException{
 		int id = (int) session.getAttribute("id");
 		List<Calendar> list = service.getList(id);
 //		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss", Locale.KOREA );
@@ -49,13 +54,64 @@ public class CalendarController {
 //				e.printStackTrace();
 //			}
 //		}
-		System.out.println(list.get(0).getRegdate());
-		model.addAttribute("id",id);
-		model.addAttribute("list",list);
+		//System.out.println(list.get(0).getEnd());
+		//String day = "2015-12-14 15:21:12";
+		
+//		String dateFormat = "yyyy-MM-dd HH:mm:ss";
+//		SimpleDateFormat df = new SimpleDateFormat(dateFormat);
+		
+		//Date date = df.parse(day);
+		//System.out.println(date);
+		
+//		TimeZone tz;
+//		tz = TimeZone.getTimeZone("Asia/Seoul"); df.setTimeZone(tz);
+		System.out.println(list);
+		
+		//model.addAttribute("id",id);
+		//model.addAttribute("list",list);
 		
 		return list;
 	}
 	
+	@PostMapping("{id}/reg")
+	@ResponseBody
+	public int reg(@RequestBody String schedule, @PathVariable(name="id") int id) throws ParseException {
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(schedule);
+		String title = element.getAsJsonObject().get("title").getAsString();
+		String content = element.getAsJsonObject().get("content").getAsString();
+		String location = element.getAsJsonObject().get("location").getAsString();
+		String start = element.getAsJsonObject().get("start").getAsString();
+		String end = element.getAsJsonObject().get("end").getAsString();
+		
+		start = start.replace("T", " ");
+		end = end.replace("T", " ");
+		
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+		Date startDate = transFormat.parse(start);
+		Date endDate = transFormat.parse(end);
+		
+		Calendar c = new Calendar();
+		c.setContent(content);
+		c.setTitle(title);
+		c.setLocation(location);
+		c.setStart(startDate);
+		c.setEnd(endDate);
+		c.setCoupleId(id);
+		
+		int result = service.reg(c);
+		
+		return result;
+	}
 	
+	@GetMapping("{id}/delete")
+	@ResponseBody
+	public int delete(@PathVariable(name="id") int id) {
+		
+		int result = service.delete(id);
+		
+		return result;
+	}
 
 }
