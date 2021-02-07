@@ -32,7 +32,7 @@ public class DiaryServiceImp implements DiaryService{
 	@Override
 	public int insert(Diary diary) {
 		// TODO Auto-generated method stub
-		return 0;
+		return diaryDao.insert(diary);
 	}
 
 	@Override

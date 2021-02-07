@@ -5,17 +5,17 @@
 
 <mapper namespace="com.ttobagi.web.dao.DiaryDao">
 <select id="getViewList" resultType="com.ttobagi.web.entity.DiaryView">
- 		select id,title,content,date_format(regDate,'%m-%d') regDate,memberId,moodId,type,file from diaryView
+ 		select * from diaryView
 		where memberId=#{param1} or memberId=#{param2}
 		order by regdate desc
-		limit #{param4} offset ${param3};
+		limit #{param4} offset #{param3};
 		<!--Id,opponentId,startIndex,size=4 -->
 </select>
 
-<!-- <insert id="insert" >
-	insert into Diary(title,content,memberId,moodId)
-	values ("오늘 있었던 일","오전수업만 하는줄 알았는데 오후수업도 했다. ㅠㅠ",'23','1');
-</insert> -->
+<insert id="insert"> <!-- parameterType="com.ttobagi.web.entity.Diary" -->
+	insert into diary(title,content,memberId,moodId)
+	values (#{title},#{content},#{memberId},#{moodId});
+</insert>
 
 
 </mapper>

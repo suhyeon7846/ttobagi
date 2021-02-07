@@ -18,8 +18,10 @@
     <section id="main">
         <div class="book">
             <div class="note-button" >
-                <span class="next"><a href="?p=${page}"=>다음</a></span>
-                <span class="prev"><a href="?p=${page}"=>이전</a></span>
+                <%-- <span class="next"><a href="?p=${page}"=>다음</a></span>
+                <span class="prev"><a href="?p=${page}"=>이전</a></span> --%>
+                <span class="next">다음</span>
+                <span class="prev">이전</span>
                 <div class="note-button-circle1"></div>
                 <div class="note-button-circle2">
                     <span class="open-close">열기</span>
@@ -28,13 +30,15 @@
             </div>
             <div class="cover">
                 <div class="cover-panel">
-                    <span>이름과 이름의 커플일기장ㅋㅋ</span>
+                    <span>${name}과 ${opponentName} 커플일기장</span>
                 </div>
             </div>
             <div class="page">
                 <div class="page1" >
                     <div class="reg-button">
-                        글쓰기
+                    	<a href="reg">
+                        	글쓰기
+                        </a>
                     </div>
                     <div class="del-button">
                         삭제
@@ -79,8 +83,7 @@ ${d.content }
                             <div class="head">
                                 <div class="deco">
                                     <span class="reborn">
-										<%-- <fmt:formatDate value="${d.regDate}" pattern="MM-dd"/> --%>
-										${d.regDate}
+										<fmt:formatDate value="${d.regDate}" pattern="MM-dd"/>
 									</span>
                                 </div>
                                 

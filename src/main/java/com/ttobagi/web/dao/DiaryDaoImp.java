@@ -31,7 +31,7 @@ public class DiaryDaoImp implements DiaryDao{
 	@Override
 	public int insert(Diary diary) {
 		// TODO Auto-generated method stub
-		return 0;
+		return session.getMapper(DiaryDao.class).insert(diary);
 	}
 
 	@Override
