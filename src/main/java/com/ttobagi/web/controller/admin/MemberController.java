@@ -55,9 +55,4 @@ public class MemberController {
 		return "admin.member.list";
 	}
 	
-	/*@GetMapping("detail/{id}")
-	public String detail(@PathVariable("id") int id) {
-		
-		return "admin.member.";
-	}*/
 }

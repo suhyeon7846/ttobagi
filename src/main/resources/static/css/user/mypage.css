@@ -1,8 +1,14 @@
+.sec-container {
+    background: #fff5f8;
+    border-top: 1px solid #fff5f8;
+}
+
 .mypage-sec {
     width: 1000px;
-    min-height: 590px;
+    min-height: 540px;
     margin: 50px auto 0 auto;
     --border: 1px solid red;
+    --background: #fc0453;
 }
 
     .mypage-sec > h1 {

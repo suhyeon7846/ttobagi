@@ -11,7 +11,7 @@
         <a href="/index"><img class="logo" src="/images/logo.png"></a>
         <nav>
             <ul>
-                <li><a href="">커플노트</a></li>
+                <li><a href="/user/coupleNote">커플노트</a></li>
                 <li><a href="/user/community/index">커뮤니티</a></li>
                 <s:authorize access="isAnonymous()">
                 <li><a href="/auth/login">로그인</a></li>
