@@ -38,6 +38,10 @@ public class HeaderPreparer implements ViewPreparer {
 		if (session.getAttribute("id") != null) {
 			int id = (int) session.getAttribute("id");
 			Member member = memberService.get(id);
+			
+			if (member.getLoginId().equals("admin"))
+				model.put("isAdmin", true);
+			
 			Couple couple = coupleService.get(id);
 			CoupleView coupleView = null;
 

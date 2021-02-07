@@ -22,4 +22,10 @@ public interface MemberService {
 
 	int getCount(String search);
 
+	int getCoupleCount();
+
+	int getSingleCount();
+
+	int getWaitCount();
+
 }

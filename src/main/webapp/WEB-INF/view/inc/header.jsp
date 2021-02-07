@@ -11,7 +11,7 @@
         <a href="/index"><img class="logo" src="/images/logo.png"></a>
         <nav>
             <ul>
-                <li><a href="">커플노트</a></li>
+                <li><a href="/user/coupleNote">커플노트</a></li>
                 <li><a href="/user/community/index">커뮤니티</a></li>
                 <s:authorize access="isAnonymous()">
                 <li><a href="/auth/login">로그인</a></li>
@@ -23,6 +23,9 @@
                     <div class="mega-menu">
                         <ul>
                             <li><a href="/user/mypage">마이페이지</a></li>
+                            <c:if test="${isAdmin == true}">
+	                            <li><a href="/admin/member/list">관리자페이지</a></li>
+                            </c:if>
                             <li><a href="/auth/logout">로그아웃</a></li>
                         </ul>
                     </div>

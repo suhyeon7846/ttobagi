@@ -34,14 +34,14 @@
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
   
-  <definition name="auth.*" template="/WEB-INF/view/auth/inc/layout.jsp">
+  <definition name="auth.*" template="/WEB-INF/view/auth/inc/layout.jsp" preparer="com.ttobagi.web.config.HeaderPreparer">
     <put-attribute name="title" value="또바기" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
     <put-attribute name="main" value="/WEB-INF/view/auth/{1}.jsp" />
     <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
   </definition>
   
-  <definition name="admin.*.*" template="/WEB-INF/view/admin/inc/layout.jsp">
+  <definition name="admin.*.*" template="/WEB-INF/view/admin/inc/layout.jsp" preparer="com.ttobagi.web.config.HeaderPreparer">
     <put-attribute name="title" value="또바기" />
     <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
     <put-attribute name="main" value="/WEB-INF/view/admin/{1}/{2}.jsp" />

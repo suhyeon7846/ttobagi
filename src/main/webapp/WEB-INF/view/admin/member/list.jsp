@@ -24,16 +24,36 @@
                                 <li>&nbsp;&nbsp;&nbsp;회원 관리</li>
                             </ul>
                     </div>
+					<div class="member-total-container">
+						<h1>회원 집계</h1>
+						<table>
+							<thead>
+								<tr>
+									<td class="col-s">총 회원</td>
+									<td class="col-s">커플 회원</td>
+									<td class="col-s">싱글 회원</td>
+									<td class="col-s">수락 대기</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>${count}명</td>
+									<td>${coupleCount}쌍</td>
+									<td>${singleCount}명</td>
+									<td>${waitCount}쌍</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
                     <form action="list" class="search-form">
-                            <h1>회원 리스트</h1>
-                            <div>
-                                <input type="text" class="input-search" placeholder="회원 이름 또는 로그인 ID" value="${param.search}" name="search">
-                                <input type="submit" class="search-submit-btn" value="검색">
-                            </div>
-                        </form>
+						<h1>회원 리스트</h1>
+						<div>
+							<input type="text" class="input-search" placeholder="회원 이름 또는 로그인 ID" value="${param.search}" name="search">
+							<input type="submit" class="search-submit-btn" value="검색">
+						</div>
+					</form>
                     <section>
                         <form action="list" method="post" class="list-board">
-                        	<input type="hidden" name="id" value="${event.id}">
                             <table>
                                 <thead>
                                     <tr>

@@ -22,4 +22,10 @@ public interface MemberDao {
 
 	int getCount(String search);
 
+	int getCoupleCount();
+
+	int getSingleCount();
+
+	int getWaitCount();
+
 }
