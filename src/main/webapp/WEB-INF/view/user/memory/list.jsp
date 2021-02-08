@@ -5,7 +5,10 @@
 <link rel="stylesheet" href="/css/user/memory/list.css">
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<script type="module" src="/js/user/memory/list.js"></script>    
+<script type="module" src="/js/user/memory/list.js"></script>   
+<script type="text/javascript" src="/libs/ckeditor/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<!-- <script src="/libs/smartEditor/ckeditor.js"></script> -->
  <section class="section-1">
         <section id="main">
 	        
