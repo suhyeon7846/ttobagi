@@ -26,6 +26,9 @@
                             <c:if test="${isAdmin == true}">
 	                            <li><a href="/admin/member/list">관리자페이지</a></li>
                             </c:if>
+                            <c:if test="${isAdmin == false}">
+                                <li><a href="/user/couple/reg">커플등록</a></li>
+                            </c:if>
                             <li><a href="/auth/logout">로그아웃</a></li>
                         </ul>
                     </div>

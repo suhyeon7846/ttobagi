@@ -100,7 +100,7 @@ public class MyPageController {
 			int id = (int)session.getAttribute("id");
 			
 			switch (action) {
-				case "수정하기":
+				case "설정하기":
 					Couple origin = coupleService.get(id);
 					
 					// String으로 넘어오는데 어떻게 Date 자료형에 들어갈 수 있지?
@@ -121,8 +121,7 @@ public class MyPageController {
 						memberRoleService.delete(id, 2);
 						memberRoleService.delete(origin2.getSenderId(), 2);
 					}
-					
-					break;
+					return "redirect:/auth/logout";
 			}
 		}
 		

@@ -1,7 +1,13 @@
+.sec-container {
+    --background: rgba(255, 255, 255, 0.705);
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+}
+
 .main-sec {
     --background: #fdde23;
-    min-height: 700px;
-    border: 1px solid black;
+    min-height: 600px;
+    --border: 1px solid black;
 }
 
     .main {
@@ -78,7 +84,7 @@
                     width: 330px;
                     height: 30px;
                     margin-top: 20px;
-                    border: none;
+                    border: 1px solid #a8a8a8;
                     font-size: 18px;
                     cursor: pointer;
                     opacity: 0.6;
