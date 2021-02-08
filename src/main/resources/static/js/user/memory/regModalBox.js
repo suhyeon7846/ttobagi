@@ -3,6 +3,7 @@ class ModalBox{
 
     static alert(){
         return new Promise(resolve=>{
+			let section = document.querySelector(".section-1")
             let screen = document.createElement("div");
             let frame = document.createElement("div");
          	let thumbnails = document.querySelector(".thumbnails");
@@ -17,8 +18,8 @@ class ModalBox{
                 transition:"0.7s",
                 zIndex:"3"
             });
-
-            document.body.append(screen);
+		 section.append(screen);
+           /* document.body.append(screen);*/
            
             setTimeout(()=>{
                 CSS.set(screen, {
@@ -36,9 +37,9 @@ class ModalBox{
                 left:"50%",
                 background: "#fff",
                 width:"900px",
-                minHeight: "500px",
+                minHeight: "600px",
                 marginLeft : "-450px",
-                marginTop : "-250px",
+                marginTop : "-300px",
                 display: "flex",
                 flexDirection: "column",
                 opacity:"0",
@@ -56,7 +57,7 @@ class ModalBox{
 					<input type="file" name="file" id="file-input" accept=".jpg, .png">
                 </div>
                 <div class="frame-text-wrap">
-                  <h1>내용</h1>
+                  
 	                 <textarea rows="50" cols="50" name="content" id="text-input"></textarea>
                 </div>
                 <div class="frame-btn-wrap">
@@ -64,8 +65,11 @@ class ModalBox{
                     <input type="button" value="취소">
                 </div>
             `;
-            document.body.append(frame);
+			section.append(frame);
+			CKEDITOR.replace( 'text-input' );
+           /* document.body.append(frame);*/
 			//썸네일 미리보기 
+			
 				const fileInput = document.querySelector("#file-input");
 				fileInput.addEventListener("change", e => {
 				    readImage(e.target)
@@ -89,7 +93,7 @@ class ModalBox{
             const okButton = frame.querySelector("input[value=등록]");
             const cancelButton = frame.querySelector("input[value=취소]");
 			okButton.onclick = ()=>{
-				let textInput = document.querySelector("#text-input").value;
+				let textInput = CKEDITOR.instances['text-input'].getData();
 				const formData = new FormData();
 				
 				formData.append('file', fileInput.files[0]);
@@ -114,7 +118,7 @@ class ModalBox{
                         <div class="back">
                             <div class="text-wrap">
                                 <h1>${m.regDate}</h1>
-                                <p style="white-space:pre;">${m.content}</p>
+                                ${m.content}
                             </div>
 							<input type="button" value="수정" class="cardEditBtn">
                             <input type="hidden" value="${m.fileName}">
