@@ -30,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mysql.cj.Session;
 import com.ttobagi.web.entity.Community;
 import com.ttobagi.web.entity.CommunityCategory;
+import com.ttobagi.web.entity.CommunityComment;
 import com.ttobagi.web.entity.CommunityFiles;
 import com.ttobagi.web.entity.CommunityView;
 import com.ttobagi.web.entity.Member;
@@ -83,7 +84,9 @@ public class CommunityController {
 		
 		CommunityCategory category = service.getCategory(type);
 		CommunityView communityView = service.getView(communityId);
+		List<CommunityComment> comments = service.commentList(communityId);
 		
+		model.addAttribute("comment",comments);
 		model.addAttribute("cate", category);
 		model.addAttribute("d", communityView);
 
@@ -92,17 +95,35 @@ public class CommunityController {
 	
 	@PostMapping("{type}/{communityId}")
 	public String detail(
+			Model model,
 			@PathVariable("communityId") int communityId,
 			@RequestParam("recom") String recom,
-			@RequestParam("negative") String negative) {
+			@RequestParam("negative") String negative,
+			@RequestParam("comment") String comment,
+			@RequestParam("commentId") int commentId,
+			CommunityComment communityComment,
+			HttpSession session) {
+
+		int id = (int)session.getAttribute("id");
+		String nickname = (String)session.getAttribute("nickName");
 		
 		//추천, 비추천 
 		Community origin = service.get(communityId);
 		if( recom != null && !recom.equals("") )
 			origin.setRecomCnt(origin.getRecomCnt()+1);			
 		else if( negative != null && !negative.equals("") )
-			origin.setNegativeCnt(origin.getNegativeCnt()+1);			
-	
+			origin.setNegativeCnt(origin.getNegativeCnt()+1);
+		
+		//댓글 등록
+		if( comment != null && !comment.equals("") ) {
+			communityComment.setContent(comment);
+			communityComment.setNickname(nickname);
+			communityComment.setMemId(id);
+			communityComment.setCommunityId(communityId);
+			
+			service.insertComment(communityComment);
+		}
+		
 		service.update(origin);
 		
 		return "redirect:"+communityId;
@@ -195,7 +216,6 @@ public class CommunityController {
 			HttpServletRequest request,
 			HttpSession session) throws IllegalStateException, IOException{
 		
-		System.out.println(session.getAttribute("id"));
 		int id = (int) session.getAttribute("id");
 		String fileName = file.getOriginalFilename();
 
@@ -235,10 +255,26 @@ public class CommunityController {
 	@GetMapping("{type}/{communityId}/del")
 	public String delete(
 			@PathVariable("type") String type, 
-			@PathVariable("communityId") int communityId) {
+			@PathVariable("communityId") int communityId
+		) {
+		
+		service.deleteComment(commentId);
+		//service.deleteAllComment(communityId);
 		service.delete(communityId);
 		service.deleteFiles(communityId);
 		
 		return "redirect:../../"+type;
+	}
+	
+	@GetMapping("{type}/{communityId}/commentDel/{commentId}")
+	public String delete(
+			@PathVariable("type") String type, 
+			@PathVariable("communityId") int communityId,
+			@PathVariable("commentId") int commentId) {
+		
+		//service.deleteComment(commentId);
+		//service.deleteAllComment(communityId);
+		
+		return "redirect:../";
 	}
 }

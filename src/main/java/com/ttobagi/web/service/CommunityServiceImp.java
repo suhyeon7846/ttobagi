@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ttobagi.web.dao.CommunityDao;
 import com.ttobagi.web.entity.Community;
 import com.ttobagi.web.entity.CommunityCategory;
+import com.ttobagi.web.entity.CommunityComment;
 import com.ttobagi.web.entity.CommunityFiles;
 import com.ttobagi.web.entity.CommunityView;
 
@@ -18,34 +19,17 @@ public class CommunityServiceImp implements CommunityService {
 	private CommunityDao communityDao; 
 	
 	@Override
-	public List<CommunityCategory> getCateList() {
-		// TODO Auto-generated method stub
-		return communityDao.getCateList();
-	}
-	
-	@Override
 	public List<Community> getList(int offset, int size, String type, String orderSet) {
 		// TODO Auto-generated method stub
 		return communityDao.getList(offset, size, type, orderSet);
 	}
 
 	@Override
-	public List<CommunityView> getViewList(int offset, int size, String type, String orderSet) {
-		return communityDao.getViewList(offset, size, type, orderSet);
-	}
-	
-	@Override
 	public Community get(int id) {
 		// TODO Auto-generated method stub
 		return communityDao.get(id);
 	}
-	
-	@Override
-	public CommunityView getView(int id) {
-		// TODO Auto-generated method stub
-		return communityDao.getView(id);
-	}
-	
+		
 	@Override
 	public int update(Community community) {
 		return communityDao.update(community);
@@ -62,7 +46,18 @@ public class CommunityServiceImp implements CommunityService {
 		// TODO Auto-generated method stub
 		return communityDao.delete(id);
 	}
+	
+	@Override
+	public CommunityView getView(int id) {
+		// TODO Auto-generated method stub
+		return communityDao.getView(id);
+	}
 
+	@Override
+	public List<CommunityView> getViewList(int offset, int size, String type, String orderSet) {
+		return communityDao.getViewList(offset, size, type, orderSet);
+	}
+	
 	@Override
 	public CommunityFiles getFiles(int id) {
 		// TODO Auto-generated method stub
@@ -98,7 +93,33 @@ public class CommunityServiceImp implements CommunityService {
 		return communityDao.getCategory(type);
 	}
 
+	@Override
+	public List<CommunityCategory> getCateList() {
+		// TODO Auto-generated method stub
+		return communityDao.getCateList();
+	}
 	
+	@Override
+	public int insertComment(CommunityComment communityComment) {
+		// TODO Auto-generated method stub
+		return communityDao.insertComment(communityComment);
+	}
 
+	@Override
+	public List<CommunityComment> commentList(int communityId) {
+		// TODO Auto-generated method stub
+		return communityDao.commentList(communityId);
+	}
 
+	@Override
+	public int deleteComment(int communityId) {
+		// TODO Auto-generated method stub
+		return communityDao.deleteComment(communityId);
+	}
+
+	@Override
+	public int deleteCommentAll(int communityId) {
+		// TODO Auto-generated method stub
+		return communityDao.deleteAllComment(communityId);
+	}
 }
