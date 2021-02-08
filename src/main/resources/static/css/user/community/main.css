@@ -1,0 +1,117 @@
+/* content */
+.main .container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.main .content {
+    margin-top: 5%;
+}
+
+.main .container .content .menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items:stretch;
+}
+
+.main .container .content .menu-item {
+    flex-basis: 30%;
+    margin-bottom: 5%;
+}
+
+.main .container .content .menu-item a img:hover {
+    transform: scale(1.4);
+    border: 3px solid #8dd8c9;
+}
+
+.main .inner .menu-title {
+    font-size: 2rem;
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+/* table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid #ebc6ce;
+    margin-bottom: 5%;
+}  
+
+.table th {
+    font-weight: bold;
+    text-align: center;
+}
+
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #ebc6ce;
+}
+
+.table th:first-child, .table td:first-child {
+    --border-left: 0;
+}
+
+.table th:last-child, .table td:last-child {
+    border-right: 0;
+}
+
+.table tr td:first-child{
+    text-align: center;
+}
+
+.table .uploadImg {
+	max-width: 300px;
+	max-height: 300px;
+}
+
+/* recom */
+.recom-area {
+    margin-bottom: 3%;
+}
+
+.recom-area button{
+    background: #fff;
+    color: #090909 !important;
+}
+
+/* comment */
+.comment .title{
+	font-size:2rem;
+	text-align: left;
+}
+
+.comment .list{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ebc6ce;
+	margin-bottom:2%;
+}
+
+.comment .list:first-child{
+	border-top: 1px solid #ebc6ce;
+}
+
+.comment .nickname {
+	flex: 0 0 20%;
+	border-right : 1px solid #ebc6ce;
+}
+
+.comment .text {
+	flex: 0 0 70%;
+	text-align: left;
+}
+
+.comment button {
+	flex: 0 0 5%;
+	border-radius: 30px;
+}
+
+.comment .reg {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top:5%;
+}

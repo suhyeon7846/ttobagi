@@ -56,26 +56,31 @@
 					<button class="negative-button" type="submit" value="negative"><i class="far fa-angry fa-2x"></i>싫어요</button>
 				</div>
 				
-				<div>
-					<table>
-						<tr>
-							<th>아이디</th>
-							<c:set var="nickName" value="${nickName}" scope="session"></c:set>	
-							<td>${nicName}</td>
-							<th>내용</th>
-							<td>
-								<input type="text">
-								<button class="" type="submit">댓글 달기</button>								
-							</td>
-						</tr>
-					</table>
+				<div class="comment">
+					<div class="title">
+						<span>댓글</span>				
+					</div>
+					<c:forEach var="m" items="${comment}" varStatus="status">
+					<div class="list">
+						
+						<span class="nickname">${m.nickname}</span>
+						<span class="text">${m.content}</span>
+						<c:if test="${id eq m.memId}">
+							<button class="del-button" name="commentId" value="${m.id}" href="${communityId}/commentDel/${m.id}" type="submit">삭제</button>
+						</c:if>
+					</div>
+					</c:forEach>					
+					<div class="reg">
+						<span class="nickname">${nickName}</span>
+						<input class="text" name="comment" type="text">
+						<button class="reg-button" type="submit">댓글 달기</button>
+					</div>
 				</div>
 			</form>
 
 			<div class="button-area">
 				<a class="button" href="../${type}">목록</a>
-				<c:set var="memId" value="${id}" scope="session"></c:set>
-				<c:if test="${memId eq d.memberId}">
+				<c:if test="${id eq d.memberId}">
 					<a class="button" href="${communityId}/edit">수정</a> 
 					<a class="button del-button" href="${communityId}/del">삭제</a>
 				</c:if>

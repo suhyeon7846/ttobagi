@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/css/user/community/common.css">
 <link rel="stylesheet" href="/css/user/community/api.css">
-<link rel="stylesheet" href="/css/user/community/detail.css">
+<link rel="stylesheet" href="/css/user/community/main.css">
 <script src="/js/user/community/visual.js"></script>
 
 	
