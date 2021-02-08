@@ -6,6 +6,7 @@ window.addEventListener('load', (e) => {
     calcDDay();
 
     memberInfoEditBtn.addEventListener('click', (e) => {
+        //e.preventDefault();
         const password = document.querySelector('.password').value;
         const passwordConfirm = document.querySelector('.password-confirm').value;
 

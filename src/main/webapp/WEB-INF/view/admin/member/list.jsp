@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/css/admin/member/list.css">
 <script src="/js/admin/member/list.js"></script>
 
-<main>
+<main class="out-main">
     <section class="body">
         <aside id="aside" class="aside">
             <h1>관리자 페이지</h1>

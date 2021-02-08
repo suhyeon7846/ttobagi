@@ -41,6 +41,8 @@ public class HeaderPreparer implements ViewPreparer {
 			
 			if (member.getLoginId().equals("admin"))
 				model.put("isAdmin", true);
+			else
+				model.put("isAdmin", false);
 			
 			Couple couple = coupleService.get(id);
 			CoupleView coupleView = null;
