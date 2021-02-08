@@ -4,6 +4,27 @@ Docs & License: https://fullcalendar.io/
 (c) 2019 Adam Shaw
 */
 
+function getFormatDate(korDate){
+	//var korDate = parse(date);
+    var year = korDate.getFullYear();              //yyyy
+    var month = (1 + korDate.getMonth());          //M
+    month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+    var day = korDate.getDate();                   //d
+	console.log(1111111);
+    day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+    return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+}
+function getFormatTime(korDate){
+	//var korDate = parse(date);
+    var hour = korDate.getHours();              //yyyy
+	hour = hour >= 10 ? hour : '0' + hour;
+    var minute = korDate.getMinutes();          //M
+    minute = minute >= 10 ? minute : '0' + minute;  //month 두자리로 저장
+    var second = korDate.getSeconds();                   //d
+    second = second >= 10 ? second : '0' + second;          //day 두자리로 저장
+    return  hour + ':' + minute + ':' + second;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+}
+
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@fullcalendar/core')) :
     typeof define === 'function' && define.amd ? define(['exports', '@fullcalendar/core'], factory) :
@@ -1129,6 +1150,7 @@ Docs & License: https://fullcalendar.io/
             };
             // won't even fire if moving was ignored
             _this.handleDragEnd = function (ev) {
+				console.log(111);
                 var component = _this.component;
                 var _a = component.context, calendar = _a.calendar, view = _a.view;
                 var pointer = _this.dragging.pointer;
@@ -1403,9 +1425,35 @@ Docs & License: https://fullcalendar.io/
                     var eventDef = _this.eventRange.def;
                     var eventInstance = _this.eventRange.instance;
                     var eventApi = new core.EventApi(initialCalendar_1, eventDef, eventInstance);
-                    var relevantEvents_1 = _this.relevantEvents;
+					var relevantEvents_1 = _this.relevantEvents;
                     var mutatedRelevantEvents = _this.mutatedRelevantEvents;
                     var finalHit = _this.hitDragging.finalHit;
+
+					let offset = new Date(getFormatDate(new Date(eventApi.start))) - new Date(getFormatDate(finalHit.dateSpan.range.start));
+					/*
+					let schedule = {
+						start:getFormatDate(finalHit.dateSpan.range.start)+"T"+getFormatTime(eventApi.start),
+						end:getFormatDate(finalHit.dateSpan.range.end)+"T"+getFormatTime(eventApi.end),
+						title:eventApi.title,
+						content:eventApi.extendedProps.content,
+						location:eventApi.extendedProps.location,
+						id:eventApi.id
+					}
+					const init = {
+					  method: "POST",
+						body: JSON.stringify(schedule),
+						headers: {
+					    "Content-Type": "application/json"
+					  },
+						credentials : "same-origin"
+					}
+					fetch("/user/calendar/"+schedule.id+"/update",init)
+					.then(()=>{});*/
+					//let gap = new Date(getFormatDate(eventApi.start)) - new Date()
+					console.log(eventApi.start);
+					console.log(eventDef);
+					console.log(new Date(eventApi.start-offset));
+					
                     _this.clearDrag(); // must happen after revert animation
                     initialCalendar_1.publiclyTrigger('eventDragStop', [
                         {
@@ -1475,6 +1523,7 @@ Docs & License: https://fullcalendar.io/
                     else {
                         initialCalendar_1.publiclyTrigger('_noEventDrop');
                     }
+
                 }
                 _this.cleanup();
             };

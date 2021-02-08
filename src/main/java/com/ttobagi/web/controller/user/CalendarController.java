@@ -101,8 +101,9 @@ public class CalendarController {
 		c.setCoupleId(id);
 		
 		int result = service.reg(c);
+		int lastId = service.getLastId();
 		
-		return result;
+		return lastId;
 	}
 	
 	@GetMapping("{id}/delete")
@@ -110,6 +111,38 @@ public class CalendarController {
 	public int delete(@PathVariable(name="id") int id) {
 		
 		int result = service.delete(id);
+		
+		return result;
+	}
+	
+	@PostMapping("{id}/update")
+	@ResponseBody
+	public int update(@PathVariable(name="id") int id, @RequestBody String schedule) throws ParseException {
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(schedule);
+		String title = element.getAsJsonObject().get("title").getAsString();
+		String content = element.getAsJsonObject().get("content").getAsString();
+		String location = element.getAsJsonObject().get("location").getAsString();
+		String start = element.getAsJsonObject().get("start").getAsString();
+		String end = element.getAsJsonObject().get("end").getAsString();
+		
+		start = start.replace("T", " ");
+		end = end.replace("T", " ");
+		
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+		Date startDate = transFormat.parse(start);
+		Date endDate = transFormat.parse(end);
+		
+		Calendar c = new Calendar();
+		c.setContent(content);
+		c.setTitle(title);
+		c.setLocation(location);
+		c.setStart(startDate);
+		c.setEnd(endDate);
+		c.setId(id);
+		
+		int result = service.update(c);
 		
 		return result;
 	}

@@ -40,7 +40,7 @@ function getFormatTime(korDate){
 
 class ModalBox{
   
-    static alert(message=""){
+    static alert(date){
         
         
         return new Promise(resolve=>{
@@ -96,8 +96,8 @@ class ModalBox{
             </div>
             <div style="flex-grow: 1; display:flex;justify-content: center;align-items: center;">
             <div class="schedule">
-				시작 : <input name="startDate" type="date"/> <input name="startTime" type="time"/><br>
-				종료 : <input name="endDate" type="date"/> <input name="endTime" type="time"/><br>
+				시작 : <input name="startDate" type="date" value="${date}"/> <input name="startTime" type="time"/><br>
+				종료 : <input name="endDate" type="date" value="${date}"/> <input name="endTime" type="time"/><br>
 				장소 : <input style="width:230px;" name="location" type="text" placeholder="장소" /><br>
 				제목 : <input style="width:230px;" name="title" type="text" placeholder="일정내용" /><br>
 				상세내용<br><textarea style="width:263px; height:300px;" name="content"></textarea>
@@ -204,9 +204,10 @@ class DetailBox{
             <div class="schedule">
 				시작 : <input name="startDate" type="date" value="${getFormatDate(event.start)}"/> <input name="startTime" type="time" value="${getFormatTime(event.start)}"/><br>
 				종료 : <input name="endDate" type="date" value="${getFormatDate(event.end)}"/> <input name="endTime" type="time" value="${getFormatTime(event.end)}"/><br>
-				장소 : <input style="width:230px;" name="location" type="text" placeholder="${event.extendedProps.location}" /><br>
-				제목 : <input style="width:230px;" name="title" type="text" placeholder="${event.title}" /><br>
+				장소 : <input style="width:230px;" name="location" type="text" value="${event.extendedProps.location}" /><br>
+				제목 : <input style="width:230px;" name="title" type="text" value="${event.title}" /><br>
 				상세내용<br><textarea style="width:263px; height:300px;" name="content">${event.extendedProps.content}</textarea>
+				<input type="hidden" value="${event.id}"/>
 				
 			</div>
             </div>
@@ -229,13 +230,15 @@ class DetailBox{
 			const title = frame.querySelector("input[name=title]");
 			const content = frame.querySelector("textarea[name=content]");
 			const location = frame.querySelector("input[name=location]");
+			const eventId = frame.querySelector("input[type=hidden]");
             okButton.onclick = ()=>{
 				let schedule = {
 					start:startDate.value+"T"+startTime.value,
 					end:endDate.value+"T"+endTime.value,
 					title:title.value,
 					content:content.value,
-					location:location.value
+					location:location.value,
+					id:eventId.value
 				}
                 resolve(schedule);
                 screen.remove();
@@ -304,15 +307,13 @@ class DetailBox{
 		!e.target.classList.contains("fc-time") &&
 		!e.target.classList.contains("fc-title") ){
 			
-			ModalBox.alert().then(schedule=>{
-				//등록하자 마자 클릭하면 id값이 없어서 이벤트 실행 안됨.
-				//이거 마지막 아이디 가져와서 +1 시켜서 속성으로 id 값 넣어줘야겟음
-				srcCalendar.addEvent({
-		          title: schedule.title,
-		          start: schedule.start,
-		          end: schedule.end,
-				  location:schedule.location
-		        });
+			let clickedDate;
+			if(e.target.classList.contains("fc-day-number"))
+				clickedDate = e.target.parentNode.getAttribute("data-date");
+			else
+				clickedDate = e.target.getAttribute("data-date");
+				
+			ModalBox.alert(clickedDate).then(schedule=>{
 				const init = {
 				  method: "POST",
 					body: JSON.stringify(schedule),
@@ -326,7 +327,15 @@ class DetailBox{
 				.then(result=>result.json())
 				.then(result=>{
 					console.log(result);
-				})
+					srcCalendar.addEvent({
+			          title: schedule.title,
+			          start: schedule.start,
+					  content: schedule.content,
+			          end: schedule.end,
+					  location:schedule.location,
+					  id:result
+			        });
+				});
 			});
 		}
 		else if(e.target.classList.contains("fc-content")){
@@ -334,13 +343,29 @@ class DetailBox{
 			for(var event of srcCalendar.getEvents()){
 				if(event.id == e.target.querySelector("input[type=hidden]").value){
 					DetailBox.detail(event)
-					.then(()=>{
+					.then(schedule=>{
+						const init = {
+						  method: "POST",
+							body: JSON.stringify(schedule),
+							headers: {
+						    "Content-Type": "application/json"
+						  },
+							credentials : "same-origin"
+						}
+						fetch("/user/calendar/"+schedule.id+"/update",init)
+						.then(()=>{});
+						
+						var delEvent = srcCalendar.getEventById(event.id);
+						delEvent.remove();
+						srcCalendar.addEvent(schedule);
 						
 					})
-					.catch(id=>{
-						fetch("/user/calendar/"+id+"/delete")
+					.catch(eventId=>{
+						fetch("/user/calendar/"+eventId+"/delete")
 						.then(()=>{});
-						//삭제하면 현재 목록에서도 사라져야함... 디비만 사라지는게 아님
+						
+						var delEvent = srcCalendar.getEventById(event.id);
+						delEvent.remove();
 					});
         			console.log(event.id);
 					
@@ -351,13 +376,28 @@ class DetailBox{
 			for(var event of srcCalendar.getEvents()){
 				if(event.id == e.target.parentNode.querySelector("input[type=hidden]").value){
 					DetailBox.detail(event)
-					.then(()=>{
-						
-					})
-					.catch(id=>{
-						fetch("/user/calendar/"+id+"/delete")
+					.then(schedule=>{
+						const init = {
+						  method: "POST",
+							body: JSON.stringify(schedule),
+							headers: {
+						    "Content-Type": "application/json"
+						  },
+							credentials : "same-origin"
+						}
+						fetch("/user/calendar/"+schedule.id+"/update",init)
 						.then(()=>{});
-						//삭제하면 현재 목록에서도 사라져야함... 디비만 사라지는게 아님
+						
+						var delEvent = srcCalendar.getEventById(event.id);
+						delEvent.remove();
+						srcCalendar.addEvent(schedule);
+					})
+					.catch(eventId=>{
+						fetch("/user/calendar/"+eventId+"/delete")
+						.then(()=>{});
+						
+						var delEvent = srcCalendar.getEventById(event.id);
+						delEvent.remove();
 					});
 					
         			console.log(event.id);

@@ -10,4 +10,8 @@ public interface CalendarDao {
 	int insert(Calendar c);
 
 	int delete(int id);
+
+	int getLastId();
+
+	int update(Calendar c);
 }

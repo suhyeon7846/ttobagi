@@ -10,4 +10,9 @@ public interface CalendarService {
 	int reg(Calendar c);
 
 	int delete(int id);
+
+	int getLastId();
+
+	int update(Calendar c);
+
 }

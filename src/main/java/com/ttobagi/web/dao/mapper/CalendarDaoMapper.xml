@@ -18,4 +18,18 @@
 	<delete id="delete">
 		delete from Calendar where id=#{id} 
 	</delete>
+	
+	<select id="getLastId" resultType="Integer">
+		select max(id) from Calendar
+	</select>
+	
+	<update id="update" parameterType="com.ttobagi.web.entity.Calendar">
+		update Calendar set 
+			title=#{title}, 
+			location = #{location},
+			content = #{content},
+			start = #{start},
+			end = #{end}
+		where id=#{id}
+	</update>
 </mapper>

@@ -38,4 +38,16 @@ public class CalendarDaoImp implements CalendarDao {
 		return mapper.delete(id);
 	}
 
+	@Override
+	public int getLastId() {
+		// TODO Auto-generated method stub
+		return mapper.getLastId();
+	}
+
+	@Override
+	public int update(Calendar c) {
+		// TODO Auto-generated method stub
+		return mapper.update(c);
+	}
+
 }
