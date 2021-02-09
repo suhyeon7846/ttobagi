@@ -17,5 +17,12 @@
 	values (#{title},#{content},#{memberId},#{moodId});
 </insert>
 
+<delete id="deleteAll">
+	delete from diary where id in
+	<foreach item="id" index="index" collection = "ids" open="(" separator="," close=")">
+		#{id}
+	</foreach>
+</delete>
+
 
 </mapper>

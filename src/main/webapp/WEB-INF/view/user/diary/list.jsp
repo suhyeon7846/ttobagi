@@ -35,78 +35,77 @@
             </div>
             <div class="page">
                 <div class="page1" >
+                <form action="list" method="post">
                     <div class="reg-button">
                     	<a href="reg">
                         	글쓰기
                         </a>
                     </div>
-                    <div class="del-button">
-                        삭제
-                    </div>
-                    <div class="diary-list">
-                    <!-- 여기서부터 일기장 패널 1,2면 탑, 3,4면 바텀 -->
-                    <c:set var="name" value="홍길동" />
-
-
-                    <c:forEach var="d" items="${list}" varStatus="status">
-                    	<c:choose>
-                    	
-                    	<c:when test="${status.count%4==1 or status.count%4==2}"> 
-                    		<div class="diary-panel-top">
-                            <div class="head">
-                                <div class="deco">
-                                    <span class="reborn">
-                                    	<fmt:formatDate value="${d.regDate}" pattern="MM-dd"/> 
-                                    </span>
-                                </div>
-                                
-                                <span class="title">${d.title }</span>
-                                <div class="mood">
-                                    <img src="${d.file } " style="width: 50px; height: 50px;">
-                                </div>
-                                <form>
-                                    <input type="checkbox" class="check-box"/>
-                                    <input type="submit" value="삭제" class="submit-button">
-                                </form>
-                            </div>
-
-                            <div class="body">
-                                <textarea class="content">
-${d.content }
-                                </textarea>
-                            </div>
-                        </div>
-                    	</c:when>
-                    	
-                    	<c:when test="${status.count%4==3 or status.count%4==0}"> 
-                    		<div class="diary-panel-bottom">
-                            <div class="head">
-                                <div class="deco">
-                                    <span class="reborn">
-										<fmt:formatDate value="${d.regDate}" pattern="MM-dd"/>
-									</span>
-                                </div>
-                                
-                                <span class="title">${d.title }</span>
-                                <div class="mood">
-                                    <img src="${d.file }" style="width: 50px; height: 50px;">
-                                </div>
-                                <form>
-                                    <input type="checkbox" class="check-box"/>
-                                    <input type="submit" value="삭제" class="submit-button">
-                                </form>
-                            </div>
-
-                            <div class="body">
-                                <textarea class="content">
-${d.content }
-                                </textarea>
-                            </div>
-                        </div>
-                    	</c:when>
-                    	</c:choose>
-                    </c:forEach>                                            
-                   </div>
+                    <input type="submit" class="del-button" value="삭제">
+                    
+	                    <div class="diary-list">
+	                    <!-- 여기서부터 일기장 패널 1,2면 탑, 3,4면 바텀 -->
+	                    <%-- <c:set var="name" value="홍길동" /> --%>
+	
+	
+	                    <c:forEach var="d" items="${list}" varStatus="status">
+	                    	<c:choose>
+	                    	
+	                    	<c:when test="${status.count%4==1 or status.count%4==2}"> 
+	                    		<div class="diary-panel-top">
+	                            <div class="head">
+	                                <div class="deco">
+	                                    <span class="reborn">
+	                                    	<fmt:formatDate value="${d.regDate}" pattern="MM-dd"/> 
+	                                    </span>
+	                                </div>
+	                                
+	                                <span class="title">${d.title }</span>
+	                                <div class="mood">
+	                                    <img src="${d.file } " style="width: 50px; height: 50px;">
+	                                </div>
+	                                <div class="input">
+	                                    <input type="checkbox" class="check-box" name ="del" value="${d.id}"/> 
+	                                </div> 
+	                            </div>
+	
+	                            <div class="body">
+	                                <textarea class="content" readonly="readonly" disabled>
+	${d.content }
+	                                </textarea>
+	                            </div>
+	                        </div>
+	                    	</c:when>
+	                    	
+	                    	<c:when test="${status.count%4==3 or status.count%4==0}"> 
+	                    		<div class="diary-panel-bottom">
+	                            <div class="head">
+	                                <div class="deco">
+	                                    <span class="reborn">
+											<fmt:formatDate value="${d.regDate}" pattern="MM-dd"/>
+										</span>
+	                                </div>
+	                                
+	                                <span class="title">${d.title }</span>
+	                                <div class="mood">
+	                                    <img src="${d.file }" style="width: 50px; height: 50px;">
+	                                </div>
+	                                <div class="input">
+	                                    <input type="checkbox" class="check-box" name ="del" value="${d.id}"/> 
+	                                </div> 
+	                            </div>
+	
+	                            <div class="body">
+	                                <textarea class="content" readonly="readonly" disabled>
+	${d.content }
+	                                </textarea>
+	                            </div>
+	                        </div>
+	                    	</c:when>
+	                    	</c:choose>
+	                    </c:forEach>                                            
+	                   </div>
+	               </form>
                 </div>
             </div>
         </div>

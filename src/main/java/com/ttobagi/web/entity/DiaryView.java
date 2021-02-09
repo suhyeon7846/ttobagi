@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class DiaryView {
 	
+	private int id;
 	private String title;
 	private String content;
 	private Timestamp regDate;
@@ -13,12 +14,21 @@ public class DiaryView {
 	private int type;
 	private String file;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public DiaryView() {
 		
 	}
 	
-	public DiaryView(String title, String content, Timestamp regDate, int memberId, int moodId, int type, String file) {
+	public DiaryView(int id, String title, String content, Timestamp regDate, int memberId, int moodId, int type, String file) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.regDate = regDate;
@@ -71,11 +81,13 @@ public class DiaryView {
 	public void setFile(String file) {
 		this.file = file;
 	}
+
 	@Override
 	public String toString() {
-		return "DiaryView [title=" + title + ", content=" + content + ", regDate=" + regDate + ", memberId=" + memberId
-				+ ", moodId=" + moodId + ", type=" + type + ", file=" + file + "]";
+		return "DiaryView [id=" + id + ", title=" + title + ", content=" + content + ", regDate=" + regDate
+				+ ", memberId=" + memberId + ", moodId=" + moodId + ", type=" + type + ", file=" + file + "]";
 	}
+	
 	
 	
 	

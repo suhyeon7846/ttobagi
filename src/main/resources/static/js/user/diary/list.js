@@ -24,7 +24,9 @@ window.addEventListener("load", () => {
 	let pageIndex=1; //fetch에서 페이지할때 쓸 변수
 	
 	
-		
+
+//==============삭제 체크박스
+
     for (let i = 0; i < checkBox.length; i++) {
         checkBox[i].onclick = () => {
 	
@@ -47,9 +49,13 @@ window.addEventListener("load", () => {
 			}
         }
     }
+	delBtn.onclick=(e)=>{
+		alert("삭제!");
+	}
 
-    //삭제버튼 트리거
+/*    //삭제버튼 트리거
     delBtn.onclick = (e) => {
+		let result = confirm("정말 삭제하시겠습니까?");
         let event = new MouseEvent('click', {
             bubbles: true,
             cancelable: true,
@@ -61,11 +67,11 @@ window.addEventListener("load", () => {
 
     for (let i = 0; i < submitBtn.length; i++) {
         submitBtn[i].onclick = () => {
-            alert("삭제 제출");
+            //alert("삭제 제출");
         }
     }
-
-//=====================================open close 버튼
+*/
+//=====================================open close 버튼 건들면 안댐
     openBtn.onclick = () => {
         if (btn.style.transform != 'rotateY(180deg)') {//y축이 반대가 아니면 '열기'상태
             btn.style.transform = 'rotateY(180deg)';
@@ -149,8 +155,6 @@ window.addEventListener("load", () => {
     }
 
 
-
-
 //================여기서부터 fetch 사용 기존에 있던 변수들을 못씀 새로 만들어진 페이지라서 그런듯 
 //게다가 현재페이지라고 해주지도 못함 현재페이지의 트랜잭션이 끝난 뒤에 다음페이지==현재페이지가 되기때문
 //============================================================다음 버튼(다음페이지)
@@ -184,10 +188,6 @@ function formatDate(strDate, saper){//함수 호출 할때 saper 부분에 '-' �
 		//console.log(e.target)
 		//console.log(e.target.href);
 		
-		
-
-
-		
 		fetch("/api/diary/list?p="+(++pageIndex))
 		.then(response=>response.json())
 		.then(json=>{
@@ -195,22 +195,24 @@ function formatDate(strDate, saper){//함수 호출 할때 saper 부분에 '-' �
 			console.log(json);
 			if(json.length==0){
 				alert("다음페이지가 없습니다.");
+				
 				return currentPage;
 			}
 			
 			let makePage1 = `
 						<div class="page1">
-							<div class="del-button"> 
-                    			삭제 
-		                    </div> 
-		                    <div class="reg-button">
-								<a href="reg"> 
-		                        글쓰기
- 								</a>
-		                    </div>
-							<div class="diary-list">
-								
-							</div>
+							<form action="list" method="post">
+								<input type="submit" class="del-button" value="삭제">  
+		                    	</input> 
+		                    	<div class="reg-button">
+									<a href="reg"> 
+		                        	글쓰기
+ 									</a>
+		                    	</div>
+								<div class="diary-list">
+									
+								</div>
+							</form>
 						</div>
 						`;
         	book.insertAdjacentHTML('beforeend',makePage1);
@@ -230,13 +232,12 @@ function formatDate(strDate, saper){//함수 호출 할때 saper 부분에 '-' �
                                 <div class="mood"> 
                                     <img src="${d.file} " style="width: 50px; height: 50px;"> 
                                 </div> 
-                                <form>
-                                    <input type="checkbox" class="check-box"/> 
-                                    <input type="submit" value="삭제" class="submit-button"> 
-                                </form> 
+                                <div class="input">
+                                    <input type="checkbox" class="check-box" name ="del" value="${d.id}"/> 
+                                </div> 
                             </div> 
                             <div class="body"> 
-                                <textarea class="content">${d.content}</textarea> 
+                                <textarea class="content" readonly="readonly" disabled>${d.content}</textarea> 
                             </div> 
                         </div> 
 						`;
@@ -253,13 +254,11 @@ function formatDate(strDate, saper){//함수 호출 할때 saper 부분에 '-' �
                                 <div class="mood"> 
                                     <img src="${d.file} " style="width: 50px; height: 50px;"> 
                                 </div> 
-                                <form>
-                                    <input type="checkbox" class="check-box"/> 
-                                    <input type="submit" value="삭제" class="submit-button"> 
-                                </form> 
+                                <div class="input">
+                                    <input type="checkbox" class="check-box" name ="del" value="${d.id}"/>                                 </div> 
                             </div> 
                             <div class="body"> 
-                                <textarea class="content">${d.content}</textarea> 
+                                <textarea class="content" readonly="readonly" disabled>${d.content}</textarea> 
                             </div> 
                         </div> 
 						`;
@@ -282,9 +281,8 @@ function formatDate(strDate, saper){//함수 호출 할때 saper 부분에 '-' �
 			regBtn.onclick=()=>{
 				alert("등록")
 			}
-		    submitBtn = currentPage.nextElementSibling.querySelectorAll(".submit-button");
 			
-		 for (let i = 0; i < checkBox.length; i++) {
+		/* for (let i = 0; i < checkBox.length; i++) {
 	        checkBox[i].onclick = () => {
 				console.log("체크박스 클릭")
 				
@@ -309,28 +307,8 @@ function formatDate(strDate, saper){//함수 호출 할때 saper 부분에 '-' �
 	                regBtn.style.display = 'block';
 				}
 	        }
-	    }
-    
-
-		    //삭제버튼 트리거
-		    delBtn.onclick = (e) => {
-		        let event = new MouseEvent('click', {
-		            bubbles: true,
-		            cancelable: true,
-		            view: window
-		        });
-		        for (let i = 0; i < submitBtn.length; i++)
-		            submitBtn[i].dispatchEvent(event);
-		    }
-		    for (let i = 0; i < submitBtn.length; i++) {
-			//제출이 4번 눌려
-			//체크된것만 제출하게할순 있는데 그래야하나? 일괄삭제 구현하면서 테스트 해보자
-		        submitBtn[i].onclick = (e) => {
-					console.log(e);
-					e.preventDefault();
-		            alert("삭제 제출");
-		        }
-		    }
+	    } ▼*/
+		delCheck();
 			
 		});//fetch 닫기
 			setTimeout(function () {//페이지 넘기는 효과에서 넘어가는 페이지 내용 안보이게

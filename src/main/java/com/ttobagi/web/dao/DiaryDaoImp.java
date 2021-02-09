@@ -41,15 +41,9 @@ public class DiaryDaoImp implements DiaryDao{
 	}
 
 	@Override
-	public Diary getPrev(int id) {
+	public int deleteAll(int[] ids) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Diary getNext(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.getMapper(DiaryDao.class).deleteAll(ids);
 	}
 
 }

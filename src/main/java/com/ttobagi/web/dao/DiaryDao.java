@@ -14,12 +14,9 @@ public interface DiaryDao {
 		//-----------------------------------데이터 조작
 		int insert(Diary diary);
 		int delete(int id);
+		int deleteAll(int[] ids);
 		
 		
 		
 		
-		
-		//-----------------------------------페이지 전환
-		Diary getPrev(int id);
-		Diary getNext(int id);
 }

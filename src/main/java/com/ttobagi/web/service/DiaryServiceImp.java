@@ -41,6 +41,12 @@ public class DiaryServiceImp implements DiaryService{
 		return 0;
 	}
 
+	@Override
+	public int deleteAll(int[] ids) {
+		// TODO Auto-generated method stub
+		return diaryDao.deleteAll(ids);
+	}
+
 
 	
 	

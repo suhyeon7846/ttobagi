@@ -152,7 +152,7 @@
   margin-top: 5px;
 }
 
-#main .book .page1 .diary-list .diary-panel-top .head form{
+#main .book .page1 .diary-list .diary-panel-top .head .input{
   margin-top: 35px;
 }
 
@@ -242,7 +242,7 @@
   height: 50px;
   /* margin-top: 1px; */
 }
-#main .book .page1 .diary-list .diary-panel-bottom .head form{
+#main .book .page1 .diary-list .diary-panel-bottom .head .input{
   margin-top: 30px;
 }
 
@@ -388,6 +388,9 @@
   background: white;
   transition: 1s;
   border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  outline: none;
 }
 
 .del-button:hover{
