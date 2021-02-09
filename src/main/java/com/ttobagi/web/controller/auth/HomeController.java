@@ -41,10 +41,13 @@ public class HomeController {
 		
 		authService.insert(member); // 회원가입 정보 insert
 		
-		int memberId = authService.getLastId();
-		int roleId = 3; // 'SOLO'
-		authService.insertMemberRole(memberId, roleId); 
 		
+		int memberId = authService.getLastId();
+		
+		int roleId = 3; // 'SOLO'
+		
+		authService.insertMemberRole(memberId, roleId); 
+		System.out.println("병준이빡침");
 		return "redirect:login";
 	}
 	

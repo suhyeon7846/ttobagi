@@ -48,41 +48,50 @@
 				</tbody>
 			</table>
 			
-			<form method="post">
-				<div class="recom-area">
-					<input type="hidden" name="recom">
-					<input type="hidden" name="negative">
-					<button class="recom-button" type="submit" value="recom"><i class="far fa-thumbs-up fa-2x"></i>좋아요</button> 
-					<button class="negative-button" type="submit" value="negative"><i class="far fa-angry fa-2x"></i>싫어요</button>
+			<div class="recom-area">
+				<input type="hidden" class="community-type" value="${type}">
+				<input type="hidden" class="community-id" value="${d.id}">
+				<button class="recom-button" type="button" name="recom">
+					<i class="far fa-thumbs-up fa-2x"></i>좋아요
+				</button> 
+				<button class="negative-button" type="button" name="negative">
+					<i class="far fa-angry fa-2x"></i>싫어요
+				</button>
+			</div>
+
+			<div class="comment">
+				<div class="title">
+					<span>댓글</span>				
 				</div>
+				<c:forEach var="m" items="${comment}">			
+				<form class="comment-form" method="post" action="${m.id}/commentDel">
+				<div class="list"><!-- 댓글 리스트 -->
+					<input name="communityId" type="hidden" value="${d.id}" >
+					<span class="nickname">${m.nickname}</span>
+					<span class="text">${m.content}</span>
+					<c:if test="${id eq m.memId}">
+						<a href="${m.id}/commentDel">						
+							<button class="del-button" name="commentId" value="${m.id}" type="submit">삭제</button>
+						</a>
+					</c:if>
+				</div>
+				</form>
+				</c:forEach>
 				
-				<div class="comment">
-					<div class="title">
-						<span>댓글</span>				
-					</div>
-					<c:forEach var="m" items="${comment}" varStatus="status">
-					<div class="list">
-						
-						<span class="nickname">${m.nickname}</span>
-						<span class="text">${m.content}</span>
-						<c:if test="${id eq m.memId}">
-							<button class="del-button" name="commentId" value="${m.id}" href="${communityId}/commentDel/${m.id}" type="submit">삭제</button>
-						</c:if>
-					</div>
-					</c:forEach>					
-					<div class="reg">
-						<span class="nickname">${nickName}</span>
-						<input class="text" name="comment" type="text">
-						<button class="reg-button" type="submit">댓글 달기</button>
-					</div>
+				<div class="reg"><!-- 댓글 등록 -->
+					<span class="nickname">${nickName}</span>
+					<input class="text" name="commentText" type="text">
+					<a href="${communityId}/commentInsert">					
+						<button class="comment-reg-button" type="submit">댓글 달기</button>
+					</a>
 				</div>
-			</form>
+			</div>
 
 			<div class="button-area">
 				<a class="button" href="../${type}">목록</a>
 				<c:if test="${id eq d.memberId}">
 					<a class="button" href="${communityId}/edit">수정</a> 
-					<a class="button del-button" href="${communityId}/del">삭제</a>
+					<a class="button comment-del-button" href="${communityId}/del">삭제</a>
 				</c:if>
 			</div>
 

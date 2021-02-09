@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// url 아직 뭐뭐있는지 몰라서 일단 아래것만 허가해놓을게요. 주석처리하고 사용하셔도 됩니다 -2/1. 재희-
 				.antMatchers("/auth/**", "/user/community/index").permitAll()
 				.antMatchers(
-						"/user/coupleNote",
+						"/user/coupleNote", 
 						"/user/bucketlist/**", "/user/memory/**",
 						"/user/diary/**", "/user/letter/**").hasAnyRole("ADMIN", "COUPLE")
 				.antMatchers("/user/**", "/user/community/**").authenticated()
