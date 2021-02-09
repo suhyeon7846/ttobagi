@@ -258,7 +258,7 @@ public class CommunityController {
 			@PathVariable("communityId") int communityId
 		) {
 		
-		service.deleteComment(commentId);
+		//service.deleteComment(commentId);
 		//service.deleteAllComment(communityId);
 		service.delete(communityId);
 		service.deleteFiles(communityId);
