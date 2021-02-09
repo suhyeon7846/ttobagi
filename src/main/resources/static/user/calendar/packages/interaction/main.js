@@ -1429,11 +1429,11 @@ function getFormatTime(korDate){
                     var mutatedRelevantEvents = _this.mutatedRelevantEvents;
                     var finalHit = _this.hitDragging.finalHit;
 
-					let offset = new Date(getFormatDate(new Date(eventApi.start))) - new Date(getFormatDate(finalHit.dateSpan.range.start));
-					/*
+					var offset = 0-validMutation.datesDelta.days*1000*60*60*24;
+					
 					let schedule = {
-						start:getFormatDate(finalHit.dateSpan.range.start)+"T"+getFormatTime(eventApi.start),
-						end:getFormatDate(finalHit.dateSpan.range.end)+"T"+getFormatTime(eventApi.end),
+						start:getFormatDate(new Date(eventApi.start-offset))+"T"+getFormatTime(eventApi.start),
+						end:getFormatDate(new Date(eventApi.end-offset))+"T"+getFormatTime(eventApi.end),
 						title:eventApi.title,
 						content:eventApi.extendedProps.content,
 						location:eventApi.extendedProps.location,
@@ -1448,11 +1448,9 @@ function getFormatTime(korDate){
 						credentials : "same-origin"
 					}
 					fetch("/user/calendar/"+schedule.id+"/update",init)
-					.then(()=>{});*/
-					//let gap = new Date(getFormatDate(eventApi.start)) - new Date()
-					console.log(eventApi.start);
-					console.log(eventDef);
-					console.log(new Date(eventApi.start-offset));
+					.then(()=>{});
+					//현재 이벤트의 날짜와 옮겨진 날짜 사이의 offset
+					//console.log(validMutation.datesDelta.days);
 					
                     _this.clearDrag(); // must happen after revert animation
                     initialCalendar_1.publiclyTrigger('eventDragStop', [

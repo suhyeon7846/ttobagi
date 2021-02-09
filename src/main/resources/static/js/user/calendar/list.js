@@ -91,7 +91,7 @@ class ModalBox{
             });
             
             frame.innerHTML = `
-            <div>
+            <div style="margin: 20px; width:460px; color:#F65875; font-size: 20px; font-weight:bold; border-bottom:1px solid #F65875;">
             일정등록
             </div>
             <div style="flex-grow: 1; display:flex;justify-content: center;align-items: center;">
@@ -105,8 +105,8 @@ class ModalBox{
 			</div>
             </div>
             <div style="display:flex;justify-content: center; border-top: 1px solid #e9e9e9;">
-            <input type="button" value="OK">
-            <input type="button" value="CANCEL">
+            <input style="margin:10px; width:50px; background-color:#F65875; color:white; border:none;" type="button" value="OK">
+            <input style="margin:10px; width:50px; background-color:#F65875; color:white; border:none;" type="button" value="CANCEL">
             </div>
             `;
 
@@ -197,7 +197,7 @@ class DetailBox{
             });
             
             frame.innerHTML = `
-            <div>
+            <div style="margin: 20px; width:460px; color:#F65875; font-size: 20px; font-weight:bold; border-bottom:1px solid #F65875;">
             일정
             </div>
             <div style="flex-grow: 1; display:flex;justify-content: center;align-items: center;">
@@ -212,9 +212,9 @@ class DetailBox{
 			</div>
             </div>
             <div style="display:flex;justify-content: center; border-top: 1px solid #e9e9e9;">
-            <input type="button" value="저장">
-			<input type="button" value="삭제">
-            <input type="button" value="취소">
+            <input style="margin:10px; width:50px; background-color:#F65875; color:white; border:none;" type="button" value="저장">
+			<input style="margin:10px; width:50px; background-color:#F65875; color:white; border:none;" type="button" value="삭제">
+            <input style="margin:10px; width:50px; background-color:#F65875; color:white; border:none;" type="button" value="취소">
             </div>
             `;
 
@@ -249,10 +249,15 @@ class DetailBox{
                 frame.remove();
             };
 			delButton.onclick = ()=>{
-				let eventId = event.id;
-				reject(eventId);
-				screen.remove();
-                frame.remove();
+				if(confirm("삭제하시겠습니까?") == true){
+					let eventId = event.id;
+					reject(eventId);
+					screen.remove();
+	                frame.remove();
+				}
+				else{
+					return;
+				}
 			}
 
         });
@@ -339,7 +344,7 @@ class DetailBox{
 			});
 		}
 		else if(e.target.classList.contains("fc-content")){
-			console.log(111);
+			console.log(srcCalendar.getEvents());
 			for(var event of srcCalendar.getEvents()){
 				if(event.id == e.target.querySelector("input[type=hidden]").value){
 					DetailBox.detail(event)
@@ -373,6 +378,7 @@ class DetailBox{
 			}
 		}
 		else if(!e.target.classList.contains("fc-content")){
+			console.log(srcCalendar.getEvents());
 			for(var event of srcCalendar.getEvents()){
 				if(event.id == e.target.parentNode.querySelector("input[type=hidden]").value){
 					DetailBox.detail(event)
