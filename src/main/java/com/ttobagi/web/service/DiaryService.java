@@ -14,4 +14,5 @@ public interface DiaryService {
 	//-----------------------------------데이터 조작
 	int insert(Diary diary);
 	int delete(int id);
+	int deleteAll(int[] ids);
 }

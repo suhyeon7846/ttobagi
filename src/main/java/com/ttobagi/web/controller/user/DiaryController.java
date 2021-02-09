@@ -36,7 +36,7 @@ public class DiaryController {
 	@Autowired
 	private CoupleService coupleService;
 	
-	@RequestMapping("list")
+	@GetMapping("list")
 	public String list(Model model, HttpSession session,Principal principal,
 			@RequestParam(name = "p", defaultValue = "1") int page ) {
 		
@@ -74,6 +74,16 @@ public class DiaryController {
 		model.addAttribute("list",list);
 		System.out.println(list);
 		return "user.diary.list";
+	}
+	
+	@PostMapping("list")
+	public String deleteAll(int[] del) {
+		System.out.println(del.length);
+		for(int i=0;i<del.length;i++) {
+			System.out.println("삭제할 id : "+del[i]);
+			}
+		service.deleteAll(del);
+		return "redirect:list";
 	}
 	
 	@GetMapping("reg")
