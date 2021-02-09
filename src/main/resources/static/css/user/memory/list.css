@@ -1,3 +1,16 @@
+strong{
+	font-weight: bold;
+}
+em{
+	font-style: italic;
+}
+
+strong em,em strong{
+	font-weight: bold;
+	font-style: italic;
+}
+/*--------------------------------------------------*/
+
 #header{
     z-index: 2;
     position: relative;
@@ -92,8 +105,11 @@
 .text-wrap{
 	position:relative;
 	width:300px;
-	font-family:Helvetica,Arial,sans-serif;
+	
 }
+/* .text-wrap p{
+	font-family: 'Noto Sans KR', sans-serif;
+} */
 	.text-wrap .text-box {
 	  width: 100%;
 	  height: 42px;

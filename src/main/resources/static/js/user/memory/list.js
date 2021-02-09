@@ -36,9 +36,7 @@ window.addEventListener("load",function(){
                         <div class="back">
                             <div class="text-wrap">
                                 <h1>${m.regDate}</h1>
-                                <p>
                                 ${m.content}
-                                </p>
                             </div>
 							<input type="button" value="수정" class="cardEditBtn">
                             <input type="hidden" value="${m.fileName}">
@@ -80,9 +78,9 @@ window.addEventListener("load",function(){
                         <div class="back">
                             <div class="text-wrap">
                                 <h1>${m.regDate}</h1>
-                                <p>
+								<div>
                                 ${m.content}
-                                </p>
+								</div>
                             </div>
 							<input type="button" value="수정" class="cardEditBtn">
                             <input type="hidden" value="${m.fileName}">
@@ -99,7 +97,7 @@ window.addEventListener("load",function(){
 			}
 		}else if(event.target.classList.contains("cardEditBtn")){
 			let fileName = event.target.nextElementSibling.value;
-			let content = event.target.previousElementSibling.lastElementChild.innerText;
+			let content = event.target.previousElementSibling.lastElementChild.innerHTML;
 			let cardId = event.target.nextElementSibling.nextElementSibling.nextElementSibling.value;
 			
 			editModalBox.alert(fileName,content,cardId)

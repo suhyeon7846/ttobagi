@@ -118,7 +118,9 @@ class ModalBox{
                         <div class="back">
                             <div class="text-wrap">
                                 <h1>${m.regDate}</h1>
+                               <div>
                                 ${m.content}
+								</div>
                             </div>
 							<input type="button" value="수정" class="cardEditBtn">
                             <input type="hidden" value="${m.fileName}">
