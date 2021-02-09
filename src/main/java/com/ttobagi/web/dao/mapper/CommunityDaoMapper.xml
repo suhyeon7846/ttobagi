@@ -90,7 +90,7 @@
    	</insert>
    	
    	<delete id="deleteComment">
-   		delete from communityComment where communityId = #{communityId};
+   		delete from communityComment where id = #{id};
    	</delete>
    	
    	<delete id="deleteAllComment">

@@ -95,36 +95,12 @@ public class CommunityController {
 	
 	@PostMapping("{type}/{communityId}")
 	public String detail(
-			Model model,
 			@PathVariable("communityId") int communityId,
-			@RequestParam("recom") String recom,
-			@RequestParam("negative") String negative,
 			@RequestParam("comment") String comment,
-			@RequestParam("commentId") int commentId,
 			CommunityComment communityComment,
 			HttpSession session) {
-
-		int id = (int)session.getAttribute("id");
-		String nickname = (String)session.getAttribute("nickName");
 		
-		//추천, 비추천 
-		Community origin = service.get(communityId);
-		if( recom != null && !recom.equals("") )
-			origin.setRecomCnt(origin.getRecomCnt()+1);			
-		else if( negative != null && !negative.equals("") )
-			origin.setNegativeCnt(origin.getNegativeCnt()+1);
 		
-		//댓글 등록
-		if( comment != null && !comment.equals("") ) {
-			communityComment.setContent(comment);
-			communityComment.setNickname(nickname);
-			communityComment.setMemId(id);
-			communityComment.setCommunityId(communityId);
-			
-			service.insertComment(communityComment);
-		}
-		
-		service.update(origin);
 		
 		return "redirect:"+communityId;
 	}
@@ -258,7 +234,6 @@ public class CommunityController {
 			@PathVariable("communityId") int communityId
 		) {
 		
-		service.deleteComment(commentId);
 		//service.deleteAllComment(communityId);
 		service.delete(communityId);
 		service.deleteFiles(communityId);
@@ -266,15 +241,44 @@ public class CommunityController {
 		return "redirect:../../"+type;
 	}
 	
-	@GetMapping("{type}/{communityId}/commentDel/{commentId}")
-	public String delete(
-			@PathVariable("type") String type, 
-			@PathVariable("communityId") int communityId,
-			@PathVariable("commentId") int commentId) {
+	@GetMapping("{type}/{id}/{val}")
+	public String recom(
+			@PathVariable("type") String type,
+			@PathVariable("id") int communityId,
+			@PathVariable("val") String recomVal,
+			HttpSession session) {
 		
-		//service.deleteComment(commentId);
-		//service.deleteAllComment(communityId);
+		session.getAttribute("id");
+		//추천, 비추천 
+		Community origin = service.get(communityId);
+		if( recomVal != null && !recomVal.equals("") ) {
+			switch (recomVal) {
+			case "recom":
+				origin.setRecomCnt(origin.getRecomCnt()+1);							
+				break;
+			case "negative":
+				origin.setNegativeCnt(origin.getNegativeCnt()+1);
+				break;
+			default:
+				break;
+			}
+		}
+		service.update(origin);
 		
-		return "redirect:../";
+		return "redirect:../../"+type;
 	}
+
+	@PostMapping("{type}/{commentId}/commentDel")
+	public String commentDel(
+			@PathVariable("type") String type,
+			@PathVariable("commentId") int commentId,
+			@RequestParam("communityId") int communityId) {
+
+		int result = 0;
+		result = service.deleteComment(commentId);
+		System.out.println("ok");
+		return "redirect:../"+communityId;
+	}
+	
+	
 }

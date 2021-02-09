@@ -77,6 +77,9 @@
 }
 
 /* comment */
+.comment .comment-form {
+	margin: 0;
+}
 .comment .title{
 	font-size:2rem;
 	text-align: left;
@@ -87,7 +90,6 @@
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid #ebc6ce;
-	margin-bottom:2%;
 }
 
 .comment .list:first-child{
@@ -114,4 +116,5 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-top:5%;
+	margin-bottom:3%;
 }
