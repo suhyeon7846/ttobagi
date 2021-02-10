@@ -12,6 +12,19 @@ window.addEventListener("load",(event)=>{
     });
    
 /* ===================================================================*/
+
+
+
+function LoadingWithMask(gif) {
+    $('#loadingImg').show();
+	$('.thumbnails').hide();
+}
+ 
+function closeLoadingWithMask() {
+    $('#loadingImg').hide();
+	$('.thumbnails').show();
+}
+
 /* 추천버튼 누르면 top-content 내려오는 코드 */
     let dropbtn = document.querySelector(".dropbtn");
     let dropdownContent = document.querySelector(".dropdown-content");
@@ -49,8 +62,8 @@ window.addEventListener("load",(event)=>{
 				}
 			});
 	}
-	let recommendTitle = document.querySelector(".recommend-title");
 	addCard.onclick=()=>{
+		 LoadingWithMask('/images/love.gif');
 		var checkCount = document.getElementsByName("recommend-pic").length;
 		let pickFile ='';
 		let cardTitle=''; 
@@ -61,9 +74,12 @@ window.addEventListener("load",(event)=>{
 				}
 	        };
 
-		
+		if(cardTitle!=''){
 		fetch(`/api/bucketlist/reg?t=${cardTitle}&p=${pickFile}`)
-				.then(response=>response.json())
+				.then(function(response){
+				 setTimeout(closeLoadingWithMask(), 10000);
+				return response.json();
+			})
 				.then(json=>{
 				thumbnails.innerHTML="";
 				for(let b of json){
@@ -104,6 +120,10 @@ window.addEventListener("load",(event)=>{
 					thumbnails.insertAdjacentHTML("beforeend",tr);
 				}
 			});
+			dropbtn.style.top = '0px';
+        	dropdownContent.style.top = '-700px';   
+         	dropbtn.classList.remove("show")
+		}
 	}
 /* ===================================================================*/
 /* 버킷 완료와 삭제시 ajex */	
