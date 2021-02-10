@@ -24,14 +24,4 @@ public interface CommunityDao {
 	int updateFiles(CommunityFiles communityFiles);
 	int deleteFiles(int id);
 	int getLastNum();
-	
-	//category
-	List<CommunityCategory> getCateList();
-	CommunityCategory getCategory(String type);
-	
-	//comment
-	int insertComment(CommunityComment communityComment);
-	List<CommunityComment> commentList(int communityId);
-	int deleteComment(int communityId);
-	int deleteAllComment(int communityId);
 }

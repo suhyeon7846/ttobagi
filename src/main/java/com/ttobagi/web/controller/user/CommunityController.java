@@ -34,6 +34,8 @@ import com.ttobagi.web.entity.CommunityComment;
 import com.ttobagi.web.entity.CommunityFiles;
 import com.ttobagi.web.entity.CommunityView;
 import com.ttobagi.web.entity.Member;
+import com.ttobagi.web.service.CommunityCategoryService;
+import com.ttobagi.web.service.CommunityCommentService;
 import com.ttobagi.web.service.CommunityService;
 
 @Controller
@@ -42,11 +44,15 @@ public class CommunityController {
 	
 	@Autowired
 	CommunityService service;
+	@Autowired
+	CommunityCommentService commentService;
+	@Autowired
+	CommunityCategoryService categoryService;
 	
 	@RequestMapping("index")
 	public String index(Model model) {
 		
-		List<CommunityCategory> categoryType = service.getCateList();
+		List<CommunityCategory> categoryType = categoryService.getCateList();
 		
 		model.addAttribute("categorytype", categoryType);
 		
@@ -61,7 +67,7 @@ public class CommunityController {
 		List<CommunityView> bestList = service.getViewList(0, 5, type, "hit");
 		List<CommunityView> list = service.getViewList(0, 20, type, "regDate");
 		
-		CommunityCategory category = service.getCategory(type);
+		CommunityCategory category = categoryService.getCategory(type);
 		
 		model.addAttribute("bestList", bestList);
 		model.addAttribute("list", list);
@@ -82,9 +88,9 @@ public class CommunityController {
 		community.setHit(community.getHit()+1);		
 		service.update(community);
 		
-		CommunityCategory category = service.getCategory(type);
+		CommunityCategory category = categoryService.getCategory(type);
 		CommunityView communityView = service.getView(communityId);
-		List<CommunityComment> comments = service.commentList(communityId);
+		List<CommunityComment> comments = commentService.commentList(communityId);
 		
 		model.addAttribute("comment",comments);
 		model.addAttribute("cate", category);
@@ -92,19 +98,7 @@ public class CommunityController {
 
 		return "user.community."+type+".detail";
 	}
-	
-	@PostMapping("{type}/{communityId}")
-	public String detail(
-			@PathVariable("communityId") int communityId,
-			@RequestParam("comment") String comment,
-			CommunityComment communityComment,
-			HttpSession session) {
-		
-		
-		
-		return "redirect:"+communityId;
-	}
-	
+
 	@GetMapping("{type}/{communityId}/edit")
 	public String edit(
 			Model model, 
@@ -112,7 +106,7 @@ public class CommunityController {
 			@PathVariable("communityId") int communityId) {
 		CommunityView list = service.getView(communityId);
 		CommunityFiles files = service.getFiles(communityId);
-		CommunityCategory category = service.getCategory(type);
+		CommunityCategory category = categoryService.getCategory(type);
 		
 		model.addAttribute("cate", category);
 		model.addAttribute("e", list);
@@ -174,7 +168,7 @@ public class CommunityController {
 	
 	@GetMapping("{type}/reg")
 	public String reg(Model model, @PathVariable("type") String type) {
-		CommunityCategory category = service.getCategory(type);
+		CommunityCategory category = categoryService.getCategory(type);
 		
 		model.addAttribute("cate", category);
 		model.addAttribute("type", type);
@@ -195,7 +189,7 @@ public class CommunityController {
 		int id = (int) session.getAttribute("id");
 		String fileName = file.getOriginalFilename();
 
-		CommunityCategory category = service.getCategory(type);
+		CommunityCategory category = categoryService.getCategory(type);
 		int categoryId = category.getId();
 
 		community.setMemberId(id);
@@ -233,52 +227,10 @@ public class CommunityController {
 			@PathVariable("type") String type, 
 			@PathVariable("communityId") int communityId
 		) {
-		
-		//service.deleteAllComment(communityId);
-		service.delete(communityId);
+		commentService.deleteCommentAll(communityId);
 		service.deleteFiles(communityId);
+		service.delete(communityId);
 		
 		return "redirect:../../"+type;
 	}
-	
-	@GetMapping("{type}/{id}/{val}")
-	public String recom(
-			@PathVariable("type") String type,
-			@PathVariable("id") int communityId,
-			@PathVariable("val") String recomVal,
-			HttpSession session) {
-		
-		session.getAttribute("id");
-		//추천, 비추천 
-		Community origin = service.get(communityId);
-		if( recomVal != null && !recomVal.equals("") ) {
-			switch (recomVal) {
-			case "recom":
-				origin.setRecomCnt(origin.getRecomCnt()+1);							
-				break;
-			case "negative":
-				origin.setNegativeCnt(origin.getNegativeCnt()+1);
-				break;
-			default:
-				break;
-			}
-		}
-		service.update(origin);
-		
-		return "redirect:../../"+type;
-	}
-
-	@PostMapping("{type}/{commentId}/commentDel")
-	public String commentDel(
-			@PathVariable("type") String type,
-			@PathVariable("commentId") int commentId,
-			@RequestParam("communityId") int communityId) {
-
-		int result = 0;
-		result = service.deleteComment(commentId);
-		System.out.println("ok");
-		return "redirect:../"+communityId;
-	}
-	
-	
 }

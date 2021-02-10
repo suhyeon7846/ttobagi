@@ -91,7 +91,7 @@ window.addEventListener("load",function(){
                 </div>
 					`;
 					thumbnails.insertAdjacentHTML("beforeend",tr);
-					}
+						 }
 				});
 				
 			}

@@ -61,39 +61,14 @@
    	</update>
    	
 	<delete id="delete">
-   		delete from community where id=#{id};
+   		delete from community where id=${id};
    	</delete>
    	
    	<delete id="deleteFiles">
-   		delete from communityFiles where id=#{id};
+   		delete from communityFiles where communityid=${id};
    	</delete>
    	
    	<select id="getLastNum" resultType="int">
 		select max(id) from community;
 	</select>
-	
-	<select id="getCateList" resultType="com.ttobagi.web.entity.CommunityCategory">
-		select * from communityCategory;
-	</select>
-	
-	<select id="getCategory" resultType="com.ttobagi.web.entity.CommunityCategory">
-		select * from communityCategory where typeEnglishName = #{type};
-	</select>
-	
-	<select id="commentList" resultType="com.ttobagi.web.entity.CommunityComment">
-		select * from communityComment where communityId = ${communityId};
-	</select>
-	
-	<insert id="insertComment" parameterType="com.ttobagi.web.entity.CommunityComment">
-      insert into communityComment(nickname, memId, content, communityId)
-      values(#{nickname}, #{memId}, #{content}, #{communityId});
-   	</insert>
-   	
-   	<delete id="deleteComment">
-   		delete from communityComment where id = #{id};
-   	</delete>
-   	
-   	<delete id="deleteAllComment">
-   		delete from communityComment where communityId = #{communityId};
-   	</delete>
 </mapper>

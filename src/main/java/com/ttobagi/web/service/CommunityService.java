@@ -24,14 +24,4 @@ public interface CommunityService {
 	int updateFiles(CommunityFiles communityFiles);
 	int deleteFiles(int id);
 	int getLastNum();
-	
-	//category
-	List<CommunityCategory> getCateList();
-	CommunityCategory getCategory(String type);
-	
-	//comment
-	List<CommunityComment> commentList(int communityId);
-	int insertComment(CommunityComment communityComment);
-	int deleteComment(int communityId);
-	int deleteCommentAll(int communityId);
 }

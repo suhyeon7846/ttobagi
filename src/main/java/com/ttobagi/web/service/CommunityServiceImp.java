@@ -44,6 +44,7 @@ public class CommunityServiceImp implements CommunityService {
 	@Override
 	public int delete(int id) {
 		// TODO Auto-generated method stub
+		System.out.println("service"+id);
 		return communityDao.delete(id);
 	}
 	
@@ -85,41 +86,5 @@ public class CommunityServiceImp implements CommunityService {
 	@Override
 	public int getLastNum() {
 		return communityDao.getLastNum();
-	}
-
-	@Override
-	public CommunityCategory getCategory(String type) {
-		// TODO Auto-generated method stub
-		return communityDao.getCategory(type);
-	}
-
-	@Override
-	public List<CommunityCategory> getCateList() {
-		// TODO Auto-generated method stub
-		return communityDao.getCateList();
-	}
-	
-	@Override
-	public int insertComment(CommunityComment communityComment) {
-		// TODO Auto-generated method stub
-		return communityDao.insertComment(communityComment);
-	}
-
-	@Override
-	public List<CommunityComment> commentList(int communityId) {
-		// TODO Auto-generated method stub
-		return communityDao.commentList(communityId);
-	}
-
-	@Override
-	public int deleteComment(int communityId) {
-		// TODO Auto-generated method stub
-		return communityDao.deleteComment(communityId);
-	}
-
-	@Override
-	public int deleteCommentAll(int communityId) {
-		// TODO Auto-generated method stub
-		return communityDao.deleteAllComment(communityId);
 	}
 }
