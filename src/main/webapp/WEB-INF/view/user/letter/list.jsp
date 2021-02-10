@@ -21,7 +21,14 @@
                             <span>${l.title }</span>
                         </div>
                         <div class="img" style="margin-right: 9px;">
-                            <img src="../../images/letter/letter1.png"width="90px" height="70px">
+                        	<c:choose>
+	                        	<c:when test="${l.receiverId eq l.readCheckId}">
+	                            	<img src="../../images/user/letter/letter1.png" width="90px" height="70px">
+	                            </c:when>
+	                            <c:otherwise>
+	                            	 <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
+	                            </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                     </c:forEach>                    

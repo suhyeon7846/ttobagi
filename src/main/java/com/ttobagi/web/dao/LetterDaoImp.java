@@ -31,6 +31,24 @@ public class LetterDaoImp implements LetterDao{
 		
 		return mapper.insert(letter);
 	}
+
+	@Override
+	public int delete(int id) {
+		// TODO Auto-generated method stub
+		return mapper.delete(id);
+	}
+
+	@Override
+	public List<Letter> getTitelReadCheckList(int receiverId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int deleteAll(int[] del) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 
