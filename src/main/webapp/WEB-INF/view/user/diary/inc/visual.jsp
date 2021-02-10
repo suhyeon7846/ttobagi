@@ -8,8 +8,8 @@
 </head>
 <body>
 <!----------------------------------------------visual------------------------------------->
-    <section id="visual">
+    <!-- <section id="visual">
         Diary
-    </section>
+    </section> -->
 </body>
 </html>

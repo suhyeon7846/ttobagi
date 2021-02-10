@@ -10,6 +10,14 @@ public interface LetterDao {
 	
 	int insert(Letter letter);
 
+	int delete(int id);
+
+	List<Letter> getTitelReadCheckList(int receiverId);
+
+	int deleteAll(int[] del);
+
+	
+
 
 
 }

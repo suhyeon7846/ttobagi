@@ -1,15 +1,18 @@
 import ModalBox from "./modules/ModalBox.js";
 // import CSS from "./modules/CSS.js";
 
-window.addEventListener('load',()=>{
+window.addEventListener('load',(e)=>{
     let section = document.querySelector("#main");
-    let letter = section.querySelector(".letter");
+    let letter = section.querySelectorAll(".letter");
+    let body = section.querySelector(".body");
     console.log(letter);
-    letter.onclick=(e)=>{
+    //버블링
+    body.onclick=(e)=>{
+        
         (async () => {
             let result = await ModalBox.alert("hello");
-            console.log("가 눌렸구나");
-        })
-        alert("편지")
+            console.log(result+"가 눌렸구나");
+        })();
+        
     }    
 })

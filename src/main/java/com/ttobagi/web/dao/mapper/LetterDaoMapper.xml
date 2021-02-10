@@ -9,8 +9,19 @@
 		where receiverId=#{receiveId};
 </select>
 
-<insert id="insert" >
-	insert into letter(senderId,receiverId,title,content)
-	values (22,21,'hi','hihi');
+<insert id="insert" parameterType="com.ttobagi.web.entity.Letter">
+	INSERT INTO letter (senderId,receiverId,title,content)
+	VALUES(#{senderId},#{receiverId},#{title},#{content});
 </insert>
+
+<delete id="delete" >
+	delete from letter where id=#{id}
+</delete>
+
+<delete id="deleteAll">
+	delete from letter where id in
+	<foreach item="id" index="index" collection = "ids" open="(" separator="," close=")">
+		#{id}
+	</foreach>
+</delete>
 </mapper>

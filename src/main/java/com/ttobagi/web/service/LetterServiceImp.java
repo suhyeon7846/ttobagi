@@ -21,10 +21,30 @@ public class LetterServiceImp implements LetterService{
 	public List<Letter> getList(int receiverId) {
 		return letterDao.getList(receiverId);
 	}
+	
+	@Override
+	public List<Letter> getTitleReadCheckList(int receiverId) {
+		// TODO Auto-generated method stub
+		return letterDao.getTitelReadCheckList(receiverId);
+	}
 
 	@Override
 	public int insert(Letter letter) {
 		return letterDao.insert(letter);
+	}
+
+	@Override
+	public int delete(int id) {
+		// TODO Auto-generated method stub
+		return letterDao.delete(id);
+	}
+
+	
+
+	@Override
+	public int deleteAll(int[] del) {
+		// TODO Auto-generated method stub
+		return letterDao.deleteAll(del);
 	}
 
 	

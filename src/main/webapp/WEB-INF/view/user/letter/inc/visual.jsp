@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section id="visual">
+	<!-- <section id="visual">
         Letter
-    </section>
+    </section> -->
 </body>
 </html>
