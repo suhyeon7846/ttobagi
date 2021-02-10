@@ -47,6 +47,7 @@ public class CommunityDaoImp implements CommunityDao {
 	@Override
 	public int delete(int id) {
 		// TODO Auto-generated method stub
+		System.out.println("dao"+id);
 		return mapper.delete(id);
 	}
 
@@ -95,44 +96,4 @@ public class CommunityDaoImp implements CommunityDao {
 		// TODO Auto-generated method stub
 		return mapper.getLastNum();
 	}
-
-	@Override
-	public CommunityCategory getCategory(String type) {
-		// TODO Auto-generated method stub
-		return mapper.getCategory(type);
-	}
-
-	@Override
-	public List<CommunityCategory> getCateList() {
-		// TODO Auto-generated method stub
-		return mapper.getCateList();
-	}
-
-	@Override
-	public int insertComment(CommunityComment communityComment) {
-		// TODO Auto-generated method stub
-		return mapper.insertComment(communityComment);
-	}
-
-
-	@Override
-	public List<CommunityComment> commentList(int communityId) {
-		// TODO Auto-generated method stub
-		return mapper.commentList(communityId);
-	}
-
-
-	@Override
-	public int deleteComment(int communityId) {
-		// TODO Auto-generated method stub
-		return mapper.deleteComment(communityId);
-	}
-
-
-	@Override
-	public int deleteAllComment(int communityId) {
-		// TODO Auto-generated method stub
-		return mapper.deleteAllComment(communityId);
-	}
-
 }
