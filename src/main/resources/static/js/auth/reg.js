@@ -16,6 +16,8 @@ window.addEventListener('load', () => {
     let isLoginIdCheck = false;     // 로그인 아이디 중복 체크 여부
     let isNicknameCheck = false;    // 닉네임 중복 체크 여부
 
+	AOS.init();
+
     // 로그인 아이디 중복 체크버튼 클릭 이벤트
     loginIdChkBtn.addEventListener('click', (e) => {
         let isDuplication = false;

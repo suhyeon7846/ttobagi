@@ -5,6 +5,11 @@
 /******************* header *******************/
 .header {
     min-height: 80px;
+    box-shadow: 0 0 10px 0 gray;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1000;
 }
 
     .sub-header {

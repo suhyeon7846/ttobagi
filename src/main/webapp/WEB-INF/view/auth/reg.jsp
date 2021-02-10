@@ -8,7 +8,7 @@
 
 <div class="sec-container">
     <section class="main-sec">
-        <main class="main">
+        <main class="main" data-aos="fade-up" data-aos-duration="1000">
             <div class="img-container">
                 <img src="/images/logo.png" alt="">
             </div>

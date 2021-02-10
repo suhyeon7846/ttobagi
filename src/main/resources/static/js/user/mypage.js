@@ -3,6 +3,7 @@ window.addEventListener('load', (e) => {
     const coupleInfoDeleteBtn = document.querySelector('.couple-info-delete-btn');
     const loveStartDateEditBtn = document.querySelector('.love-start-date-edit-btn');
     
+    AOS.init();
     calcDDay();
 
     memberInfoEditBtn.addEventListener('click', (e) => {

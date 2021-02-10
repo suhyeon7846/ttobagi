@@ -7,7 +7,7 @@
 <script src="/js/user/mypage.js"></script>
 
 <div class="sec-container">
-    <section class="mypage-sec">
+    <section class="mypage-sec" data-aos="fade-up" data-aos-duration="1000">
         <h1>마이페이지 / MyPage</h1>
         <div class="both-sec-container">
             <section class="both-sec left-sec">

@@ -7,7 +7,7 @@
 <script src="/js/user/couple/reg.js"></script>
 
 <section class="main-sec">
-    <main class="main">
+    <main class="main" data-aos="fade-up" data-aos-duration="1000">
         <h1 class="h1">사랑하는 연인과 최고의 추억을 또바기에서 만들어 보세요.</h1>
         <h2 class="h2">커플을 등록하시면 아래의 서비스를 이용하실 수 있습니다.</h2>
         <ul class="service-list">

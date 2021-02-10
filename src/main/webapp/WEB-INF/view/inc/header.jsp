@@ -4,6 +4,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/security/tags"%>
 
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/js/inc/header.js"></script>
 
 <header id="header" class="header">
@@ -11,7 +15,9 @@
         <a href="/index"><img class="logo" src="/images/logo.png"></a>
         <nav>
             <ul>
-                <li><a href="/user/coupleNote">커플노트</a></li>
+                <s:authorize access="hasAnyRole('ADMIN', 'COUPLE')">
+                    <li><a href="/user/coupleNote">커플노트</a></li>
+                </s:authorize>
                 <li><a href="/user/community/index">커뮤니티</a></li>
                 <s:authorize access="isAnonymous()">
                 <li><a href="/auth/login">로그인</a></li>

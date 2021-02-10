@@ -2,6 +2,8 @@ window.addEventListener('load', (e) => {
     const loginBtn = document.querySelector('.login-btn');
     const form = document.querySelector('.form');
     //const findPwdBtn = document.querySelector('.find-pwd-btn');
+    
+    AOS.init();
 
     loginBtn.addEventListener('click', (e) => {
         e.preventDefault(); // 기본 폼 동작 막기
