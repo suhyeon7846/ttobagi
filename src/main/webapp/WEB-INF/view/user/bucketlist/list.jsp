@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/> -->
 <script type="module" src="/js/user/bucketlist/list.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
 <section class="section-1">
         <section id="main">
             <section class="top-content">
@@ -34,6 +35,8 @@
             </section>
             <!-- Thumbnails -->
             <div class="bucketlogo"></div>
+         	<div id='loadingImg'>
+         	</div>
             <section class="thumbnails">
             	<c:forEach var="b" items="${list}">
                     <div class="box">

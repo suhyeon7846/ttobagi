@@ -1,6 +1,9 @@
 package com.ttobagi.web.controller.api;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
@@ -99,14 +102,41 @@ public class BucketlistController {
 	}
 	
 	@RequestMapping("reg")
-	public List<Bucketlist> reg(
+	public List<Bucketlist> reg(HttpServletRequest request,
 			@RequestParam(name = "t",defaultValue = "제목없음") String cardTitle,
 			@RequestParam(name = "p",defaultValue = "01") String picFile,
-			HttpSession session) {
+			HttpSession session) throws IOException {
 		//session에 저장된 커플 아이디 가져오기
 		int coupleId = (int)session.getAttribute("coupleId");
 		 
-		service.insert(cardTitle,picFile,coupleId); 
+		//기존에 저장된 파일경로 가져오기
+		String realPath = request.getSession().getServletContext().getRealPath("/resources/static/images/user/bucketlist/upload");
+		
+		String saveRealPath = realPath + File.separator + picFile;
+		
+		//파일객체생성
+		File oriFile = new File(saveRealPath);
+		
+		//복사될 파일의 이름과 경로 생성
+		String newFileName = getUuid()+".jpg";
+		
+		String newRealPath = realPath + File.separator + newFileName;
+		//복사파일객체생성
+		File copyFile = new File(newRealPath);
+		
+		FileInputStream fis = new FileInputStream(oriFile);//읽을파일
+		FileOutputStream fos = new FileOutputStream(copyFile);//복사할파일
+		 
+		int fileByte = 0; 
+         // fis.read()가 -1 이면 파일을 다 읽은것
+         while((fileByte = fis.read()) != -1) {
+             fos.write(fileByte);
+         }
+         //자원사용종료
+         fis.close();
+         fos.close();
+		System.out.println("aaa");
+		service.insert(cardTitle,newFileName,coupleId); 
 
 		List<Bucketlist> list =service.getList(coupleId,0,0);
 		
