@@ -57,5 +57,15 @@
     	select count(*) from couple
 		where isNull(approvalDate);
     </select>
+    
+    <select id="isMember" resultType="int">
+    	select count(*) from member
+    	where loginId = #{param1}
+    </select>
+    
+    <insert id="socialInsert" parameterType="com.ttobagi.web.entity.Member">
+    	insert into member(name, nickname, loginId, password, gender, phone)  
+		values (#{name}, #{nickname}, #{loginId}, #{password}, #{gender}, #{phone});
+    </insert>
 
 </mapper>

@@ -15,9 +15,9 @@
                     <div>로그인 아이디</div>
                     <input type="text" class="info login-id" name="username" placeholder="아이디" required>
                 </div>
-                <div class="input-container">
-                    <div>휴대폰 번호</div>
-                    <input type="tel" class="info phone" name="phone" placeholder="ex) 010-0000-0000" required>
+                <div class="input-container center">
+                    <div>이메일</div>
+                    <input type="email" class="info email" name="email" placeholder="ex) ttobagi@gmail.com" required>
                 </div>
                 <div class="input-container">
                     <input type="submit" class="find-btn" value="비밀번호 찾기">

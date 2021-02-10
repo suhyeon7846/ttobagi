@@ -28,4 +28,8 @@ public interface MemberDao {
 
 	int getWaitCount();
 
+	int isMember(String sub);
+
+	int socialInsert(Member m);
+
 }

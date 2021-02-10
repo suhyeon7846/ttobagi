@@ -71,5 +71,17 @@ public class MemberDaoImp implements MemberDao {
 	public int getWaitCount() {
 		return mapper.getWaitCount();
 	}
+
+	@Override
+	public int isMember(String sub) {
+		// TODO Auto-generated method stub
+		return mapper.isMember(sub);
+	}
+
+	@Override
+	public int socialInsert(Member m) {
+		// TODO Auto-generated method stub
+		return mapper.socialInsert(m);
+	}
 	
 }

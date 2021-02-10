@@ -20,6 +20,7 @@
                 </div>
                 <div class="input-container login-container">
                     <input type="submit" class="login-btn" value="로그인">
+                    <div class="googleBtn" style="cursor:pointer; width:310px; height:60px; background-image:url('/images/googleLogin.png'); background-size:100%"></div>
                 </div>
                 <div class="find-password-container">
                     <span class="find-password"><a href="/auth/find" class="find-pwd-btn">비밀번호 찾기</a></span>

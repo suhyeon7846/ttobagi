@@ -36,6 +36,12 @@ window.addEventListener('load', (e) => {
     //     e.preventDefault(); // a태그 기본 동작 막기
     //     window.open('/auth/find', '비밀번호 찾기', 'width=500px,height=500px,top:300px,left:700px');
     // });
+	
+	let googleBtn = document.querySelector(".googleBtn");
+	googleBtn.addEventListener("click",()=>{
+		location.href="http://localhost:8080/auth/GOOGLE";
+	});
+	
 });
 
 

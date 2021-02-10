@@ -67,4 +67,16 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.getWaitCount();
 	}
 
+	@Override
+	public int isMember(String sub) {
+		// TODO Auto-generated method stub
+		return memberDao.isMember(sub);
+	}
+
+	@Override
+	public int socialInsert(Member m) {
+		return memberDao.socialInsert(m);
+		
+	}
+
 }

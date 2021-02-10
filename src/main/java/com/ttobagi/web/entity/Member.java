@@ -13,6 +13,7 @@ public class Member {
 	private String birthday;
 	private String phone;
 	private Date regDate;
+	private String email;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
@@ -30,6 +31,21 @@ public class Member {
 		this.birthday = birthday;
 		this.phone = phone;
 		this.regDate = regDate;
+	}
+
+	public Member(int id, String name, String nickname, String loginId, String password, String gender, String birthday,
+			String phone, Date regDate, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.nickname = nickname;
+		this.loginId = loginId;
+		this.password = password;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.phone = phone;
+		this.regDate = regDate;
+		this.email = email;
 	}
 
 	public int getId() {
@@ -103,6 +119,23 @@ public class Member {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", name=" + name + ", nickname=" + nickname + ", loginId=" + loginId + ", password="
+				+ password + ", gender=" + gender + ", birthday=" + birthday + ", phone=" + phone + ", regDate="
+				+ regDate + ", email=" + email + "]";
+	}
+	
+	
 	
 	
 	
