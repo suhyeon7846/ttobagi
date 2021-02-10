@@ -8,7 +8,7 @@
 
 <div class="sec-container">
     <section class="main-sec">
-        <main class="main">
+        <main class="main" data-aos="fade-up" data-aos-duration="1000">
             <form action="login" method="post" class="form">
                 <h1>로그인</h1>
                 <h2>사랑하는 연인과 새로운 추억을 만들어 보세요!</h2>

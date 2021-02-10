@@ -13,6 +13,8 @@ window.addEventListener('load', (e) => {
 
     let receiverId = 0;
     
+    AOS.init();
+    
     modalOpenBtn.addEventListener('click', () => {
         fetch(`/api/couple/list`)
             .then(response => response.json())
