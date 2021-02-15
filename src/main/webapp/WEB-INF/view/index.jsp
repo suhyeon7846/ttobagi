@@ -24,14 +24,22 @@
                     <div class="ment">또바기는 연인과 더 사랑스럽게 소통하고, 소중한 추억을</div>
                     <div class="ment">손쉽게 저장할 수 있는 서비스 입니다.</div>
                     <div>
-                        <s:authorize access="isAnonymous()">
-                            <a href="/auth/login">
-                                <input type="button" class="service-btn" value="서비스 이용하기">
-                            </a>
+                        <s:authorize access="!hasRole('COUPLE')">
+                            <s:authorize access="isAnonymous()">
+                                <a href="/auth/login">
+                                    <input type="button" class="service-btn" value="서비스 이용하기"/>
+                                </a>
+                            </s:authorize>
+                            
+                            <s:authorize access="isAuthenticated()">
+                                <a href="/user/couple/reg">
+                                    <input type="button" class="service-btn" value="서비스 이용하기"/>
+                                </a>
+                            </s:authorize>
                         </s:authorize>
-                        <s:authorize access="isAuthenticated()">
-                            <a href="/user/couple/reg">
-                                <input type="button" class="service-btn" value="서비스 이용하기">
+                        <s:authorize access="hasRole('COUPLE')">
+                            <a href="/user/coupleNote/list">
+                                <input type="button" class="service-btn" value="서비스 이용하기"/>
                             </a>
                         </s:authorize>
                     </div>
