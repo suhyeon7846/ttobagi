@@ -111,6 +111,7 @@ public class MyPageController {
 					break;
 					
 				case "커플 해제":
+					System.out.println("id: " + id);
 					Couple origin2 = coupleService.get(id);
 					coupleService.delete(origin2.getId());
 					

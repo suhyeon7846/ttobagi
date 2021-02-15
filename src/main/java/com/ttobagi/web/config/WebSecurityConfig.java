@@ -28,11 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/**").permitAll() // 편의를 위해 모든 페이지 접근 허용
+				//.antMatchers("/**").permitAll() // 편의를 위해 모든 페이지 접근 허용
 				// url 아직 뭐뭐있는지 몰라서 일단 아래것만 허가해놓을게요. 주석처리하고 사용하셔도 됩니다 -2/1. 재희-
 				.antMatchers("/auth/**", "/user/community/index").permitAll()
 				.antMatchers(
-						"/user/coupleNote", 
+						"/user/coupleNote", "/user/calendar/**",
 						"/user/bucketlist/**", "/user/memory/**",
 						"/user/diary/**", "/user/letter/**").hasAnyRole("ADMIN", "COUPLE")
 				.antMatchers("/user/**", "/user/community/**").authenticated()
