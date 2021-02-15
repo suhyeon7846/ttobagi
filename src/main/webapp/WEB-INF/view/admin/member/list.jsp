@@ -12,7 +12,6 @@
             <h1>관리자 페이지</h1>
                 <ul>
                     <li class="active"><a href="/admin/member/list">회원 관리</a></li>
-                    <li><a href="/admin/community/list">커뮤니티 관리</a></li>
                 </ul>
         </aside>
         <div class="container">
