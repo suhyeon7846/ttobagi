@@ -31,6 +31,7 @@ public class CalendarController {
 	
 	@GetMapping("list")
 	public String list(HttpSession session, Model model) {
+		System.out.println(session.getAttribute("id"));
 		int id = (int) session.getAttribute("id");
 		model.addAttribute("id",id);
 		return "user.calendar.list";
@@ -38,8 +39,8 @@ public class CalendarController {
 	
 	@GetMapping("{id}")
 	@ResponseBody
-	public List<Calendar> getList(HttpSession session, Model model) throws ParseException{
-		int id = (int) session.getAttribute("id");
+	public List<Calendar> getList(@PathVariable(name="id") int id,HttpSession session, Model model) throws ParseException{
+		
 		List<Calendar> list = service.getList(id);
 //		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss", Locale.KOREA );
 //		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

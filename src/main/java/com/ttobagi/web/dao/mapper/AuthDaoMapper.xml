@@ -6,8 +6,8 @@
 <mapper namespace="com.ttobagi.web.dao.AuthDao">
 
 	<insert id="insert" parameterType="com.ttobagi.web.entity.Member">
-		insert into member(name, nickname, loginId, password, gender, birthday, phone)  
-		values (#{name}, #{nickname}, #{loginId}, #{password}, #{gender}, #{birthday}, #{phone});
+		insert into member(name, nickname, loginId, password, gender, birthday, phone, email)  
+		values (#{name}, #{nickname}, #{loginId}, #{password}, #{gender}, #{birthday}, #{phone}, #{email});
 	</insert>
 	
 	<insert id="insertMemberRole" parameterType="com.ttobagi.web.entity.MemberRole">
