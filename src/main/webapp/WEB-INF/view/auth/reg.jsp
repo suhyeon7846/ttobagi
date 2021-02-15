@@ -59,6 +59,14 @@
                     </div>
                     <div class="info-container">
                         <div class="icon-container">
+                            <i class="fas fa-user icon"></i>
+                        </div>
+                        <div class="input-container">
+                        	<input type="text" class="info-input name" name="email" placeholder="이메일" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="info-container">
+                        <div class="icon-container">
                             <i class="fas fa-venus-mars icon"></i>
                         </div>
                         <div class="radio-container">

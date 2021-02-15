@@ -38,8 +38,15 @@
     </div>
 </section>
 <div class="empty-line"></div>
-<section class="section-2">
-    
+<section class="section-2" style="display: flex; justify-content: center; align-items: center;">
+    <div class="calendar" style="display: flex; justify-content: center; align-items: center;">
+
+        <img style="width: 400px;" src="/images/calendar.png" alt="" data-aos="fade-right" data-aos-duration="1200">
+        <div style="padding-left: 150px;" data-aos="fade-left" data-aos-duration="1200">
+            <h1 style="font-size: 40px; font-weight: bold; margin-top:0px; margin-bottom: 40px;">연인과 함께 일정을 공유해보세요!</h1>
+            <button class="btn">일정 공유하기</button>
+        </div>
+    </div>
 </section>
 <div class="empty-line"></div>
 <section class="section-3">

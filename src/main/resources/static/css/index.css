@@ -72,6 +72,25 @@
     min-height: 700px;
     background-color: #ffc5d0;
 }
+		.section-2 .calendar .btn{
+            border: 1px solid black;
+            width: 265px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            background: white;
+            margin-top: 20px;
+        }
+
+        .section-2 .calendar .btn:hover{
+            border: 1px solid #fc0453;
+            background: #fc0453;
+            width: 265px;
+            height: 50px;
+            transition: 0.5s;
+            color: white;
+        }
 
 
 /************ ***********/
