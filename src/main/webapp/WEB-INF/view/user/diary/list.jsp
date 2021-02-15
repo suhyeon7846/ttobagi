@@ -30,7 +30,15 @@
             </div>
             <div class="cover">
                 <div class="cover-panel">
-                    <span>${name}과 ${opponentName} 커플일기장</span>
+                    <%-- <span>${name}과 ${opponentName} 커플일기장</span> --%>
+                     <div class="covertitle">
+                        <div>커</div>
+                        <div>플</div>
+                        <div>일</div>
+                        <div>기</div>
+                        <div>장</div>
+                    </div>
+                    <img src="../../images/user/diary/diarycover.jpg" width="300px" height="300px" style="border-radius: 30px;">
                 </div>
             </div>
             <div class="page">
@@ -70,8 +78,7 @@
 	                            </div>
 	
 	                            <div class="body">
-	                                <textarea class="content" readonly="readonly" disabled>
-	${d.content }
+	                                <textarea class="content" readonly="readonly" disabled>${d.content }
 	                                </textarea>
 	                            </div>
 	                        </div>
@@ -91,13 +98,13 @@
 	                                    <img src="${d.file }" style="width: 50px; height: 50px;">
 	                                </div>
 	                                <div class="input">
+	                                	<!-- <label for="checkbox" -->
 	                                    <input type="checkbox" class="check-box" name ="del" value="${d.id}"/> 
 	                                </div> 
 	                            </div>
 	
 	                            <div class="body">
-	                                <textarea class="content" readonly="readonly" disabled>
-	${d.content }
+	                                <textarea class="content" readonly="readonly" disabled>${d.content }
 	                                </textarea>
 	                            </div>
 	                        </div>
@@ -112,4 +119,4 @@
 
         
     </section>
-<script src="/js/user/diary/list-api.js"></script>
+<!-- <script src="/js/user/diary/list-api.js"></script> -->

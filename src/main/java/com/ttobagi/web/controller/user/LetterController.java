@@ -1,5 +1,6 @@
 package com.ttobagi.web.controller.user;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ttobagi.web.entity.Couple;
 import com.ttobagi.web.entity.Letter;
 import com.ttobagi.web.service.CoupleService;
 import com.ttobagi.web.service.LetterService;
@@ -35,23 +37,23 @@ public class LetterController {
 	
 	
 	@GetMapping("list")
-	public String list(Model model,HttpSession session) {
+	public String list(Model model,HttpSession session, Principal principal) {
 		
 		int id = (int)session.getAttribute("id");
-		System.out.println(session.getAttribute("id"));
+		
 		List<Letter> list = service.getTitleReadCheckList(id);
 		model.addAttribute("list",list);
+		String name = principal.getName();
+		model.addAttribute("name",name);
 		return "user.letter.list";
 	}
 	
-	@PostMapping("del")
-	public String delete(@RequestParam ("id") int id) {
-		service.delete(id);
-		return "redirect:list";
-	}
-	
-	@PostMapping("deleteAll")
+	@PostMapping("list")
 	public String deleteAll(int[] del) {
+		
+		for(int i=0;i<del.length;i++) {
+			System.out.println(del[i]);
+		}
 		service.deleteAll(del);
 		return "redirect:list";
 	}
@@ -59,13 +61,23 @@ public class LetterController {
 	@GetMapping("reg")
 	public String reg(HttpSession session, Model model) {
 		int id =(int)session.getAttribute("id");
-		model.addAttribute("memberId",id);
+		model.addAttribute("senderId",id);
+		int receiverId=0;
+		Couple couple = coupleService.get(id);
+		if(couple.getReceiverId()==id) {
+			receiverId=couple.getSenderId();
+		}
+		else {
+			receiverId=couple.getReceiverId();
+		}
+		model.addAttribute("receiverId",receiverId);
+			
 		return "user.letter.reg";
 	}
 	@PostMapping("reg")
 	public String reg(Letter letter) {
+		System.out.println(letter);
 		service.insert(letter);
-		//헤더이미지, 스크린이미지 체크, 미리보기까지도 구현해야대
 		return "redirect:list";
 	}
 	

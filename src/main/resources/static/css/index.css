@@ -86,3 +86,120 @@
     min-height: 700px;
     background-color: #a7eeff;
 }
+/************ ***********/
+.section-5 {
+    min-height: 600px;
+    background-color: #ffffb1;
+}
+#letter{
+	min-height: 600px;
+	display: flex;
+    align-items: center;
+    background:#ffffb1;
+}
+#letter .img{	
+    margin-right: 20px;
+    margin-left: auto;
+    width: 400px;
+    height: 400px;
+    background: url(/images/lettermain.png) no-repeat;
+    background-size: cover;
+}
+
+#letter .content{
+	
+    margin-right: auto;
+    margin-left: 150px;
+    /* line-height: 250px; */
+    font-size: 20px;
+    font-weight: bold;
+}
+#letter .content span{
+    display: inline-block;
+    font-size: 50px;
+    color: #333;
+}
+
+			.letter-btn {
+                border: 1px solid black;
+                width: 265px;
+                height: 50px;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                background: white;
+                margin-top: 20px;
+                margin-left:50px;
+                
+            }
+
+            .letter-btn:hover {
+                border: 1px solid #fc0453;
+                background: #fc0453;
+                width: 265px;
+                height: 50px;
+                transition: 0.5s;
+                color: white;
+            }
+/************ ***********/
+.section-6 {
+    min-height: 600px;
+    background-color: #ff9cbd;
+}
+
+#diary{
+	min-height: 600px;
+	display: flex;
+    align-items: center;
+    background:#ff9cbd;
+}
+#diary .img{
+    margin-left: auto; 
+    width: 380px;
+    height: 275px;
+    background: url(/images/diarymain.png) no-repeat;
+    /* background-size: 400px 300px; */
+    background-position: center;
+    background-size: contain;
+    /* border: 1px solid black; */
+    border-radius: 100px;
+    overflow: hidden;
+}
+#diary .content{
+	
+    margin-right: auto;
+	margin-left:250px;
+    /* line-height: 250px; */
+    font-size: 20px;
+    font-weight: bold;
+    
+    
+}
+#diary .content span{
+    display: inline-block;
+    font-size: 50px;
+    color: #333;
+}
+
+			.diary-btn {
+                border: 1px solid black;
+                width: 265px;
+                height: 50px;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                background: white;
+                margin-top: 20px;
+            }
+
+            .diary-btn:hover {
+                border: 1px solid #fc0453;
+                background: #fc0453;
+                width: 265px;
+                height: 50px;
+                transition: 0.5s;
+                color: white;
+            }
+
+
+

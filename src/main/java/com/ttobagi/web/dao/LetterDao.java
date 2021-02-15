@@ -14,7 +14,11 @@ public interface LetterDao {
 
 	List<Letter> getTitelReadCheckList(int receiverId);
 
-	int deleteAll(int[] del);
+	int deleteAll(int[] ids);
+
+	Letter get(int id);
+
+	int updateReadCheck(int id);
 
 	
 

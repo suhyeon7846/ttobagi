@@ -79,6 +79,7 @@ public class DiaryController {
 	@PostMapping("list")
 	public String deleteAll(int[] del) {
 		System.out.println(del.length);
+		System.out.println("del : "+ del);
 		for(int i=0;i<del.length;i++) {
 			System.out.println("삭제할 id : "+del[i]);
 			}
