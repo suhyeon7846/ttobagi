@@ -160,53 +160,77 @@
 </section>
 
 <div class="empty-line"></div>
-<section class="section-5" >
-   <section id ="letter">
-      
-           <div class="img" data-aos="fade-right" data-aos-duration="1200">
-               
-           </div>
-           <div class="content" data-aos="fade-left" data-aos-duration="1200">
-               <span>원하는 날에 줄수있는
-                   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한통의 편지</span>
-               <div>
-                        <s:authorize access="isAnonymous()">
-                            <a href="/auth/login">
-                                <input type="button" class="letter-btn" value="편지 쓰러가기">
-                            </a>
-                        </s:authorize>
-                        <s:authorize access="isAuthenticated()">
-                            <a href="/user/letter/list">
-                                <input type="button" class="letter-btn" value="편지 쓰러가기">
-                            </a>
-                        </s:authorize>
+<section class="section-5" >    
+    <div class="sub-section-1">
+        <div class="intro-container">
+            <div class="intro-img-container" data-aos="fade-right" data-aos-duration="1200">
+                <img class="intro-img" src="/images/lettermain.png" width="450px">
+            </div>
+            <div class="intro-ment-container" data-aos="fade-left" data-aos-duration="1200">
+                <div class="intro-ment">
+                    <h1>넘치는 마음을 편지로 </h1>
+                    <h1>전해 보아요</h1>
+                    
+                    <div>
+                        <s:authorize access="!hasRole('COUPLE')">
+				            <s:authorize access="isAnonymous()">
+					            <a href="/auth/login">
+						            <input type="button" class="service-btn" value="편지 쓰러가기"/>
+					            </a>
+				            </s:authorize>
+				            
+				            <s:authorize access="isAuthenticated()">
+				            	<a href="/user/couple/reg">
+						            <input type="button" class="service-btn" value="편지 쓰러가기"/>
+					            </a>
+				            </s:authorize>
+			            </s:authorize>
+			            <s:authorize access="hasRole('COUPLE')">
+				            <a href="/user/letter/list">
+					            <input type="button" class="service-btn" value="편지 쓰러가기"/>
+				            </a>
+			            </s:authorize>
+                    </div>
                 </div>
-           </div>
-    </section>
+            </div>
+        </div>
+    </div>
 </section>
 <div class="empty-line"></div>
 <section class="section-6">
-   <section id ="diary">
-        
-        <div class="content" data-aos="fade-left" data-aos-duration="1200">
-            <span>함께 채워가는 
-                <br>&nbsp;&nbsp;&nbsp;커플 일기장</span>
-            <div>
-                        <s:authorize access="isAnonymous()">
-                            <a href="/auth/login">
-                                <input type="button" class="diary-btn" value="일기 쓰러가기">
-                            </a>
-                        </s:authorize>
-                        <s:authorize access="isAuthenticated()">
-                            <a href="/user/diary/list">
-                                <input type="button" class="diary-btn" value="일기 쓰러가기">
-                            </a>
-                        </s:authorize>
-                    </div>
-        </div>
-        
-        <div class="img" data-aos="fade-right" data-aos-duration="1200">
+    <div class="sub-section-1">
+        <div class="intro-container">
             
+            <div class="intro-ment-container" data-aos="fade-right" data-aos-duration="1200">
+                <div class="intro-ment">
+                    <h1>연인과 함께 채워가는 </h1>
+                    <h1>커플 일기장</h1>
+                    
+                    <div>
+                        <s:authorize access="!hasRole('COUPLE')">
+				            <s:authorize access="isAnonymous()">
+					            <a href="/auth/login">
+						            <input type="button" class="service-btn" value="일기장 쓰러가기"/>
+					            </a>
+				            </s:authorize>
+				            
+				            <s:authorize access="isAuthenticated()">
+				            	<a href="/user/couple/reg">
+						            <input type="button" class="service-btn" value="일기장 쓰러가기"/>
+					            </a>
+				            </s:authorize>
+			            </s:authorize>
+			            <s:authorize access="hasRole('COUPLE')">
+				            <a href="/user/diary/list">
+					            <input type="button" class="service-btn" value="일기장 쓰러가기"/>
+				            </a>
+			            </s:authorize>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-img-container" data-aos="fade-left" data-aos-duration="1200">
+                <img class="intro-img" src="/images/diarymain.png" width="400px" >
+            </div>
         </div>
-    </section>
+    </div>
 </section>
