@@ -41,13 +41,25 @@ public class LetterDaoImp implements LetterDao{
 	@Override
 	public List<Letter> getTitelReadCheckList(int receiverId) {
 		// TODO Auto-generated method stub
-		return null;
+		return session.getMapper(LetterDao.class).getTitelReadCheckList(receiverId);
 	}
 
 	@Override
-	public int deleteAll(int[] del) {
+	public int deleteAll(int[] ids) {
 		// TODO Auto-generated method stub
-		return 0;
+		return session.getMapper(LetterDao.class).deleteAll(ids);
+	}
+
+	@Override
+	public Letter get(int id) {
+		// TODO Auto-generated method stub
+		return session.getMapper(LetterDao.class).get(id);
+	}
+
+	@Override
+	public int updateReadCheck(int id) {
+		// TODO Auto-generated method stub
+		return session.getMapper(LetterDao.class).updateReadCheck(id);
 	}
 	
 	

@@ -27,6 +27,12 @@ public class LetterServiceImp implements LetterService{
 		// TODO Auto-generated method stub
 		return letterDao.getTitelReadCheckList(receiverId);
 	}
+	
+	@Override
+	public Letter get(int id) {
+		// TODO Auto-generated method stub
+		return letterDao.get(id);
+	}
 
 	@Override
 	public int insert(Letter letter) {
@@ -42,10 +48,18 @@ public class LetterServiceImp implements LetterService{
 	
 
 	@Override
-	public int deleteAll(int[] del) {
+	public int deleteAll(int[] ids) {
 		// TODO Auto-generated method stub
-		return letterDao.deleteAll(del);
+		return letterDao.deleteAll(ids);
 	}
+
+	@Override
+	public int updateReadCheck(int id) {
+		// TODO Auto-generated method stub
+		return letterDao.updateReadCheck(id);
+	}
+
+	
 
 	
 

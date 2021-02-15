@@ -15,7 +15,6 @@ class ModalBox{
                 // backgroundImage:"url('/src/main/resources/static/images/user/letter/background1.png')",
 				opacity:"0",
                 transition:"0.5s"
-                
 			});
             
             setTimeout(()=>{//한번에 처리되기때문에 얘를 한번에 처리 안되게 setTimeout 해준다          
@@ -55,7 +54,8 @@ class ModalBox{
                 flexDirection: "column",
                 opacity:"0",
                 transition:"1s",
-                borderRadius:"10px"
+                borderRadius:"10px",
+                overflow:"hidden"
             });
             // frame.style.borderRadius="10px";
 			
@@ -79,8 +79,8 @@ class ModalBox{
                 
             </div>
             `;
-			document.body.append(screen);
             // document.body.append(screen2);
+			document.body.append(screen);
 			document.body.append(frame);
 
             const okButton = frame.querySelector("input[value=답장쓰기]");

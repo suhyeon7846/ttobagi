@@ -6,12 +6,16 @@
 <mapper namespace="com.ttobagi.web.dao.LetterDao">
 <select id="getList" resultType="com.ttobagi.web.entity.Letter">
  		select * from letter
-		where receiverId=#{receiveId};
+		where receiverId=#{receiveId} and senddate &gt; now();
 </select>
 
 <insert id="insert" parameterType="com.ttobagi.web.entity.Letter">
-	INSERT INTO letter (senderId,receiverId,title,content)
-	VALUES(#{senderId},#{receiverId},#{title},#{content});
+	INSERT INTO letter (senderId,receiverId,title,content,senddate)
+	VALUES(#{senderId},#{receiverId},#{title},#{content},#{senddate});
+</insert>
+
+<insert id="updateReadCheck" parameterType="com.ttobagi.web.entity.Letter">
+	update letter set readcheck = '1' where id=${id};
 </insert>
 
 <delete id="delete" >
@@ -24,4 +28,14 @@
 		#{id}
 	</foreach>
 </delete>
+
+<select id = "get" resultType="com.ttobagi.web.entity.Letter">
+	select * from letter
+	where id = ${id}
+</select>
+
+<select id ="getTitelReadCheckList" resultType="com.ttobagi.web.entity.Letter">
+	select id,title, readcheck from letter
+	where receiverId= ${receiverId}  and senddate &lt; now()
+</select>
 </mapper>

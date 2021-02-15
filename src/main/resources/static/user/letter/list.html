@@ -13,6 +13,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="module" src="../../js/user/letter/list.js"></script>
     </head>
     <body>
@@ -30,112 +31,63 @@
             </div>
         </header>
         <!----------------------------------------------visual------------------------------------->
-        <section id="visual">
+        <!-- <section id="visual">
             Letter
-        </section>
+        </section> -->
         <!----------------------------------------------main--------------------------------------->
     
     <section id="main">
-        <div class="panel">
-            <div class="letter-box">
-                <div class="header">
-                    편지함
-                </div>
-                
-                <div class="body">
-                    <!-- <div class="cover">
-                        <div class="heart"></div>
-                    </div> -->
-                    <div class="letter">
-                        <div class="title">
-                            <span>편지 제목 입니다~</span>
-                        </div>
-                        <div class="img" style="margin-right: 9px;">
-                            <img src="../../images/user/letter/letter1.png"width="90px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
-                    </div>
-                    <div class="letter">
-                        <div class="title">
-                            편지 제목 입니다~
-                        </div>
-                        <div class="img">
-                            <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
-                        </div>
+        <form>
+            <div class="panel">
+                <div class="letter-box">
+                    <div class="head">
+                         L E T T E R         
                     </div>
                     
+                    <div class="letter-content">
+                        <!-- <div class="cover">
+                            <div class="heart"></div>
+                        </div> -->
+                        <div class="letter">
+                            <div class="inputbox">
+                                
+                                <input type="checkbox" id="checkbox1" >
+                                <label for="checkbox1" onclick="event.stopPropagation()"></label>
+                            </div>
+                            <div class="title">
+                                <span>편지 제목 입니다~</span>
+                            </div>
+                            <div class="img" style="margin-right:18px;">
+                                <img src="../../images/user/letter/letter1.png"width="90px" height="70px">
+                            </div>
+                        </div>
+                        <div class="letter">
+                            <div class="inputbox">
+                                <input type="checkbox" id="checkbox2" >
+                                <label for="checkbox2"></label>
+                            </div>
+                            <div class="title">
+                                편지 제목 입니다~
+                            </div>
+                            <div class="img">
+                                <img src="../../images/user/letter/letter2.png"width="100px" height="70px">
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
                 </div>
+                
             </div>
-            <div style="background-image: url(/src/main/resources/static/images/user/letter/background1.png);">
-asd
-            </div>
-            <div class="letter-leg">
-
-            </div>
-        </div>
+            <div class="reg-del-panel">
+                <div class="reg-del-box">
+                    <a href="reg.html"><div class="reg"></div></a>
+                    <div class="del"></div>
+                </div>
+            </div>  
+            <div class="change-reg"></div>
+            <div class="change-del"></div>
+        </form>
     </section>
     
     

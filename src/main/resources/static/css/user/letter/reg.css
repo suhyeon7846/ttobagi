@@ -56,9 +56,26 @@
     border: none;
 }
 
+.date{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.date label{
+    margin-right: 10px;
+}
+.date input{
+    border: 2px solid #eee;
+}
+.date input:focus{
+    
+    outline:2px solid pink;
+    border: none;
+
+}
+
 #main-reg .panel form .content{
     width: 670px;
-    height: 528px;
+    height: 498px;
     margin-left: 10px;
     margin-top: 10px;
     
@@ -66,7 +83,7 @@
 
 #main-reg .panel form .content textarea{
     width: 670px;
-    height: 508px;
+    height: 478px;
     resize: none;
     padding: 5px 10px;
     border: 2px solid #eee;

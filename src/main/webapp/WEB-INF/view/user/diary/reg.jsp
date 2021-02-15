@@ -40,7 +40,7 @@
                     <textarea name="content" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div class="btns">
-                    <input type="submit" value="보내기" class="button">
+                    <input type="submit" value="등록" class="button">
                     <a href="list" class="button">취소</a>
                 </div>
                 <div style="display:hidden">
