@@ -74,27 +74,35 @@
    <div class="sub-section-1">
       <div class="intro-container">
 
-         <div class="intro-img-container" data-aos="fade-left"
+         <div class="intro-img-container" data-aos="fade-right"
             data-aos-duration="1200">
             <img class="intro-img" src="/images/memoryMainIcon.png">
          </div>
-         <div class="intro-ment-container" data-aos="fade-right"
+         <div class="intro-ment-container" data-aos="fade-left"
             data-aos-duration="1200">
             <div class="intro-ment" style="padding-top: 150px;">
                <h1 style="font-size: 35px">특별한 하루를 모아보세요!</h1>
                <div class="ment">사랑하는 연인과 함께한 날들을</div>
                <div class="ment">여기에 기록해보세요</div>
                <div>
-                  <s:authorize access="isAnonymous()">
-                     <a href="/auth/login"> <input type="button"
-                        class="service-btn" value="서비스 이용하기">
-                     </a>
-                  </s:authorize>
-                  <s:authorize access="isAuthenticated()">
-                     <a href="/user/couple/reg"> <input type="button"
-                        class="service-btn" value="서비스 이용하기">
-                     </a>
-                  </s:authorize>
+                 <s:authorize access="!hasRole('COUPLE')">
+	            <s:authorize access="isAnonymous()">
+		            <a href="/auth/login">
+			            <input type="button" class="service-btn" value="추억 공유하기"/>
+		            </a>
+	            </s:authorize>
+	            
+	            <s:authorize access="isAuthenticated()">
+	            	<a href="/user/couple/reg">
+			            <input type="button" class="service-btn" value="추억 공유하기"/>
+		            </a>
+	            </s:authorize>
+            </s:authorize>
+            <s:authorize access="hasRole('COUPLE')">
+	            <a href="/user/memory/list">
+		            <input type="button" class="service-btn" value="추억 공유하기"/>
+	            </a>
+            </s:authorize>
                </div>
             </div>
          </div>
@@ -106,28 +114,36 @@
    <div class="sub-section-1">
       <div class="intro-container">
          
-         <div class="intro-ment-container" data-aos="fade-left"
+         <div class="intro-ment-container" data-aos="fade-right"
             data-aos-duration="1200">
             <div class="intro-ment" style="padding-top: 150px;">
                <h1 style="font-size: 35px">특별한 경험을 같이 해봐요!</h1>
                <div class="ment">연인과 함께 하고 싶은 일들을</div>
                <div class="ment">여기에 기록해보세요</div>
                <div>
-                  <s:authorize access="isAnonymous()">
-                     <a href="/auth/login"> <input type="button"
-                        class="service-btn" value="서비스 이용하기">
-                     </a>
-                  </s:authorize>
-                  <s:authorize access="isAuthenticated()">
-                     <a href="/user/couple/reg"> <input type="button"
-                        class="service-btn" value="서비스 이용하기">
-                     </a>
-                  </s:authorize>
+                   <s:authorize access="!hasRole('COUPLE')">
+	            <s:authorize access="isAnonymous()">
+		            <a href="/auth/login">
+			            <input type="button" class="btn" value="버킷리스트 공유하기"/>
+		            </a>
+	            </s:authorize>
+	            
+	            <s:authorize access="isAuthenticated()">
+	            	<a href="/user/couple/reg">
+			            <input type="button" class="service-btn" value="버킷리스트 공유하기"/>
+		            </a>
+	            </s:authorize>
+            </s:authorize>
+            <s:authorize access="hasRole('COUPLE')">
+	            <a href="/user/bucketlist/list">
+		            <input type="button" class="service-btn" value="버킷리스트 공유하기"/>
+	            </a>
+            </s:authorize>
                </div>
             </div>
          </div>
          
-         <div class="intro-img-container" data-aos="fade-right"
+         <div class="intro-img-container" data-aos="fade-left"
             data-aos-duration="1200">
             <img class="intro-img" src="/images/bucketMainIcon.png">
          </div>
