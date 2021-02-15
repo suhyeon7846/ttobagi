@@ -17,4 +17,10 @@ public class FacebookOauth implements SocialOauth {
 		return null;
 	}
 
+	@Override
+	public String requestUserInfo(String access_token) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
