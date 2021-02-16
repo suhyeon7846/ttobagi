@@ -54,25 +54,6 @@ window.addEventListener("load", () => {
 	delBtn.onclick = (e) => {
 		alert("삭제!");
 	}
-
-	/*    //삭제버튼 트리거
-		delBtn.onclick = (e) => {
-			let result = confirm("정말 삭제하시겠습니까?");
-			let event = new MouseEvent('click', {
-				bubbles: true,
-				cancelable: true,
-				view: window
-			});
-			for (let i = 0; i < submitBtn.length; i++)
-				submitBtn[i].dispatchEvent(event);
-		}
-	
-		for (let i = 0; i < submitBtn.length; i++) {
-			submitBtn[i].onclick = () => {
-				//alert("삭제 제출");
-			}
-		}
-	*/
 	//=====================================open close 버튼 건들면 안댐
 	openBtn.onclick = () => {
 		if (btn.style.transform != 'rotateY(180deg)') {//y축이 반대가 아니면 '열기'상태
@@ -286,8 +267,31 @@ window.addEventListener("load", () => {
 					currentPage.classList.add('active');
 					backPage = section.querySelectorAll(".active");
 					//새 페이지를 만들었으니 변수를 다시 정의해줘야한다.
-					checkBox = section.querySelectorAll(".check-box");
+					checkBox = currentPage.nextElementSibling.querySelectorAll(".check-box");
 					checkState = false;
+					
+					for (let i = 0; i < checkBox.length; i++) {
+						checkBox[i].onclick = () => {
+		
+						for (let j = 0; j < checkBox.length; j++) {//체크박스 클릭 이벤트 안에서 for문으로 체크를 확인해 하나라도 체크가 되어있으면 break를 줘서 checkState를 true하고 빠져나와 하나도 안되있으면 else로 가서 false가 되겠지
+									if (checkBox[j].checked == true) {
+										checkState = true;
+										break;
+									}
+									else
+										checkState = false;
+								}
+					
+								if (checkState == true) {
+									delBtn.style.display = 'block';
+									regBtn.style.display = 'none';
+								}
+								else {
+									delBtn.style.display = 'none';
+									regBtn.style.display = 'block';
+								}
+							}
+					}
 					delBtn = currentPage.nextElementSibling.querySelector(".del-button");
 					regBtn = currentPage.nextElementSibling.querySelector(".reg-button");
 					console.log(regBtn);
@@ -328,6 +332,35 @@ window.addEventListener("load", () => {
 			}
 
 			currentPage.classList.add('reactive');
+			console.log(currentPage);
+			checkBox = currentPage.querySelectorAll(".check-box");
+			console.log(checkBox[1]);
+			console.log(checkBox[2]);
+			checkState = false;
+			
+			for (let i = 0; i < checkBox.length; i++) {
+				checkBox[i].onclick = () => {
+					console.log(checkBox[i]);
+
+				for (let j = 0; j < checkBox.length; j++) {//체크박스 클릭 이벤트 안에서 for문으로 체크를 확인해 하나라도 체크가 되어있으면 break를 줘서 checkState를 true하고 빠져나와 하나도 안되있으면 else로 가서 false가 되겠지
+							if (checkBox[j].checked == true) {
+								checkState = true;
+								break;
+							}
+							else
+								checkState = false;
+						}
+			
+						if (checkState == true) {
+							delBtn.style.display = 'block';
+							regBtn.style.display = 'none';
+						}
+						else {
+							delBtn.style.display = 'none';
+							regBtn.style.display = 'block';
+						}
+					}
+			}
 
 
 			setTimeout(function() {

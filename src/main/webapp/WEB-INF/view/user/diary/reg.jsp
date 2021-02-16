@@ -3,6 +3,8 @@
 
 <link rel="stylesheet" href="/css/user/diary/reg.css">
 <link rel="stylesheet" href="/css/user/diary/visual.css">
+<script src = "/libs/ckeditor/ckeditor.js"></script>
+
         <!----------------------------------------------main--------------------------------------->
     
     <section id="main">
@@ -10,6 +12,9 @@
             <div class="well">
                 <span>일기장 글쓰기</span>
             </div>
+            <div id="editor">
+            </div>
+            
             <form name="reg" method="POST" class="form">
                 <div class="title">
                     <label for="input-title" >제목  </label>
@@ -37,12 +42,21 @@
                 
                 <div class="content">
                     <label for="input-content" >내용  </label>
-                    <textarea name="content" id="" cols="30" rows="10"></textarea>
+                    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                   <script>
+                        CKEDITOR.replace( 'content' ,{
+                        	height:400
+                        });
+                	</script> 
+                	
+                	
                 </div>
+                
                 <div class="btns">
                     <input type="submit" value="등록" class="button">
                     <a href="list" class="button">취소</a>
                 </div>
+                
                 <div style="display:hidden">
                 	<input type="hidden" name="memberId" value="${memberId}"/>
                 </div>

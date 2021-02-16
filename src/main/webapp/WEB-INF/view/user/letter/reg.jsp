@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="/css/user/letter/reg.css">
     <link rel="stylesheet" href="/css/user/letter/visual.css">
-    
-    
-        <!----------------------------------------------main--------------------------------------->
+    <script src = "/libs/ckeditor/ckeditor.js"></script> 
+    <script src ="/js/user/letter/reg.js"></script>
+<!----------------------------------------------main--------------------------------------->
     
     <section id="main-reg">
         <div class="panel">
@@ -25,9 +25,15 @@
                     <label for="input-content" >내용  </label>
                     <textarea id="input-content" name="content"></textarea>
                 </div>
+                <script>
+                	CKEDITOR.replace( 'content' ,{
+                	
+                	height: 400
+                	});
+                </script>
 
                 <div class="btns">
-                    <input type="submit" value="보내기" class="button">
+                    <input type="submit" value="보내기" class="button submit">
                     <a href="list" class="button">취소</a>
                 </div>
                 <input type="hidden" name = "senderId" value="${senderId}">

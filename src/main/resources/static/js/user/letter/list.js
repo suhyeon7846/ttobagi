@@ -95,6 +95,7 @@ window.addEventListener('load', (e) => {
         document.body.append(frame);
         //fetch에서 분리해서 해봄 끝
 
+		
         fetch("/api/letter/" + id)
             .then(response => response.json())
             .then(json => {
@@ -110,7 +111,7 @@ window.addEventListener('load', (e) => {
                         ${json.title}
                     </div>
                 </header>
-                <textarea class="content" disabled >${json.content}</textarea>
+                <div class="content">${json.content}</div>
                 <div class="button-box">
                     <a href="reg"><input type="button" value="답장쓰기"></a>
                     <input type="button" value="닫기">
