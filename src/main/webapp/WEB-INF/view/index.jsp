@@ -132,7 +132,7 @@
                    <s:authorize access="!hasRole('COUPLE')">
 	            <s:authorize access="isAnonymous()">
 		            <a href="/auth/login">
-			            <input type="button" class="btn" value="버킷리스트 공유하기"/>
+			            <input type="button" class="service-btn" value="버킷리스트 공유하기"/>
 		            </a>
 	            </s:authorize>
 	            
