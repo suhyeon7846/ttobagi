@@ -12,7 +12,7 @@
 
 | Front-End | Back-End | DataBase | Server | Tool |
 | --- | --- | --- | --- | --- |
-| HTML5<br>CSS3<br>JavaScript | Servlet & JSP | Oracle | Apache Tomcat | Git<br>Trello<br>Adobe XD<br>Photoshop |
+| HTML5<br>CSS3<br>JavaScript<br>ES6 | Spring boot | Mysql | Apache Tomcat | Spring Tool Suite<br>Git<br>Notion<br>Adobe XD<br>Photoshop |
 
 ## 📅 개발 기간
 ![프로젝트일정(틈)](https://user-images.githubusercontent.com/65852909/103269952-44366800-49fa-11eb-9bb9-7e3f6c3d4e8a.png)
