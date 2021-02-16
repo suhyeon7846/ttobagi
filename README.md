@@ -21,7 +21,9 @@
 ![또바기 er다이어그램](https://user-images.githubusercontent.com/65852909/108048642-a02c7d00-708a-11eb-9089-2fdf30552705.png)
 
 ## 📖 Issues 관리
-<img width="1516" alt="스크린샷 2020-12-26 오후 10 51 42" src="https://user-images.githubusercontent.com/65852909/103152604-00aae680-47cd-11eb-9923-6960d38b75a1.png">
+  - [x] https://www.notion.so/d95c90a853654a8594df4aafcca46e28
+
+<img width="1377" alt="스크린샷 2021-02-16 오후 7 17 05" src="https://user-images.githubusercontent.com/65852909/108049436-98b9a380-708b-11eb-9a80-9d88bdd12b9a.png">
 
 ## 🎞 실행 화면
 
