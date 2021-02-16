@@ -360,7 +360,7 @@ class DetailBox{
 						fetch("/user/calendar/"+schedule.id+"/update",init)
 						.then(()=>{});
 						
-						var delEvent = srcCalendar.getEventById(event.id);
+						var delEvent = srcCalendar.getEventById(schedule.id);
 						delEvent.remove();
 						srcCalendar.addEvent(schedule);
 						
