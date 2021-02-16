@@ -18,7 +18,7 @@
 ![프로젝트일정(틈)](https://user-images.githubusercontent.com/65852909/103269952-44366800-49fa-11eb-9bb9-7e3f6c3d4e8a.png)
 
 ## 📊 E-R Diagram
-![E-R Diagram](https://user-images.githubusercontent.com/65852909/103152482-c12fca80-47cb-11eb-8748-09a80007ecdf.png)
+![또바기 er다이어그램](https://user-images.githubusercontent.com/65852909/108048642-a02c7d00-708a-11eb-9089-2fdf30552705.png)
 
 ## 📖 Issues 관리
 <img width="1516" alt="스크린샷 2020-12-26 오후 10 51 42" src="https://user-images.githubusercontent.com/65852909/103152604-00aae680-47cd-11eb-9923-6960d38b75a1.png">
