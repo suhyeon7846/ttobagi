@@ -1,3 +1,16 @@
+strong{
+	font-weight:bold;
+}
+
+em{
+	font-style:italic;
+}
+
+strong em, em strong{
+	font-weight:bold;
+	font-style:italic;
+}
+
 #main{
     width: 100%;
     min-height: 600px;

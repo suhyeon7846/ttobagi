@@ -76,8 +76,9 @@ public class LetterController {
 	}
 	@PostMapping("reg")
 	public String reg(Letter letter) {
-		System.out.println(letter);
-		service.insert(letter);
+		
+		System.out.println(letter); service.insert(letter);
+		
 		return "redirect:list";
 	}
 	

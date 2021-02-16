@@ -125,7 +125,7 @@
 /************ ***********/
 .section-6 {
     min-height: 600px;
-    background-color: #ffffb1;
+    /* background-color: #ff9cbd; */
 }
 
 
@@ -136,7 +136,7 @@
 
 .section-6 .intro-container{
 	align-items: center;
-	margin-top:50px;
+	padding-top:50px;
 }
 
 .section-6 .intro-img-container{

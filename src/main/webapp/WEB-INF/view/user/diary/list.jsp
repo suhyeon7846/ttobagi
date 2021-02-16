@@ -73,13 +73,13 @@
 	                                    <img src="${d.file } " style="width: 50px; height: 50px;">
 	                                </div>
 	                                <div class="input">
-	                                    <input type="checkbox" class="check-box" name ="del" value="${d.id}"/> 
+	                                    <input type="checkbox" id="check-box${status.count}" class="check-box" name ="del" value="${d.id}"/> 
+	                                    <label for="check-box${status.count}"></label> 
 	                                </div> 
 	                            </div>
 	
 	                            <div class="body">
-	                                <textarea class="content" readonly="readonly" disabled>${d.content }
-	                                </textarea>
+	                                <div class="content">${d.content }</div>
 	                            </div>
 	                        </div>
 	                    	</c:when>
@@ -98,14 +98,13 @@
 	                                    <img src="${d.file }" style="width: 50px; height: 50px;">
 	                                </div>
 	                                <div class="input">
-	                                	<!-- <label for="checkbox" -->
-	                                    <input type="checkbox" class="check-box" name ="del" value="${d.id}"/> 
+	                                    <input type="checkbox" id="check-box${status.count}" class="check-box" name ="del" value="${d.id}"/>
+	                                    <label for="check-box${status.count}"></label> 
 	                                </div> 
 	                            </div>
 	
 	                            <div class="body">
-	                                <textarea class="content" readonly="readonly" disabled>${d.content }
-	                                </textarea>
+	                                <div class="content">${d.content }</div>
 	                            </div>
 	                        </div>
 	                    	</c:when>
